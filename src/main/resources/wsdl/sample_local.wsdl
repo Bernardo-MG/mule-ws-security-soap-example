@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://sample.endpoint.swss.mule.example.wandrell.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="SampleEndpointService" targetNamespace="http://sample.endpoint.swss.mule.example.wandrell.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sample.endpoint.swss.mule.example.wandrell.com/" elementFormDefault="unqualified" targetNamespace="http://sample.endpoint.swss.mule.example.wandrell.com/" version="1.0">
+
+  <xs:element name="getSample" type="tns:getSample"/>
+
+  <xs:element name="getSampleResponse" type="tns:getSampleResponse"/>
+
+  <xs:element name="sample">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cod1" type="xs:float"/>
+        <xs:element minOccurs="0" name="cod2" type="xs:float"/>
+        <xs:element default="" minOccurs="0" name="description" type="xs:string"/>
+        <xs:element default="" minOccurs="0" name="extra" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="getSample">
+    <xs:sequence>
+      <xs:element name="cod1" type="xs:float"/>
+      <xs:element name="cod2" type="xs:float"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getSampleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="cod1" type="xs:float"/>
+            <xs:element minOccurs="0" name="cod2" type="xs:float"/>
+            <xs:element default="" minOccurs="0" name="description" type="xs:string"/>
+            <xs:element default="" minOccurs="0" name="extra" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getSampleResponse">
+    <wsdl:part element="tns:getSampleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSample">
+    <wsdl:part element="tns:getSample" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SampleEndpoint">
+    <wsdl:operation name="getSample">
+      <wsdl:input message="tns:getSample" name="getSample">
+    </wsdl:input>
+      <wsdl:output message="tns:getSampleResponse" name="getSampleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SampleEndpointServiceSoapBinding" type="tns:SampleEndpoint">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getSample">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSample">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSampleResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SampleEndpointService">
+    <wsdl:port binding="tns:SampleEndpointServiceSoapBinding" name="SampleEndpointPort">
+      <soap:address location="http://localhost:9966/ws/unsecure/code_first"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

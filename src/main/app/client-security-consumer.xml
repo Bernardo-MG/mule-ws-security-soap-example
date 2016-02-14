@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern"
+	xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+	xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/servlet http://www.mulesoft.org/schema/mule/servlet/current/mule-servlet.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
+
+	<flow name="HTTPClient-Secure-Consumer-Username-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${client.secure.consumer.userName.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="HTTPClient-Secure-Consumer-Username-Endpoint"
+			doc:name="Consumer for username secure service" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+
+	<sub-flow name="HTTPClient-Secure-Consumer-Username-Endpoint">
+		<flow-ref name="Transform-ConsumerRequest-Vars" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="WS-Consumer-Secure-Username"
+			operation="${wsdl.local.operation}" doc:name="Username Code-First WS" />
+	</sub-flow>
+
+	<flow name="HTTPClient-Secure-Consumer-Signed-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${client.secure.consumer.signed.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="HTTPClient-Secure-Consumer-Signed-Endpoint"
+			doc:name="Consumer for signed secure service" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+
+	<sub-flow name="HTTPClient-Secure-Consumer-Signed-Endpoint">
+		<flow-ref name="Transform-ConsumerRequest-Vars" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="WS-Consumer-Secure-Signed"
+			operation="${wsdl.local.operation}" doc:name="Signed Code-First WS" />
+	</sub-flow>
+
+	<flow name="HTTPClient-Secure-Consumer-Encrypted-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${client.secure.consumer.encrypted.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="HTTPClient-Secure-Consumer-Encrypted-Endpoint"
+			doc:name="Consumer for encrypted secure service" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+
+	<sub-flow name="HTTPClient-Secure-Consumer-Encrypted-Endpoint">
+		<flow-ref name="Transform-ConsumerRequest-Vars" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="WS-Consumer-Secure-Signed"
+			operation="${wsdl.local.operation}" doc:name="Encrypted Code-First WS" />
+	</sub-flow>
+
+</mule>

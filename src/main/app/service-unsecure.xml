@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern"
+	xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+	xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/servlet http://www.mulesoft.org/schema/mule/servlet/current/mule-servlet.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
+
+	<flow name="Service-Unsecure-CodeFirst-Flow">
+		<http:listener config-ref="Listener-Application"
+			doc:name="HTTP Inbound Endpoint" path="${service.unsecure.codeFirst.path}" />
+
+		<flow-ref name="Service-Unsecure-CodeFirst-Endpoint"
+			doc:name="Code first service" />
+	</flow>
+	<sub-flow name="Service-Unsecure-CodeFirst-Endpoint">
+		<cxf:jaxws-service validationEnabled="${service.validation}"
+			doc:name="Code-First service" serviceClass="${service.unsecure.codeFirst.interface.class}"
+			namespace="${wsdl.local.namespace}" />
+		<component doc:name="Code-First endpoint implementation">
+			<spring-object bean="codeFirstUnsecureEndpoint" />
+		</component>
+	</sub-flow>
+
+	<flow name="Service-Unsecure-WSDLFirst-Flow">
+		<http:listener config-ref="Listener-Application"
+			doc:name="HTTP Inbound Endpoint" path="${service.unsecure.wsdlFirst.path}" />
+
+		<flow-ref name="Service-Unsecure-WSDLFirst-Endpoint"
+			doc:name="WSDL first service" />
+	</flow>
+	<sub-flow name="Service-Unsecure-WSDLFirst-Endpoint">
+		<cxf:jaxws-service validationEnabled="${service.validation}"
+			doc:name="WSDL-First service" serviceClass="${service.unsecure.wsdlFirst.interface.class}"
+			namespace="${wsdl.local.namespace}" wsdlLocation="${wsdl.local.path}"
+			service="${wsdl.local.service}" />
+		<component doc:name="WSDL-First endpoint implementation">
+			<spring-object bean="wsdlFirstUnsecureEndpoint" />
+		</component>
+	</sub-flow>
+
+	<flow name="Service-Unsecure-Simple-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${service.unsecure.simple.path}" doc:name="HTTP Inbound Endpoint" />
+
+		<flow-ref name="Service-Unsecure-Simple-Endpoint" doc:name="Simple service" />
+	</flow>
+	<sub-flow name="Service-Unsecure-Simple-Endpoint">
+		<cxf:simple-service serviceClass="${service.unsecure.simple.class}"
+			service="${wsdl.local.service}" doc:name="Simple service" />
+		<component doc:name="Simple endpoint implementation">
+			<spring-object bean="simpleUnsecureEndpoint" />
+		</component>
+	</sub-flow>
+
+	<flow name="Service-Unsecure-Proxy-Flow">
+		<http:listener config-ref="Listener-Application"
+			doc:name="HTTP Inbound Endpoint" path="${service.unsecure.proxy.path}" />
+
+		<flow-ref name="Service-Unsecure-Proxy-Endpoint" doc:name="Proxied local service" />
+	</flow>
+	<sub-flow name="Service-Unsecure-Proxy-Endpoint">
+		<cxf:proxy-service namespace="${wsdl.local.namespace}"
+			payload="envelope" port="${wsdl.local.port}" service="${wsdl.local.service}"
+			doc:name="Proxy service" wsdlLocation="${wsdl.local.path}"
+			enableMuleSoapHeaders="false" />
+		<flow-ref doc:name="Copy HTTP Headers" name="CopyHeaders" />
+		<cxf:proxy-client doc:name="Proxy client"
+			enableMuleSoapHeaders="false" payload="envelope" />
+		<outbound-endpoint doc:name="Local unsecure WS" ref="Unsecure-CodeFirst-WS"
+			exchange-pattern="request-response" />
+
+		<flow-ref doc:name="Copy HTTP Headers" name="CopyHeaders" />
+	</sub-flow>
+
+	<flow name="Service-Unsecure-Consumer-Flow">
+		<http:listener config-ref="Listener-Application"
+			doc:name="HTTP Inbound Endpoint" path="${service.unsecure.consumer.path}" />
+		<flow-ref name="Service-Unsecure-Consumer-Endpoint" doc:name="Consumer for local service" />
+	</flow>
+	<sub-flow name="Service-Unsecure-Consumer-Endpoint">
+		<flow-ref name="Transform-ConsumerRequest" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="WS-Consumer-Unsecure-CodeFirst"
+			operation="${wsdl.local.operation}" doc:name="Local WS Consumer" />
+		<mulexml:dom-to-xml-transformer
+			doc:name="Object to XML" />
+	</sub-flow>
+
+</mule>

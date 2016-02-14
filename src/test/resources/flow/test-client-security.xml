@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
+
+	<flow name="Test-HTTPClient-Secure-Username-Flow">
+		<flow-ref name="HTTPClient-Secure-Username-Endpoint"
+			doc:name="Username token client" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+
+	<flow name="Test-HTTPClient-Secure-Signed-Flow">
+		<flow-ref name="HTTPClient-Secure-Signed-Endpoint" doc:name="Signed client" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+
+	<flow name="Test-HTTPClient-Secure-Encrypted-Flow">
+		<flow-ref name="HTTPClient-Secure-Encrypted-Endpoint"
+			doc:name="Encrypted client" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+
+</mule>

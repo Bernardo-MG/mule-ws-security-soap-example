@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
+
+	<flow name="Test-HTTPClient-Secure-Consumer-Username-Flow">
+		<flow-ref name="HTTPClient-Secure-Consumer-Username-Endpoint"
+			doc:name="Consumer for secure username WSDL-First client" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+
+	<flow name="Test-HTTPClient-Secure-Consumer-Signed-Flow">
+		<flow-ref name="HTTPClient-Secure-Consumer-Signed-Endpoint"
+			doc:name="Consumer for secure signed WSDL-First client" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+
+	<flow name="Test-HTTPClient-Secure-Consumer-Encrypted-Flow">
+		<flow-ref name="HTTPClient-Secure-Consumer-Encrypted-Endpoint"
+			doc:name="Consumer for secure encrypted WSDL-First client" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+
+</mule>

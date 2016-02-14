@@ -1,0 +1,1 @@
+INSERT INTO samples (id, cod1, cod2, description, extra) VALUES (1, 1, 2.1, 'desc', 'extra')

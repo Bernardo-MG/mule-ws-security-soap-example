@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+
+	<sub-flow name="CopyHeaders">
+		<copy-properties doc:name="Copy HTTP headers"
+			propertyName="*" />
+		<remove-property doc:name="Remove host property"
+			propertyName="Host" />
+		<remove-property doc:name="Remove Content Length Header"
+			propertyName="Content-Length" />
+		<remove-property doc:name="Remove HTTP synthetic properties"
+			propertyName="http.*" />
+		<remove-property doc:name="Remove MULE properties"
+			propertyName="MULE_*" />
+		<remove-property doc:name="Remove Connection Header"
+			propertyName="Connection" />
+		<remove-property doc:name="Remove Transfer-encoding Header"
+			propertyName="transfer-encoding" />
+	</sub-flow>
+
+	<sub-flow name="ReadHTTPVariables">
+		<set-variable variableName="cod1"
+			value="#[Float.parseFloat(message.inboundProperties.'http.query.params'.cod1)]"
+			doc:name="cod1 variable" />
+		<set-variable variableName="cod2"
+			value="#[Float.parseFloat(message.inboundProperties.'http.query.params'.cod2)]"
+			doc:name="cod2 variable" />
+		<set-payload doc:name="Set payload" value="#[{cod1, cod2}]" />
+	</sub-flow>
+
+	<sub-flow name="Transform-Response">
+		<choice doc:name="Choice">
+			<when expression="payload is org.apache.cxf.staxutils.DepthXMLStreamReader">
+				<mulexml:dom-to-xml-transformer
+					doc:name="DOM to XML" />
+			</when>
+			<otherwise>
+				<mulexml:object-to-xml-transformer
+					doc:name="Object to XML" />
+			</otherwise>
+		</choice>
+		<transformer ref="SampleResponseToSample" doc:name="XML to model" />
+		<mulexml:object-to-xml-transformer
+			doc:name="Object to XML" />
+	</sub-flow>
+
+	<sub-flow name="Transform-ConsumerRequest-Vars">
+		<set-variable variableName="cod1" value="#[payload[0]]"
+			doc:name="Save cod1 variable" />
+		<set-variable variableName="cod2" value="#[payload[1]]"
+			doc:name="Save cod2 variable" />
+		<set-payload value="&lt;root/&gt;" doc:name="Dummy XML document (for transformer)" />
+		<mulexml:xslt-transformer returnClass="java.lang.String"
+			xsl-file="request.xslt" doc:name="Create SOAP message">
+			<mulexml:context-property key="cod1" value="#[cod1]" />
+			<mulexml:context-property key="cod2" value="#[cod2]" />
+		</mulexml:xslt-transformer>
+	</sub-flow>
+
+	<sub-flow name="Transform-ConsumerRequest">
+		<object-to-string-transformer doc:name="Object to string" />
+		<transformer ref="ConsumerSOAPRequest" doc:name="Transform SOAP message" />
+	</sub-flow>
+
+</mule>

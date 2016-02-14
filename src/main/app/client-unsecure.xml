@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms"
+	xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern" xmlns:ws="http://www.mulesoft.org/schema/mule/ws"
+	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/servlet http://www.mulesoft.org/schema/mule/servlet/current/mule-servlet.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
+
+	<flow name="HTTPClient-Unsecure-CodeFirst-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${client.unsecure.codeFirst.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="HTTPClient-Unsecure-CodeFirst-Endpoint"
+			doc:name="Code-First client" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+
+	<sub-flow name="HTTPClient-Unsecure-CodeFirst-Endpoint">
+		<cxf:jaxws-client serviceClass="${service.unsecure.codeFirst.interface.class}"
+			doc:name="Code-First local client" operation="${wsdl.local.operation}" />
+		<outbound-endpoint doc:name="Unsecure Code-First WS"
+			ref="Unsecure-CodeFirst-WS" />
+	</sub-flow>
+
+	<flow name="HTTPClient-Unsecure-WSDLFirst-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${client.unsecure.wsdlFirst.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="HTTPClient-Unsecure-WSDLFirst-Endpoint"
+			doc:name="WSDL-First client" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+
+	<sub-flow name="HTTPClient-Unsecure-WSDLFirst-Endpoint">
+		<cxf:jaxws-client clientClass="${client.wsdlFirst.class}"
+			wsdlLocation="${wsdl.local.path}" port="${wsdl.local.port}" doc:name="WSDL-First local client"
+			operation="${wsdl.local.operation}" />
+		<outbound-endpoint doc:name="Unsecure WSDL-First WS"
+			ref="Unsecure-WSDLFirst-WS" />
+	</sub-flow>
+
+	<flow name="HTTPClient-Unsecure-Simple-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${client.unsecure.simple.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="HTTPClient-Unsecure-Simple-Endpoint"
+			doc:name="Simple client" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+
+	<sub-flow name="HTTPClient-Unsecure-Simple-Endpoint">
+		<cxf:simple-client serviceClass="${service.unsecure.simple.class}"
+			doc:name="Simple local client" operation="${wsdl.local.operation}" />
+		<outbound-endpoint doc:name="Unsecure simple WS"
+			ref="Unsecure-Simple-WS" />
+	</sub-flow>
+
+	<flow name="HTTPClient-Unsecure-Consumer-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${client.unsecure.consumer.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="HTTPClient-Unsecure-Consumer-Endpoint"
+			doc:name="Consumer for Code-First service" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+
+	<sub-flow name="HTTPClient-Unsecure-Consumer-Endpoint">
+		<flow-ref name="Transform-ConsumerRequest-Vars" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="WS-Consumer-Unsecure-CodeFirst"
+			operation="${wsdl.local.operation}" doc:name="Unsecure Code-First WS" />
+	</sub-flow>
+
+</mule>
