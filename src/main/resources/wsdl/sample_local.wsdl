@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://sample.endpoint.swss.mule.example.wandrell.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="SampleEndpointService" targetNamespace="http://sample.endpoint.swss.mule.example.wandrell.com/">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://wandrell.com/example/ws/entity" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="SampleEndpointService" targetNamespace="http://wandrell.com/example/ws/entity">
   <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sample.endpoint.swss.mule.example.wandrell.com/" elementFormDefault="unqualified" targetNamespace="http://sample.endpoint.swss.mule.example.wandrell.com/" version="1.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://wandrell.com/example/ws/entity" elementFormDefault="unqualified" targetNamespace="http://wandrell.com/example/ws/entity" version="1.0">
 
   <xs:element name="getSample" type="tns:getSample"/>
 

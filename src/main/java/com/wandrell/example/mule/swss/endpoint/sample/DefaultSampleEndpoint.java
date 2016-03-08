@@ -5,7 +5,6 @@ import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 
 import com.wandrell.example.mule.swss.data.model.sample.JPASample;
 import com.wandrell.example.mule.swss.data.repository.JPASampleRepository;

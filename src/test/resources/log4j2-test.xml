@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
-
-    <Properties>
-        <Property name="filename">mule-wss_test.log</Property>
-    </Properties>
-
     <Appenders>
-        <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%-5p %d [%t] %c: %m%n"/>
         </Console>
-
-        <File name="file" fileName="${filename}">
-            <PatternLayout>
-                <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
-                </Pattern>
-            </PatternLayout>
-        </File>
     </Appenders>
 
     <Loggers>

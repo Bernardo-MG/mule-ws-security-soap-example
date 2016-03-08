@@ -5,7 +5,6 @@ import javax.xml.bind.annotation.XmlElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 
 import com.wandrell.example.mule.swss.data.model.sample.JPASample;
 import com.wandrell.example.mule.swss.data.repository.JPASampleRepository;
@@ -14,7 +13,7 @@ import com.wandrell.example.mule.swss.model.sample.XMLSample;
 @Service
 @Singleton
 public final class SimpleSampleEndpoint {
-		
+
 	@Autowired
 	private JPASampleRepository repository;
 
