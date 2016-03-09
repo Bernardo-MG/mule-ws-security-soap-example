@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import com.wandrell.example.mule.swss.model.sample.XMLSample;
 
-@WebService
+@WebService(serviceName = "SampleEndpointService", targetNamespace="http://wandrell.com/example/ws/entity")
 public interface SampleEndpoint {
 
 	public XMLSample getSample(

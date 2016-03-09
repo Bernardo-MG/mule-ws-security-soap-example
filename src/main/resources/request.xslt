@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sam="http://sample.endpoint.swss.mule.example.wandrell.com/">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sam="http://wandrell.com/example/ws/entity">
   <xsl:output method="xml" encoding="UTF-8"  indent="yes" omit-xml-declaration="yes"/>
   <xsl:param name="cod1"/>
   <xsl:param name="cod2"/>
