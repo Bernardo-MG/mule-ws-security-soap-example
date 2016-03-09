@@ -14,10 +14,10 @@ public final class TestConsumerSampleRequestTransformer {
 	private final String sourceNotEnvelop;
 
 	{
-		sourceEnvelop = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com\"><soapenv:Header/><soapenv:Body><sam:getSample><cod1>1</cod1><cod2>2.1</cod2></sam:getSample></soapenv:Body>\n</soapenv:Envelope>";
-		sourceNotEnvelop = "<sam:getSample xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com\"><cod1>1</cod1><cod2>2.1</cod2></sam:getSample>";
+		sourceEnvelop = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"><soapenv:Header/><soapenv:Body><sam:getSample><cod1>1</cod1><cod2>2.1</cod2></sam:getSample></soapenv:Body>\n</soapenv:Envelope>";
+		sourceNotEnvelop = "<sam:getSample xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"><cod1>1</cod1><cod2>2.1</cod2></sam:getSample>";
 
-		result = "<sam:getSample xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com\"><cod1>1</cod1><cod2>2.1</cod2></sam:getSample>";
+		result = "<sam:getSample xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"><cod1>1</cod1><cod2>2.1</cod2></sam:getSample>";
 	}
 
 	public TestConsumerSampleRequestTransformer() {

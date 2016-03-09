@@ -39,15 +39,15 @@ public final class ITLocalServiceFlow extends FunctionalTestCase {
 	private String wsdlFirstFlow;
 
 	{
-		soapTemplateFull = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <sam:getSample>\n         <cod1>%s</cod1>\n         <cod2>%s</cod2>\n      </sam:getSample>\n   </soapenv:Body>\n</soapenv:Envelope>";
-		soapTemplateShort = "<sam:getSample xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com\">\n   <cod1>%s</cod1>\n   <cod2>%s</cod2>\n</sam:getSample>";
+		soapTemplateFull = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <sam:getSample>\n         <cod1>%s</cod1>\n         <cod2>%s</cod2>\n      </sam:getSample>\n   </soapenv:Body>\n</soapenv:Envelope>";
+		soapTemplateShort = "<sam:getSample xmlns:sam=\"http://sample.endpoint.swss.mule.example.wandrell.com/\">\n   <cod1>%s</cod1>\n   <cod2>%s</cod2>\n</sam:getSample>";
 
 		soapRequestFull = String.format(soapTemplateFull, "1", "2.1");
 		soapRequestShort = String.format(soapTemplateShort, "1", "2.1");
 
-		soapResponseFull = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns2:getSampleResponse xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com\"><return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></return></ns2:getSampleResponse></soap:Body></soap:Envelope>";
-		soapResponseFullNamespaced = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns1:getSampleResponse xmlns:ns1=\"http://sample.endpoint.swss.mule.example.wandrell.com\"><ns1:return><ns2:cod1 xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com\">0.0</ns2:cod1><ns2:cod2 xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com\">0.0</ns2:cod2><ns2:description xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com\"></ns2:description><ns2:extra xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com\"></ns2:extra></ns1:return></ns1:getSampleResponse></soap:Body></soap:Envelope>";
-		soapResponseShort = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ns2:getSampleResponse xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com\"><return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></return></ns2:getSampleResponse>";
+		soapResponseFull = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns2:getSampleResponse xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"><return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></return></ns2:getSampleResponse></soap:Body></soap:Envelope>";
+		soapResponseFullNamespaced = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns1:getSampleResponse xmlns:ns1=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"><ns1:return><ns2:cod1 xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com/\">0.0</ns2:cod1><ns2:cod2 xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com/\">0.0</ns2:cod2><ns2:description xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"></ns2:description><ns2:extra xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"></ns2:extra></ns1:return></ns1:getSampleResponse></soap:Body></soap:Envelope>";
+		soapResponseShort = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ns2:getSampleResponse xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"><return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></return></ns2:getSampleResponse>";
 	}
 
 	public ITLocalServiceFlow() {

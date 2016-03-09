@@ -12,7 +12,7 @@ import com.wandrell.example.mule.swss.model.sample.XMLSample;
 
 @Service
 @Singleton
-@WebService(endpointInterface = "com.wandrell.example.mule.swss.endpoint.sample.SampleEndpoint", serviceName = "SampleEndpointService")
+@WebService(endpointInterface = "com.wandrell.example.mule.swss.endpoint.sample.SampleEndpoint", serviceName = "SampleEndpointService", targetNamespace="http://sample.endpoint.swss.mule.example.wandrell.com/")
 public final class DefaultSampleEndpoint implements SampleEndpoint {
 
 	@Autowired
