@@ -32,6 +32,7 @@ public final class ITLocalServiceFlow extends FunctionalTestCase {
 	private final String soapRequestShort;
 	private final String soapResponseFull;
 	private final String soapResponseFullNamespaced;
+	private final String soapResponseFullNamespacedSimple;
 	private final String soapResponseShort;
 	private final String soapTemplateFull;
 	private final String soapTemplateShort;
@@ -47,6 +48,7 @@ public final class ITLocalServiceFlow extends FunctionalTestCase {
 
 		soapResponseFull = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns2:getSampleResponse xmlns:ns2=\"http://wandrell.com/example/ws/entity\"><return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></return></ns2:getSampleResponse></soap:Body></soap:Envelope>";
 		soapResponseFullNamespaced = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns1:getSampleResponse xmlns:ns1=\"http://wandrell.com/example/ws/entity\"><ns1:return><ns2:cod1 xmlns:ns2=\"http://wandrell.com/example/ws/entity\">0.0</ns2:cod1><ns2:cod2 xmlns:ns2=\"http://wandrell.com/example/ws/entity\">0.0</ns2:cod2><ns2:description xmlns:ns2=\"http://wandrell.com/example/ws/entity\"></ns2:description><ns2:extra xmlns:ns2=\"http://wandrell.com/example/ws/entity\"></ns2:extra></ns1:return></ns1:getSampleResponse></soap:Body></soap:Envelope>";
+		soapResponseFullNamespacedSimple = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns1:getSampleResponse xmlns:ns1=\"http://sample.endpoint.swss.mule.example.wandrell.com/\"><ns1:return><ns2:cod1 xmlns:ns2=\"http://sample.model.swss.mule.example.wandrell.com\">0.0</ns2:cod1><ns2:cod2 xmlns:ns2=\"http://sample.model.swss.mule.example.wandrell.com\">0.0</ns2:cod2><ns2:description xmlns:ns2=\"http://sample.model.swss.mule.example.wandrell.com\"></ns2:description><ns2:extra xmlns:ns2=\"http://sample.model.swss.mule.example.wandrell.com\"></ns2:extra></ns1:return></ns1:getSampleResponse></soap:Body></soap:Envelope>";
 		soapResponseShort = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ns2:getSampleResponse xmlns:ns2=\"http://wandrell.com/example/ws/entity\"><return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></return></ns2:getSampleResponse>";
 	}
 
@@ -116,7 +118,7 @@ public final class ITLocalServiceFlow extends FunctionalTestCase {
 
 		result = event.getMessageAsString();
 
-		Assert.assertEquals(result, soapResponseFullNamespaced);
+		Assert.assertEquals(result, soapResponseFullNamespacedSimple);
 	}
 
 	@Test
