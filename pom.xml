@@ -13,52 +13,52 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>mule</packaging>
 
-    <name>Mule With Spring Web Services WS-Security Example</name>
-    <description>An example showing how to configure Spring-WS Security for a SOAP web service</description>
-    <url>https://github.com/bernardo-mg/mule-spring-ws-security-soap-example</url>
-    <inceptionYear>2016</inceptionYear>
-    
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+	<name>Mule With Spring Web Services WS-Security Example</name>
+	<description>An example showing how to configure Spring-WS Security for a SOAP web service</description>
+	<url>https://github.com/bernardo-mg/mule-spring-ws-security-soap-example</url>
+	<inceptionYear>2016</inceptionYear>
 
-    <!-- ********************************************** -->
-    <!-- ********* INFRASTRUCTURE AND SERVICES ******** -->
-    <!-- ********************************************** -->
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
-    <scm>
-        <connection>scm:git:https://github.com/bernardo-mg/mule-spring-ws-security-soap-example.git</connection>
-        <developerConnection>scm:git:https://github.com/bernardo-mg/mule-spring-ws-security-soap-example.git</developerConnection>
-        <tag>head</tag>
-        <url>https://www.github.com/bernardo-mg/mule-spring-ws-security-soap-example</url>
-    </scm>
+	<!-- ********************************************** -->
+	<!-- ********* INFRASTRUCTURE AND SERVICES ******** -->
+	<!-- ********************************************** -->
 
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://www.github.com/bernardo-mg/mule-spring-ws-security-soap-example/issues</url>
-    </issueManagement>
+	<scm>
+		<connection>scm:git:https://github.com/bernardo-mg/mule-spring-ws-security-soap-example.git</connection>
+		<developerConnection>scm:git:https://github.com/bernardo-mg/mule-spring-ws-security-soap-example.git</developerConnection>
+		<tag>head</tag>
+		<url>https://www.github.com/bernardo-mg/mule-spring-ws-security-soap-example</url>
+	</scm>
 
-    <ciManagement>
-        <system>Travis CI</system>
-        <url>https://travis-ci.org/Bernardo-MG/mule-spring-ws-security-soap-example</url>
-        <notifiers />
-    </ciManagement>
-    
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://www.github.com/bernardo-mg/mule-spring-ws-security-soap-example/issues</url>
+	</issueManagement>
+
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/Bernardo-MG/mule-spring-ws-security-soap-example</url>
+		<notifiers />
+	</ciManagement>
+
 	<!-- ********************************************** -->
 	<!-- ****************** PROFILES ****************** -->
 	<!-- ********************************************** -->
 
 	<profiles>
 		<profile>
-            <!-- Profile for the Eclipse Maven plugin -->
-            <!-- Sets the POM so this plugin does not give the usual unregistered 
-                goals errors -->
-            <!-- It will be activated automatically on Eclipse if this has the m2e 
-                plugin, by detecting the version property -->
+			<!-- Profile for the Eclipse Maven plugin -->
+			<!-- Sets the POM so this plugin does not give the usual unregistered 
+				goals errors -->
+			<!-- It will be activated automatically on Eclipse if this has the m2e 
+				plugin, by detecting the version property -->
 			<id>eclipse</id>
 			<activation>
 				<property>
@@ -114,7 +114,7 @@
 												<ignore />
 											</action>
 										</pluginExecution>
-                                            <!-- Build helper plugin configuration -->
+										<!-- Build helper plugin configuration -->
 										<pluginExecution>
 											<pluginExecutionFilter>
 												<groupId>org.codehaus.mojo</groupId>
@@ -161,69 +161,69 @@
 				</pluginManagement>
 			</build>
 		</profile>
-        <profile>
-            <!-- Release site deployment profile -->
-            <!-- Sets the site repository to point to the releases repo -->
-            <id>deploy-site-release</id>
-            <activation>
-                <!-- Active by default so the repository appears in the reports -->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <distributionManagement>
-                <site>
-                    <id>site</id>
-                    <name>Project Documentation Site</name>
-                    <url>ftp://docs.wandrell.com/swss-soap-example</url>
-                </site>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <!-- Development site deployment profile -->
-            <!-- Sets the site repository to point to the development repo -->
-            <id>deploy-site-development</id>
-            <distributionManagement>
-                <site>
-                    <id>site-development</id>
-                    <name>Project Development Documentation Site</name>
-                    <url>ftp://docs.wandrell.com/swss-soap-example</url>
-                </site>
-            </distributionManagement>
-        </profile>
-        <profile>
-            <!-- Deployment profile -->
-            <!-- Sets ups the environment for deployment -->
-            <id>deployment</id>
-            <properties>
-                <!-- Tests are skipped -->
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
+		<profile>
+			<!-- Release site deployment profile -->
+			<!-- Sets the site repository to point to the releases repo -->
+			<id>deploy-site-release</id>
+			<activation>
+				<!-- Active by default so the repository appears in the reports -->
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<distributionManagement>
+				<site>
+					<id>site</id>
+					<name>Project Documentation Site</name>
+					<url>ftp://docs.wandrell.com/swss-soap-example</url>
+				</site>
+			</distributionManagement>
+		</profile>
+		<profile>
+			<!-- Development site deployment profile -->
+			<!-- Sets the site repository to point to the development repo -->
+			<id>deploy-site-development</id>
+			<distributionManagement>
+				<site>
+					<id>site-development</id>
+					<name>Project Development Documentation Site</name>
+					<url>ftp://docs.wandrell.com/swss-soap-example</url>
+				</site>
+			</distributionManagement>
+		</profile>
+		<profile>
+			<!-- Deployment profile -->
+			<!-- Sets ups the environment for deployment -->
+			<id>deployment</id>
+			<properties>
+				<!-- Tests are skipped -->
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+		</profile>
 	</profiles>
 
 	<!-- ********************************************** -->
 	<!-- *********** ORGANIZATION AND MEMBERS ********* -->
 	<!-- ********************************************** -->
 
-    <organization>
-        <name>Bernardo Martínez Garrido</name>
-        <url>https://github.com/Bernardo-MG</url>
-    </organization>
+	<organization>
+		<name>Bernardo Martínez Garrido</name>
+		<url>https://github.com/Bernardo-MG</url>
+	</organization>
 
-    <developers>
-        <developer>
-            <id>bmg</id>
-            <name>Bernardo Martínez Garrido</name>
-            <email>programming@wandrell.com</email>
-            <url>https://github.com/Bernardo-MG</url>
-            <organization>Bernardo Martínez Garrido</organization>
-            <organizationUrl>https://github.com/Bernardo-MG</organizationUrl>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>+1</timezone>
-            <properties />
-        </developer>
-    </developers>
+	<developers>
+		<developer>
+			<id>bmg</id>
+			<name>Bernardo Martínez Garrido</name>
+			<email>programming@wandrell.com</email>
+			<url>https://github.com/Bernardo-MG</url>
+			<organization>Bernardo Martínez Garrido</organization>
+			<organizationUrl>https://github.com/Bernardo-MG</organizationUrl>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+1</timezone>
+			<properties />
+		</developer>
+	</developers>
 
 	<!-- ********************************************** -->
 	<!-- **************** PROPERTIES ****************** -->
@@ -247,8 +247,8 @@
 		<commons.pool.version>1.6</commons.pool.version>
 		<ehcache.version>2.5.1</ehcache.version>
 		<h2.version>1.4.190</h2.version>
-		<hibernate.version>3.6.0.Final</hibernate.version>
-		<hibernate.validator.version>5.2.2.Final</hibernate.validator.version>
+		<hibernate.version>5.1.0.Final</hibernate.version>
+		<hibernate.validator.version>5.2.4.Final</hibernate.validator.version>
 		<hikari.version>2.3.12</hikari.version>
 		<javax.el.version>3.0.0</javax.el.version>
 		<jaxb.version>2.2.12</jaxb.version>
@@ -509,18 +509,18 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>${hibernate.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>net.sf.ehcache</groupId>
-                    <artifactId>ehcache-core</artifactId>
-                </exclusion>
-            </exclusions>
 		</dependency>
 		<dependency>
 			<!-- Hibernate Validator -->
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate.validator.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml</groupId>
+					<artifactId>classmate</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- ============================================== -->
 		<!-- ================ PERSISTENCE ================= -->
@@ -1153,7 +1153,7 @@
 										<extraarg>-client</extraarg>
 										<extraarg>-verbose</extraarg>
 										<extraarg>-p</extraarg>
-										<extraarg>com.wandrell.example.mule.swss.generated.samples</extraarg>										
+										<extraarg>com.wandrell.example.mule.swss.generated.samples</extraarg>
 									</extraargs>
 								</wsdlOption>
 								<wsdlOption>
@@ -1362,27 +1362,27 @@
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>${plugin.jdepend.version}</version>
 			</plugin>
-            <plugin>
-                <!-- WAR -->
-                <!-- Generates the war file -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${plugin.war.version}</version>
-                <configuration>
-                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-                    <webResources>
-                        <resource>
-                            <!-- Persistence access data -->
-                            <filtering>true</filtering>
-                            <directory>${project.basedir}/src/main/resources/context</directory>
-                            <targetPath>WEB-INF/classes/context</targetPath>
-                            <includes>
-                                <include>persistence-access.properties</include>
-                            </includes>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
+			<plugin>
+				<!-- WAR -->
+				<!-- Generates the war file -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${plugin.war.version}</version>
+				<configuration>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+					<webResources>
+						<resource>
+							<!-- Persistence access data -->
+							<filtering>true</filtering>
+							<directory>${project.basedir}/src/main/resources/context</directory>
+							<targetPath>WEB-INF/classes/context</targetPath>
+							<includes>
+								<include>persistence-access.properties</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</reporting>
 
