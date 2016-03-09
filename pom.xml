@@ -14,6 +14,7 @@
 	<packaging>mule</packaging>
 
     <name>Mule With Spring Web Services WS-Security Example</name>
+    <description>An example showing how to configure Spring-WS Security for a SOAP web service</description>
     <url>https://github.com/bernardo-mg/mule-spring-ws-security-soap-example</url>
     <inceptionYear>2016</inceptionYear>
     
@@ -305,6 +306,7 @@
 		<plugin.source.version>2.4</plugin.source.version>
 		<plugin.surefire.version>2.18.1</plugin.surefire.version>
 		<plugin.taglist.version>2.4</plugin.taglist.version>
+		<plugin.war.version>2.6</plugin.war.version>
 	</properties>
 
 	<!-- ********************************************** -->
@@ -1119,7 +1121,7 @@
 							</resources>
 							<sources>
 								<!-- CXF generated sources -->
-								<source>${project.build.directory}/generated-sources/cxf</source>
+								<source>${project.build.directory}/generated/cxf</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -1173,6 +1175,27 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+            <plugin>
+                <!-- WAR -->
+                <!-- Generates the war file -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${plugin.war.version}</version>
+                <configuration>
+                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+                    <webResources>
+                        <resource>
+                            <!-- Persistence access data -->
+                            <filtering>true</filtering>
+                            <directory>${project.basedir}/src/main/resources/context</directory>
+                            <targetPath>WEB-INF/classes/context</targetPath>
+                            <includes>
+                                <include>persistence-access.properties</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
