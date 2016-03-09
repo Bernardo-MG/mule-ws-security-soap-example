@@ -14,7 +14,7 @@ public final class TestSampleResponseToSampleTransformer {
 	private final String sourceWSDLFirst;
 
 	{
-		sourceCodeFirst = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ns2:getSampleResponse xmlns:ns2=\"http://wandrell.com/example/ws/entity\"><return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></return></ns2:getSampleResponse>";
+		sourceCodeFirst = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ns2:getSampleResponse xmlns:ns2=\"http://sample.endpoint.swss.mule.example.wandrell.com\"><return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></return></ns2:getSampleResponse>";
 		sourceWSDLFirst = "<com.wandrell.example.mule.swss.generated.samples.GetSampleResponse_-Return><cod1>1.0</cod1><cod2>2.1</cod2><description>desc</description><extra>extra</extra></com.wandrell.example.mule.swss.generated.samples.GetSampleResponse_-Return>";
 	}
 
