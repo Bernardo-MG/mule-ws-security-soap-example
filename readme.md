@@ -1,4 +1,4 @@
-# Mule With Spring Web Services WS-Security Example
+# Secured Soap Web Service in Mule Example
 
 Small Mule application showing the use of Spring WS Security for a SOAP web service.
 
@@ -151,9 +151,9 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 
 The project has been released under the [MIT License][license].
 
-[issues]: https://github.com/bernardo-mg/mule-swss-soap-example/issues
-[javadoc-develop]: http://docs.wandrell.com/maven/mule-swss-soap-example/apidocs
-[javadoc-release]: http://docs.wandrell.com/development/maven/mule-swss-soap-example/apidocs
+[issues]: https://github.com/bernardo-mg/mule-wss-soap-example/issues
+[javadoc-develop]: http://docs.wandrell.com/maven/mule-wss-soap-example/apidocs
+[javadoc-release]: http://docs.wandrell.com/development/maven/mule-wss-soap-example/apidocs
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-ws-security-soap-example
 [site-develop]: http://docs.wandrell.com/development/maven/swss-soap-example

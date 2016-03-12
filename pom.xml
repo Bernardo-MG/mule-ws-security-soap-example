@@ -9,13 +9,13 @@
 	<!-- ********************************************** -->
 
 	<groupId>com.wandrell.example</groupId>
-	<artifactId>mule-swss-soap</artifactId>
+	<artifactId>mule-wss-soap</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>mule</packaging>
 
-	<name>Mule With Spring Web Services WS-Security Example</name>
-	<description>An example showing how to configure Spring-WS Security for a SOAP web service</description>
-	<url>https://github.com/bernardo-mg/mule-spring-ws-security-soap-example</url>
+	<name>Secured Soap Web Service in Mule Example</name>
+	<description>An example showing how to set up secured SOAP web services in Mule</description>
+	<url>https://github.com/bernardo-mg/mule-wss-soap-example</url>
 	<inceptionYear>2016</inceptionYear>
 
 	<licenses>
@@ -31,20 +31,20 @@
 	<!-- ********************************************** -->
 
 	<scm>
-		<connection>scm:git:https://github.com/bernardo-mg/mule-spring-ws-security-soap-example.git</connection>
-		<developerConnection>scm:git:https://github.com/bernardo-mg/mule-spring-ws-security-soap-example.git</developerConnection>
+		<connection>scm:git:https://github.com/bernardo-mg/mule-wss-soap-example.git</connection>
+		<developerConnection>scm:git:https://github.com/bernardo-mg/mule-wss-soap-example.git</developerConnection>
 		<tag>head</tag>
-		<url>https://www.github.com/bernardo-mg/mule-spring-ws-security-soap-example</url>
+		<url>https://www.github.com/bernardo-mg/mule-wss-soap-example</url>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://www.github.com/bernardo-mg/mule-spring-ws-security-soap-example/issues</url>
+		<url>https://www.github.com/bernardo-mg/mule-wss-soap-example/issues</url>
 	</issueManagement>
 
 	<ciManagement>
 		<system>Travis CI</system>
-		<url>https://travis-ci.org/Bernardo-MG/mule-spring-ws-security-soap-example</url>
+		<url>https://travis-ci.org/Bernardo-MG/mule-wss-soap-example</url>
 		<notifiers />
 	</ciManagement>
 
