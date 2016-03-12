@@ -13,7 +13,7 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>mule</packaging>
 
-	<name>Secured Soap Web Service in Mule Example</name>
+	<name>Secured Soap Web Services in Mule Example</name>
 	<description>An example showing how to set up secured SOAP web services in Mule</description>
 	<url>https://github.com/bernardo-mg/mule-wss-soap-example</url>
 	<inceptionYear>2016</inceptionYear>
