@@ -9,7 +9,7 @@
 	<!-- ********************************************** -->
 
 	<groupId>com.wandrell.example</groupId>
-	<artifactId>mule-wss-soap</artifactId>
+	<artifactId>mule-wss-soap-example</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>mule</packaging>
 
