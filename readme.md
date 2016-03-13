@@ -156,8 +156,8 @@ The project has been released under the [MIT License][license].
 [javadoc-release]: http://docs.wandrell.com/development/maven/mule-wss-soap-example/apidocs
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-ws-security-soap-example
-[site-develop]: http://docs.wandrell.com/development/maven/swss-soap-example
-[site-release]: http://docs.wandrell.com/maven/swss-soap-example
+[site-develop]: http://docs.wandrell.com/development/maven/mule-wss-soap-example
+[site-release]: http://docs.wandrell.com/maven/mule-wss-soap-example
 
 [ws-security]: https://www.oasis-open.org/committees/wss/
 [xwss]: https://docs.oracle.com/cd/E17802_01/webservices/webservices/docs/1.6/tutorial/doc/XWS-SecurityIntro4.html
