@@ -56,15 +56,12 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	</sub-flow>
 
 	<sub-flow name="Transform-ConsumerRequest-Vars">
-		<set-variable variableName="cod1" value="#[payload[0]]"
-			doc:name="Save cod1 variable" />
-		<set-variable variableName="cod2" value="#[payload[1]]"
-			doc:name="Save cod2 variable" />
+		<set-variable variableName="id" value="#[payload[0]]"
+			doc:name="Save id variable" />
 		<set-payload value="&lt;root/&gt;" doc:name="Dummy XML document (for transformer)" />
 		<mulexml:xslt-transformer returnClass="java.lang.String"
 			xsl-file="request.xslt" doc:name="Create SOAP message">
-			<mulexml:context-property key="cod1" value="#[cod1]" />
-			<mulexml:context-property key="cod2" value="#[cod2]" />
+			<mulexml:context-property key="id" value="#[id]" />
 		</mulexml:xslt-transformer>
 	</sub-flow>
 

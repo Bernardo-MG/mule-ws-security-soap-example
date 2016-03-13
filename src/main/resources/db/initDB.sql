@@ -1,9 +1,6 @@
-DROP TABLE IF EXISTS samples;
+DROP TABLE IF EXISTS example_entities;
 
-CREATE TABLE samples (
-	id INT, 
-	description VARCHAR(30), 
-	extra VARCHAR(50), 
-	cod1 REAL, 
-	cod2 REAL
+CREATE TABLE example_entities (
+	id		INTEGER PRIMARY KEY AUTO_INCREMENT,
+	name	VARCHAR(30) DEFAULT '' NOT NULL
 );

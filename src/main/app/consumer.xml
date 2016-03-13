@@ -17,56 +17,9 @@ http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/
 		http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
 
-	<tls:context name="tlsContext">
-		<tls:key-store path="keystore.jks" keyPassword="secret"
-			password="keyStorePassword" alias="joe" />
-	</tls:context>
-
-	<ws:consumer-config doc:name="Remote WS Consumer"
-		name="WS-Consumer-Remote" wsdlLocation="${wsdl.remote.path}" service="${wsdl.remote.service}"
-		port="${wsdl.remote.port}" serviceAddress="${service.remote.url}" />
-
 	<ws:consumer-config doc:name="Unsecure Code-First WS Consumer"
 		name="WS-Consumer-Unsecure-CodeFirst" wsdlLocation="${wsdl.local.path}"
 		service="${wsdl.local.service}" port="${wsdl.local.port}"
 		serviceAddress="http://${ws.host}:${ws.port}/${ws.path}/${service.unsecure.codeFirst.path}" />
-
-	<ws:consumer-config doc:name="Secure Username WS Consumer"
-		name="WS-Consumer-Secure-Username" wsdlLocation="${wsdl.local.path}"
-		service="${wsdl.local.service}" port="${wsdl.local.port}"
-		serviceAddress="http://${ws.host}:${ws.port}/${ws.path}/${service.secure.username.path}">
-		<ws:security>
-			<ws:wss-username-token username="name"
-				password="password" passwordType="DIGEST" addCreated="true"
-				addNonce="true" />
-			<ws:wss-timestamp expires="30000" />
-		</ws:security>
-	</ws:consumer-config>
-
-	<ws:consumer-config doc:name="Secure Signed WS Consumer"
-		name="WS-Consumer-Secure-Signed" wsdlLocation="${wsdl.local.path}"
-		service="${wsdl.local.service}" port="${wsdl.local.port}"
-		serviceAddress="http://${ws.host}:${ws.port}/${ws.path}/${service.secure.signed.path}">
-		<ws:security>
-			<ws:wss-username-token username="name"
-				password="password" passwordType="DIGEST" addCreated="true"
-				addNonce="true" />
-			<ws:wss-timestamp expires="30000" />
-			<ws:wss-sign tlsContext-ref="tlsContext" />
-		</ws:security>
-	</ws:consumer-config>
-
-	<ws:consumer-config doc:name="Secure Encrypted WS Consumer"
-		name="WS-Consumer-Secure-Encrypted" wsdlLocation="${wsdl.local.path}"
-		service="${wsdl.local.service}" port="${wsdl.local.port}"
-		serviceAddress="http://${ws.host}:${ws.port}/${ws.path}/${service.secure.encrypted.path}">
-		<ws:security>
-			<ws:wss-username-token username="name"
-				password="password" passwordType="DIGEST" addCreated="true"
-				addNonce="true" />
-			<ws:wss-timestamp expires="30000" />
-			<ws:wss-encrypt tlsContext-ref="tlsContext" alias="keyalias" />
-		</ws:security>
-	</ws:consumer-config>
 
 </mule>

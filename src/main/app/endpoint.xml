@@ -30,33 +30,4 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		address="http://${ws.host}:${ws.port}/${ws.path}/${service.unsecure.simple.path}"
 		encoding="UTF-8" />
 
-	<endpoint name="Secure-Username-WS" doc:name="WS with username security"
-		exchange-pattern="request-response"
-		address="http://${ws.host}:${ws.port}/${ws.path}/${service.secure.username.path}"
-		encoding="UTF-8" />
-
-	<endpoint name="Secure-Signed-WS" doc:name="WS with signed security"
-		exchange-pattern="request-response"
-		address="http://${ws.host}:${ws.port}/${ws.path}/${service.secure.signed.path}"
-		encoding="UTF-8" />
-
-	<endpoint name="Secure-Encrypted-WS" doc:name="WS with encrypted security"
-		exchange-pattern="request-response"
-		address="http://${ws.host}:${ws.port}/${ws.path}/${service.secure.encrypted.path}"
-		encoding="UTF-8" />
-
-	<endpoint name="Secure-Username-SAML-WS" doc:name="WS with SAML username security"
-		exchange-pattern="request-response"
-		address="http://${ws.host}:${ws.port}/${ws.path}/${service.secure.saml.username.path}"
-		encoding="UTF-8" />
-
-	<endpoint name="Secure-Signed-SAML-WS" doc:name="WS with SAML signed security"
-		exchange-pattern="request-response"
-		address="http://${ws.host}:${ws.port}/${ws.path}/${service.secure.saml.signed.path}"
-		encoding="UTF-8" />
-
-	<endpoint name="Remote-WS" doc:name="Remote WS endpoint"
-		exchange-pattern="request-response" address="${service.remote.url}"
-		encoding="UTF-8" />
-
 </mule>

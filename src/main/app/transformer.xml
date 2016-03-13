@@ -16,14 +16,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
 
 	<custom-transformer name="SampleResponseToSample"
-		class="com.wandrell.example.mule.swss.flow.transformer.sample.SampleResponseToSampleTransformer"
-		returnClass="com.wandrell.example.mule.swss.model.sample.XMLSample" />
+		class="com.wandrell.example.mule.swss.flow.transformer.ExampleResponseToExampleEntityTransformer"
+		returnClass="com.wandrell.example.mule.swss.model.jaxb.XmlExampleEntity" />
 
 	<custom-transformer name="ConsumerSOAPRequest"
 		class="com.wandrell.example.mule.swss.flow.transformer.ConsumerSOAPRequestTransformer"
 		returnClass="java.lang.String" />
-
-	<custom-transformer name="RemoteResponse"
-		class="com.wandrell.example.mule.swss.flow.transformer.remote.WeatherWSResponseTransformer" />
 
 </mule>

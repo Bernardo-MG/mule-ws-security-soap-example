@@ -31,7 +31,7 @@ public final class ITUnsecureLocalClientFlow extends FunctionalTestCase {
 	private String wsdlFirstFlow;
 
 	{
-		expectedResult = "<com.wandrell.example.mule.swss.model.sample.XMLSample>\n  <cod1>1.0</cod1>\n  <cod2>2.1</cod2>\n  <description>desc</description>\n  <extra>extra</extra>\n</com.wandrell.example.mule.swss.model.sample.XMLSample>";
+		expectedResult = "<com.wandrell.example.mule.swss.model.jaxb.XmlExampleEntity>\n  <id>1</id>\n  <name>entity_1</name>\n</com.wandrell.example.mule.swss.model.jaxb.XmlExampleEntity>";
 	}
 
 	public ITUnsecureLocalClientFlow() {
@@ -45,11 +45,11 @@ public final class ITUnsecureLocalClientFlow extends FunctionalTestCase {
 
 	@Test
 	public void testClient_CodeFirst() throws Exception {
-		final Float[] payload;
+		final Integer[] payload;
 		final MuleEvent event;
 		final String result;
 
-		payload = new Float[] { new Float(1), new Float(2.1) };
+		payload = new Integer[] { new Integer(1) };
 
 		event = runFlow(codeFirstFlow, payload);
 
@@ -60,11 +60,11 @@ public final class ITUnsecureLocalClientFlow extends FunctionalTestCase {
 
 	@Test
 	public void testClient_Consumer() throws Exception {
-		final Float[] payload;
+		final Integer[] payload;
 		final MuleEvent event;
 		final String result;
 
-		payload = new Float[] { new Float(1), new Float(2.1) };
+		payload = new Integer[] { new Integer(1) };
 
 		event = runFlow(consumerFlow, payload);
 
@@ -75,11 +75,11 @@ public final class ITUnsecureLocalClientFlow extends FunctionalTestCase {
 
 	@Test
 	public void testClient_Simple() throws Exception {
-		final Float[] payload;
+		final Integer[] payload;
 		final MuleEvent event;
 		final String result;
 
-		payload = new Float[] { new Float(1), new Float(2.1) };
+		payload = new Integer[] { new Integer(1) };
 
 		event = runFlow(simpleFlow, payload);
 
@@ -90,11 +90,11 @@ public final class ITUnsecureLocalClientFlow extends FunctionalTestCase {
 
 	@Test
 	public void testClient_WSDLFirst() throws Exception {
-		final Float[] payload;
+		final Integer[] payload;
 		final MuleEvent event;
 		final String result;
 
-		payload = new Float[] { new Float(1), new Float(2.1) };
+		payload = new Integer[] { new Integer(1) };
 
 		event = runFlow(wsdlFirstFlow, payload);
 
