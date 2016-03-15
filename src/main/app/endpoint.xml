@@ -17,17 +17,17 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
 	<endpoint name="Unsecure-CodeFirst-WS" doc:name="Unsecure Code-First WS endpoint"
 		exchange-pattern="request-response"
-		address="http://${ws.host}:${ws.port}/${ws.path}/${service.unsecure.codeFirst.path}"
+		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${service.unsecure.codeFirst.path}"
 		encoding="UTF-8" />
 
 	<endpoint name="Unsecure-WSDLFirst-WS" doc:name="Unsecure WSDL-First WS endpoint"
 		exchange-pattern="request-response"
-		address="http://${ws.host}:${ws.port}/${ws.path}/${service.unsecure.wsdlFirst.path}"
+		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${service.unsecure.wsdlFirst.path}"
 		encoding="UTF-8" />
 
 	<endpoint name="Unsecure-Simple-WS" doc:name="Unsecure simple WS endpoint version"
 		exchange-pattern="request-response"
-		address="http://${ws.host}:${ws.port}/${ws.path}/${service.unsecure.simple.path}"
+		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${service.unsecure.simple.path}"
 		encoding="UTF-8" />
 
 </mule>

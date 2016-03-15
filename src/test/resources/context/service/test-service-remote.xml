@@ -12,7 +12,7 @@
 	">
 
 	<context:property-placeholder
-		location="classpath:spring/service/test-service-remote.properties" />
+		location="classpath:config/service/test-service-remote.properties" />
 
 	<util:list id="configFiles">
 		<value>src/test/resources/flow/test-service-remote.xml</value>

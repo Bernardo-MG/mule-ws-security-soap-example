@@ -12,15 +12,16 @@
 	">
 
 	<context:property-placeholder
-		location="classpath:spring/client/test-client-security-consumer.properties" />
+		location="classpath:config/client/test-client-remote.properties" />
 
 	<util:list id="configFiles">
-		<value>src/test/resources/flow/test-client-security-consumer.xml</value>
-		<value>src/main/app/client-security-consumer.xml</value>
+		<value>src/test/resources/flow/test-client-remote.xml</value>
+		<value>src/main/app/client-remote.xml</value>
 		<value>src/main/app/config.xml</value>
 		<value>src/main/app/endpoint.xml</value>
-		<value>src/main/app/service-security.xml</value>
+		<value>src/main/app/service-remote.xml</value>
 		<value>src/main/app/utils.xml</value>
+		<value>src/main/app/utils-remote.xml</value>
 		<value>src/main/app/consumer.xml</value>
 		<value>src/main/app/transformer.xml</value>
 	</util:list>

@@ -12,14 +12,13 @@
 	">
 
 	<context:property-placeholder
-		location="classpath:spring/client/test-client-unsecure.properties" />
+		location="classpath:config/service/test-service-unsecure.properties" />
 
 	<util:list id="configFiles">
-		<value>src/test/resources/flow/test-client-unsecure.xml</value>
-		<value>src/main/app/client-unsecure.xml</value>
+		<value>src/test/resources/flow/test-service-unsecure.xml</value>
+		<value>src/main/app/service-unsecure.xml</value>
 		<value>src/main/app/config.xml</value>
 		<value>src/main/app/endpoint.xml</value>
-		<value>src/main/app/service-unsecure.xml</value>
 		<value>src/main/app/utils.xml</value>
 		<value>src/main/app/transformer.xml</value>
 		<value>src/main/app/consumer.xml</value>

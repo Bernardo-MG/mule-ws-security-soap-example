@@ -1207,24 +1207,13 @@
 							<sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
 							<wsdlOptions>
 								<wsdlOption>
-									<!-- WSDL created by the local web service -->
-									<wsdl>${basedir}/src/main/resources/wsdl/sample_local.wsdl</wsdl>
-									<wsdlLocation>classpath:wsdl/sample_local.wsdl</wsdlLocation>
+									<wsdl>${basedir}/src/main/resources/wsdl/ExampleEntity.wsdl</wsdl>
+									<wsdlLocation>classpath:wsdl/ExampleEntity.wsdl</wsdlLocation>
 									<extraargs>
 										<extraarg>-client</extraarg>
 										<extraarg>-verbose</extraarg>
 										<extraarg>-p</extraarg>
-										<extraarg>com.wandrell.example.mule.swss.generated.samples</extraarg>
-									</extraargs>
-								</wsdlOption>
-								<wsdlOption>
-									<!-- WSDL from the external web service -->
-									<wsdl>http://wsf.cdyne.com/WeatherWS/Weather.asmx?wsdl</wsdl>
-									<extraargs>
-										<extraarg>-client</extraarg>
-										<extraarg>-verbose</extraarg>
-										<extraarg>-exsh</extraarg>
-										<extraarg>true</extraarg>
+										<extraarg>com.wandrell.example.mule.swss.generated</extraarg>
 									</extraargs>
 								</wsdlOption>
 							</wsdlOptions>
