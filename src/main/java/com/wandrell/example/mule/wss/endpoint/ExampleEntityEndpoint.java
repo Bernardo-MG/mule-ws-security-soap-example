@@ -1,3 +1,4 @@
+
 package com.wandrell.example.mule.wss.endpoint;
 
 import javax.jws.WebParam;
@@ -16,10 +17,11 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  *
  * @author Bernardo Mart&uacute;nez Garrido
  */
-@WebService(serviceName = ExampleEntityEndpointConstants.SERVICE, targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
+@WebService(serviceName = ExampleEntityEndpointConstants.SERVICE,
+        targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
 public interface ExampleEntityEndpoint {
 
-	public XmlExampleEntity getEntity(
-			@WebParam(name = "id") @XmlElement(required = true, nillable = false) final Integer id);
+    public XmlExampleEntity getEntity(@WebParam(name = "id") @XmlElement(
+            required = true, nillable = false) final Integer id);
 
 }

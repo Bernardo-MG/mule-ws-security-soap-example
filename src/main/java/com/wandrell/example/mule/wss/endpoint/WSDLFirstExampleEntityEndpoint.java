@@ -1,3 +1,4 @@
+
 package com.wandrell.example.mule.wss.endpoint;
 
 import javax.inject.Singleton;
@@ -7,40 +8,38 @@ import org.springframework.stereotype.Service;
 
 import com.wandrell.example.mule.wss.generated.EntityEndpoint;
 import com.wandrell.example.mule.wss.generated.GetEntityResponse;
-import com.wandrell.example.mule.wss.model.jpa.JpaExampleEntity;
-import com.wandrell.example.mule.wss.repository.ExampleEntityRepository;
+import com.wandrell.example.mule.wss.model.ExampleEntity;
+import com.wandrell.example.mule.wss.service.data.ExampleEntityService;
 
 @Service
 @Singleton
 public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
 
-	@Autowired
-	private ExampleEntityRepository repository;
+    private final ExampleEntityService entityService;
 
-	public WSDLFirstExampleEntityEndpoint() {
-		super();
-	}
+    @Autowired
+    public WSDLFirstExampleEntityEndpoint(final ExampleEntityService service) {
+        super();
 
-	@Override
-	public final GetEntityResponse.Return getEntity(final int id) {
-		final JpaExampleEntity dbSample;
-		final GetEntityResponse.Return result;
+        entityService = service;
+    }
 
-		dbSample = getRepository().findOne(id);
+    @Override
+    public final GetEntityResponse.Return getEntity(final int id) {
+        final ExampleEntity dbSample;
+        final GetEntityResponse.Return result;
 
-		result = new GetEntityResponse.Return();
-		result.setId(dbSample.getId());
-		result.setName(dbSample.getName());
+        dbSample = getExampleEntityService().findById(id);
 
-		return result;
-	}
+        result = new GetEntityResponse.Return();
+        result.setId(dbSample.getId());
+        result.setName(dbSample.getName());
 
-	private final ExampleEntityRepository getRepository() {
-		return repository;
-	}
+        return result;
+    }
 
-	public final void setRepository(final ExampleEntityRepository repo) {
-		this.repository = repo;
-	}
+    private final ExampleEntityService getExampleEntityService() {
+        return entityService;
+    }
 
 }

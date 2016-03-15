@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2015 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,21 +22,30 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.repository;
+package com.wandrell.example.mule.wss.service.data;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.wandrell.example.mule.wss.model.jpa.JpaExampleEntity;
+import com.wandrell.example.mule.wss.model.ExampleEntity;
 
 /**
- * Spring-JPA repository for {@link JpaExampleEntity}.
+ * Service for accessing {@link ExampleEntity} instances.
  * <p>
- * This is a simple repository meant just to allow acquiring the entities
- * returned by the endpoint.
+ * It just allows finding an entity by the id, which is required for the
+ * endpoint.
  *
- * @author Bernardo Mart&uacute;nez Garrido
+ * @author Bernardo Martínez Garrido
  */
-public interface ExampleEntityRepository extends
-        JpaRepository<JpaExampleEntity, Integer> {
+public interface ExampleEntityService {
+
+    /**
+     * Returns a {@code ExampleEntity} with the given id.
+     * <p>
+     * If no instance exists with that id then the value {@code null} is
+     * returned.
+     *
+     * @param identifier
+     *            identifier of the {@code ExampleEntity} to find
+     * @return the {@code ExampleEntity} with the given id or {@code null}
+     */
+    public ExampleEntity findById(final Integer identifier);
 
 }

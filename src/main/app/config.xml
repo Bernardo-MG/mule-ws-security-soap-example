@@ -22,6 +22,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<spring:import resource="classpath:context/persistence.xml" />
 		<spring:import resource="classpath:context/endpoints.xml" />
 		<spring:import resource="classpath:context/security.xml" />
+		<spring:import resource="classpath:context/service.xml" />
 	</spring:beans>
 
 	<http:listener-config doc:name="Main HTTP listener for the application"

@@ -1,3 +1,4 @@
+
 package com.wandrell.example.mule.wss.security;
 
 import java.io.IOException;
@@ -10,22 +11,22 @@ import org.apache.ws.security.WSPasswordCallback;
 
 public final class PasswordCallback implements CallbackHandler {
 
-	public PasswordCallback() {
-		super();
-	}
+    public PasswordCallback() {
+        super();
+    }
 
-	@Override
-	public final void handle(final Callback[] callbacks) throws IOException,
-			UnsupportedCallbackException {
-		final WSPasswordCallback pc;
+    @Override
+    public final void handle(final Callback[] callbacks) throws IOException,
+            UnsupportedCallbackException {
+        final WSPasswordCallback pc;
 
-		pc = (WSPasswordCallback) callbacks[0];
+        pc = (WSPasswordCallback) callbacks[0];
 
-		if (pc.getIdentifier().equals("name")) {
-			pc.setPassword("password");
-		} else if (pc.getIdentifier().equals("joe")) {
-			pc.setPassword("secret");
-		}
-	}
+        if (pc.getIdentifier().equals("name")) {
+            pc.setPassword("password");
+        } else if (pc.getIdentifier().equals("joe")) {
+            pc.setPassword("secret");
+        }
+    }
 
 }

@@ -1,3 +1,4 @@
+
 package com.wandrell.example.mule.wss.endpoint;
 
 import javax.inject.Singleton;
@@ -6,43 +7,44 @@ import javax.jws.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
-import com.wandrell.example.mule.wss.model.jpa.JpaExampleEntity;
-import com.wandrell.example.mule.wss.repository.ExampleEntityRepository;
+import com.wandrell.example.mule.wss.service.data.ExampleEntityService;
 
 @Service
 @Singleton
-@WebService(endpointInterface = "com.wandrell.example.mule.wss.endpoint.ExampleEntityEndpoint", serviceName = ExampleEntityEndpointConstants.SERVICE, targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
+@WebService(
+        endpointInterface = "com.wandrell.example.mule.wss.endpoint.ExampleEntityEndpoint",
+        serviceName = ExampleEntityEndpointConstants.SERVICE,
+        targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
 public final class DefaultExampleEntityEndpoint implements
-		ExampleEntityEndpoint {
+        ExampleEntityEndpoint {
 
-	@Autowired
-	private ExampleEntityRepository repository;
+    private final ExampleEntityService entityService;
 
-	public DefaultExampleEntityEndpoint() {
-		super();
-	}
+    @Autowired
+    public DefaultExampleEntityEndpoint(final ExampleEntityService service) {
+        super();
 
-	@Override
-	public XmlExampleEntity getEntity(final Integer id) {
-		final JpaExampleEntity dbSample;
-		final XmlExampleEntity result;
+        entityService = service;
+    }
 
-		dbSample = getRepository().findOne(id);
+    @Override
+    public XmlExampleEntity getEntity(final Integer id) {
+        final ExampleEntity dbSample;
+        final XmlExampleEntity result;
 
-		result = new XmlExampleEntity();
-		result.setId(dbSample.getId());
-		result.setName(dbSample.getName());
+        dbSample = getExampleEntityService().findById(id);
 
-		return result;
-	}
+        result = new XmlExampleEntity();
+        result.setId(dbSample.getId());
+        result.setName(dbSample.getName());
 
-	private final ExampleEntityRepository getRepository() {
-		return repository;
-	}
+        return result;
+    }
 
-	public final void setRepository(final ExampleEntityRepository repo) {
-		this.repository = repo;
-	}
+    private final ExampleEntityService getExampleEntityService() {
+        return entityService;
+    }
 
 }

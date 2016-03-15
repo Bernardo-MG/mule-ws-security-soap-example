@@ -44,80 +44,78 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
 @XmlRootElement(name = "entity")
 public class XmlExampleEntity implements ExampleEntity, Serializable {
 
-	/**
-	 * Serialization ID.
-	 */
-	@XmlTransient
-	private static final long serialVersionUID = 1328776989450853491L;
-	/**
-	 * Entity's ID.
-	 */
+    /**
+     * Serialization ID.
+     */
+    @XmlTransient
+    private static final long serialVersionUID = 1328776989450853491L;
+    /**
+     * Entity's ID.
+     */
     @XmlElement
-	private Integer id;
-	/**
-	 * Name of the entity.
-	 * <p>
-	 * This is to have additional data apart from the id, to be used on the
-	 * tests.
-	 */
+    private Integer           id;
+    /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the
+     * tests.
+     */
     @XmlElement
-	private String name;
+    private String            name;
 
-	/**
-	 * Constructs a {@code JPAExampleEntity}.
-	 */
-	public XmlExampleEntity() {
-		super();
-	}
+    /**
+     * Constructs a {@code JPAExampleEntity}.
+     */
+    public XmlExampleEntity() {
+        super();
+    }
 
-	@Override
-	public final boolean equals(final Object obj) {
-		if (this == obj) {
-			return true;
-		}
+    @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
 
-		if (obj == null) {
-			return false;
-		}
+        if (obj == null) {
+            return false;
+        }
 
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
 
-		final XmlExampleEntity other = (XmlExampleEntity) obj;
-		return Objects.equals(id, other.id);
-	}
+        final XmlExampleEntity other = (XmlExampleEntity) obj;
+        return Objects.equals(id, other.id);
+    }
 
-	@Override
-	public final Integer getId() {
-		return id;
-	}
+    @Override
+    public final Integer getId() {
+        return id;
+    }
 
-	@Override
-	public final String getName() {
-		return name;
-	}
+    @Override
+    public final String getName() {
+        return name;
+    }
 
-	@Override
-	public final int hashCode() {
-		return Objects.hash(id);
-	}
+    @Override
+    public final int hashCode() {
+        return Objects.hash(id);
+    }
 
-	@Override
-	public final void setId(final Integer identifier) {
-		id = checkNotNull(identifier,
-				"Received a null pointer as identifier");
-	}
+    @Override
+    public final void setId(final Integer identifier) {
+        id = checkNotNull(identifier, "Received a null pointer as identifier");
+    }
 
-	@Override
-	public final void setName(final String name) {
-		this.name = checkNotNull(name, "Received a null pointer as name");
-	}
+    @Override
+    public final void setName(final String name) {
+        this.name = checkNotNull(name, "Received a null pointer as name");
+    }
 
-	@Override
-	public final String toString() {
-		return MoreObjects.toStringHelper(this).add("entityId", id)
-				.toString();
-	}
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("entityId", id).toString();
+    }
 
 }
