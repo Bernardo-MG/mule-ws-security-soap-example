@@ -7,7 +7,7 @@ package com.wandrell.example.mule.wss.endpoint;
  * These define such things as the namespace of the SOAP action used, and match
  * the data on the generated WSDL.
  * 
- * @author Bernardo Mart&uacute;nez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public class ExampleEntityEndpointConstants {
 

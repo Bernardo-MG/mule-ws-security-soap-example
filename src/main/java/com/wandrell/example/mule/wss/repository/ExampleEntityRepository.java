@@ -34,7 +34,7 @@ import com.wandrell.example.mule.wss.model.jpa.JpaExampleEntity;
  * This is a simple repository meant just to allow acquiring the entities
  * returned by the endpoint.
  *
- * @author Bernardo Mart&uacute;nez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public interface ExampleEntityRepository extends
         JpaRepository<JpaExampleEntity, Integer> {

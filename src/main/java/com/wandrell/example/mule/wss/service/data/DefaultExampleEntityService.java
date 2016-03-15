@@ -36,7 +36,7 @@ import com.wandrell.example.mule.wss.repository.ExampleEntityRepository;
  * <p>
  * It uses an {@link ExampleEntityRepository} for acquiring the entities.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Service
 public class DefaultExampleEntityService implements ExampleEntityService {

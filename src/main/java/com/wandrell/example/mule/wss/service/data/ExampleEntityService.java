@@ -32,7 +32,7 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
  * It just allows finding an entity by the id, which is required for the
  * endpoint.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public interface ExampleEntityService {
 

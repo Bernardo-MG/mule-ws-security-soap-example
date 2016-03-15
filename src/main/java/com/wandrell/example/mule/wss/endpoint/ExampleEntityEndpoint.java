@@ -15,7 +15,7 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  * {@link GetEntityRequest} asking for an entity with a specific id, and then
  * returns a {@code GetEntityResponse} which said id.
  *
- * @author Bernardo Mart&uacute;nez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @WebService(serviceName = ExampleEntityEndpointConstants.SERVICE,
         targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)

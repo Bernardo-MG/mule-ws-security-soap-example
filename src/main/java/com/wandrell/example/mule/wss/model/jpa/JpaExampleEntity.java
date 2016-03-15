@@ -44,7 +44,7 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
  * <p>
  * For the JAXB annotated model check the generated classes folder.
  *
- * @author Bernardo Mart&uacute;nez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 @Entity(name = "ExampleEntity")
 @Table(name = "example_entities")
