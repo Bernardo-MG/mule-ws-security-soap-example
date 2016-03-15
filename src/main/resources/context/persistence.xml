@@ -18,7 +18,7 @@
     <!-- ============================= CONFIGURATION ============================= -->
 
     <!-- Scans for repositories -->
-    <jpa:repositories base-package="com.wandrell.example.mule.swss.repository" />
+    <jpa:repositories base-package="com.wandrell.example.mule.wss.repository" />
 
     <!-- ================================== JPA ================================== -->
 

@@ -1213,7 +1213,7 @@
 										<extraarg>-client</extraarg>
 										<extraarg>-verbose</extraarg>
 										<extraarg>-p</extraarg>
-										<extraarg>com.wandrell.example.mule.swss.generated</extraarg>
+										<extraarg>com.wandrell.example.mule.wss.generated</extraarg>
 									</extraargs>
 								</wsdlOption>
 							</wsdlOptions>
