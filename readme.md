@@ -90,29 +90,6 @@ http://localhost:8080/swss/client/unsecure/simple?id=1
 http://localhost:8080/swss/client/unsecure/consumer?id=1
 ```
 
-#### Secure SOAP web service
-
-The following URLs allow using the various implementations of the SOAP service:
-
-```
-http://localhost:8080/swss/secure/username?wsdl
-http://localhost:8080/swss/secure/signed?wsdl
-http://localhost:8080/swss/secure/encrypted?wsdl
-```
-
-#### Secure web service client
-
-The following URLs allow making use of the HTTP client for the local web service:
-
-```
-http://localhost:8080/swss/client/secure/username?id=1
-http://localhost:8080/swss/client/secure/signed?id=1
-http://localhost:8080/swss/client/secure/encrypted?id=1
-
-http://localhost:8080/swss/client/secure/consumer/username?id=1
-http://localhost:8080/swss/client/secure/consumer/signed?id=1
-http://localhost:8080/swss/client/secure/consumer/encrypted?id=1
-
 ## Collaborate
 
 Any kind of help with the project will be well received, and there are two main ways to give such help:
