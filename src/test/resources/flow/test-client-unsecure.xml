@@ -10,7 +10,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<flow name="Test-HTTPClient-Unsecure-CodeFirst-Flow">
 		<flow-ref name="HTTPClient-Unsecure-CodeFirst-Endpoint"
-			doc:name="Code-First client" />
+			doc:name="Code-First endpoint" />
 		<response>
 			<mulexml:object-to-xml-transformer
 				doc:name="Object to XML" />
@@ -19,7 +19,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<flow name="Test-HTTPClient-Unsecure-WSDLFirst-Flow">
 		<flow-ref name="HTTPClient-Unsecure-WSDLFirst-Endpoint"
-			doc:name="WSDL-First client" />
+			doc:name="WSDL-First endpoint" />
 		<response>
 			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
 		</response>
@@ -27,7 +27,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<flow name="Test-HTTPClient-Unsecure-Simple-Flow">
 		<flow-ref name="HTTPClient-Unsecure-Simple-Endpoint"
-			doc:name="Simple client" />
+			doc:name="Simple endpoint" />
 		<response>
 			<mulexml:object-to-xml-transformer
 				doc:name="Object to XML" />
@@ -36,7 +36,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<flow name="Test-HTTPClient-Unsecure-Consumer-Flow">
 		<flow-ref name="HTTPClient-Unsecure-Consumer-Endpoint"
-			doc:name="Consumer for Code-First service" />
+			doc:name="Code-first unsecure endpoint consumer" />
 		<response>
 			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
 		</response>

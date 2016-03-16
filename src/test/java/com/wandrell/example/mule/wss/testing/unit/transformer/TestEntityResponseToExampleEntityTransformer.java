@@ -6,33 +6,40 @@ import java.io.IOException;
 import org.apache.commons.io.IOUtils;
 import org.mule.api.transformer.Transformer;
 import org.mule.api.transformer.TransformerException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.mule.wss.flow.transformer.EntityResponseToExampleEntityTransformer;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 
-public final class TestEntityResponseToExampleEntityTransformer {
+@ContextConfiguration(locations = { "classpath:context/test-default.xml" })
+@TestPropertySource({ "classpath:config/test-soap.properties" })
+public final class TestEntityResponseToExampleEntityTransformer extends
+        AbstractTestNGSpringContextTests {
 
-    private final String sourceCodeFirst;
-    private final String sourceWSDLFirst;
+    @Value("${soap.unsecure.response.codeFirst.payload.path}")
+    private String codeFirstPath;
+    @Value("${soap.unsecure.response.wsdlFirst.payload.path}")
+    private String wsdlFirstPath;
 
-    public TestEntityResponseToExampleEntityTransformer() throws IOException {
+    public TestEntityResponseToExampleEntityTransformer() {
         super();
-
-        sourceCodeFirst = IOUtils.toString(new ClassPathResource(
-                "soap/response/response-unsecure-code-first-payload.xml")
-                .getInputStream(), "UTF-8");
-        sourceWSDLFirst = IOUtils.toString(new ClassPathResource(
-                "soap/response/response-unsecure-wsdl-first-payload.xml")
-                .getInputStream(), "UTF-8");
     }
 
     @Test
-    public final void testTransform_CodeFirst() throws TransformerException {
+    public final void testTransform_CodeFirst() throws TransformerException,
+            IOException {
         final ExampleEntity sample;
         final Transformer transformer;
+        final String sourceCodeFirst;
+
+        sourceCodeFirst = IOUtils.toString(
+                new ClassPathResource(codeFirstPath).getInputStream(), "UTF-8");
 
         transformer = new EntityResponseToExampleEntityTransformer();
 
@@ -44,9 +51,14 @@ public final class TestEntityResponseToExampleEntityTransformer {
     }
 
     @Test
-    public final void testTransform_WSDLFirst() throws TransformerException {
+    public final void testTransform_WSDLFirst() throws TransformerException,
+            IOException {
         final ExampleEntity sample;
         final Transformer transformer;
+        final String sourceWSDLFirst;
+
+        sourceWSDLFirst = IOUtils.toString(
+                new ClassPathResource(wsdlFirstPath).getInputStream(), "UTF-8");
 
         transformer = new EntityResponseToExampleEntityTransformer();
 

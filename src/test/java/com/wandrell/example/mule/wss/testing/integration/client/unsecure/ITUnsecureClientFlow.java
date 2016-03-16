@@ -16,31 +16,31 @@ import org.mule.tck.junit4.FunctionalTestCase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import com.wandrell.example.mule.wss.testing.util.config.TestContextConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(TestContextConfig.CLIENT_UNSECURE)
+@TestPropertySource({ "classpath:config/test-soap.properties" })
 public final class ITUnsecureClientFlow extends FunctionalTestCase {
 
     @Value("${client.unsecure.codeFirst.flow}")
-    private String       codeFirstFlow;
+    private String   codeFirstFlow;
     @Value("${client.unsecure.consumer.flow}")
-    private String       consumerFlow;
-    private final String expectedResult;
+    private String   consumerFlow;
     @Resource(name = "configFiles")
-    private String[]     files;
+    private String[] files;
     @Value("${client.unsecure.simple.flow}")
-    private String       simpleFlow;
+    private String   simpleFlow;
     @Value("${client.unsecure.wsdlFirst.flow}")
-    private String       wsdlFirstFlow;
+    private String   wsdlFirstFlow;
+    @Value("${soap.unsecure.response.jaxb.payload.path}")
+    private String   respPayloadPath;
 
     public ITUnsecureClientFlow() throws IOException {
         super();
-
-        expectedResult = IOUtils.toString(new ClassPathResource(
-                "soap/response/response-unsecure-jaxb.xml").getInputStream(),
-                "UTF-8");
     }
 
     @Override
@@ -53,6 +53,11 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         final Integer[] payload;
         final MuleEvent event;
         final String result;
+        final String expectedResult;
+
+        expectedResult = IOUtils.toString(
+                new ClassPathResource(respPayloadPath).getInputStream(),
+                "UTF-8");
 
         payload = new Integer[] { new Integer(1) };
 
@@ -69,6 +74,11 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         final Integer[] payload;
         final MuleEvent event;
         final String result;
+        final String expectedResult;
+
+        expectedResult = IOUtils.toString(
+                new ClassPathResource(respPayloadPath).getInputStream(),
+                "UTF-8");
 
         payload = new Integer[] { new Integer(1) };
 
@@ -85,6 +95,11 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         final Integer[] payload;
         final MuleEvent event;
         final String result;
+        final String expectedResult;
+
+        expectedResult = IOUtils.toString(
+                new ClassPathResource(respPayloadPath).getInputStream(),
+                "UTF-8");
 
         payload = new Integer[] { new Integer(1) };
 
@@ -101,6 +116,11 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         final Integer[] payload;
         final MuleEvent event;
         final String result;
+        final String expectedResult;
+
+        expectedResult = IOUtils.toString(
+                new ClassPathResource(respPayloadPath).getInputStream(),
+                "UTF-8");
 
         payload = new Integer[] { new Integer(1) };
 

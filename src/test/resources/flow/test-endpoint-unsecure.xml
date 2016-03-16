@@ -10,24 +10,24 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 
 	<flow name="Test-Endpoint-Unsecure-CodeFirst-Flow">
 		<flow-ref name="Endpoint-Unsecure-CodeFirst-Endpoint"
-			doc:name="Code first service" />
+			doc:name="Code-first unsecure endpoint" />
 	</flow>
 
 	<flow name="Test-Endpoint-Unsecure-WSDLFirst-Flow">
 		<flow-ref name="Endpoint-Unsecure-WSDLFirst-Endpoint"
-			doc:name="WSDL first service" />
+			doc:name="WSDL-first unsecure endpoint" />
 	</flow>
 
 	<flow name="Test-Endpoint-Unsecure-Simple-Flow">
-		<flow-ref name="Endpoint-Unsecure-Simple-Endpoint" doc:name="Simple service" />
+		<flow-ref name="Endpoint-Unsecure-Simple-Endpoint" doc:name="Simple unsecure endpoint" />
 	</flow>
 
 	<flow name="Test-Endpoint-Unsecure-Proxy-Flow">
-		<flow-ref name="Endpoint-Unsecure-Proxy-Endpoint" doc:name="Proxied local service" />
+		<flow-ref name="Endpoint-Unsecure-Proxy-Endpoint" doc:name="Proxied unsecure endpoint" />
 	</flow>
 
 	<flow name="Test-Endpoint-Unsecure-Consumer-Flow">
-		<flow-ref name="Endpoint-Unsecure-Consumer-Endpoint" doc:name="Consumer for local service" />
+		<flow-ref name="Endpoint-Unsecure-Consumer-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
 	</flow>
 
 </mule>
