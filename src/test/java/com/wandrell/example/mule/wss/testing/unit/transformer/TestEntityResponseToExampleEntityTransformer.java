@@ -1,8 +1,12 @@
 
 package com.wandrell.example.mule.wss.testing.unit.transformer;
 
+import java.io.IOException;
+
+import org.apache.commons.io.IOUtils;
 import org.mule.api.transformer.Transformer;
 import org.mule.api.transformer.TransformerException;
+import org.springframework.core.io.ClassPathResource;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,13 +18,15 @@ public final class TestEntityResponseToExampleEntityTransformer {
     private final String sourceCodeFirst;
     private final String sourceWSDLFirst;
 
-    {
-        sourceCodeFirst = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ns2:GetEntityResponse xmlns:ns2=\"http://wandrell.com/example/ws/entity\"><return><id>1</id><name>name_1</name></return></ns2:GetEntityResponse>";
-        sourceWSDLFirst = "<com.wandrell.example.ws.entity.GetEntityResponse_-Return><id>1</id><name>name_1</name></com.wandrell.example.ws.entity.GetEntityResponse_-Return>";
-    }
-
-    public TestEntityResponseToExampleEntityTransformer() {
+    public TestEntityResponseToExampleEntityTransformer() throws IOException {
         super();
+
+        sourceCodeFirst = IOUtils.toString(new ClassPathResource(
+                "soap/response/response-unsecure-code-first-payload.xml")
+                .getInputStream(), "UTF-8");
+        sourceWSDLFirst = IOUtils.toString(new ClassPathResource(
+                "soap/response/response-unsecure-wsdl-first-payload.xml")
+                .getInputStream(), "UTF-8");
     }
 
     @Test
@@ -30,7 +36,8 @@ public final class TestEntityResponseToExampleEntityTransformer {
 
         transformer = new EntityResponseToExampleEntityTransformer();
 
-        sample = (ExampleEntity) transformer.transform(sourceCodeFirst);
+        sample = (ExampleEntity) transformer
+                .transform(sourceCodeFirst, "UTF-8");
 
         Assert.assertEquals(sample.getId(), new Integer(1));
         Assert.assertEquals(sample.getName(), "name_1");
@@ -43,7 +50,8 @@ public final class TestEntityResponseToExampleEntityTransformer {
 
         transformer = new EntityResponseToExampleEntityTransformer();
 
-        sample = (ExampleEntity) transformer.transform(sourceWSDLFirst);
+        sample = (ExampleEntity) transformer
+                .transform(sourceWSDLFirst, "UTF-8");
 
         Assert.assertEquals(sample.getId(), new Integer(1));
         Assert.assertEquals(sample.getName(), "name_1");

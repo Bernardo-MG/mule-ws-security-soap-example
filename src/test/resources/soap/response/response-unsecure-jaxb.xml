@@ -1,4 +1,4 @@
 <com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity>
-  <id>1</id>
-  <name>entity_1</name>
+	<id>1</id>
+	<name>entity_1</name>
 </com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity>

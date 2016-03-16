@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns1:getEntityResponse
+			xmlns:ns1="http://endpoint.wss.mule.example.wandrell.com/">
+			<ns1:return>
+				<ns2:id xmlns:ns2="http://jaxb.model.wss.mule.example.wandrell.com">0</ns2:id>
+				<ns2:name xmlns:ns2="http://jaxb.model.wss.mule.example.wandrell.com" />
+			</ns1:return>
+		</ns1:getEntityResponse>
+	</soap:Body>
+</soap:Envelope>

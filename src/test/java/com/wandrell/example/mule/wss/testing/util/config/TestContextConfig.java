@@ -7,7 +7,7 @@ public final class TestContextConfig {
     public static final String CLIENT_SECURE          = "classpath:context/client/test-client-security.xml";
     public static final String CLIENT_SECURE_CONSUMER = "classpath:context/client/test-client-security-consumer.xml";
     public static final String CLIENT_UNSECURE        = "classpath:context/client/test-client-unsecure.xml";
-    public static final String ENDPOINT_UNSECURE      = "classpath:context/service/test-endpoint-unsecure.xml";
+    public static final String ENDPOINT_UNSECURE      = "classpath:context/endpoint/test-endpoint-unsecure.xml";
 
     private TestContextConfig() {
         super();

@@ -1,18 +1,22 @@
 
 package com.wandrell.example.mule.wss.testing.integration.client.unsecure;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.custommonkey.xmlunit.XMLAssert;
+import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mule.api.MuleEvent;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.testng.Assert;
-
 import com.wandrell.example.mule.wss.testing.util.config.TestContextConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,12 +35,12 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
     @Value("${client.unsecure.wsdlFirst.flow}")
     private String       wsdlFirstFlow;
 
-    {
-        expectedResult = "<com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity>\n  <id>1</id>\n  <name>entity_1</name>\n</com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity>";
-    }
-
-    public ITUnsecureClientFlow() {
+    public ITUnsecureClientFlow() throws IOException {
         super();
+
+        expectedResult = IOUtils.toString(new ClassPathResource(
+                "soap/response/response-unsecure-jaxb.xml").getInputStream(),
+                "UTF-8");
     }
 
     @Override
@@ -56,7 +60,8 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, expectedResult);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(expectedResult, result);
     }
 
     @Test
@@ -71,7 +76,8 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, expectedResult);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(expectedResult, result);
     }
 
     @Test
@@ -86,7 +92,8 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, expectedResult);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(expectedResult, result);
     }
 
     @Test
@@ -101,7 +108,8 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, expectedResult);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(expectedResult, result);
     }
 
 }

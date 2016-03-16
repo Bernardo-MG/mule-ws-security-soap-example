@@ -12,17 +12,16 @@
 	">
 
 	<context:property-placeholder
-		location="classpath:config/client/test-client-security-consumer.properties" />
+		location="classpath:config/endpoint/test-endpoint-unsecure.properties" />
 
 	<util:list id="configFiles">
-		<value>src/test/resources/flow/test-client-security-consumer.xml</value>
-		<value>src/main/app/client-security-consumer.xml</value>
+		<value>src/test/resources/flow/test-endpoint-unsecure.xml</value>
+		<value>src/main/app/endpoint-unsecure.xml</value>
 		<value>src/main/app/config.xml</value>
-		<value>src/main/app/endpoint.xml</value>
-		<value>src/main/app/service-security.xml</value>
+		<value>src/main/app/endpoint-config.xml</value>
 		<value>src/main/app/utils.xml</value>
-		<value>src/main/app/consumer.xml</value>
 		<value>src/main/app/transformer.xml</value>
+		<value>src/main/app/consumer.xml</value>
 	</util:list>
 
 </beans>

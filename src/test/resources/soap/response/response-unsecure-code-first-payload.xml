@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:GetEntityResponse xmlns:ns2="http://wandrell.com/example/ws/entity">
+	<return>
+		<id>1</id>
+		<name>name_1</name>
+	</return>
+</ns2:GetEntityResponse>

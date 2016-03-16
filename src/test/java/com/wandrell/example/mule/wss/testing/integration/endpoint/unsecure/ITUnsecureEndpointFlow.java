@@ -1,17 +1,22 @@
 
 package com.wandrell.example.mule.wss.testing.integration.endpoint.unsecure;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.custommonkey.xmlunit.XMLAssert;
+import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mule.api.MuleEvent;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.testng.Assert;
 
 import com.wandrell.example.mule.wss.testing.util.config.TestContextConfig;
 
@@ -29,32 +34,33 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
     private String       proxyFlow;
     @Value("${endpoint.unsecure.simple.flow}")
     private String       simpleFlow;
-    private final String soapRequestFull;
-    private final String soapRequestShort;
-    private final String soapResponseFull;
-    private final String soapResponseFullNamespaced;
-    private final String soapResponseFullNamespacedSimple;
-    private final String soapResponseShort;
-    private final String soapTemplateFull;
-    private final String soapTemplateShort;
+    private final String soapRequest;
+    private final String soapRequestPayload;
+    private final String soapResponse;
+    private final String soapResponseSimple;
+    private final String soapResponsePayload;
     @Value("${endpoint.unsecure.wsdlFirst.flow}")
     private String       wsdlFirstFlow;
 
-    {
-        soapTemplateFull = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ent=\"http://wandrell.com/example/ws/entity\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ent:getEntity>\n         <id>%s</id>\n      </ent:getEntity>\n   </soapenv:Body>\n</soapenv:Envelope>";
-        soapTemplateShort = "<ent:getEntity xmlns:ent=\"http://wandrell.com/example/ws/entity\">\n   <id>%s</id>\n</ent:getEntity>";
-
-        soapRequestFull = String.format(soapTemplateFull, "1");
-        soapRequestShort = String.format(soapTemplateShort, "1");
-
-        soapResponseFull = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns2:getEntityResponse xmlns:ns2=\"http://wandrell.com/example/ws/entity\"><return><id>1</id><name>entity_1</name></return></ns2:getEntityResponse></soap:Body></soap:Envelope>";
-        soapResponseFullNamespaced = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns1:getEntityResponse xmlns:ns1=\"http://wandrell.com/example/ws/entity\"><ns1:return><ns2:id xmlns:ns2=\"http://wandrell.com/example/ws/entity\">1</ns2:id><ns2:name xmlns:ns2=\"http://wandrell.com/example/ws/entity\">name_1</ns2:name></ns1:return></ns1:getEntityResponse></soap:Body></soap:Envelope>";
-        soapResponseFullNamespacedSimple = "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><ns1:getEntityResponse xmlns:ns1=\"http://endpoint.wss.mule.example.wandrell.com/\"><ns1:return><ns2:id xmlns:ns2=\"http://jaxb.model.wss.mule.example.wandrell.com\">0</ns2:id><ns2:name xmlns:ns2=\"http://jaxb.model.wss.mule.example.wandrell.com\"></ns2:name></ns1:return></ns1:getEntityResponse></soap:Body></soap:Envelope>";
-        soapResponseShort = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><ns2:getEntityResponse xmlns:ns2=\"http://wandrell.com/example/ws/entity\"><return><id>1</id><name>entity_1</name></return></ns2:getEntityResponse>";
-    }
-
-    public ITUnsecureEndpointFlow() {
+    public ITUnsecureEndpointFlow() throws IOException {
         super();
+
+        soapRequest = IOUtils.toString(new ClassPathResource(
+                "soap/request/request-unsecure.xml").getInputStream(), "UTF-8");
+        soapRequestPayload = IOUtils.toString(new ClassPathResource(
+                "soap/request/request-unsecure-payload.xml").getInputStream(),
+                "UTF-8");
+
+        soapResponse = IOUtils.toString(new ClassPathResource(
+                "soap/response/response-unsecure.xml").getInputStream(),
+                "UTF-8");
+        soapResponseSimple = IOUtils.toString(new ClassPathResource(
+                "soap/response/response-unsecure-simple.xml").getInputStream(),
+                "UTF-8");
+        soapResponsePayload = IOUtils.toString(
+                new ClassPathResource(
+                        "soap/response/response-unsecure-payload.xml")
+                        .getInputStream(), "UTF-8");
     }
 
     @Override
@@ -67,11 +73,12 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         final MuleEvent event;
         final String result;
 
-        event = runFlow(codeFirstFlow, soapRequestFull);
+        event = runFlow(codeFirstFlow, soapRequest);
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, soapResponseFull);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(soapResponse, result);
     }
 
     @Test
@@ -79,11 +86,12 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         final MuleEvent event;
         final String result;
 
-        event = runFlow(consumerFlow, soapRequestFull);
+        event = runFlow(consumerFlow, soapRequest);
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, soapResponseShort);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(soapResponsePayload, result);
     }
 
     @Test
@@ -91,11 +99,12 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         final MuleEvent event;
         final String result;
 
-        event = runFlow(consumerFlow, soapRequestShort);
+        event = runFlow(consumerFlow, soapRequestPayload);
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, soapResponseShort);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(soapResponsePayload, result);
     }
 
     @Test
@@ -103,11 +112,12 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         final MuleEvent event;
         final String result;
 
-        event = runFlow(proxyFlow, soapRequestFull);
+        event = runFlow(proxyFlow, soapRequest);
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, soapResponseFull);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(soapResponse, result);
     }
 
     @Test
@@ -115,11 +125,12 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         final MuleEvent event;
         final String result;
 
-        event = runFlow(simpleFlow, soapRequestFull);
+        event = runFlow(simpleFlow, soapRequest);
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, soapResponseFullNamespacedSimple);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(soapResponseSimple, result);
     }
 
     @Test
@@ -127,11 +138,12 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         final MuleEvent event;
         final String result;
 
-        event = runFlow(wsdlFirstFlow, soapRequestFull);
+        event = runFlow(wsdlFirstFlow, soapRequest);
 
         result = event.getMessageAsString();
 
-        Assert.assertEquals(result, soapResponseFull);
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(soapResponse, result);
     }
 
 }

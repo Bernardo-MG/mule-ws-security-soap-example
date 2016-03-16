@@ -12,14 +12,13 @@
 	">
 
 	<context:property-placeholder
-		location="classpath:config/client/test-client-remote.properties" />
+		location="classpath:config/endpoint/test-endpoint-remote.properties" />
 
 	<util:list id="configFiles">
-		<value>src/test/resources/flow/test-client-remote.xml</value>
-		<value>src/main/app/client-remote.xml</value>
+		<value>src/test/resources/flow/test-service-remote.xml</value>
+		<value>src/main/app/endpoint-remote.xml</value>
 		<value>src/main/app/config.xml</value>
-		<value>src/main/app/endpoint.xml</value>
-		<value>src/main/app/service-remote.xml</value>
+		<value>src/main/app/endpoint-config.xml</value>
 		<value>src/main/app/utils.xml</value>
 		<value>src/main/app/utils-remote.xml</value>
 		<value>src/main/app/consumer.xml</value>
