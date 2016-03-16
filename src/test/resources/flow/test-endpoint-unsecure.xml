@@ -8,26 +8,26 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
-	<flow name="Test-Service-Unsecure-CodeFirst-Flow">
-		<flow-ref name="Service-Unsecure-CodeFirst-Endpoint"
+	<flow name="Test-Endpoint-Unsecure-CodeFirst-Flow">
+		<flow-ref name="Endpoint-Unsecure-CodeFirst-Endpoint"
 			doc:name="Code first service" />
 	</flow>
 
-	<flow name="Test-Service-Unsecure-WSDLFirst-Flow">
-		<flow-ref name="Service-Unsecure-WSDLFirst-Endpoint"
+	<flow name="Test-Endpoint-Unsecure-WSDLFirst-Flow">
+		<flow-ref name="Endpoint-Unsecure-WSDLFirst-Endpoint"
 			doc:name="WSDL first service" />
 	</flow>
 
-	<flow name="Test-Service-Unsecure-Simple-Flow">
-		<flow-ref name="Service-Unsecure-Simple-Endpoint" doc:name="Simple service" />
+	<flow name="Test-Endpoint-Unsecure-Simple-Flow">
+		<flow-ref name="Endpoint-Unsecure-Simple-Endpoint" doc:name="Simple service" />
 	</flow>
 
-	<flow name="Test-Service-Unsecure-Proxy-Flow">
-		<flow-ref name="Service-Unsecure-Proxy-Endpoint" doc:name="Proxied local service" />
+	<flow name="Test-Endpoint-Unsecure-Proxy-Flow">
+		<flow-ref name="Endpoint-Unsecure-Proxy-Endpoint" doc:name="Proxied local service" />
 	</flow>
 
-	<flow name="Test-Service-Unsecure-Consumer-Flow">
-		<flow-ref name="Service-Unsecure-Consumer-Endpoint" doc:name="Consumer for local service" />
+	<flow name="Test-Endpoint-Unsecure-Consumer-Flow">
+		<flow-ref name="Endpoint-Unsecure-Consumer-Endpoint" doc:name="Consumer for local service" />
 	</flow>
 
 </mule>

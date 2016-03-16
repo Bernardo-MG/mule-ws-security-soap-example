@@ -20,6 +20,6 @@ http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/
 	<ws:consumer-config doc:name="Unsecure Code-First endpoint consumer"
 		name="Consumer-Unsecure-CodeFirst" wsdlLocation="${wsdl.local.path}"
 		service="${wsdl.local.service}" port="${wsdl.local.port}"
-		serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${service.unsecure.codeFirst.path}" />
+		serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.codeFirst.path}" />
 
 </mule>

@@ -6,10 +6,10 @@
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 	">
 
-	<bean id="codeFirstUnsecureEndpoint" class="${service.unsecure.codeFirst.class}" />
+	<bean id="codeFirstUnsecureEndpoint" class="${endpoint.unsecure.codeFirst.class}" />
 
-	<bean id="wsdlFirstUnsecureEndpoint" class="${service.unsecure.wsdlFirst.class}" />
+	<bean id="wsdlFirstUnsecureEndpoint" class="${endpoint.unsecure.wsdlFirst.class}" />
 
-	<bean id="simpleUnsecureEndpoint" class="${service.unsecure.simple.class}" />
+	<bean id="simpleUnsecureEndpoint" class="${endpoint.unsecure.simple.class}" />
 
 </beans>

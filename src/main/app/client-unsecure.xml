@@ -20,16 +20,16 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			path="${client.unsecure.codeFirst.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
 		<flow-ref name="HTTPClient-Unsecure-CodeFirst-Endpoint"
-			doc:name="Code-First client" />
+			doc:name="Send request" />
         <response>
             <mulexml:object-to-xml-transformer doc:name="Object to XML"/>
         </response>
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-CodeFirst-Endpoint">
-		<cxf:jaxws-client serviceClass="${service.unsecure.codeFirst.interface.class}"
-			doc:name="Code-First local client" operation="${wsdl.local.operation}" />
-		<outbound-endpoint doc:name="Unsecure Code-First WS"
+		<cxf:jaxws-client serviceClass="${endpoint.unsecure.codeFirst.interface.class}"
+			doc:name="Code-First client" operation="${wsdl.local.operation}" />
+		<outbound-endpoint doc:name="Unsecure Code-First endpoint"
 			ref="Endpoint-Unsecure-CodeFirst" />
 	</sub-flow>
 
@@ -38,7 +38,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			path="${client.unsecure.wsdlFirst.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
 		<flow-ref name="HTTPClient-Unsecure-WSDLFirst-Endpoint"
-			doc:name="WSDL-First client" />
+			doc:name="Send request" />
         <response>
             <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
         </response>
@@ -46,9 +46,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
 	<sub-flow name="HTTPClient-Unsecure-WSDLFirst-Endpoint">
 		<cxf:jaxws-client clientClass="${client.wsdlFirst.class}"
-			wsdlLocation="${wsdl.local.path}" port="${wsdl.local.port}" doc:name="WSDL-First local client"
+			wsdlLocation="${wsdl.local.path}" port="${wsdl.local.port}" doc:name="WSDL-First client"
 			operation="${wsdl.local.operation}" />
-		<outbound-endpoint doc:name="Unsecure WSDL-First WS"
+		<outbound-endpoint doc:name="Unsecure WSDL-First endpoint"
 			ref="Endpoint-Unsecure-WSDLFirst" />
 	</sub-flow>
 
@@ -57,16 +57,16 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			path="${client.unsecure.simple.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
 		<flow-ref name="HTTPClient-Unsecure-Simple-Endpoint"
-			doc:name="Simple client" />
+			doc:name="Send request" />
         <response>
             <mulexml:object-to-xml-transformer doc:name="Object to XML"/>
         </response>
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-Simple-Endpoint">
-		<cxf:simple-client serviceClass="${service.unsecure.simple.class}"
-			doc:name="Simple local client" operation="${wsdl.local.operation}" />
-		<outbound-endpoint doc:name="Unsecure simple WS"
+		<cxf:simple-client serviceClass="${endpoint.unsecure.simple.class}"
+			doc:name="Simple client" operation="${wsdl.local.operation}" />
+		<outbound-endpoint doc:name="Unsecure simple endpoint"
 			ref="Endpoint-Unsecure-Simple" />
 	</sub-flow>
 
@@ -75,7 +75,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			path="${client.unsecure.consumer.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
 		<flow-ref name="HTTPClient-Unsecure-Consumer-Endpoint"
-			doc:name="Consumer for Code-First service" />
+			doc:name="Send request" />
         <response>
             <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
         </response>
@@ -84,7 +84,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	<sub-flow name="HTTPClient-Unsecure-Consumer-Endpoint">
 		<flow-ref name="Transform-ConsumerRequest-Vars" doc:name="Transform to a valid request" />
 		<ws:consumer config-ref="Consumer-Unsecure-CodeFirst"
-			operation="${wsdl.local.operation}" doc:name="Unsecure Code-First WS" />
+			operation="${wsdl.local.operation}" doc:name="Unsecure code-first consumer" />
 	</sub-flow>
 
 </mule>

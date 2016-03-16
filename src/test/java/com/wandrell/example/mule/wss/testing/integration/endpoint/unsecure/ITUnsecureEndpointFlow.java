@@ -16,18 +16,18 @@ import org.testng.Assert;
 import com.wandrell.example.mule.wss.testing.util.config.TestContextConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(TestContextConfig.SERVICE_UNSECURE)
+@ContextConfiguration(TestContextConfig.ENDPOINT_UNSECURE)
 public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
 
-    @Value("${service.unsecure.codeFirst.flow}")
+    @Value("${endpoint.unsecure.codeFirst.flow}")
     private String       codeFirstFlow;
-    @Value("${service.unsecure.consumer.flow}")
+    @Value("${endpoint.unsecure.consumer.flow}")
     private String       consumerFlow;
     @Resource(name = "configFiles")
     private String[]     files;
-    @Value("${service.unsecure.proxy.flow}")
+    @Value("${endpoint.unsecure.proxy.flow}")
     private String       proxyFlow;
-    @Value("${service.unsecure.simple.flow}")
+    @Value("${endpoint.unsecure.simple.flow}")
     private String       simpleFlow;
     private final String soapRequestFull;
     private final String soapRequestShort;
@@ -37,7 +37,7 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
     private final String soapResponseShort;
     private final String soapTemplateFull;
     private final String soapTemplateShort;
-    @Value("${service.unsecure.wsdlFirst.flow}")
+    @Value("${endpoint.unsecure.wsdlFirst.flow}")
     private String       wsdlFirstFlow;
 
     {

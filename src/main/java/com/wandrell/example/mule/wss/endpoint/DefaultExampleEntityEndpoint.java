@@ -46,7 +46,7 @@ public final class DefaultExampleEntityEndpoint implements
                 String.format("Received request for id %d", id));
         
         entity = getExampleEntityService().findById(id);
-
+        
         response = new XmlExampleEntity();
         if (entity == null) {
             LOGGER.debug("Entity not found");
