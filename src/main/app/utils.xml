@@ -30,13 +30,10 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	</sub-flow>
 
 	<sub-flow name="ReadHTTPVariables">
-		<set-variable variableName="cod1"
-			value="#[Float.parseFloat(message.inboundProperties.'http.query.params'.cod1)]"
-			doc:name="cod1 variable" />
-		<set-variable variableName="cod2"
-			value="#[Float.parseFloat(message.inboundProperties.'http.query.params'.cod2)]"
-			doc:name="cod2 variable" />
-		<set-payload doc:name="Set payload" value="#[{cod1, cod2}]" />
+		<set-variable variableName="id"
+			value="#[Integer.parseInt(message.inboundProperties.'http.query.params'.id)]"
+			doc:name="id variable" />
+		<set-payload doc:name="Set payload" value="#[{id}]" />
 	</sub-flow>
 
 	<sub-flow name="Transform-Response">

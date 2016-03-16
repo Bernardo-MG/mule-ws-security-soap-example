@@ -1,6 +1,8 @@
 
 package com.wandrell.example.mule.wss.security;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.IOException;
 
 import javax.security.auth.callback.Callback;
@@ -19,6 +21,8 @@ public final class PasswordCallback implements CallbackHandler {
     public final void handle(final Callback[] callbacks) throws IOException,
             UnsupportedCallbackException {
         final WSPasswordCallback pc;
+
+        checkNotNull(callbacks, "Received a null pointer as callbacks");
 
         pc = (WSPasswordCallback) callbacks[0];
 

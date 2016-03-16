@@ -1,6 +1,8 @@
 
 package com.wandrell.example.mule.wss.security;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import org.apache.ws.security.WSSecurityException;
 import org.apache.ws.security.handler.RequestData;
 import org.apache.ws.security.saml.ext.AssertionWrapper;
@@ -15,6 +17,9 @@ public final class SAMLCustomValidator extends SamlAssertionValidator {
             final RequestData data) throws WSSecurityException {
         final Credential returnedCredential;
 
+        checkNotNull(credential, "Received a null pointer as credential");
+        checkNotNull(data, "Received a null pointer as data");
+        
         returnedCredential = super.validate(credential, data);
 
         //

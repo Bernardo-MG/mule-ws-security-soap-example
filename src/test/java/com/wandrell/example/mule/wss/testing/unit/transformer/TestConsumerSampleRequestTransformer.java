@@ -16,9 +16,9 @@ public final class TestConsumerSampleRequestTransformer {
 
     {
         sourceEnvelop = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sam=\"http://wandrell.com/example/ws/entity\"><soapenv:Header/><soapenv:Body><sam:getEntity><id>1</id></sam:getEntity></soapenv:Body>\n</soapenv:Envelope>";
-        sourceNotEnvelop = "<sam:getEntity xmlns:sam=\"http://wandrell.com/example/ws/entity\"><cod1>1</cod1><cod2>2.1</cod2></sam:getEntity>";
+        sourceNotEnvelop = "<sam:getEntity xmlns:sam=\"http://wandrell.com/example/ws/entity\"><id>1</id></sam:getEntity>";
 
-        result = "<sam:getEntity xmlns:sam=\"http://wandrell.com/example/ws/entity\"><cod1>1</cod1><cod2>2.1</cod2></sam:getEntity>";
+        result = "<sam:getEntity xmlns:sam=\"http://wandrell.com/example/ws/entity\"><id>1</id></sam:getEntity>";
     }
 
     public TestConsumerSampleRequestTransformer() {

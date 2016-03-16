@@ -229,592 +229,599 @@
 	<!-- **************** PROPERTIES ****************** -->
 	<!-- ********************************************** -->
 
-    <properties>
-        <!-- Encoding -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-        <!-- Java version -->
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-        <!-- Manifest data -->
-        <manifest.name>com/wandrell/demo/mule_spring_soap_ws_security_example</manifest.name>
-        <!-- Dependencies versions -->
-        <asm.version>3.3.1</asm.version>
-        <commons.codec.version>1.9</commons.codec.version>
-        <commons.collections.version>3.2.2</commons.collections.version>
-        <commons.dbcp.version>1.2</commons.dbcp.version>
-        <commons.logging.version>1.2</commons.logging.version>
-        <commons.pool.version>1.6</commons.pool.version>
-        <ehcache.version>2.5.1</ehcache.version>
-        <h2.version>1.4.190</h2.version>
-        <hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
-        <hibernate.validator.version>5.1.0.Final</hibernate.validator.version>
-        <hibernate.version>3.6.0.Final</hibernate.version>
-        <hikari.version>2.3.12</hikari.version>
-        <javax.el.version>3.0.0</javax.el.version>
-        <jaxb.version>2.2.12</jaxb.version>
-        <jaxen.version>1.1.1</jaxen.version>
-        <jboss.logging.version>3.3.0.Final</jboss.logging.version>
-        <jcodings.version>1.0.10</jcodings.version>
-        <jffi.version>1.2.11</jffi.version>
-        <jnr.ffi.version>1.0.4</jnr.ffi.version>
-        <junit.version>4.12</junit.version>
-        <log4j.version>2.1</log4j.version>
-        <mail.version>1.4.7</mail.version>
-        <mina.version>2.0.4</mina.version>
-        <mule.tools.version>1.1</mule.tools.version>
-        <mule.version>3.7.0</mule.version>
-        <opensaml.version>2.6.1</opensaml.version>
-        <slf4j.version>1.7.13</slf4j.version>
-        <spring.data.version>1.9.0.RELEASE</spring.data.version>
-        <spring.version>4.1.6.RELEASE</spring.version>
-        <spring.ws.version>2.2.2.RELEASE</spring.ws.version>
-        <stax.version>1.0-2</stax.version>
-        <testng.version>6.9.8</testng.version>
-        <wss4j.version>1.6.19</wss4j.version>
-        <xpp3.version>1.1.4c</xpp3.version>
-        <xerces.version>2.11.0</xerces.version>
-        <xmlapis.version>1.4.01</xmlapis.version>
-        <xwssecurity.version>3.0</xwssecurity.version>
-        <!-- Plugins versions -->
-        <plugin.ant.version>1.8</plugin.ant.version>
-        <plugin.assembly.version>2.6</plugin.assembly.version>
-        <plugin.buildhelper.version>1.7</plugin.buildhelper.version>
-        <plugin.checkstyle.version>2.16</plugin.checkstyle.version>
-        <plugin.changes.version>2.11</plugin.changes.version>
-        <plugin.clean.version>2.6.1</plugin.clean.version>
-        <plugin.compiler.version>3.3</plugin.compiler.version>
-        <plugin.cxf.version>2.7.18</plugin.cxf.version>
-        <plugin.dependency.version>2.10</plugin.dependency.version>
-        <plugin.deploy.version>2.8.2</plugin.deploy.version>
-        <plugin.enforcer.version>1.4.1</plugin.enforcer.version>
-        <plugin.failsafe.version>2.18.1</plugin.failsafe.version>
-        <plugin.findbugs.version>3.0.2</plugin.findbugs.version>
-        <plugin.install.version>2.5.2</plugin.install.version>
-        <plugin.jacoco.version>0.7.5.201505241946</plugin.jacoco.version>
-        <plugin.jar.version>2.6</plugin.jar.version>
-        <plugin.javadoc.version>2.10.3</plugin.javadoc.version>
-        <plugin.jdepend.version>2.0</plugin.jdepend.version>
-        <plugin.jxr.version>2.5</plugin.jxr.version>
-        <plugin.lifecycle.version>1.0.0</plugin.lifecycle.version>
-        <plugin.mule.version>${mule.tools.version}</plugin.mule.version>
-        <plugin.pmd.version>3.5</plugin.pmd.version>
-        <plugin.release.version>2.5.2</plugin.release.version>
-        <plugin.reports.version>2.8.1</plugin.reports.version>
-        <plugin.resources.version>2.7</plugin.resources.version>
-        <plugin.site.version>3.4</plugin.site.version>
-        <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
-        <plugin.source.version>2.4</plugin.source.version>
-        <plugin.surefire.version>2.18.1</plugin.surefire.version>
-        <plugin.taglist.version>2.4</plugin.taglist.version>
-        <plugin.war.version>2.6</plugin.war.version>
-    </properties>
+	<properties>
+		<!-- Encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+		<!-- Java version -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+		<!-- Manifest data -->
+		<manifest.name>com/wandrell/demo/mule_spring_soap_ws_security_example</manifest.name>
+		<!-- Dependencies versions -->
+		<asm.version>3.3.1</asm.version>
+		<commons.codec.version>1.9</commons.codec.version>
+		<commons.collections.version>3.2.2</commons.collections.version>
+		<commons.dbcp.version>1.2</commons.dbcp.version>
+		<commons.logging.version>1.2</commons.logging.version>
+		<commons.pool.version>1.6</commons.pool.version>
+		<ehcache.version>2.5.1</ehcache.version>
+		<guava.version>19.0</guava.version>
+		<h2.version>1.4.190</h2.version>
+		<hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
+		<hibernate.validator.version>5.1.0.Final</hibernate.validator.version>
+		<hibernate.version>3.6.0.Final</hibernate.version>
+		<hikari.version>2.3.12</hikari.version>
+		<javax.el.version>3.0.0</javax.el.version>
+		<jaxb.version>2.2.12</jaxb.version>
+		<jaxen.version>1.1.1</jaxen.version>
+		<jboss.logging.version>3.3.0.Final</jboss.logging.version>
+		<jcodings.version>1.0.10</jcodings.version>
+		<jffi.version>1.2.11</jffi.version>
+		<jnr.ffi.version>1.0.4</jnr.ffi.version>
+		<junit.version>4.12</junit.version>
+		<log4j.version>2.1</log4j.version>
+		<mail.version>1.4.7</mail.version>
+		<mina.version>2.0.4</mina.version>
+		<mule.tools.version>1.1</mule.tools.version>
+		<mule.version>3.7.0</mule.version>
+		<opensaml.version>2.6.1</opensaml.version>
+		<slf4j.version>1.7.13</slf4j.version>
+		<spring.data.version>1.9.0.RELEASE</spring.data.version>
+		<spring.version>4.1.6.RELEASE</spring.version>
+		<spring.ws.version>2.2.2.RELEASE</spring.ws.version>
+		<stax.version>1.0-2</stax.version>
+		<testng.version>6.9.8</testng.version>
+		<wss4j.version>1.6.19</wss4j.version>
+		<xpp3.version>1.1.4c</xpp3.version>
+		<xerces.version>2.11.0</xerces.version>
+		<xmlapis.version>1.4.01</xmlapis.version>
+		<xwssecurity.version>3.0</xwssecurity.version>
+		<!-- Plugins versions -->
+		<plugin.ant.version>1.8</plugin.ant.version>
+		<plugin.assembly.version>2.6</plugin.assembly.version>
+		<plugin.buildhelper.version>1.7</plugin.buildhelper.version>
+		<plugin.checkstyle.version>2.16</plugin.checkstyle.version>
+		<plugin.changes.version>2.11</plugin.changes.version>
+		<plugin.clean.version>2.6.1</plugin.clean.version>
+		<plugin.compiler.version>3.3</plugin.compiler.version>
+		<plugin.cxf.version>2.7.18</plugin.cxf.version>
+		<plugin.dependency.version>2.10</plugin.dependency.version>
+		<plugin.deploy.version>2.8.2</plugin.deploy.version>
+		<plugin.enforcer.version>1.4.1</plugin.enforcer.version>
+		<plugin.failsafe.version>2.18.1</plugin.failsafe.version>
+		<plugin.findbugs.version>3.0.2</plugin.findbugs.version>
+		<plugin.install.version>2.5.2</plugin.install.version>
+		<plugin.jacoco.version>0.7.5.201505241946</plugin.jacoco.version>
+		<plugin.jar.version>2.6</plugin.jar.version>
+		<plugin.javadoc.version>2.10.3</plugin.javadoc.version>
+		<plugin.jdepend.version>2.0</plugin.jdepend.version>
+		<plugin.jxr.version>2.5</plugin.jxr.version>
+		<plugin.lifecycle.version>1.0.0</plugin.lifecycle.version>
+		<plugin.mule.version>${mule.tools.version}</plugin.mule.version>
+		<plugin.pmd.version>3.5</plugin.pmd.version>
+		<plugin.release.version>2.5.2</plugin.release.version>
+		<plugin.reports.version>2.8.1</plugin.reports.version>
+		<plugin.resources.version>2.7</plugin.resources.version>
+		<plugin.site.version>3.4</plugin.site.version>
+		<plugin.site.velocity.version>1.7</plugin.site.velocity.version>
+		<plugin.source.version>2.4</plugin.source.version>
+		<plugin.surefire.version>2.18.1</plugin.surefire.version>
+		<plugin.taglist.version>2.4</plugin.taglist.version>
+		<plugin.war.version>2.6</plugin.war.version>
+	</properties>
 
-    <!-- ********************************************** -->
-    <!-- *************** REPOSITORIES ***************** -->
-    <!-- ********************************************** -->
+	<!-- ********************************************** -->
+	<!-- *************** REPOSITORIES ***************** -->
+	<!-- ********************************************** -->
 
-    <repositories>
-        <repository>
-            <id>Central</id>
-            <name>Central</name>
-            <url>http://repo1.maven.org/maven2/</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>mulesoft-releases</id>
-            <name>MuleSoft Releases Repository</name>
-            <url>http://repository.mulesoft.org/releases/</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>mulesoft-snapshots</id>
-            <name>MuleSoft Snapshots Repository</name>
-            <url>http://repository.mulesoft.org/snapshots/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
+	<repositories>
+		<repository>
+			<id>Central</id>
+			<name>Central</name>
+			<url>http://repo1.maven.org/maven2/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>mulesoft-releases</id>
+			<name>MuleSoft Releases Repository</name>
+			<url>http://repository.mulesoft.org/releases/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>mulesoft-snapshots</id>
+			<name>MuleSoft Snapshots Repository</name>
+			<url>http://repository.mulesoft.org/snapshots/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>mulesoft-release</id>
-            <name>mulesoft release repository</name>
-            <layout>default</layout>
-            <url>http://repository.mulesoft.org/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>mulesoft-release</id>
+			<name>mulesoft release repository</name>
+			<layout>default</layout>
+			<url>http://repository.mulesoft.org/releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
-    <!-- ********************************************** -->
-    <!-- *************** DEPENDENCIES ***************** -->
-    <!-- ********************************************** -->
+	<!-- ********************************************** -->
+	<!-- *************** DEPENDENCIES ***************** -->
+	<!-- ********************************************** -->
 
-    <dependencies>
-        <!-- Xml configuration -->
-        <dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-spring-config</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- Mule Transports -->
-        <dependency>
-            <groupId>org.mule.transports</groupId>
-            <artifactId>mule-transport-file</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.transports</groupId>
-            <artifactId>mule-transport-http</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- Commons Codec -->
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons.codec.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.transports</groupId>
-            <artifactId>mule-transport-jdbc</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.transports</groupId>
-            <artifactId>mule-transport-jms</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.transports</groupId>
-            <artifactId>mule-transport-vm</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Mule Modules -->
-        <dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-scripting</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- Jnr Ffi -->
-            <groupId>com.github.jnr</groupId>
-            <artifactId>jnr-ffi</artifactId>
-            <version>${jnr.ffi.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- JFfi -->
-            <groupId>com.github.jnr</groupId>
-            <artifactId>jffi</artifactId>
-            <version>${jffi.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- JCodings -->
-            <groupId>org.jruby.jcodings</groupId>
-            <artifactId>jcodings</artifactId>
-            <version>${jcodings.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-xml</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- XPP3 min -->
-            <groupId>xpp3</groupId>
-            <artifactId>xpp3_min</artifactId>
-            <version>${xpp3.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- Jaxen -->
-            <groupId>jaxen</groupId>
-            <artifactId>jaxen</artifactId>
-            <version>${jaxen.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- XPP3 min -->
-            <groupId>xml-apis</groupId>
-            <artifactId>xml-apis</artifactId>
-            <version>${xmlapis.version}</version>
-        </dependency>
-        <!-- ============================================== -->
-        <!-- ================== SPRING ==================== -->
-        <!-- ============================================== -->
-        <dependency>
-            <!-- Spring Transaction -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Spring Beans -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Spring Data JPA -->
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${spring.data.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-orm</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-tx</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-beans</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-aop</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <!-- Spring JDBC -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Spring ORM -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Spring JMS -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jms</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Spring Context -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Spring WS -->
-            <groupId>org.springframework.ws</groupId>
-            <artifactId>spring-ws-core</artifactId>
-            <version>${spring.ws.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-beans</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-aop</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <!-- Spring Web -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <!-- ============================================== -->
-        <!-- ================= HIBERNATE ================== -->
-        <!-- ============================================== -->
-        <dependency>
-            <!-- Entity JPA -->
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>${hibernate.jpa.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Entity Manager -->
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hibernate.javax.persistence</groupId>
-                    <artifactId>hibernate-jpa-2.0-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <!-- Hibernate Ehcache -->
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Hibernate Validator -->
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.validator.version}</version>
-        </dependency>
-        <!-- ============================================== -->
-        <!-- ================ PERSISTENCE ================= -->
-        <!-- ============================================== -->
-        <dependency>
-            <!-- H2 -->
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Apache Commons DBCP2 -->
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>${commons.dbcp.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Hikari CP -->
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP-java6</artifactId>
-            <version>${hikari.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- ============================================== -->
-        <!-- ================== LOGGING =================== -->
-        <!-- ============================================== -->
-        <dependency>
-            <!-- Log4j SLF4J Bridge -->
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <!-- SLF4J API -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <!-- LOG4J -->
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <!-- JBoss Logging -->
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging</artifactId>
-            <version>${jboss.logging.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-            <version>${xerces.version}</version>
-        </dependency>
-        <!-- ============================================== -->
-        <!-- ================= SECURITY =================== -->
-        <!-- ============================================== -->
-        <dependency>
-            <!-- XWS Security -->
-            <groupId>com.sun.xml.wss</groupId>
-            <artifactId>xws-security</artifactId>
-            <version>${xwssecurity.version}</version>
-            <exclusions>
-                <exclusion>
-                    <!-- This dependency is not public or shared -->
-                    <groupId>javax.xml.crypto</groupId>
-                    <artifactId>xmldsig</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <!-- WSS4J -->
-            <groupId>org.apache.ws.security</groupId>
-            <artifactId>wss4j</artifactId>
-            <version>${wss4j.version}</version>
-        </dependency>
-        <!-- ============================================== -->
-        <!-- =================== OTHER ==================== -->
-        <!-- ============================================== -->
-        <dependency>
-            <!-- JAXB API -->
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Java Mail -->
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>${mail.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Java Mail -->
-            <groupId>javax.xml.stream</groupId>
-            <artifactId>stax-api</artifactId>
-            <version>${stax.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Commons Logging -->
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${commons.logging.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Commons Pool -->
-            <groupId>commons-pool</groupId>
-            <artifactId>commons-pool</artifactId>
-            <version>${commons.pool.version}</version>
-        </dependency>
-        <dependency>
-            <!-- Commons Collections -->
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>${commons.collections.version}</version>
-        </dependency>
-        <dependency>
-            <!-- OpenSAML -->
-            <groupId>org.opensaml</groupId>
-            <artifactId>opensaml</artifactId>
-            <version>${opensaml.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- ehcache core -->
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-            <version>${ehcache.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- ehcache core -->
-            <groupId>asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>${asm.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- ============================================== -->
-        <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
-        <!-- ============================================== -->
-        <dependency>
-            <!-- Mule Functional Tests -->
-            <groupId>org.mule.tests</groupId>
-            <artifactId>mule-tests-functional</artifactId>
-            <version>${mule.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <!-- Mule Client -->
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-client</artifactId>
-            <version>${mule.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Mina Core -->
-            <groupId>org.apache.mina</groupId>
-            <artifactId>mina-core</artifactId>
-            <version>${mina.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <!-- TestNG -->
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Spring test -->
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- JUnit -->
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- CXF Module -->
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-cxf</artifactId>
-            <version>${mule.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- Patterns Module -->
-            <groupId>org.mule.patterns</groupId>
-            <artifactId>mule-pattern-core</artifactId>
-            <version>${mule.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- JavaX EL API -->
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${javax.el.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-http</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mule.transports</groupId>
-            <artifactId>mule-transport-tcp</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+	<dependencies>
+		<!-- Xml configuration -->
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-spring-config</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Mule Transports -->
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-file</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-http</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- Commons Codec -->
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons.codec.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-jdbc</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-jms</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-vm</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Mule Modules -->
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-scripting</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- Jnr Ffi -->
+			<groupId>com.github.jnr</groupId>
+			<artifactId>jnr-ffi</artifactId>
+			<version>${jnr.ffi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- JFfi -->
+			<groupId>com.github.jnr</groupId>
+			<artifactId>jffi</artifactId>
+			<version>${jffi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- JCodings -->
+			<groupId>org.jruby.jcodings</groupId>
+			<artifactId>jcodings</artifactId>
+			<version>${jcodings.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-xml</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- XPP3 min -->
+			<groupId>xpp3</groupId>
+			<artifactId>xpp3_min</artifactId>
+			<version>${xpp3.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- Jaxen -->
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>${jaxen.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- XPP3 min -->
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>${xmlapis.version}</version>
+		</dependency>
+		<!-- ============================================== -->
+		<!-- ================== SPRING ==================== -->
+		<!-- ============================================== -->
+		<dependency>
+			<!-- Spring Transaction -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Spring Beans -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Spring Data JPA -->
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring.data.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-orm</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<!-- Spring JDBC -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Spring ORM -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Spring JMS -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Spring Context -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Spring WS -->
+			<groupId>org.springframework.ws</groupId>
+			<artifactId>spring-ws-core</artifactId>
+			<version>${spring.ws.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<!-- Spring Web -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- ============================================== -->
+		<!-- ================= HIBERNATE ================== -->
+		<!-- ============================================== -->
+		<dependency>
+			<!-- Entity JPA -->
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>${hibernate.jpa.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Entity Manager -->
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hibernate.javax.persistence</groupId>
+					<artifactId>hibernate-jpa-2.0-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<!-- Hibernate Ehcache -->
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Hibernate Validator -->
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+		<!-- ============================================== -->
+		<!-- ================ PERSISTENCE ================= -->
+		<!-- ============================================== -->
+		<dependency>
+			<!-- H2 -->
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Apache Commons DBCP2 -->
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${commons.dbcp.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Hikari CP -->
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP-java6</artifactId>
+			<version>${hikari.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- ============================================== -->
+		<!-- ================== LOGGING =================== -->
+		<!-- ============================================== -->
+		<dependency>
+			<!-- Log4j SLF4J Bridge -->
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<!-- SLF4J API -->
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<!-- LOG4J -->
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<!-- JBoss Logging -->
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>${jboss.logging.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>${xerces.version}</version>
+		</dependency>
+		<!-- ============================================== -->
+		<!-- ================= SECURITY =================== -->
+		<!-- ============================================== -->
+		<dependency>
+			<!-- XWS Security -->
+			<groupId>com.sun.xml.wss</groupId>
+			<artifactId>xws-security</artifactId>
+			<version>${xwssecurity.version}</version>
+			<exclusions>
+				<exclusion>
+					<!-- This dependency is not public or shared -->
+					<groupId>javax.xml.crypto</groupId>
+					<artifactId>xmldsig</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<!-- WSS4J -->
+			<groupId>org.apache.ws.security</groupId>
+			<artifactId>wss4j</artifactId>
+			<version>${wss4j.version}</version>
+		</dependency>
+		<!-- ============================================== -->
+		<!-- =================== OTHER ==================== -->
+		<!-- ============================================== -->
+		<dependency>
+			<!-- Guava -->
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		<dependency>
+			<!-- JAXB API -->
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Java Mail -->
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${mail.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Java Mail -->
+			<groupId>javax.xml.stream</groupId>
+			<artifactId>stax-api</artifactId>
+			<version>${stax.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Commons Logging -->
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons.logging.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Commons Pool -->
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>${commons.pool.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Commons Collections -->
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${commons.collections.version}</version>
+		</dependency>
+		<dependency>
+			<!-- OpenSAML -->
+			<groupId>org.opensaml</groupId>
+			<artifactId>opensaml</artifactId>
+			<version>${opensaml.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- ehcache core -->
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>${ehcache.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<!-- ehcache core -->
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>${asm.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- ============================================== -->
+		<!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
+		<!-- ============================================== -->
+		<dependency>
+			<!-- Mule Functional Tests -->
+			<groupId>org.mule.tests</groupId>
+			<artifactId>mule-tests-functional</artifactId>
+			<version>${mule.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<!-- Mule Client -->
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-client</artifactId>
+			<version>${mule.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- Mina Core -->
+			<groupId>org.apache.mina</groupId>
+			<artifactId>mina-core</artifactId>
+			<version>${mina.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<!-- TestNG -->
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- Spring test -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- JUnit -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- CXF Module -->
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-cxf</artifactId>
+			<version>${mule.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- Patterns Module -->
+			<groupId>org.mule.patterns</groupId>
+			<artifactId>mule-pattern-core</artifactId>
+			<version>${mule.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- JavaX EL API -->
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${javax.el.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-http</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-tcp</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
 	<!-- ********************************************** -->
 	<!-- ******************* BUILD ******************** -->

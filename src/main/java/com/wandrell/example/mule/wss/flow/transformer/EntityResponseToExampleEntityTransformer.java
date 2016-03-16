@@ -1,6 +1,8 @@
 
 package com.wandrell.example.mule.wss.flow.transformer;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -10,21 +12,22 @@ import org.jdom.input.SAXBuilder;
 import org.mule.api.transformer.TransformerException;
 import org.mule.transformer.AbstractTransformer;
 
+import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
 
-public final class ExampleResponseToExampleEntityTransformer extends
+public final class EntityResponseToExampleEntityTransformer extends
         AbstractTransformer {
 
-    public ExampleResponseToExampleEntityTransformer() {
+    public EntityResponseToExampleEntityTransformer() {
         super();
     }
 
-    private final XmlExampleEntity buildSample(final Object src)
+    private final ExampleEntity buildEntity(final Object src)
             throws JDOMException, IOException {
         final SAXBuilder saxBuilder;
         final Element root;
         final Element docRoot;
-        final XmlExampleEntity sample;
+        final XmlExampleEntity entity;
 
         saxBuilder = new SAXBuilder();
         org.jdom.Document doc = saxBuilder.build(new StringReader(src
@@ -37,20 +40,22 @@ public final class ExampleResponseToExampleEntityTransformer extends
             root = docRoot;
         }
 
-        sample = new XmlExampleEntity();
-        sample.setId(Integer.parseInt(root.getChild("id").getText()));
-        sample.setName(root.getChild("name").getText());
+        entity = new XmlExampleEntity();
+        entity.setId(Integer.parseInt(root.getChild("id").getText()));
+        entity.setName(root.getChild("name").getText());
 
-        return sample;
+        return entity;
     }
 
     @Override
-    protected final XmlExampleEntity doTransform(final Object src,
+    protected final ExampleEntity doTransform(final Object src,
             final String enc) throws TransformerException {
-        XmlExampleEntity sample = null;
+        final ExampleEntity sample;
+
+        checkNotNull(src, "Received a null pointer as source");
 
         try {
-            sample = buildSample(src);
+            sample = buildEntity(src);
         } catch (JDOMException | IOException e) {
             throw new TransformerException(this, e);
         }

@@ -67,7 +67,7 @@ By default the web services will be deployed to the following URL:
 http://localhost:8080/swss
 ```
 
-#### SOAP web service
+#### Local SOAP web service
 
 The following URLs allow using the various implementations of the SOAP service:
 
@@ -79,18 +79,18 @@ http://localhost:8080/swss/unsecure/proxy?wsdl
 http://localhost:8080/swss/unsecure/consumer?wsdl
 ```
 
-#### Web service client
+#### Local web service client
 
 The following URLs allow making use of the HTTP client for the local web service:
 
 ```
-http://localhost:8080/swss/client/unsecure/code_first?id=1
-http://localhost:8080/swss/client/unsecure/wsdl_first?id=1
-http://localhost:8080/swss/client/unsecure/simple?id=1
-http://localhost:8080/swss/client/unsecure/consumer?id=1
+http://localhost:8080/swss/client/unsecure/code_first?cod1=1&cod2=2.1
+http://localhost:8080/swss/client/unsecure/wsdl_first?cod1=1&cod2=2.1
+http://localhost:8080/swss/client/unsecure/simple?cod1=1&cod2=2.1
+http://localhost:8080/swss/client/unsecure/consumer?cod1=1&cod2=2.1
 ```
 
-#### Secure SOAP web service
+#### Local secure SOAP web service
 
 The following URLs allow using the various implementations of the SOAP service:
 
@@ -100,18 +100,37 @@ http://localhost:8080/swss/secure/signed?wsdl
 http://localhost:8080/swss/secure/encrypted?wsdl
 ```
 
-#### Secure web service client
+#### Local secure web service client
 
 The following URLs allow making use of the HTTP client for the local web service:
 
 ```
-http://localhost:8080/swss/client/secure/username?id=1
-http://localhost:8080/swss/client/secure/signed?id=1
-http://localhost:8080/swss/client/secure/encrypted?id=1
+http://localhost:8080/swss/client/secure/username?cod1=1&cod2=2.1
+http://localhost:8080/swss/client/secure/signed?cod1=1&cod2=2.1
+http://localhost:8080/swss/client/secure/encrypted?cod1=1&cod2=2.1
 
-http://localhost:8080/swss/client/secure/consumer/username?id=1
-http://localhost:8080/swss/client/secure/consumer/signed?id=1
-http://localhost:8080/swss/client/secure/consumer/encrypted?id=1
+http://localhost:8080/swss/client/secure/consumer/username?cod1=1&cod2=2.1
+http://localhost:8080/swss/client/secure/consumer/signed?cod1=1&cod2=2.1
+http://localhost:8080/swss/client/secure/consumer/encrypted?cod1=1&cod2=2.1
+```
+
+#### Remote web service proxy
+
+The following URL allows making use of the remote web service:
+
+```
+http://localhost:8080/swss/remote/proxy?wsdl
+http://localhost:8080/swss/remote/consumer?wsdl
+```
+
+#### Remote web service client
+
+The following URLs allow making use of the HTTP client for a remote web service:
+
+```
+http://localhost:8080/swss/client/remote?zip=11222
+http://localhost:8080/swss/client/remote/consumer?zip=11222
+```
 
 ## Collaborate
 

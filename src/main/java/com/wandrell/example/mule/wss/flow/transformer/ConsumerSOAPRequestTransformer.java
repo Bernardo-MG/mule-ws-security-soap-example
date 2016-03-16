@@ -1,6 +1,8 @@
 
 package com.wandrell.example.mule.wss.flow.transformer;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -24,6 +26,8 @@ public final class ConsumerSOAPRequestTransformer extends AbstractTransformer {
         final Element root;
         final Element result;
         final XMLOutputter xmlOutput;
+        
+        checkNotNull(src, "Received a null pointer as source");
 
         try {
             root = getRoot(src.toString());

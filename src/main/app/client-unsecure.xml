@@ -5,8 +5,8 @@
 	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet"
 	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
-http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
+http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
@@ -21,10 +21,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
 		<flow-ref name="HTTPClient-Unsecure-CodeFirst-Endpoint"
 			doc:name="Code-First client" />
-		<response>
-			<mulexml:object-to-xml-transformer
-				doc:name="Object to XML" />
-		</response>
+        <response>
+            <mulexml:object-to-xml-transformer doc:name="Object to XML"/>
+        </response>
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-CodeFirst-Endpoint">
@@ -40,9 +39,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
 		<flow-ref name="HTTPClient-Unsecure-WSDLFirst-Endpoint"
 			doc:name="WSDL-First client" />
-		<response>
-			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-		</response>
+        <response>
+            <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
+        </response>
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-WSDLFirst-Endpoint">
@@ -59,10 +58,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
 		<flow-ref name="HTTPClient-Unsecure-Simple-Endpoint"
 			doc:name="Simple client" />
-		<response>
-			<mulexml:object-to-xml-transformer
-				doc:name="Object to XML" />
-		</response>
+        <response>
+            <mulexml:object-to-xml-transformer doc:name="Object to XML"/>
+        </response>
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-Simple-Endpoint">
@@ -78,9 +76,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
 		<flow-ref name="HTTPClient-Unsecure-Consumer-Endpoint"
 			doc:name="Consumer for Code-First service" />
-		<response>
-			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-		</response>
+        <response>
+            <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
+        </response>
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-Consumer-Endpoint">

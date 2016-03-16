@@ -6,10 +6,10 @@ import org.mule.api.transformer.TransformerException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.mule.wss.flow.transformer.ExampleResponseToExampleEntityTransformer;
+import com.wandrell.example.mule.wss.flow.transformer.EntityResponseToExampleEntityTransformer;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 
-public final class TestSampleResponseToSampleTransformer {
+public final class TestEntityResponseToExampleEntityTransformer {
 
     private final String sourceCodeFirst;
     private final String sourceWSDLFirst;
@@ -19,7 +19,7 @@ public final class TestSampleResponseToSampleTransformer {
         sourceWSDLFirst = "<com.wandrell.example.ws.entity.GetEntityResponse_-Return><id>1</id><name>name_1</name></com.wandrell.example.ws.entity.GetEntityResponse_-Return>";
     }
 
-    public TestSampleResponseToSampleTransformer() {
+    public TestEntityResponseToExampleEntityTransformer() {
         super();
     }
 
@@ -28,7 +28,7 @@ public final class TestSampleResponseToSampleTransformer {
         final ExampleEntity sample;
         final Transformer transformer;
 
-        transformer = new ExampleResponseToExampleEntityTransformer();
+        transformer = new EntityResponseToExampleEntityTransformer();
 
         sample = (ExampleEntity) transformer.transform(sourceCodeFirst);
 
@@ -41,7 +41,7 @@ public final class TestSampleResponseToSampleTransformer {
         final ExampleEntity sample;
         final Transformer transformer;
 
-        transformer = new ExampleResponseToExampleEntityTransformer();
+        transformer = new EntityResponseToExampleEntityTransformer();
 
         sample = (ExampleEntity) transformer.transform(sourceWSDLFirst);
 
