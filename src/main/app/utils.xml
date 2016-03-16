@@ -47,7 +47,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 					doc:name="Object to XML" />
 			</otherwise>
 		</choice>
-		<transformer ref="SampleResponseToSample" doc:name="XML to model" />
+		<transformer ref="EntityResponseToExampleEntity" doc:name="XML to model" />
 		<mulexml:object-to-xml-transformer
 			doc:name="Object to XML" />
 	</sub-flow>

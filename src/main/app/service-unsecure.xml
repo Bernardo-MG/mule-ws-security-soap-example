@@ -75,7 +75,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref doc:name="Copy HTTP Headers" name="CopyHeaders" />
 		<cxf:proxy-client doc:name="Proxy client"
 			enableMuleSoapHeaders="false" payload="envelope" />
-		<outbound-endpoint doc:name="Local unsecure WS" ref="Unsecure-CodeFirst-WS"
+		<outbound-endpoint doc:name="Local unsecure WS" ref="Endpoint-Unsecure-CodeFirst"
 			exchange-pattern="request-response" />
 
 		<flow-ref doc:name="Copy HTTP Headers" name="CopyHeaders" />
@@ -88,7 +88,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	</flow>
 	<sub-flow name="Service-Unsecure-Consumer-Endpoint">
 		<flow-ref name="Transform-ConsumerRequest" doc:name="Transform to a valid request" />
-		<ws:consumer config-ref="WS-Consumer-Unsecure-CodeFirst"
+		<ws:consumer config-ref="Consumer-Unsecure-CodeFirst"
 			operation="${wsdl.local.operation}" doc:name="Local WS Consumer" />
 		<mulexml:dom-to-xml-transformer
 			doc:name="Object to XML" />

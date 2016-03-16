@@ -15,17 +15,17 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
 
-	<endpoint name="Unsecure-CodeFirst-WS" doc:name="Unsecure Code-First WS endpoint"
+	<endpoint name="Endpoint-Unsecure-CodeFirst" doc:name="Unsecure Code-First endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${service.unsecure.codeFirst.path}"
 		encoding="UTF-8" />
 
-	<endpoint name="Unsecure-WSDLFirst-WS" doc:name="Unsecure WSDL-First WS endpoint"
+	<endpoint name="Endpoint-Unsecure-WSDLFirst" doc:name="Unsecure WSDL-First endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${service.unsecure.wsdlFirst.path}"
 		encoding="UTF-8" />
 
-	<endpoint name="Unsecure-Simple-WS" doc:name="Unsecure simple WS endpoint version"
+	<endpoint name="Endpoint-Unsecure-Simple" doc:name="Unsecure simple endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${service.unsecure.simple.path}"
 		encoding="UTF-8" />

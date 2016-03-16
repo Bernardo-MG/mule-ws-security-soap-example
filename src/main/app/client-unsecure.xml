@@ -30,7 +30,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<cxf:jaxws-client serviceClass="${service.unsecure.codeFirst.interface.class}"
 			doc:name="Code-First local client" operation="${wsdl.local.operation}" />
 		<outbound-endpoint doc:name="Unsecure Code-First WS"
-			ref="Unsecure-CodeFirst-WS" />
+			ref="Endpoint-Unsecure-CodeFirst" />
 	</sub-flow>
 
 	<flow name="HTTPClient-Unsecure-WSDLFirst-Flow">
@@ -49,7 +49,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			wsdlLocation="${wsdl.local.path}" port="${wsdl.local.port}" doc:name="WSDL-First local client"
 			operation="${wsdl.local.operation}" />
 		<outbound-endpoint doc:name="Unsecure WSDL-First WS"
-			ref="Unsecure-WSDLFirst-WS" />
+			ref="Endpoint-Unsecure-WSDLFirst" />
 	</sub-flow>
 
 	<flow name="HTTPClient-Unsecure-Simple-Flow">
@@ -67,7 +67,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<cxf:simple-client serviceClass="${service.unsecure.simple.class}"
 			doc:name="Simple local client" operation="${wsdl.local.operation}" />
 		<outbound-endpoint doc:name="Unsecure simple WS"
-			ref="Unsecure-Simple-WS" />
+			ref="Endpoint-Unsecure-Simple" />
 	</sub-flow>
 
 	<flow name="HTTPClient-Unsecure-Consumer-Flow">
@@ -83,7 +83,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
 	<sub-flow name="HTTPClient-Unsecure-Consumer-Endpoint">
 		<flow-ref name="Transform-ConsumerRequest-Vars" doc:name="Transform to a valid request" />
-		<ws:consumer config-ref="WS-Consumer-Unsecure-CodeFirst"
+		<ws:consumer config-ref="Consumer-Unsecure-CodeFirst"
 			operation="${wsdl.local.operation}" doc:name="Unsecure Code-First WS" />
 	</sub-flow>
 
