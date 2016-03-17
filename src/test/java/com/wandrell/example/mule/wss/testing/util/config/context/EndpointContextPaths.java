@@ -24,10 +24,21 @@
 
 package com.wandrell.example.mule.wss.testing.util.config.context;
 
+/**
+ * Configuration class for the test endpoint context files paths.
+ *
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
 public final class EndpointContextPaths {
 
+    /**
+     * Unsecure endpoint context files.
+     */
     public static final String ENDPOINT_UNSECURE      = "classpath:context/endpoint/test-endpoint-unsecure.xml";
 
+    /**
+     * Private constructor to avoid initialization.
+     */
     private EndpointContextPaths() {
         super();
     }

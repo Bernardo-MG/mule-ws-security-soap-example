@@ -42,7 +42,8 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  * Transformer to create an {@code XmlExampleEntity} from a XML representation
  * of a {@code ExampleEntity}.
  * <p>
- * This allows creating a bean from any XML node which contains an id and a
+ * There are two valid XML formats: one is the SOAP response, another is a XML structure containing the
+ * entity data, which is just an id and a
  * name.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
@@ -82,6 +83,7 @@ public final class EntityXmlToModelTransformer extends AbstractTransformer {
         root = doc.getRootElement();
         if (root.getChildren().size() == 1) {
             // The root is wrapped
+            // This is a SOAP response
             entityNode = (Element) root.getChildren().iterator().next();
         } else {
             entityNode = root;

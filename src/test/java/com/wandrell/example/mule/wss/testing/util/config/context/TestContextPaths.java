@@ -29,7 +29,7 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
  * <p>
  * These are generic small context configurations required in some tests.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
 public final class TestContextPaths {
 

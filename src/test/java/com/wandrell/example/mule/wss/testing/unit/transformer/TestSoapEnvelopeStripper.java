@@ -43,20 +43,46 @@ import com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
+/**
+ * Unit tests for {@link SoapEnvelopeStripper} checking that the transformer correctly parses SOAP messages.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>The transformer correctly strips SOAP envelopes.</li>
+ * <li>The transformer returns the XML message if it is not an envelope.</li>
+ * </ol>
+ *
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
 @TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
 public final class TestSoapEnvelopeStripper extends
         AbstractTestNGSpringContextTests {
 
+    /**
+     * Path to a valid SOAP payload.
+     */
     @Value("${soap.unsecure.request.payload.path}")
     private String payloadPath;
+    /**
+     * Path to a valid SOAP envelope.
+     */
     @Value("${soap.unsecure.request.envelope.path}")
     private String envelopePath;
 
+    /**
+     * Default constructor.
+     */
     public TestSoapEnvelopeStripper() {
         super();
     }
 
+    /**
+     * Tests that the transformer correctly strips SOAP envelopes.
+     * @throws TransformerException never, this is a required declaration
+     * @throws SAXException never, this is a required declaration
+     * @throws IOException never, this is a required declaration
+     */
     @Test
     public final void testTransform_Envelope() throws TransformerException,
             SAXException, IOException {
@@ -79,6 +105,12 @@ public final class TestSoapEnvelopeStripper extends
         XMLAssert.assertXMLEqual(result, payload);
     }
 
+    /**
+     * Tests that the transformer returns the XML message if it is not an envelope.
+     * @throws TransformerException never, this is a required declaration
+     * @throws SAXException never, this is a required declaration
+     * @throws IOException never, this is a required declaration
+     */
     @Test
     public final void testTransform_Payload() throws TransformerException,
             SAXException, IOException {

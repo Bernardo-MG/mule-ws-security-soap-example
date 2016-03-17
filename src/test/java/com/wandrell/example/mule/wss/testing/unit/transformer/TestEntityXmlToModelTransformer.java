@@ -38,10 +38,22 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.mule.wss.flow.transformer.EntityXmlToModelTransformer;
+import com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
+/**
+ * Unit tests for {@link EntityXmlToModelTransformer} checking that the transformer correctly parses XML messages.
+ * <p>
+ * Checks the following cases:
+ * <ol>
+ * <li>The transformer correctly parses a XML message from a code-first endpoint.</li>
+ * <li>The transformer correctly parses a XML message from a wsdl-first endpoint.</li>
+ * </ol>
+ *
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
 @TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
 public final class TestEntityXmlToModelTransformer extends
@@ -56,6 +68,11 @@ public final class TestEntityXmlToModelTransformer extends
         super();
     }
 
+    /**
+     * Tests that the transformer correctly parses a XML message from a code-first endpoint.
+     * @throws TransformerException never, this is a required declaration
+     * @throws IOException never, this is a required declaration
+     */
     @Test
     public final void testTransform_CodeFirst() throws TransformerException,
             IOException {
@@ -75,6 +92,11 @@ public final class TestEntityXmlToModelTransformer extends
         Assert.assertEquals(sample.getName(), "name_1");
     }
 
+    /**
+     * Tests that the transformer correctly parses a XML message from a WSDL-first endpoint.
+     * @throws TransformerException never, this is a required declaration
+     * @throws IOException never, this is a required declaration
+     */
     @Test
     public final void testTransform_WSDLFirst() throws TransformerException,
             IOException {
