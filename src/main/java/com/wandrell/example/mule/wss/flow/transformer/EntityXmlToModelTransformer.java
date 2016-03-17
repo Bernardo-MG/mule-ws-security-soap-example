@@ -29,56 +29,81 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.IOException;
 import java.io.StringReader;
 
+import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.mule.api.transformer.TransformerException;
 import org.mule.transformer.AbstractTransformer;
 
-import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
 
-public final class EntityResponseToExampleEntityTransformer extends
-        AbstractTransformer {
+/**
+ * Transformer to create an {@code XmlExampleEntity} from a XML representation
+ * of a {@code ExampleEntity}.
+ * <p>
+ * This allows creating a bean from any XML node which contains an id and a
+ * name.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
+public final class EntityXmlToModelTransformer extends AbstractTransformer {
 
-    public EntityResponseToExampleEntityTransformer() {
+    /**
+     * Constructs a {@code EntityXmlToModelTransformer}.
+     */
+    public EntityXmlToModelTransformer() {
         super();
     }
 
-    private final ExampleEntity buildEntity(final Object src)
+    /**
+     * Parses a {@code XmlExampleEntity} from the received XML.
+     * 
+     * @param xml the XML to parse
+     * @return a {@code XmlExampleEntity} parsed from the XML
+     * @throws JDOMException
+     *             if a JDOM error occurs during parsing
+     * @throws IOException
+     *             if a I/O error occurs during parsing
+     */
+    private final XmlExampleEntity parseEntity(final String xml)
             throws JDOMException, IOException {
-        final SAXBuilder saxBuilder;
-        final Element root;
-        final Element docRoot;
-        final XmlExampleEntity entity;
+        final SAXBuilder saxBuilder;   // SAX builder to parse the SOAP message
+        final Element entityNode;      // Node with the entity data
+        final Element root;            // Root of the parsed XML
+        final XmlExampleEntity entity; // Entity with the parsed data
+        final Document doc;            // Document created from the XML
 
+        // Parses the XML
         saxBuilder = new SAXBuilder();
-        org.jdom.Document doc = saxBuilder.build(new StringReader(src
-                .toString()));
+        doc = saxBuilder.build(new StringReader(xml));
 
-        docRoot = doc.getRootElement();
-        if (docRoot.getChildren().size() == 1) {
-            root = (Element) docRoot.getChildren().iterator().next();
+        // Acquires the root and the entity node
+        root = doc.getRootElement();
+        if (root.getChildren().size() == 1) {
+            // The root is wrapped
+            entityNode = (Element) root.getChildren().iterator().next();
         } else {
-            root = docRoot;
+            entityNode = root;
         }
 
+        // Creates the resulting entity
         entity = new XmlExampleEntity();
-        entity.setId(Integer.parseInt(root.getChild("id").getText()));
-        entity.setName(root.getChild("name").getText());
+        entity.setId(Integer.parseInt(entityNode.getChild("id").getText()));
+        entity.setName(entityNode.getChild("name").getText());
 
         return entity;
     }
 
     @Override
-    protected final ExampleEntity doTransform(final Object src,
+    protected final XmlExampleEntity doTransform(final Object src,
             final String enc) throws TransformerException {
-        final ExampleEntity sample;
+        final XmlExampleEntity sample; // Parsed entity
 
         checkNotNull(src, "Received a null pointer as source");
 
         try {
-            sample = buildEntity(src);
+            sample = parseEntity(src.toString());
         } catch (JDOMException | IOException e) {
             throw new TransformerException(this, e);
         }

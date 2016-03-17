@@ -28,15 +28,16 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
 
-import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
 
 /**
- * Web service endpoint for {@link ExampleEntity}.
+ * Interface for an endpoint supporting {@link XmlExampleEntity}.
  * <p>
- * It is as simple as it can be, having a single service which just receives a
- * {@link GetEntityRequest} asking for an entity with a specific id, and then
- * returns a {@code GetEntityResponse} which said id.
+ * It just receives an integer id, and then returns the data for the entity with
+ * that same id inside a JAXB annotated bean.
+ * <p>
+ * The implementations of this interface should take care of querying the actual
+ * entity by using the received id.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -44,6 +45,20 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
         targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
 public interface ExampleEntityEndpoint {
 
+    /**
+     * Returns a {@link XmlExampleEntity} containing the data for the id
+     * received.
+     * <p>
+     * The {@code id} parameter is taken from the Mule flow as a web parameter,
+     * and the returned bean is a JAXB annotated class.
+     * <p>
+     * Implementations are expected to take the data contained in the returned
+     * bean from the persistence layer.
+     * 
+     * @param id
+     *            id of the entity being queried
+     * @return the queried entity
+     */
     public XmlExampleEntity getEntity(@WebParam(name = "id") @XmlElement(
             required = true, nillable = false) final Integer id);
 

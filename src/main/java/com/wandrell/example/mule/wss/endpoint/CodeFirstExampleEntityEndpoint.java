@@ -25,8 +25,10 @@
 package com.wandrell.example.mule.wss.endpoint;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import javax.inject.Singleton;
 import javax.jws.WebService;
 
@@ -37,21 +39,50 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
 import com.wandrell.example.mule.wss.service.data.ExampleEntityService;
 
+/**
+ * Implementation of {@link ExampleEntityEndpoint} for a Mule code-first
+ * endpoint. This kind of endpoint will be built from existing Java classes
+ * annotated with Java WS annotations.
+ * <p>
+ * This includes even the WSDL file defining said endpoint, which in this case
+ * will be generated from the {@code ExampleEntityEndpoint} interface.
+ * <p>
+ * This is very similar to the {@link WSDLFirstExampleEntityEndpoint}, just that
+ * both the classes and the interface have been created specifically for it.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
+ * @see WSDLFirstExampleEntityEndpoint
+ */
 @Service
 @Singleton
 @WebService(
         endpointInterface = "com.wandrell.example.mule.wss.endpoint.ExampleEntityEndpoint",
         serviceName = ExampleEntityEndpointConstants.SERVICE,
         targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
-public final class DefaultExampleEntityEndpoint implements
+public final class CodeFirstExampleEntityEndpoint implements
         ExampleEntityEndpoint {
 
+    /**
+     * The logger used for logging the entity endpoint.
+     */
     private static final Logger        LOGGER = LoggerFactory
-            .getLogger(DefaultExampleEntityEndpoint.class);
+                                                      .getLogger(CodeFirstExampleEntityEndpoint.class);
+    /**
+     * Service for accessing the {@code ExampleEntity} instances handled by the
+     * web service.
+     */
     private final ExampleEntityService entityService;
 
+    /**
+     * Constructs a {@code CodeFirstExampleEntityEndpoint}.
+     * <p>
+     * The constructor is meant to make use of Spring's IOC system.
+     *
+     * @param service
+     *            the service for the {@code ExampleEntity} instances
+     */
     @Autowired
-    public DefaultExampleEntityEndpoint(final ExampleEntityService service) {
+    public CodeFirstExampleEntityEndpoint(final ExampleEntityService service) {
         super();
 
         entityService = checkNotNull(service,
@@ -60,16 +91,16 @@ public final class DefaultExampleEntityEndpoint implements
 
     @Override
     public XmlExampleEntity getEntity(final Integer id) {
-        final ExampleEntity entity;
-        final XmlExampleEntity response;
+        final XmlExampleEntity response; // XML response with the entity data
+        final ExampleEntity entity;      // Found entity
 
         checkNotNull(id, "Received a null pointer as id");
 
-        LOGGER.debug(
-                String.format("Received request for id %d", id));
-        
+        LOGGER.debug(String.format("Received request for id %d", id));
+
+        // Acquires the entity
         entity = getExampleEntityService().findById(id);
-        
+
         response = new XmlExampleEntity();
         if (entity == null) {
             LOGGER.debug("Entity not found");
@@ -79,14 +110,19 @@ public final class DefaultExampleEntityEndpoint implements
             response.setId(entity.getId());
             response.setName(entity.getName());
 
-            LOGGER.debug(
-                    String.format("Found entity with id %1$d and name %2$s",
-                            entity.getId(), entity.getName()));
+            LOGGER.debug(String.format(
+                    "Found entity with id %1$d and name %2$s", entity.getId(),
+                    entity.getName()));
         }
 
         return response;
     }
 
+    /**
+     * Returns the service used to handle the {@code ExampleEntity} instances.
+     *
+     * @return the service used to handle the {@code ExampleEntity} instances
+     */
     private final ExampleEntityService getExampleEntityService() {
         return entityService;
     }

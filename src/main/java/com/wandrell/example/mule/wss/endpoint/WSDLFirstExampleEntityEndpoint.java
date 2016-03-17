@@ -38,14 +38,40 @@ import com.wandrell.example.mule.wss.generated.GetEntityResponse;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.service.data.ExampleEntityService;
 
+/**
+ * Implementation of {@link EntityEndpoint} for a Mule WSDL-first
+ * endpoint. This kind of endpoint will be built using Java classes
+ * generated from a WSDL file.
+ * <p>
+ * This is very similar to the {@link CodeFirstExampleEntityEndpoint}, just that
+ * both the classes and the interface have been generated from a WSDL file.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
+ * @see CodeFirstExampleEntityEndpoint
+ */
 @Service
 @Singleton
 public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
 
+    /**
+     * The logger used for logging the entity endpoint.
+     */
     private static final Logger        LOGGER = LoggerFactory
             .getLogger(WSDLFirstExampleEntityEndpoint.class);
+    /**
+     * Service for accessing the {@code ExampleEntity} instances handled by the
+     * web service.
+     */
     private final ExampleEntityService entityService;
 
+    /**
+     * Constructs a {@code WSDLFirstExampleEntityEndpoint}.
+     * <p>
+     * The constructor is meant to make use of Spring's IOC system.
+     *
+     * @param service
+     *            the service for the {@code ExampleEntity} instances
+     */
     @Autowired
     public WSDLFirstExampleEntityEndpoint(final ExampleEntityService service) {
         super();
@@ -56,14 +82,15 @@ public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
 
     @Override
     public final GetEntityResponse.Return getEntity(final int id) {
-        final ExampleEntity entity;
-        final GetEntityResponse.Return response;
+        final GetEntityResponse.Return response; // XML response with the entity data
+        final ExampleEntity entity;              // Found entity
 
         checkNotNull(id, "Received a null pointer as id");
 
         LOGGER.debug(
                 String.format("Received request for id %d", id));
 
+        // Acquires the entity
         entity = getExampleEntityService().findById(id);
 
         response = new GetEntityResponse.Return();
@@ -83,6 +110,11 @@ public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
         return response;
     }
 
+    /**
+     * Returns the service used to handle the {@code ExampleEntity} instances.
+     *
+     * @return the service used to handle the {@code ExampleEntity} instances
+     */
     private final ExampleEntityService getExampleEntityService() {
         return entityService;
     }

@@ -41,8 +41,6 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
 
 /**
  * JPA annotated implementation of {@link ExampleEntity}.
- * <p>
- * For the JAXB annotated model check the generated classes folder.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */

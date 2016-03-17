@@ -39,13 +39,13 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
-import com.wandrell.example.mule.wss.flow.transformer.ConsumerSOAPRequestTransformer;
+import com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
 @TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
-public final class TestConsumerSampleRequestTransformer extends
+public final class TestSoapEnvelopeStripper extends
         AbstractTestNGSpringContextTests {
 
     @Value("${soap.unsecure.request.payload.path}")
@@ -53,14 +53,14 @@ public final class TestConsumerSampleRequestTransformer extends
     @Value("${soap.unsecure.request.envelope.path}")
     private String envelopePath;
 
-    public TestConsumerSampleRequestTransformer() {
+    public TestSoapEnvelopeStripper() {
         super();
     }
 
     @Test
     public final void testTransform_Envelope() throws TransformerException,
             SAXException, IOException {
-        final String body;
+        final String payload;
         final Transformer transformer;
         final String sourceEnvelope;
         final String result;
@@ -71,18 +71,18 @@ public final class TestConsumerSampleRequestTransformer extends
         sourceEnvelope = IOUtils.toString(
                 new ClassPathResource(envelopePath).getInputStream(), "UTF-8");
 
-        transformer = new ConsumerSOAPRequestTransformer();
+        transformer = new SoapEnvelopeStripper();
 
-        body = (String) transformer.transform(sourceEnvelope, "UTF-8");
+        payload = (String) transformer.transform(sourceEnvelope, "UTF-8");
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(result, body);
+        XMLAssert.assertXMLEqual(result, payload);
     }
 
     @Test
     public final void testTransform_Payload() throws TransformerException,
             SAXException, IOException {
-        final String body;
+        final String payload;
         final Transformer transformer;
         final String result;
         final String sourcePayload;
@@ -91,12 +91,12 @@ public final class TestConsumerSampleRequestTransformer extends
                 new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
         result = sourcePayload;
 
-        transformer = new ConsumerSOAPRequestTransformer();
+        transformer = new SoapEnvelopeStripper();
 
-        body = (String) transformer.transform(sourcePayload, "UTF-8");
+        payload = (String) transformer.transform(sourcePayload, "UTF-8");
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(result, body);
+        XMLAssert.assertXMLEqual(result, payload);
     }
 
 }

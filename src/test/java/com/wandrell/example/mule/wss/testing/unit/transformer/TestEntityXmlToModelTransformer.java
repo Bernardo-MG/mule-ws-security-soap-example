@@ -37,14 +37,14 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.wandrell.example.mule.wss.flow.transformer.EntityResponseToExampleEntityTransformer;
+import com.wandrell.example.mule.wss.flow.transformer.EntityXmlToModelTransformer;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
 @TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
-public final class TestEntityResponseToExampleEntityTransformer extends
+public final class TestEntityXmlToModelTransformer extends
         AbstractTestNGSpringContextTests {
 
     @Value("${soap.unsecure.response.codeFirst.payload.path}")
@@ -52,7 +52,7 @@ public final class TestEntityResponseToExampleEntityTransformer extends
     @Value("${soap.unsecure.response.wsdlFirst.payload.path}")
     private String wsdlFirstPath;
 
-    public TestEntityResponseToExampleEntityTransformer() {
+    public TestEntityXmlToModelTransformer() {
         super();
     }
 
@@ -66,7 +66,7 @@ public final class TestEntityResponseToExampleEntityTransformer extends
         sourceCodeFirst = IOUtils.toString(
                 new ClassPathResource(codeFirstPath).getInputStream(), "UTF-8");
 
-        transformer = new EntityResponseToExampleEntityTransformer();
+        transformer = new EntityXmlToModelTransformer();
 
         sample = (ExampleEntity) transformer
                 .transform(sourceCodeFirst, "UTF-8");
@@ -85,7 +85,7 @@ public final class TestEntityResponseToExampleEntityTransformer extends
         sourceWSDLFirst = IOUtils.toString(
                 new ClassPathResource(wsdlFirstPath).getInputStream(), "UTF-8");
 
-        transformer = new EntityResponseToExampleEntityTransformer();
+        transformer = new EntityXmlToModelTransformer();
 
         sample = (ExampleEntity) transformer
                 .transform(sourceWSDLFirst, "UTF-8");

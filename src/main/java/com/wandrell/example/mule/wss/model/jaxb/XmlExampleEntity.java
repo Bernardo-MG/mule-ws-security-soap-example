@@ -39,6 +39,13 @@ import javax.xml.bind.annotation.XmlType;
 import com.google.common.base.MoreObjects;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 
+/**
+ * JAXB annotated implementation of {@link ExampleEntity}.
+ * <p>
+ * Do not mistake this for the JAXB model generated from the WSDL.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "id", "name" })
 @XmlRootElement(name = "entity")
