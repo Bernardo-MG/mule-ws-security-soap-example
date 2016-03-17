@@ -36,7 +36,7 @@ public final class SOAPPropertiesPaths {
     /**
      * Properties file with the test SOAP messages paths.
      */
-    public static final String TEST_SOAP      = "classpath:config/test-soap.properties";
+    public static final String TEST_SOAP = "classpath:config/test-soap.properties";
 
     /**
      * Private constructor to avoid initialization.

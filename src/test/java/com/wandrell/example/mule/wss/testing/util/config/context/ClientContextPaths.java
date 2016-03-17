@@ -34,7 +34,7 @@ public final class ClientContextPaths {
     /**
      * Unsecure endpoint client context files.
      */
-    public static final String CLIENT_UNSECURE        = "classpath:context/client/test-client-unsecure.xml";
+    public static final String CLIENT_UNSECURE = "classpath:context/client/test-client-unsecure.xml";
 
     /**
      * Private constructor to avoid initialization.

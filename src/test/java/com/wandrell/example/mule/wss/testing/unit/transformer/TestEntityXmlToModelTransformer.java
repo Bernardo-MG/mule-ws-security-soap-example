@@ -38,18 +38,20 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.wandrell.example.mule.wss.flow.transformer.EntityXmlToModelTransformer;
-import com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
 /**
- * Unit tests for {@link EntityXmlToModelTransformer} checking that the transformer correctly parses XML messages.
+ * Unit tests for {@link EntityXmlToModelTransformer} checking that the
+ * transformer correctly parses XML messages.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>The transformer correctly parses a XML message from a code-first endpoint.</li>
- * <li>The transformer correctly parses a XML message from a wsdl-first endpoint.</li>
+ * <li>The transformer correctly parses a XML message from a code-first
+ * endpoint.</li>
+ * <li>The transformer correctly parses a XML message from a wsdl-first
+ * endpoint.</li>
  * </ol>
  *
  * @author Bernardo Mart&iacute;nez Garrido
@@ -69,9 +71,13 @@ public final class TestEntityXmlToModelTransformer extends
     }
 
     /**
-     * Tests that the transformer correctly parses a XML message from a code-first endpoint.
-     * @throws TransformerException never, this is a required declaration
-     * @throws IOException never, this is a required declaration
+     * Tests that the transformer correctly parses a XML message from a
+     * code-first endpoint.
+     * 
+     * @throws TransformerException
+     *             never, this is a required declaration
+     * @throws IOException
+     *             never, this is a required declaration
      */
     @Test
     public final void testTransform_CodeFirst() throws TransformerException,
@@ -93,9 +99,13 @@ public final class TestEntityXmlToModelTransformer extends
     }
 
     /**
-     * Tests that the transformer correctly parses a XML message from a WSDL-first endpoint.
-     * @throws TransformerException never, this is a required declaration
-     * @throws IOException never, this is a required declaration
+     * Tests that the transformer correctly parses a XML message from a
+     * WSDL-first endpoint.
+     * 
+     * @throws TransformerException
+     *             never, this is a required declaration
+     * @throws IOException
+     *             never, this is a required declaration
      */
     @Test
     public final void testTransform_WSDLFirst() throws TransformerException,

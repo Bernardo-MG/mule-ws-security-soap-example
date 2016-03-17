@@ -42,7 +42,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.wandrell.example.mule.wss.flow.transformer.EntityXmlToModelTransformer;
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
@@ -65,10 +64,14 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
     private String   wsdlFirstFlow;
     @Value("${soap.unsecure.request.envelope.path}")
     private String   reqEnvelopePath;
+    @Value("${soap.unsecure.response.simple.path}")
+    private String   respSimplePath;
     @Value("${soap.unsecure.response.envelope.path}")
     private String   respEnvelopePath;
     @Value("${soap.unsecure.response.payload.path}")
     private String   respPayloadPath;
+    @Value("${soap.unsecure.request.payload.path}")
+    private String   reqPayloadPath;
 
     public ITUnsecureEndpointFlow() throws IOException {
         super();
@@ -109,10 +112,8 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         final String soapRequest;
         final String soapResponsePayload;
 
-        soapResponsePayload = IOUtils.toString(
-                new ClassPathResource(
-                        "soap/response/response-unsecure-payload.xml")
-                        .getInputStream(), "UTF-8");
+        soapResponsePayload = IOUtils.toString(new ClassPathResource(
+                respPayloadPath).getInputStream(), "UTF-8");
 
         soapRequest = IOUtils.toString(
                 new ClassPathResource(reqEnvelopePath).getInputStream(),
@@ -133,14 +134,11 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         final String soapRequestPayload;
         final String soapResponsePayload;
 
-        soapResponsePayload = IOUtils.toString(
-                new ClassPathResource(
-                        "soap/response/response-unsecure-payload.xml")
-                        .getInputStream(), "UTF-8");
+        soapResponsePayload = IOUtils.toString(new ClassPathResource(
+                respPayloadPath).getInputStream(), "UTF-8");
 
         soapRequestPayload = IOUtils.toString(new ClassPathResource(
-                "soap/request/request-unsecure-payload.xml").getInputStream(),
-                "UTF-8");
+                reqPayloadPath).getInputStream(), "UTF-8");
 
         event = runFlow(consumerFlow, soapRequestPayload);
 
@@ -185,8 +183,7 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
                 "UTF-8");
 
         soapResponseSimple = IOUtils.toString(new ClassPathResource(
-                "soap/response/response-unsecure-simple.xml").getInputStream(),
-                "UTF-8");
+                respSimplePath).getInputStream(), "UTF-8");
 
         event = runFlow(simpleFlow, soapRequest);
 

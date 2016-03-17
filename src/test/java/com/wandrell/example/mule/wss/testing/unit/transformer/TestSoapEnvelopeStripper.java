@@ -44,7 +44,8 @@ import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPath
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
 /**
- * Unit tests for {@link SoapEnvelopeStripper} checking that the transformer correctly parses SOAP messages.
+ * Unit tests for {@link SoapEnvelopeStripper} checking that the transformer
+ * correctly parses SOAP messages.
  * <p>
  * Checks the following cases:
  * <ol>
@@ -79,9 +80,13 @@ public final class TestSoapEnvelopeStripper extends
 
     /**
      * Tests that the transformer correctly strips SOAP envelopes.
-     * @throws TransformerException never, this is a required declaration
-     * @throws SAXException never, this is a required declaration
-     * @throws IOException never, this is a required declaration
+     * 
+     * @throws TransformerException
+     *             never, this is a required declaration
+     * @throws SAXException
+     *             never, this is a required declaration
+     * @throws IOException
+     *             never, this is a required declaration
      */
     @Test
     public final void testTransform_Envelope() throws TransformerException,
@@ -106,10 +111,15 @@ public final class TestSoapEnvelopeStripper extends
     }
 
     /**
-     * Tests that the transformer returns the XML message if it is not an envelope.
-     * @throws TransformerException never, this is a required declaration
-     * @throws SAXException never, this is a required declaration
-     * @throws IOException never, this is a required declaration
+     * Tests that the transformer returns the XML message if it is not an
+     * envelope.
+     * 
+     * @throws TransformerException
+     *             never, this is a required declaration
+     * @throws SAXException
+     *             never, this is a required declaration
+     * @throws IOException
+     *             never, this is a required declaration
      */
     @Test
     public final void testTransform_Payload() throws TransformerException,

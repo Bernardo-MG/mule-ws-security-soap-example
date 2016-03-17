@@ -34,7 +34,7 @@ public final class EndpointContextPaths {
     /**
      * Unsecure endpoint context files.
      */
-    public static final String ENDPOINT_UNSECURE      = "classpath:context/endpoint/test-endpoint-unsecure.xml";
+    public static final String ENDPOINT_UNSECURE = "classpath:context/endpoint/test-endpoint-unsecure.xml";
 
     /**
      * Private constructor to avoid initialization.
