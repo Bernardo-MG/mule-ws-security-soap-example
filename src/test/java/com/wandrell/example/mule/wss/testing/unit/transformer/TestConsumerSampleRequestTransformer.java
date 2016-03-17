@@ -17,9 +17,11 @@ import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
 import com.wandrell.example.mule.wss.flow.transformer.ConsumerSOAPRequestTransformer;
+import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
-@ContextConfiguration(locations = { "classpath:context/test-default.xml" })
-@TestPropertySource({ "classpath:config/test-soap.properties" })
+@ContextConfiguration(locations = { TestContextPaths.DEFAULT })
+@TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
 public final class TestConsumerSampleRequestTransformer extends
         AbstractTestNGSpringContextTests {
 

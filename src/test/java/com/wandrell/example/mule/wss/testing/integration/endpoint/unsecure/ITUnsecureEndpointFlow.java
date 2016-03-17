@@ -19,11 +19,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.wandrell.example.mule.wss.testing.util.config.TestContextConfig;
+import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(TestContextConfig.ENDPOINT_UNSECURE)
-@TestPropertySource({ "classpath:config/test-soap.properties" })
+@ContextConfiguration(EndpointContextPaths.ENDPOINT_UNSECURE)
+@TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
 public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
 
     @Value("${endpoint.unsecure.codeFirst.flow}")

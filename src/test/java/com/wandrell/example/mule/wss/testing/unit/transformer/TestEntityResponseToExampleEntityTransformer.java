@@ -16,9 +16,11 @@ import org.testng.annotations.Test;
 
 import com.wandrell.example.mule.wss.flow.transformer.EntityResponseToExampleEntityTransformer;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
+import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
-@ContextConfiguration(locations = { "classpath:context/test-default.xml" })
-@TestPropertySource({ "classpath:config/test-soap.properties" })
+@ContextConfiguration(locations = { TestContextPaths.DEFAULT })
+@TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
 public final class TestEntityResponseToExampleEntityTransformer extends
         AbstractTestNGSpringContextTests {
 
