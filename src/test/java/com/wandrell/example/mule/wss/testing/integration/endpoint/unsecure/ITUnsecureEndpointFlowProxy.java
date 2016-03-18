@@ -46,15 +46,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
+/**
+ * Integration test for the unsecure endpoint flow.
+ * 
+ * @author bernardo.martinez
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(EndpointContextPaths.ENDPOINT_UNSECURE)
 @TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
-public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
+public final class ITUnsecureEndpointFlowProxy extends FunctionalTestCase {
 
-    @Value("${endpoint.unsecure.codeFirst.flow}")
-    private String   codeFirstFlow;
-    @Value("${endpoint.unsecure.consumer.flow}")
-    private String   consumerFlow;
     @Resource(name = "configFiles")
     private String[] files;
     @Value("${endpoint.unsecure.proxy.flow}")
@@ -62,24 +63,11 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
     private String   reqEnvelope;
     @Value("${soap.unsecure.request.envelope.path}")
     private String   reqEnvelopePath;
-    private String   reqPayload;
-    @Value("${soap.unsecure.request.payload.path}")
-    private String   reqPayloadPath;
     private String   respEnvelope;
     @Value("${soap.unsecure.response.envelope.path}")
     private String   respEnvelopePath;
-    private String   respEnvelopeSimple;
-    private String   respPayload;
-    @Value("${soap.unsecure.response.payload.path}")
-    private String   respPayloadPath;
-    @Value("${soap.unsecure.response.simple.path}")
-    private String   respSimplePath;
-    @Value("${endpoint.unsecure.simple.flow}")
-    private String   simpleFlow;
-    @Value("${endpoint.unsecure.wsdlFirst.flow}")
-    private String   wsdlFirstFlow;
 
-    public ITUnsecureEndpointFlow() {
+    public ITUnsecureEndpointFlowProxy() {
         super();
     }
 
@@ -93,87 +81,14 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
         respEnvelope = IOUtils.toString(
                 new ClassPathResource(respEnvelopePath).getInputStream(),
                 encoding);
-        respEnvelopeSimple = IOUtils.toString(new ClassPathResource(
-                respSimplePath).getInputStream(), encoding);
-        respPayload = IOUtils.toString(
-                new ClassPathResource(respPayloadPath).getInputStream(),
-                encoding);
-        reqPayload = IOUtils.toString(
-                new ClassPathResource(reqPayloadPath).getInputStream(),
-                encoding);
     }
-
-    @Test
-    public final void testEndpoint_CodeFirst() throws Exception {
-        final MuleEvent event;
-        final String result;
-
-        event = runFlow(codeFirstFlow, reqEnvelope);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respEnvelope, result);
-    }
-
-    @Test
-    public final void testEndpoint_Consumer_Full() throws Exception {
-        final MuleEvent event;
-        final String result;
-
-        event = runFlow(consumerFlow, reqEnvelope);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respPayload, result);
-    }
-
-    @Test
-    public final void testEndpoint_Consumer_Short() throws Exception {
-        final MuleEvent event;
-        final String result;
-
-        event = runFlow(consumerFlow, reqPayload);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respPayload, result);
-    }
-
+    
     @Test
     public final void testEndpoint_Proxy() throws Exception {
         final MuleEvent event;
         final String result;
 
         event = runFlow(proxyFlow, reqEnvelope);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respEnvelope, result);
-    }
-
-    @Test
-    public final void testEndpoint_Simple() throws Exception {
-        final MuleEvent event;
-        final String result;
-
-        event = runFlow(simpleFlow, reqEnvelope);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respEnvelopeSimple, result);
-    }
-
-    @Test
-    public final void testEndpoint_WSDLFirst() throws Exception {
-        final MuleEvent event;
-        final String result;
-
-        event = runFlow(wsdlFirstFlow, reqEnvelope);
 
         result = event.getMessageAsString();
 
