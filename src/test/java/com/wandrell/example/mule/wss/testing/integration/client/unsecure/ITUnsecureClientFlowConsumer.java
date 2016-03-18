@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.endpoint.unsecure;
+package com.wandrell.example.mule.wss.testing.integration.client.unsecure;
 
 import java.io.IOException;
 
@@ -43,31 +43,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
-/**
- * Integration test for the unsecure endpoint flow.
- * 
- * @author bernardo.martinez
- */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(EndpointContextPaths.ENDPOINT_UNSECURE)
+@ContextConfiguration(ClientContextPaths.CLIENT_UNSECURE)
 @TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
-public final class ITUnsecureEndpointFlowProxy extends FunctionalTestCase {
+public final class ITUnsecureClientFlowConsumer extends FunctionalTestCase {
 
+    @Value("${client.unsecure.consumer.flow}")
+    private String   consumerFlow;
     @Resource(name = "configFiles")
     private String[] files;
-    @Value("${endpoint.unsecure.proxy.flow}")
-    private String   proxyFlow;
-    private String   reqEnvelope;
-    @Value("${soap.unsecure.request.envelope.path}")
-    private String   reqEnvelopePath;
-    private String   respEnvelope;
-    @Value("${soap.unsecure.response.envelope.path}")
-    private String   respEnvelopePath;
+    private String   respPayload;
+    @Value("${soap.unsecure.response.jaxb.payload.path}")
+    private String   respPayloadPath;
 
-    public ITUnsecureEndpointFlowProxy() {
+    public ITUnsecureClientFlowConsumer() {
         super();
     }
 
@@ -75,25 +67,25 @@ public final class ITUnsecureEndpointFlowProxy extends FunctionalTestCase {
     public final void setUpSoapMessages() throws IOException {
         final String encoding = "UTF-8";
 
-        reqEnvelope = IOUtils.toString(
-                new ClassPathResource(reqEnvelopePath).getInputStream(),
-                encoding);
-        respEnvelope = IOUtils.toString(
-                new ClassPathResource(respEnvelopePath).getInputStream(),
+        respPayload = IOUtils.toString(
+                new ClassPathResource(respPayloadPath).getInputStream(),
                 encoding);
     }
 
     @Test
-    public final void testEndpoint() throws Exception {
+    public void testClient() throws Exception {
+        final Integer[] payload;
         final MuleEvent event;
         final String result;
 
-        event = runFlow(proxyFlow, reqEnvelope);
+        payload = new Integer[] { new Integer(1) };
+
+        event = runFlow(consumerFlow, payload);
 
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respEnvelope, result);
+        XMLAssert.assertXMLEqual(respPayload, result);
     }
 
     @Override

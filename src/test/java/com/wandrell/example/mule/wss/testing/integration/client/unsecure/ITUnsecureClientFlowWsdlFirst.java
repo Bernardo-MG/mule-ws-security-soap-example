@@ -49,23 +49,17 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPProperti
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(ClientContextPaths.CLIENT_UNSECURE)
 @TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
-public final class ITUnsecureClientFlow extends FunctionalTestCase {
+public final class ITUnsecureClientFlowWsdlFirst extends FunctionalTestCase {
 
-    @Value("${client.unsecure.codeFirst.flow}")
-    private String   codeFirstFlow;
-    @Value("${client.unsecure.consumer.flow}")
-    private String   consumerFlow;
     @Resource(name = "configFiles")
     private String[] files;
     private String   respPayload;
     @Value("${soap.unsecure.response.jaxb.payload.path}")
     private String   respPayloadPath;
-    @Value("${client.unsecure.simple.flow}")
-    private String   simpleFlow;
     @Value("${client.unsecure.wsdlFirst.flow}")
     private String   wsdlFirstFlow;
 
-    public ITUnsecureClientFlow() {
+    public ITUnsecureClientFlowWsdlFirst() {
         super();
     }
 
@@ -79,55 +73,7 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
     }
 
     @Test
-    public void testClient_CodeFirst() throws Exception {
-        final Integer[] payload;
-        final MuleEvent event;
-        final String result;
-
-        payload = new Integer[] { new Integer(1) };
-
-        event = runFlow(codeFirstFlow, payload);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respPayload, result);
-    }
-
-    @Test
-    public void testClient_Consumer() throws Exception {
-        final Integer[] payload;
-        final MuleEvent event;
-        final String result;
-
-        payload = new Integer[] { new Integer(1) };
-
-        event = runFlow(consumerFlow, payload);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respPayload, result);
-    }
-
-    @Test
-    public void testClient_Simple() throws Exception {
-        final Integer[] payload;
-        final MuleEvent event;
-        final String result;
-
-        payload = new Integer[] { new Integer(1) };
-
-        event = runFlow(simpleFlow, payload);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respPayload, result);
-    }
-
-    @Test
-    public void testClient_WSDLFirst() throws Exception {
+    public void testClient() throws Exception {
         final Integer[] payload;
         final MuleEvent event;
         final String result;

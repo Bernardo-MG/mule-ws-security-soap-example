@@ -90,7 +90,7 @@ public final class ITUnsecureEndpointFlowConsumer extends FunctionalTestCase {
     }
 
     @Test
-    public final void testEndpoint_Consumer_Envelope() throws Exception {
+    public final void testEndpoint_Envelope() throws Exception {
         final MuleEvent event;
         final String result;
 
@@ -103,7 +103,7 @@ public final class ITUnsecureEndpointFlowConsumer extends FunctionalTestCase {
     }
 
     @Test
-    public final void testEndpoint_Consumer_Payload() throws Exception {
+    public final void testEndpoint_Payload() throws Exception {
         final MuleEvent event;
         final String result;
 

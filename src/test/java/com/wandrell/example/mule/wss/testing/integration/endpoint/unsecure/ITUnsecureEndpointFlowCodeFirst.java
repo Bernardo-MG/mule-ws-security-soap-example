@@ -84,7 +84,7 @@ public final class ITUnsecureEndpointFlowCodeFirst extends FunctionalTestCase {
     }
 
     @Test
-    public final void testEndpoint_CodeFirst() throws Exception {
+    public final void testEndpoint() throws Exception {
         final MuleEvent event;
         final String result;
 

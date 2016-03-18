@@ -82,9 +82,9 @@ public final class ITUnsecureEndpointFlowWsdlFirst extends FunctionalTestCase {
                 new ClassPathResource(respEnvelopePath).getInputStream(),
                 encoding);
     }
-    
+
     @Test
-    public final void testEndpoint_WSDLFirst() throws Exception {
+    public final void testEndpoint() throws Exception {
         final MuleEvent event;
         final String result;
 

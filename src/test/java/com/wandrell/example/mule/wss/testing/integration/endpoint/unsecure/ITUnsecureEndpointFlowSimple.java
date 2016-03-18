@@ -83,7 +83,7 @@ public final class ITUnsecureEndpointFlowSimple extends FunctionalTestCase {
     }
 
     @Test
-    public final void testEndpoint_Simple() throws Exception {
+    public final void testEndpoint() throws Exception {
         final MuleEvent event;
         final String result;
 
@@ -94,7 +94,6 @@ public final class ITUnsecureEndpointFlowSimple extends FunctionalTestCase {
         XMLUnit.setIgnoreWhitespace(true);
         XMLAssert.assertXMLEqual(respEnvelopeSimple, result);
     }
-
 
     @Override
     protected String getConfigResources() {
