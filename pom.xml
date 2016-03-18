@@ -309,7 +309,6 @@
 		<plugin.source.version>2.4</plugin.source.version>
 		<plugin.surefire.version>2.18.1</plugin.surefire.version>
 		<plugin.taglist.version>2.4</plugin.taglist.version>
-		<plugin.war.version>2.6</plugin.war.version>
 	</properties>
 
 	<!-- ********************************************** -->
@@ -1425,27 +1424,6 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jdepend-maven-plugin</artifactId>
 				<version>${plugin.jdepend.version}</version>
-			</plugin>
-			<plugin>
-				<!-- WAR -->
-				<!-- Generates the war file -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${plugin.war.version}</version>
-				<configuration>
-					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-					<webResources>
-						<resource>
-							<!-- Persistence access data -->
-							<filtering>true</filtering>
-							<directory>${project.basedir}/src/main/resources/context</directory>
-							<targetPath>WEB-INF/classes/context</targetPath>
-							<includes>
-								<include>persistence-access.properties</include>
-							</includes>
-						</resource>
-					</webResources>
-				</configuration>
 			</plugin>
 		</plugins>
 	</reporting>
