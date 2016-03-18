@@ -61,15 +61,15 @@ public final class TestSoapEnvelopeStripper extends
         AbstractTestNGSpringContextTests {
 
     /**
-     * Path to a valid SOAP payload.
-     */
-    @Value("${soap.unsecure.request.payload.path}")
-    private String payloadPath;
-    /**
      * Path to a valid SOAP envelope.
      */
     @Value("${soap.unsecure.request.envelope.path}")
     private String envelopePath;
+    /**
+     * Path to a valid SOAP payload.
+     */
+    @Value("${soap.unsecure.request.payload.path}")
+    private String payloadPath;
 
     /**
      * Default constructor.

@@ -32,6 +32,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mule.api.MuleEvent;
@@ -58,162 +59,131 @@ public final class ITUnsecureEndpointFlow extends FunctionalTestCase {
     private String[] files;
     @Value("${endpoint.unsecure.proxy.flow}")
     private String   proxyFlow;
+    private String   reqEnvelope;
+    @Value("${soap.unsecure.request.envelope.path}")
+    private String   reqEnvelopePath;
+    private String   reqPayload;
+    @Value("${soap.unsecure.request.payload.path}")
+    private String   reqPayloadPath;
+    private String   respEnvelope;
+    @Value("${soap.unsecure.response.envelope.path}")
+    private String   respEnvelopePath;
+    private String   respEnvelopeSimple;
+    private String   respPayload;
+    @Value("${soap.unsecure.response.payload.path}")
+    private String   respPayloadPath;
+    @Value("${soap.unsecure.response.simple.path}")
+    private String   respSimplePath;
     @Value("${endpoint.unsecure.simple.flow}")
     private String   simpleFlow;
     @Value("${endpoint.unsecure.wsdlFirst.flow}")
     private String   wsdlFirstFlow;
-    @Value("${soap.unsecure.request.envelope.path}")
-    private String   reqEnvelopePath;
-    @Value("${soap.unsecure.response.simple.path}")
-    private String   respSimplePath;
-    @Value("${soap.unsecure.response.envelope.path}")
-    private String   respEnvelopePath;
-    @Value("${soap.unsecure.response.payload.path}")
-    private String   respPayloadPath;
-    @Value("${soap.unsecure.request.payload.path}")
-    private String   reqPayloadPath;
 
-    public ITUnsecureEndpointFlow() throws IOException {
+    public ITUnsecureEndpointFlow() {
         super();
     }
 
-    @Override
-    protected String getConfigResources() {
-        return StringUtils.join(files, ", ");
+    @Before
+    public final void setUpSoapMessages() throws IOException {
+        final String encoding = "UTF-8";
+
+        reqEnvelope = IOUtils.toString(
+                new ClassPathResource(reqEnvelopePath).getInputStream(),
+                encoding);
+        respEnvelope = IOUtils.toString(
+                new ClassPathResource(respEnvelopePath).getInputStream(),
+                encoding);
+        respEnvelopeSimple = IOUtils.toString(new ClassPathResource(
+                respSimplePath).getInputStream(), encoding);
+        respPayload = IOUtils.toString(
+                new ClassPathResource(respPayloadPath).getInputStream(),
+                encoding);
+        reqPayload = IOUtils.toString(
+                new ClassPathResource(reqPayloadPath).getInputStream(),
+                encoding);
     }
 
     @Test
     public final void testEndpoint_CodeFirst() throws Exception {
         final MuleEvent event;
         final String result;
-        final String soapRequest;
-        final String soapResponse;
 
-        soapResponse = IOUtils.toString(
-                new ClassPathResource(respEnvelopePath).getInputStream(),
-                "UTF-8");
-
-        soapRequest = IOUtils.toString(
-                new ClassPathResource(reqEnvelopePath).getInputStream(),
-                "UTF-8");
-
-        event = runFlow(codeFirstFlow, soapRequest);
+        event = runFlow(codeFirstFlow, reqEnvelope);
 
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(soapResponse, result);
+        XMLAssert.assertXMLEqual(respEnvelope, result);
     }
 
     @Test
     public final void testEndpoint_Consumer_Full() throws Exception {
         final MuleEvent event;
         final String result;
-        final String soapRequest;
-        final String soapResponsePayload;
 
-        soapResponsePayload = IOUtils.toString(new ClassPathResource(
-                respPayloadPath).getInputStream(), "UTF-8");
-
-        soapRequest = IOUtils.toString(
-                new ClassPathResource(reqEnvelopePath).getInputStream(),
-                "UTF-8");
-
-        event = runFlow(consumerFlow, soapRequest);
+        event = runFlow(consumerFlow, reqEnvelope);
 
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(soapResponsePayload, result);
+        XMLAssert.assertXMLEqual(respPayload, result);
     }
 
     @Test
     public final void testEndpoint_Consumer_Short() throws Exception {
         final MuleEvent event;
         final String result;
-        final String soapRequestPayload;
-        final String soapResponsePayload;
 
-        soapResponsePayload = IOUtils.toString(new ClassPathResource(
-                respPayloadPath).getInputStream(), "UTF-8");
-
-        soapRequestPayload = IOUtils.toString(new ClassPathResource(
-                reqPayloadPath).getInputStream(), "UTF-8");
-
-        event = runFlow(consumerFlow, soapRequestPayload);
+        event = runFlow(consumerFlow, reqPayload);
 
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(soapResponsePayload, result);
+        XMLAssert.assertXMLEqual(respPayload, result);
     }
 
     @Test
     public final void testEndpoint_Proxy() throws Exception {
         final MuleEvent event;
         final String result;
-        final String soapRequest;
-        final String soapResponse;
 
-        soapResponse = IOUtils.toString(
-                new ClassPathResource(respEnvelopePath).getInputStream(),
-                "UTF-8");
-
-        soapRequest = IOUtils.toString(
-                new ClassPathResource(reqEnvelopePath).getInputStream(),
-                "UTF-8");
-
-        event = runFlow(proxyFlow, soapRequest);
+        event = runFlow(proxyFlow, reqEnvelope);
 
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(soapResponse, result);
+        XMLAssert.assertXMLEqual(respEnvelope, result);
     }
 
     @Test
     public final void testEndpoint_Simple() throws Exception {
         final MuleEvent event;
         final String result;
-        final String soapResponseSimple;
-        final String soapRequest;
 
-        soapRequest = IOUtils.toString(
-                new ClassPathResource(reqEnvelopePath).getInputStream(),
-                "UTF-8");
-
-        soapResponseSimple = IOUtils.toString(new ClassPathResource(
-                respSimplePath).getInputStream(), "UTF-8");
-
-        event = runFlow(simpleFlow, soapRequest);
+        event = runFlow(simpleFlow, reqEnvelope);
 
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(soapResponseSimple, result);
+        XMLAssert.assertXMLEqual(respEnvelopeSimple, result);
     }
 
     @Test
     public final void testEndpoint_WSDLFirst() throws Exception {
         final MuleEvent event;
         final String result;
-        final String soapRequest;
-        final String soapResponse;
 
-        soapResponse = IOUtils.toString(
-                new ClassPathResource(respEnvelopePath).getInputStream(),
-                "UTF-8");
-
-        soapRequest = IOUtils.toString(
-                new ClassPathResource(reqEnvelopePath).getInputStream(),
-                "UTF-8");
-
-        event = runFlow(wsdlFirstFlow, soapRequest);
+        event = runFlow(wsdlFirstFlow, reqEnvelope);
 
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(soapResponse, result);
+        XMLAssert.assertXMLEqual(respEnvelope, result);
+    }
+
+    @Override
+    protected String getConfigResources() {
+        return StringUtils.join(files, ", ");
     }
 
 }

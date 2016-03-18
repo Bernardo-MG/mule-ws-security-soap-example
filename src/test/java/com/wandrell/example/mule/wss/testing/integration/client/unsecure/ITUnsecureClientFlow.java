@@ -32,6 +32,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mule.api.MuleEvent;
@@ -56,20 +57,25 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
     private String   consumerFlow;
     @Resource(name = "configFiles")
     private String[] files;
+    private String   respPayload;
+    @Value("${soap.unsecure.response.jaxb.payload.path}")
+    private String   respPayloadPath;
     @Value("${client.unsecure.simple.flow}")
     private String   simpleFlow;
     @Value("${client.unsecure.wsdlFirst.flow}")
     private String   wsdlFirstFlow;
-    @Value("${soap.unsecure.response.jaxb.payload.path}")
-    private String   respPayloadPath;
 
-    public ITUnsecureClientFlow() throws IOException {
+    public ITUnsecureClientFlow() {
         super();
     }
 
-    @Override
-    protected String getConfigResources() {
-        return StringUtils.join(files, ", ");
+    @Before
+    public final void setUpSoapMessages() throws IOException {
+        final String encoding = "UTF-8";
+
+        respPayload = IOUtils.toString(
+                new ClassPathResource(respPayloadPath).getInputStream(),
+                encoding);
     }
 
     @Test
@@ -77,11 +83,6 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         final Integer[] payload;
         final MuleEvent event;
         final String result;
-        final String expectedResult;
-
-        expectedResult = IOUtils.toString(
-                new ClassPathResource(respPayloadPath).getInputStream(),
-                "UTF-8");
 
         payload = new Integer[] { new Integer(1) };
 
@@ -90,7 +91,7 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(expectedResult, result);
+        XMLAssert.assertXMLEqual(respPayload, result);
     }
 
     @Test
@@ -98,11 +99,6 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         final Integer[] payload;
         final MuleEvent event;
         final String result;
-        final String expectedResult;
-
-        expectedResult = IOUtils.toString(
-                new ClassPathResource(respPayloadPath).getInputStream(),
-                "UTF-8");
 
         payload = new Integer[] { new Integer(1) };
 
@@ -111,7 +107,7 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(expectedResult, result);
+        XMLAssert.assertXMLEqual(respPayload, result);
     }
 
     @Test
@@ -119,11 +115,6 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         final Integer[] payload;
         final MuleEvent event;
         final String result;
-        final String expectedResult;
-
-        expectedResult = IOUtils.toString(
-                new ClassPathResource(respPayloadPath).getInputStream(),
-                "UTF-8");
 
         payload = new Integer[] { new Integer(1) };
 
@@ -132,7 +123,7 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(expectedResult, result);
+        XMLAssert.assertXMLEqual(respPayload, result);
     }
 
     @Test
@@ -140,11 +131,6 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         final Integer[] payload;
         final MuleEvent event;
         final String result;
-        final String expectedResult;
-
-        expectedResult = IOUtils.toString(
-                new ClassPathResource(respPayloadPath).getInputStream(),
-                "UTF-8");
 
         payload = new Integer[] { new Integer(1) };
 
@@ -153,7 +139,12 @@ public final class ITUnsecureClientFlow extends FunctionalTestCase {
         result = event.getMessageAsString();
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(expectedResult, result);
+        XMLAssert.assertXMLEqual(respPayload, result);
+    }
+
+    @Override
+    protected String getConfigResources() {
+        return StringUtils.join(files, ", ");
     }
 
 }
