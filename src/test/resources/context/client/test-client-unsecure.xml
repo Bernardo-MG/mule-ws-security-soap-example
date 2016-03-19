@@ -11,8 +11,7 @@
 		http://www.springframework.org/schema/util/spring-util-3.2.xsd
 	">
 
-	<context:property-placeholder
-		location="classpath:config/client/test-client-unsecure.properties" />
+	<context:property-placeholder />
 
 	<util:list id="configFiles">
 		<value>src/test/resources/flow/test-client-unsecure.xml</value>

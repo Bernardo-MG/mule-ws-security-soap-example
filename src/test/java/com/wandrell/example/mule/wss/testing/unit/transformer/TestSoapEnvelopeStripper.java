@@ -56,19 +56,19 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPProperti
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
-@TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
+@TestPropertySource({ "classpath:config/soap/test-soap-wsdl-first.properties" })
 public final class TestSoapEnvelopeStripper extends
         AbstractTestNGSpringContextTests {
 
     /**
      * Path to a valid SOAP envelope.
      */
-    @Value("${soap.unsecure.request.envelope.path}")
+    @Value("${soap.request.envelope.path}")
     private String envelopePath;
     /**
      * Path to a valid SOAP payload.
      */
-    @Value("${soap.unsecure.request.payload.path}")
+    @Value("${soap.request.payload.path}")
     private String payloadPath;
 
     /**

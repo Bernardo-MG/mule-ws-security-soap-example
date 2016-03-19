@@ -57,13 +57,13 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPProperti
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
-@TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
+@TestPropertySource({ "classpath:config/soap/test-soap-transformer.properties" })
 public final class TestEntityXmlToModelTransformer extends
         AbstractTestNGSpringContextTests {
 
-    @Value("${soap.unsecure.response.codeFirst.payload.path}")
+    @Value("${soap.response.codeFirst.payload.path}")
     private String codeFirstPath;
-    @Value("${soap.unsecure.response.wsdlFirst.payload.path}")
+    @Value("${soap.response.wsdlFirst.payload.path}")
     private String wsdlFirstPath;
 
     public TestEntityXmlToModelTransformer() {

@@ -31,9 +31,11 @@ import org.apache.commons.lang.StringUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Abstract integration tests for a client flow testing that it handles messages
@@ -49,6 +51,7 @@ import org.springframework.core.io.ClassPathResource;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@RunWith(SpringJUnit4ClassRunner.class)
 public class AbstractITClientFlow extends FunctionalTestCase {
 
     /**

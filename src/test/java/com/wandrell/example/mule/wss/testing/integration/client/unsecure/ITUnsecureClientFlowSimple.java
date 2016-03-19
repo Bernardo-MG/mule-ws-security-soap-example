@@ -24,73 +24,28 @@
 
 package com.wandrell.example.mule.wss.testing.integration.client.unsecure;
 
-import java.io.IOException;
-
-import javax.annotation.Resource;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
-import org.custommonkey.xmlunit.XMLAssert;
-import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mule.api.MuleEvent;
-import org.mule.tck.junit4.FunctionalTestCase;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.AbstractITClientFlow;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+/**
+ * Implementation of {@code AbstractITClientFlow} for the unsecure simple client
+ * flow.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
 @ContextConfiguration(ClientContextPaths.CLIENT_UNSECURE)
-@TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
-public final class ITUnsecureClientFlowSimple extends FunctionalTestCase {
+@TestPropertySource({
+        "classpath:config/endpoint/test-endpoint-unsecure-simple.properties",
+        "classpath:config/soap/test-soap-simple.properties" })
+public final class ITUnsecureClientFlowSimple extends AbstractITClientFlow {
 
-    @Resource(name = "configFiles")
-    private String[] files;
-    private String   respPayload;
-    @Value("${soap.unsecure.response.jaxb.payload.path}")
-    private String   respPayloadPath;
-    @Value("${client.unsecure.simple.flow}")
-    private String   simpleFlow;
-
+    /**
+     * Default constructor.
+     */
     public ITUnsecureClientFlowSimple() {
         super();
     }
-
-    @Before
-    public final void setUpSoapMessages() throws IOException {
-        final String encoding = "UTF-8";
-
-        respPayload = IOUtils.toString(
-                new ClassPathResource(respPayloadPath).getInputStream(),
-                encoding);
-    }
-
-    @Test
-    public void testClient() throws Exception {
-        final Integer[] payload;
-        final MuleEvent event;
-        final String result;
-
-        payload = new Integer[] { new Integer(1) };
-
-        event = runFlow(simpleFlow, payload);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respPayload, result);
-    }
-
-    @Override
-    protected String getConfigResources() {
-        return StringUtils.join(files, ", ");
-    }
-
 }
