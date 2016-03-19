@@ -28,13 +28,10 @@ import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
 import com.wandrell.example.mule.wss.testing.util.test.AbstractITEndpointFlow;
 
@@ -49,7 +46,6 @@ import com.wandrell.example.mule.wss.testing.util.test.AbstractITEndpointFlow;
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(EndpointContextPaths.ENDPOINT_UNSECURE)
 @TestPropertySource({
         "classpath:config/endpoint/test-endpoint-unsecure-consumer.properties",

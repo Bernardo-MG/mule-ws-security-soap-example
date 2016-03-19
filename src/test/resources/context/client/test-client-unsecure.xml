@@ -11,6 +11,7 @@
 		http://www.springframework.org/schema/util/spring-util-3.2.xsd
 	">
 
+   <!-- Properties -->
 	<context:property-placeholder />
 
 	<util:list id="configFiles">

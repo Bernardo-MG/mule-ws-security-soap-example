@@ -11,6 +11,9 @@
 		http://www.springframework.org/schema/util/spring-util-3.2.xsd
 	">
 
+   <!-- Properties -->
+   <context:property-placeholder />
+
    <util:list id="configFiles">
       <value>src/test/resources/flow/test-endpoint-unsecure.xml</value>
       <value>src/main/app/endpoint-unsecure.xml</value>
@@ -20,8 +23,5 @@
       <value>src/main/app/transformer.xml</value>
       <value>src/main/app/consumer.xml</value>
    </util:list>
-
-   <!-- Properties -->
-   <context:property-placeholder />
 
 </beans>
