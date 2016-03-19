@@ -35,6 +35,7 @@ import org.junit.runner.RunWith;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
@@ -52,6 +53,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+@TestPropertySource({ "classpath:config/soap/test-soap-jaxb.properties" })
 public class AbstractITClientFlow extends FunctionalTestCase {
 
     /**

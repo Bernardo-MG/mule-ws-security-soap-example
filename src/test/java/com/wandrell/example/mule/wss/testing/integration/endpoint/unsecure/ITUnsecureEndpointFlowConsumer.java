@@ -65,13 +65,13 @@ public final class ITUnsecureEndpointFlowConsumer extends
     /**
      * Path to the SOAP payload for the request.
      */
-    @Value("${soap.unsecure.request.payload.path}")
-    private String requestPath;
+    @Value("${soap.request.payload.path}")
+    private String requestPayloadPath;
     /**
-     * Path to the SOAP payload for the response.
+     * Path to the SOAP envelope for the response.
      */
-    @Value("${soap.unsecure.response.payload.path}")
-    private String responsePath;
+    @Value("${soap.response.path}")
+    private String responseEnvelopePath;
 
     /**
      * Default constructor.
@@ -96,9 +96,11 @@ public final class ITUnsecureEndpointFlowConsumer extends
         // Loads the messages
         encoding = "UTF-8";
         response = IOUtils.toString(
-                new ClassPathResource(responsePath).getInputStream(), encoding);
+                new ClassPathResource(responseEnvelopePath).getInputStream(),
+                encoding);
         request = IOUtils.toString(
-                new ClassPathResource(requestPath).getInputStream(), encoding);
+                new ClassPathResource(requestPayloadPath).getInputStream(),
+                encoding);
 
         // Sends the request to the flow
         result = runFlow(endpointFlow, request).getMessageAsString();

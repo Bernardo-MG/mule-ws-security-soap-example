@@ -37,9 +37,7 @@ import com.wandrell.example.mule.wss.testing.util.test.AbstractITClientFlow;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(ClientContextPaths.CLIENT_UNSECURE)
-@TestPropertySource({
-        "classpath:config/endpoint/test-endpoint-unsecure-simple.properties",
-        "classpath:config/soap/test-soap-simple.properties" })
+@TestPropertySource({ "classpath:config/client/test-client-unsecure-simple.properties" })
 public final class ITUnsecureClientFlowSimple extends AbstractITClientFlow {
 
     /**

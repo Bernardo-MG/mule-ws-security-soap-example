@@ -68,12 +68,12 @@ public abstract class AbstractITEndpointFlow extends FunctionalTestCase {
      * Path to the SOAP envelope for the request.
      */
     @Value("${soap.request.envelope.path}")
-    private String   requestPath;
+    private String   requestEnvelopePath;
     /**
      * Path to the SOAP envelope for the response.
      */
-    @Value("${soap.response.envelope.path}")
-    private String   responsePath;
+    @Value("${soap.response.path}")
+    private String   responseEnvelopePath;
 
     /**
      * Default constructor.
@@ -98,9 +98,11 @@ public abstract class AbstractITEndpointFlow extends FunctionalTestCase {
         // Loads the messages
         encoding = "UTF-8";
         request = IOUtils.toString(
-                new ClassPathResource(requestPath).getInputStream(), encoding);
+                new ClassPathResource(requestEnvelopePath).getInputStream(),
+                encoding);
         response = IOUtils.toString(
-                new ClassPathResource(responsePath).getInputStream(), encoding);
+                new ClassPathResource(responseEnvelopePath).getInputStream(),
+                encoding);
 
         // Sends the request to the flow
         result = runFlow(endpointFlow, request).getMessageAsString();
