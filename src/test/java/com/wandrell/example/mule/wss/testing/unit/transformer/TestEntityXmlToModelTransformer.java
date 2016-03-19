@@ -82,20 +82,19 @@ public final class TestEntityXmlToModelTransformer extends
     @Test
     public final void testTransform_CodeFirst() throws TransformerException,
             IOException {
-        final ExampleEntity sample;
-        final Transformer transformer;
-        final String sourceCodeFirst;
+        final Transformer transformer; // Transformer to test
+        final ExampleEntity entity;    // Parsed entity
+        final String source;           // Message to parse
 
-        sourceCodeFirst = IOUtils.toString(
+        source = IOUtils.toString(
                 new ClassPathResource(codeFirstPath).getInputStream(), "UTF-8");
 
         transformer = new EntityXmlToModelTransformer();
 
-        sample = (ExampleEntity) transformer
-                .transform(sourceCodeFirst, "UTF-8");
+        entity = (ExampleEntity) transformer.transform(source, "UTF-8");
 
-        Assert.assertEquals(sample.getId(), new Integer(1));
-        Assert.assertEquals(sample.getName(), "name_1");
+        Assert.assertEquals(entity.getId(), new Integer(1));
+        Assert.assertEquals(entity.getName(), "name_1");
     }
 
     /**
@@ -110,20 +109,19 @@ public final class TestEntityXmlToModelTransformer extends
     @Test
     public final void testTransform_WSDLFirst() throws TransformerException,
             IOException {
-        final ExampleEntity sample;
-        final Transformer transformer;
-        final String sourceWSDLFirst;
+        final Transformer transformer; // Transformer to test
+        final ExampleEntity entity;    // Parsed entity
+        final String source;           // Message to parse
 
-        sourceWSDLFirst = IOUtils.toString(
+        source = IOUtils.toString(
                 new ClassPathResource(wsdlFirstPath).getInputStream(), "UTF-8");
 
         transformer = new EntityXmlToModelTransformer();
 
-        sample = (ExampleEntity) transformer
-                .transform(sourceWSDLFirst, "UTF-8");
+        entity = (ExampleEntity) transformer.transform(source, "UTF-8");
 
-        Assert.assertEquals(sample.getId(), new Integer(1));
-        Assert.assertEquals(sample.getName(), "name_1");
+        Assert.assertEquals(entity.getId(), new Integer(1));
+        Assert.assertEquals(entity.getName(), "name_1");
     }
 
 }

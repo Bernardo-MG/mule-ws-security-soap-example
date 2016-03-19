@@ -63,14 +63,14 @@ public class DefaultExampleEntityService implements ExampleEntityService {
     public DefaultExampleEntityService(final ExampleEntityRepository repository) {
         super();
 
-        this.entityRepository = 
-                checkNotNull(repository, "Received a null pointer as repository");
+        this.entityRepository = checkNotNull(repository,
+                "Received a null pointer as repository");
     }
 
     @Override
     public final ExampleEntity findById(final Integer identifier) {
         checkNotNull(identifier, "Received a null pointer as identifier");
-        
+
         return getExampleEntityRepository().findOne(identifier);
     }
 

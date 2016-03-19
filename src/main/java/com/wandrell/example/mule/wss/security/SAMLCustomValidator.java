@@ -42,7 +42,7 @@ public final class SAMLCustomValidator extends SamlAssertionValidator {
 
         checkNotNull(credential, "Received a null pointer as credential");
         checkNotNull(data, "Received a null pointer as data");
-        
+
         returnedCredential = super.validate(credential, data);
 
         //

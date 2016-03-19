@@ -91,23 +91,23 @@ public final class TestSoapEnvelopeStripper extends
     @Test
     public final void testTransform_Envelope() throws TransformerException,
             SAXException, IOException {
-        final String payload;
-        final Transformer transformer;
-        final String sourceEnvelope;
-        final String result;
+        final Transformer transformer; // Tested transformer
+        final String source;           // Message being transformed
+        final String expected;         // Expected result
+        final String result;           // Result from the transformation
 
-        result = IOUtils.toString(
+        expected = IOUtils.toString(
                 new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
 
-        sourceEnvelope = IOUtils.toString(
+        source = IOUtils.toString(
                 new ClassPathResource(envelopePath).getInputStream(), "UTF-8");
 
         transformer = new SoapEnvelopeStripper();
 
-        payload = (String) transformer.transform(sourceEnvelope, "UTF-8");
+        result = (String) transformer.transform(source, "UTF-8");
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(result, payload);
+        XMLAssert.assertXMLEqual(expected, result);
     }
 
     /**
@@ -124,21 +124,21 @@ public final class TestSoapEnvelopeStripper extends
     @Test
     public final void testTransform_Payload() throws TransformerException,
             SAXException, IOException {
-        final String payload;
-        final Transformer transformer;
-        final String result;
-        final String sourcePayload;
+        final Transformer transformer; // Tested transformer
+        final String source;           // Message being transformed
+        final String expected;         // Expected result
+        final String result;           // Result from the transformation
 
-        sourcePayload = IOUtils.toString(
+        source = IOUtils.toString(
                 new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
-        result = sourcePayload;
+        expected = source;
 
         transformer = new SoapEnvelopeStripper();
 
-        payload = (String) transformer.transform(sourcePayload, "UTF-8");
+        result = (String) transformer.transform(source, "UTF-8");
 
         XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(result, payload);
+        XMLAssert.assertXMLEqual(expected, result);
     }
 
 }

@@ -39,9 +39,8 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.service.data.ExampleEntityService;
 
 /**
- * Implementation of {@link EntityEndpoint} for a Mule WSDL-first
- * endpoint. This kind of endpoint will be built using Java classes
- * generated from a WSDL file.
+ * Implementation of {@link EntityEndpoint} for a Mule WSDL-first endpoint. This
+ * kind of endpoint will be built using Java classes generated from a WSDL file.
  * <p>
  * This is very similar to the {@link CodeFirstExampleEntityEndpoint}, just that
  * both the classes and the interface have been generated from a WSDL file.
@@ -57,7 +56,7 @@ public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
      * The logger used for logging the entity endpoint.
      */
     private static final Logger        LOGGER = LoggerFactory
-            .getLogger(WSDLFirstExampleEntityEndpoint.class);
+                                                      .getLogger(WSDLFirstExampleEntityEndpoint.class);
     /**
      * Service for accessing the {@code ExampleEntity} instances handled by the
      * web service.
@@ -82,13 +81,13 @@ public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
 
     @Override
     public final GetEntityResponse.Return getEntity(final int id) {
-        final GetEntityResponse.Return response; // XML response with the entity data
+        final GetEntityResponse.Return response; // XML response with the entity
+                                                 // data
         final ExampleEntity entity;              // Found entity
 
         checkNotNull(id, "Received a null pointer as id");
 
-        LOGGER.debug(
-                String.format("Received request for id %d", id));
+        LOGGER.debug(String.format("Received request for id %d", id));
 
         // Acquires the entity
         entity = getExampleEntityService().findById(id);
@@ -102,9 +101,9 @@ public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
             response.setId(entity.getId());
             response.setName(entity.getName());
 
-            LOGGER.debug(
-                    String.format("Found entity with id %1$d and name %2$s",
-                            entity.getId(), entity.getName()));
+            LOGGER.debug(String.format(
+                    "Found entity with id %1$d and name %2$s", entity.getId(),
+                    entity.getName()));
         }
 
         return response;

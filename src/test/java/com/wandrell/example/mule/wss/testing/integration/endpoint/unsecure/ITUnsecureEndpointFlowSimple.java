@@ -24,80 +24,29 @@
 
 package com.wandrell.example.mule.wss.testing.integration.endpoint.unsecure;
 
-import java.io.IOException;
-
-import javax.annotation.Resource;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
-import org.custommonkey.xmlunit.XMLAssert;
-import org.custommonkey.xmlunit.XMLUnit;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mule.api.MuleEvent;
-import org.mule.tck.junit4.FunctionalTestCase;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.AbstractITEndpointFlow;
 
 /**
- * Integration test for the unsecure endpoint flow.
+ * Implementation of {@code AbstractITEndpointFlow} for the unsecure simple
+ * endpoint flow.
  * 
- * @author bernardo.martinez
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(EndpointContextPaths.ENDPOINT_UNSECURE)
-@TestPropertySource({ SOAPPropertiesPaths.TEST_SOAP })
-public final class ITUnsecureEndpointFlowSimple extends FunctionalTestCase {
+@TestPropertySource({
+        "classpath:config/endpoint/test-endpoint-unsecure-simple.properties",
+        "classpath:config/soap/test-soap-simple.properties" })
+public final class ITUnsecureEndpointFlowSimple extends AbstractITEndpointFlow {
 
-    @Resource(name = "configFiles")
-    private String[] files;
-    private String   reqEnvelope;
-    @Value("${soap.unsecure.request.envelope.path}")
-    private String   reqEnvelopePath;
-    private String   respEnvelopeSimple;
-    @Value("${soap.unsecure.response.simple.path}")
-    private String   respSimplePath;
-    @Value("${endpoint.unsecure.simple.flow}")
-    private String   simpleFlow;
-
+    /**
+     * Default constructor.
+     */
     public ITUnsecureEndpointFlowSimple() {
         super();
-    }
-
-    @Before
-    public final void setUpSoapMessages() throws IOException {
-        final String encoding = "UTF-8";
-
-        reqEnvelope = IOUtils.toString(
-                new ClassPathResource(reqEnvelopePath).getInputStream(),
-                encoding);
-        respEnvelopeSimple = IOUtils.toString(new ClassPathResource(
-                respSimplePath).getInputStream(), encoding);
-    }
-
-    @Test
-    public final void testEndpoint() throws Exception {
-        final MuleEvent event;
-        final String result;
-
-        event = runFlow(simpleFlow, reqEnvelope);
-
-        result = event.getMessageAsString();
-
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(respEnvelopeSimple, result);
-    }
-
-    @Override
-    protected String getConfigResources() {
-        return StringUtils.join(files, ", ");
     }
 
 }

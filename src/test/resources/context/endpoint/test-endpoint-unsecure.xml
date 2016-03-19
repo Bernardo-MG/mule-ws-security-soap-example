@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+   xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
     	http://www.springframework.org/schema/context
@@ -11,17 +11,17 @@
 		http://www.springframework.org/schema/util/spring-util-3.2.xsd
 	">
 
-	<context:property-placeholder
-		location="classpath:config/endpoint/test-endpoint-unsecure.properties" />
+   <util:list id="configFiles">
+      <value>src/test/resources/flow/test-endpoint-unsecure.xml</value>
+      <value>src/main/app/endpoint-unsecure.xml</value>
+      <value>src/main/app/config.xml</value>
+      <value>src/main/app/endpoint-config.xml</value>
+      <value>src/main/app/utils.xml</value>
+      <value>src/main/app/transformer.xml</value>
+      <value>src/main/app/consumer.xml</value>
+   </util:list>
 
-	<util:list id="configFiles">
-		<value>src/test/resources/flow/test-endpoint-unsecure.xml</value>
-		<value>src/main/app/endpoint-unsecure.xml</value>
-		<value>src/main/app/config.xml</value>
-		<value>src/main/app/endpoint-config.xml</value>
-		<value>src/main/app/utils.xml</value>
-		<value>src/main/app/transformer.xml</value>
-		<value>src/main/app/consumer.xml</value>
-	</util:list>
+   <!-- Properties -->
+   <context:property-placeholder />
 
 </beans>

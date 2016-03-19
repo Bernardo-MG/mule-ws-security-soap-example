@@ -42,9 +42,8 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  * Transformer to create an {@code XmlExampleEntity} from a XML representation
  * of a {@code ExampleEntity}.
  * <p>
- * There are two valid XML formats: one is the SOAP response, another is a XML structure containing the
- * entity data, which is just an id and a
- * name.
+ * There are two valid XML formats: one is the SOAP response, another is a XML
+ * structure containing the entity data, which is just an id and a name.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -60,7 +59,8 @@ public final class EntityXmlToModelTransformer extends AbstractTransformer {
     /**
      * Parses a {@code XmlExampleEntity} from the received XML.
      * 
-     * @param xml the XML to parse
+     * @param xml
+     *            the XML to parse
      * @return a {@code XmlExampleEntity} parsed from the XML
      * @throws JDOMException
      *             if a JDOM error occurs during parsing

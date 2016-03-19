@@ -22,72 +22,74 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.endpoint.unsecure;
+package com.wandrell.example.mule.wss.testing.util.test;
+
+import javax.annotation.Resource;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mule.tck.junit4.FunctionalTestCase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.test.AbstractITEndpointFlow;
-
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the unsecure consumer
- * endpoint flow.
+ * Abstract integration tests for an endpoint flow testing that it handles
+ * messages correctly.
  * <p>
- * It adds the following cases:
+ * Checks the following cases:
  * <ol>
- * <li>A SOAP payload is processed and a valid response returned.</li>
+ * <li>A SOAP envelope is processed and a valid response returned.</li>
  * </ol>
- * 
+ * <p>
+ * Pay attention to the fact that it requires the WS to be running, and a Spring
+ * context to populate the test data.
+ *
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(EndpointContextPaths.ENDPOINT_UNSECURE)
-@TestPropertySource({
-        "classpath:config/endpoint/test-endpoint-unsecure-consumer.properties",
-        "classpath:config/soap/test-soap-consumer.properties" })
-public final class ITUnsecureEndpointFlowConsumer extends
-        AbstractITEndpointFlow {
+public abstract class AbstractITEndpointFlow extends FunctionalTestCase {
 
     /**
      * Name of the flow being tested.
      */
     @Value("${endpoint.flow}")
-    private String endpointFlow;
+    private String   endpointFlow;
     /**
-     * Path to the SOAP payload for the request.
+     * Configuration files to be loaded to build the Mule context.
      */
-    @Value("${soap.unsecure.request.payload.path}")
-    private String requestPath;
+    @Resource(name = "configFiles")
+    private String[] files;
     /**
-     * Path to the SOAP payload for the response.
+     * Path to the SOAP envelope for the request.
      */
-    @Value("${soap.unsecure.response.payload.path}")
-    private String responsePath;
+    @Value("${soap.request.envelope.path}")
+    private String   requestPath;
+    /**
+     * Path to the SOAP envelope for the response.
+     */
+    @Value("${soap.response.envelope.path}")
+    private String   responsePath;
 
     /**
      * Default constructor.
      */
-    public ITUnsecureEndpointFlowConsumer() {
+    public AbstractITEndpointFlow() {
         super();
     }
 
     /**
-     * Tests that a SOAP payload is processed and a valid response returned.
+     * Tests that a SOAP envelope is processed and a valid response returned.
      * 
      * @throws Exception
      *             never, this is a required declaration
      */
     @Test
-    public final void testEndpoint_Payload_ReturnsExpected() throws Exception {
+    public final void testEndpoint_Envelope_ReturnsExpected() throws Exception {
         final String result;   // Response from the endpoint
         final String encoding; // Files encoding
         final String request;  // SOAP request
@@ -95,10 +97,10 @@ public final class ITUnsecureEndpointFlowConsumer extends
 
         // Loads the messages
         encoding = "UTF-8";
-        response = IOUtils.toString(
-                new ClassPathResource(responsePath).getInputStream(), encoding);
         request = IOUtils.toString(
                 new ClassPathResource(requestPath).getInputStream(), encoding);
+        response = IOUtils.toString(
+                new ClassPathResource(responsePath).getInputStream(), encoding);
 
         // Sends the request to the flow
         result = runFlow(endpointFlow, request).getMessageAsString();
@@ -106,6 +108,11 @@ public final class ITUnsecureEndpointFlowConsumer extends
         // Verifies results
         XMLUnit.setIgnoreWhitespace(true);
         XMLAssert.assertXMLEqual(response, result);
+    }
+
+    @Override
+    protected String getConfigResources() {
+        return StringUtils.join(files, ", ");
     }
 
 }
