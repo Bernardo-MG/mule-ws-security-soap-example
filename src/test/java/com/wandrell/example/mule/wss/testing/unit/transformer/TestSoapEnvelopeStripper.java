@@ -41,7 +41,6 @@ import org.xml.sax.SAXException;
 
 import com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
 /**
  * Unit tests for {@link SoapEnvelopeStripper} checking that the transformer

@@ -40,7 +40,6 @@ import org.testng.annotations.Test;
 import com.wandrell.example.mule.wss.flow.transformer.EntityXmlToModelTransformer;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SOAPPropertiesPaths;
 
 /**
  * Unit tests for {@link EntityXmlToModelTransformer} checking that the
