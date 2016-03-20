@@ -175,7 +175,7 @@
             <site>
                <id>site</id>
                <name>Project Documentation Site</name>
-               <url>ftp://docs.wandrell.com/swss-soap-example</url>
+               <url>ftp://docs.wandrell.com/mule-wss-soap-example</url>
             </site>
          </distributionManagement>
       </profile>
@@ -187,7 +187,7 @@
             <site>
                <id>site-development</id>
                <name>Project Development Documentation Site</name>
-               <url>ftp://docs.wandrell.com/swss-soap-example</url>
+               <url>ftp://docs.wandrell.com/mule-wss-soap-example</url>
             </site>
          </distributionManagement>
       </profile>
