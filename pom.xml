@@ -995,6 +995,22 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-failsafe-plugin</artifactId>
             <version>${plugin.failsafe.version}</version>
+            <executions>
+               <!-- Failsafe is bound to the integration-test and verify 
+                  phases -->
+               <execution>
+                  <id>failsafe-integration-tests</id>
+                  <goals>
+                     <goal>integration-test</goal>
+                  </goals>
+               </execution>
+               <execution>
+                  <id>failsafe-verify</id>
+                  <goals>
+                     <goal>verify</goal>
+                  </goals>
+               </execution>
+            </executions>
             <configuration>
                <properties>
                   <property>
@@ -1012,23 +1028,10 @@
                   <!-- Path to the integration tests suite file -->
                   <suiteXmlFile>${project.build.testOutputDirectory}/tests_maven_integration_suite.xml</suiteXmlFile>
                </suiteXmlFiles>
+               <!-- To avoid memory problems when running the tests -->
+               <argLine>-Xmx1024m -Xms1024m -XX:MaxPermSize=512m
+                  -XX:PermSize=256m</argLine>
             </configuration>
-            <executions>
-               <!-- Failsafe is bound to the integration-test and verify 
-                  phases -->
-               <execution>
-                  <id>failsafe-integration-tests</id>
-                  <goals>
-                     <goal>integration-test</goal>
-                  </goals>
-               </execution>
-               <execution>
-                  <id>failsafe-verify</id>
-                  <goals>
-                     <goal>verify</goal>
-                  </goals>
-               </execution>
-            </executions>
          </plugin>
          <plugin>
             <!-- JaCoCo -->
