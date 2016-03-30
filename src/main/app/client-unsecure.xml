@@ -27,10 +27,12 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-CodeFirst-Endpoint">
+        <logger message="Begins the unsecure Code-First client flow" level="INFO" doc:name="Logger"/>
 		<cxf:jaxws-client serviceClass="${endpoint.unsecure.codeFirst.interface.class}"
 			doc:name="Code-First client" operation="${wsdl.local.operation}" />
 		<outbound-endpoint doc:name="Unsecure Code-First endpoint"
 			ref="Endpoint-Unsecure-CodeFirst" />
+        <logger message="Ends the unsecure Code-First client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 	<flow name="HTTPClient-Unsecure-WSDLFirst-Flow">
@@ -45,11 +47,13 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-WSDLFirst-Endpoint">
+        <logger message="Begins the unsecure WSDL-First client flow" level="INFO" doc:name="Logger"/>
 		<cxf:jaxws-client clientClass="${client.wsdlFirst.class}"
 			wsdlLocation="${wsdl.local.path}" port="${wsdl.local.port}" doc:name="WSDL-First client"
 			operation="${wsdl.local.operation}" />
 		<outbound-endpoint doc:name="Unsecure WSDL-First endpoint"
 			ref="Endpoint-Unsecure-WSDLFirst" />
+        <logger message="Ends the unsecure WSDL-First client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 	<flow name="HTTPClient-Unsecure-Simple-Flow">
@@ -64,10 +68,12 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-Simple-Endpoint">
+        <logger message="Begins the unsecure simple client flow" level="INFO" doc:name="Logger"/>
 		<cxf:simple-client serviceClass="${endpoint.unsecure.simple.class}"
 			doc:name="Simple client" operation="${wsdl.local.operation}" />
 		<outbound-endpoint doc:name="Unsecure simple endpoint"
 			ref="Endpoint-Unsecure-Simple" />
+        <logger message="Ends the unsecure simple client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 	<flow name="HTTPClient-Unsecure-Consumer-Flow">
@@ -82,9 +88,11 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	</flow>
 
 	<sub-flow name="HTTPClient-Unsecure-Consumer-Endpoint">
+        <logger message="Begins the unsecure consumer client flow" level="INFO" doc:name="Logger"/>
 		<flow-ref name="Transform-ConsumerRequest-Vars" doc:name="Transform to a valid request" />
 		<ws:consumer config-ref="Consumer-Unsecure-CodeFirst"
 			operation="${wsdl.local.operation}" doc:name="Unsecure code-first consumer" />
+        <logger message="Ends the unsecure consumer client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 </mule>

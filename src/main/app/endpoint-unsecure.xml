@@ -22,12 +22,14 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="Endpoint-Unsecure-CodeFirst-Endpoint">
+        <logger message="Begins the unsecure Code-First endpoint flow" level="INFO" doc:name="Logger"/>
 		<cxf:jaxws-service validationEnabled="${service.validation}"
 			doc:name="Code-First endpoint interface" serviceClass="${endpoint.unsecure.codeFirst.interface.class}"
 			namespace="${wsdl.local.namespace}" />
 		<component doc:name="Code-First endpoint implementation">
 			<spring-object bean="codeFirstUnsecureEndpoint" />
 		</component>
+        <logger message="Ends the unsecure Code-First endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 	<flow name="Endpoint-Unsecure-WSDLFirst-Flow">
@@ -38,6 +40,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="Endpoint-Unsecure-WSDLFirst-Endpoint">
+        <logger message="Begins the unsecure WSDL-First endpoint flow" level="INFO" doc:name="Logger"/>
 		<cxf:jaxws-service validationEnabled="${service.validation}"
 			doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.unsecure.wsdlFirst.interface.class}"
 			namespace="${wsdl.local.namespace}" wsdlLocation="${wsdl.local.path}"
@@ -45,6 +48,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<component doc:name="WSDL-First endpoint implementation">
 			<spring-object bean="wsdlFirstUnsecureEndpoint" />
 		</component>
+        <logger message="Ends the unsecure WSDL-First endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 	<flow name="Endpoint-Unsecure-Simple-Flow">
@@ -54,11 +58,13 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="Endpoint-Unsecure-Simple-Endpoint" doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="Endpoint-Unsecure-Simple-Endpoint">
+        <logger message="Begins the unsecure simple endpoint flow" level="INFO" doc:name="Logger"/>
 		<cxf:simple-service serviceClass="${endpoint.unsecure.simple.class}"
 			service="${wsdl.local.service}" doc:name="Simple endpoint" />
 		<component doc:name="Simple endpoint implementation">
 			<spring-object bean="simpleUnsecureEndpoint" />
 		</component>
+        <logger message="Ends the unsecure simple endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 	<flow name="Endpoint-Unsecure-Proxy-Flow">
@@ -68,6 +74,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="Endpoint-Unsecure-Proxy-Endpoint" doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="Endpoint-Unsecure-Proxy-Endpoint">
+        <logger message="Begins the unsecure proxy endpoint flow" level="INFO" doc:name="Logger"/>
 		<cxf:proxy-service namespace="${wsdl.local.namespace}"
 			payload="envelope" port="${wsdl.local.port}" service="${wsdl.local.service}"
 			doc:name="Proxy endpoint" wsdlLocation="${wsdl.local.path}"
@@ -79,6 +86,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			exchange-pattern="request-response" />
 
 		<flow-ref doc:name="Copy HTTP Headers" name="CopyHeaders" />
+        <logger message="Ends the unsecure proxy endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 	<flow name="Endpoint-Unsecure-Consumer-Flow">
@@ -87,11 +95,13 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="Endpoint-Unsecure-Consumer-Endpoint" doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="Endpoint-Unsecure-Consumer-Endpoint">
+        <logger message="Begins the unsecure consumer endpoint flow" level="INFO" doc:name="Logger"/>
 		<flow-ref name="Transform-ConsumerRequest" doc:name="Transform to a valid request" />
 		<ws:consumer config-ref="Consumer-Unsecure-CodeFirst"
 			operation="${wsdl.local.operation}" doc:name="Unsecure code-first consumer" />
 		<mulexml:dom-to-xml-transformer
 			doc:name="Object to XML" />
+        <logger message="Ends the unsecure consumer endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
 </mule>
