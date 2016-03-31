@@ -38,7 +38,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 
 	<sub-flow name="Transform-Response">
 		<choice doc:name="Choice">
-			<when expression="payload is org.apache.cxf.staxutils.DepthXMLStreamReader">
+			<when expression="payload is javax.xml.stream.XMLStreamReader">
 				<mulexml:dom-to-xml-transformer
 					doc:name="DOM to XML" />
 			</when>

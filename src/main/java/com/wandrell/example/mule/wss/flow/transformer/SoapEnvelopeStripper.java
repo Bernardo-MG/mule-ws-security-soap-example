@@ -36,6 +36,8 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
 import org.mule.api.transformer.TransformerException;
 import org.mule.transformer.AbstractTransformer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Transformer to acquire a SOAP payload from a SOAP message.
@@ -50,6 +52,12 @@ import org.mule.transformer.AbstractTransformer;
  */
 public final class SoapEnvelopeStripper extends AbstractTransformer {
 
+    /**
+     * The logger used for logging the transformer.
+     */
+    private static final Logger        LOGGER = LoggerFactory
+            .getLogger(SoapEnvelopeStripper.class);
+    
     /**
      * Constructs a {@code SoapEnvelopeStripper}.
      */
@@ -139,9 +147,10 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
             throws TransformerException {
         final Element root;           // SOAP message root
         final Element operation;      // SOAP message operation
-        final XMLOutputter xmlOutput; // Outputter for the returned string
 
         checkNotNull(src, "Received a null pointer as source");
+        
+        LOGGER.debug(String.format("Stripping source: %s", src.toString()));
 
         try {
             root = parseElement(src.toString());
@@ -152,13 +161,11 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
             } else {
                 operation = root;
             }
-        } catch (JDOMException | IOException e) {
+        } catch (final Exception e) {
             throw new TransformerException(this, e);
         }
 
-        xmlOutput = new XMLOutputter();
-
-        return xmlOutput.outputString(operation);
+        return new XMLOutputter().outputString(operation);
     }
 
 }
