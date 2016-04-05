@@ -5,7 +5,5 @@
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 	">
-
-	<bean id="samlValidator" class="${security.saml.validator.class}" />
 	
 </beans>

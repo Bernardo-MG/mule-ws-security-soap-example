@@ -18,8 +18,8 @@ http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
 
 	<ws:consumer-config doc:name="Unsecure Code-First endpoint consumer"
-		name="Consumer-Unsecure-CodeFirst" wsdlLocation="${wsdl.local.path}"
-		service="${wsdl.local.service}" port="${wsdl.local.port}"
+		name="Consumer-Unsecure-CodeFirst" wsdlLocation="${wsdl.path}"
+		service="${wsdl.service}" port="${wsdl.port}"
 		serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.codeFirst.path}" />
 
 </mule>
