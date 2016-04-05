@@ -18,7 +18,7 @@
 		<value>src/test/resources/flow/test-client-unsecure.xml</value>
 		<value>src/main/app/client-unsecure.xml</value>
 		<value>src/main/app/config.xml</value>
-		<value>src/main/app/endpoint-config.xml</value>
+		<value>src/main/app/endpoint-unsecure-config.xml</value>
 		<value>src/main/app/endpoint-unsecure.xml</value>
 		<value>src/main/app/utils.xml</value>
 		<value>src/main/app/transformer.xml</value>
