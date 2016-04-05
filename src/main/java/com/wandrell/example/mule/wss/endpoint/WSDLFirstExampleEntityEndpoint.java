@@ -36,7 +36,7 @@ import org.springframework.stereotype.Service;
 import com.wandrell.example.mule.wss.generated.EntityEndpoint;
 import com.wandrell.example.mule.wss.generated.GetEntityResponse;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
-import com.wandrell.example.mule.wss.service.data.ExampleEntityService;
+import com.wandrell.example.mule.wss.service.domain.ExampleEntityService;
 
 /**
  * Implementation of {@link EntityEndpoint} for a Mule WSDL-first endpoint. This

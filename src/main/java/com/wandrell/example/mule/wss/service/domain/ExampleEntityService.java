@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.service.data;
+package com.wandrell.example.mule.wss.service.domain;
 
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 

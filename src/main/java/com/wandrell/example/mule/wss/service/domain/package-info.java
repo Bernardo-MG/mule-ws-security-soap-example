@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 /**
- * Provides the data services.
+ * Provides the domain services.
  */
 
-package com.wandrell.example.mule.wss.service.data;
+package com.wandrell.example.mule.wss.service.domain;
 

@@ -36,7 +36,7 @@ import org.springframework.stereotype.Service;
 
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
-import com.wandrell.example.mule.wss.service.data.ExampleEntityService;
+import com.wandrell.example.mule.wss.service.domain.ExampleEntityService;
 
 /**
  * Class for a Mule simple endpoint. This kind of endpoint will be built

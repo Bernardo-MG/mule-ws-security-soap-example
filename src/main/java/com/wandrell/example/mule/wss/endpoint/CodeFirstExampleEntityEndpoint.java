@@ -37,7 +37,7 @@ import org.springframework.stereotype.Service;
 
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
-import com.wandrell.example.mule.wss.service.data.ExampleEntityService;
+import com.wandrell.example.mule.wss.service.domain.ExampleEntityService;
 
 /**
  * Implementation of {@link ExampleEntityEndpoint} for a Mule code-first
