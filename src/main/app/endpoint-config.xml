@@ -30,4 +30,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.simple.path}"
 		encoding="UTF-8" />
 
+	<endpoint name="Endpoint-Unsecure-Proxy" doc:name="Unsecure proxy endpoint"
+		exchange-pattern="request-response"
+		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.proxy.path}"
+		encoding="UTF-8" />
+
 </mule>

@@ -50,8 +50,9 @@ http://localhost:8080/swss/unsecure/code_first?wsdl
 http://localhost:8080/swss/unsecure/wsdl_first?wsdl
 http://localhost:8080/swss/unsecure/simple?wsdl
 http://localhost:8080/swss/unsecure/proxy?wsdl
-http://localhost:8080/swss/unsecure/consumer?wsdl
 ```
+
+The endpoint consumer does not support querying for the WSDl.
 
 #### Web service client
 
@@ -61,6 +62,7 @@ The following URLs allow making use of the HTTP client for the local web service
 http://localhost:8080/swss/client/unsecure/code_first?id=1
 http://localhost:8080/swss/client/unsecure/wsdl_first?id=1
 http://localhost:8080/swss/client/unsecure/simple?id=1
+http://localhost:8080/swss/client/unsecure/proxy?id=1
 http://localhost:8080/swss/client/unsecure/consumer?id=1
 ```
 

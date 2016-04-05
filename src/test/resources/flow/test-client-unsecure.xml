@@ -34,6 +34,15 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		</response>
 	</flow>
 
+	<flow name="Test-HTTPClient-Unsecure-Proxy-Flow">
+		<flow-ref name="HTTPClient-Unsecure-Proxy-Endpoint"
+			doc:name="Proxy endpoint" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+	
 	<flow name="Test-HTTPClient-Unsecure-Consumer-Flow">
 		<flow-ref name="HTTPClient-Unsecure-Consumer-Endpoint"
 			doc:name="Code-first unsecure endpoint consumer" />

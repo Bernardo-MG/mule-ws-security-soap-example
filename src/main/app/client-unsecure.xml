@@ -76,6 +76,24 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure simple client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
+	<flow name="HTTPClient-Unsecure-Proxy-Flow">
+		<http:listener config-ref="Listener-Application"
+			path="${client.unsecure.proxy.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="HTTPClient-Unsecure-Proxy-Endpoint"
+			doc:name="Send request" />
+        <response>
+            <mulexml:object-to-xml-transformer doc:name="Object to XML"/>
+        </response>
+	</flow>
+
+	<sub-flow name="HTTPClient-Unsecure-Proxy-Endpoint">
+        <logger message="Begins the unsecure proxy client flow" level="INFO" doc:name="Logger"/>
+        <cxf:jaxws-client operation="${wsdl.local.operation}" serviceClass="${endpoint.unsecure.codeFirst.interface.class}" doc:name="Code-First client"/>
+        <outbound-endpoint ref="Endpoint-Unsecure-Proxy" doc:name="Unsecure proxy endpoint"/>
+        <logger message="Ends the unsecure proxy client flow" level="INFO" doc:name="Logger"/>
+	</sub-flow>
+
 	<flow name="HTTPClient-Unsecure-Consumer-Flow">
 		<http:listener config-ref="Listener-Application"
 			path="${client.unsecure.consumer.path}" doc:name="HTTP Inbound Endpoint" />
