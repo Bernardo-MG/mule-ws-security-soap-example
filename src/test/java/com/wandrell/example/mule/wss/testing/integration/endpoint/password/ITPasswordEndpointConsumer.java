@@ -22,26 +22,30 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.util.config.properties;
+package com.wandrell.example.mule.wss.testing.integration.endpoint.password;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
- * Configuration class for the test properties files paths.
- * <p>
- * These contain generic data required in several tests.
- *
+ * Implementation of {@code AbstractITEndpointFlow} for the password protected
+ * Code-First endpoint flow.
+ * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class SoapPropertiesPaths {
+@ContextConfiguration(EndpointContextPaths.PASSWORD)
+@TestPropertySource({
+        "classpath:config/endpoint/password/test-endpoint-password-consumer.properties",
+        "classpath:config/soap/test-soap-consumer-password.properties" })
+public final class ITPasswordEndpointConsumer extends AbstractITEndpointFlow {
 
     /**
-     * Properties file with the test SOAP messages paths.
+     * Default constructor.
      */
-    public static final String TEST_SOAP = "classpath:config/test-soap.properties";
-
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private SoapPropertiesPaths() {
+    public ITPasswordEndpointConsumer() {
         super();
     }
 

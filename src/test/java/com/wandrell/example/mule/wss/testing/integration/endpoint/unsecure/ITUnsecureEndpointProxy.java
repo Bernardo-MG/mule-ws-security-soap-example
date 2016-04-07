@@ -40,12 +40,12 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
 @TestPropertySource({
         "classpath:config/endpoint/unsecure/test-endpoint-unsecure-proxy.properties",
         "classpath:config/soap/test-soap-proxy.properties" })
-public final class ITUnsecureEndpointFlowProxy extends AbstractITEndpointFlow {
+public final class ITUnsecureEndpointProxy extends AbstractITEndpointFlow {
 
     /**
      * Default constructor.
      */
-    public ITUnsecureEndpointFlowProxy() {
+    public ITUnsecureEndpointProxy() {
         super();
     }
 

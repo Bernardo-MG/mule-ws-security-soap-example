@@ -51,8 +51,7 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
 @TestPropertySource({
         "classpath:config/endpoint/unsecure/test-endpoint-unsecure-consumer.properties",
         "classpath:config/soap/test-soap-consumer.properties" })
-public final class ITUnsecureEndpointFlowConsumer extends
-        AbstractITEndpointFlow {
+public final class ITUnsecureEndpointConsumer extends AbstractITEndpointFlow {
 
     /**
      * Name of the flow being tested.
@@ -73,7 +72,7 @@ public final class ITUnsecureEndpointFlowConsumer extends
     /**
      * Default constructor.
      */
-    public ITUnsecureEndpointFlowConsumer() {
+    public ITUnsecureEndpointConsumer() {
         super();
     }
 

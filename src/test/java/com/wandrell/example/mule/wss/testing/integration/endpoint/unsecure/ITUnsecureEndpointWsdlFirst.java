@@ -31,21 +31,21 @@ import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContext
 import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the unsecure simple
+ * Implementation of {@code AbstractITEndpointFlow} for the unsecure WSDL-First
  * endpoint flow.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(EndpointContextPaths.UNSECURE)
 @TestPropertySource({
-        "classpath:config/endpoint/unsecure/test-endpoint-unsecure-simple.properties",
-        "classpath:config/soap/test-soap-simple.properties" })
-public final class ITUnsecureEndpointFlowSimple extends AbstractITEndpointFlow {
+        "classpath:config/endpoint/unsecure/test-endpoint-unsecure-wsdl-first.properties",
+        "classpath:config/soap/test-soap-wsdl-first.properties" })
+public final class ITUnsecureEndpointWsdlFirst extends AbstractITEndpointFlow {
 
     /**
      * Default constructor.
      */
-    public ITUnsecureEndpointFlowSimple() {
+    public ITUnsecureEndpointWsdlFirst() {
         super();
     }
 

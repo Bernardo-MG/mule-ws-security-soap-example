@@ -27,7 +27,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	</flow>
 
 	<flow name="Test-Endpoint-Unsecure-Consumer-Flow">
-		<flow-ref name="Endpoint-Unsecure-Consumer-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
+		<flow-ref name="Endpoint-Unsecure-Consumer-Endpoint"
+			doc:name="Code-first unsecure endpoint consumer" />
 	</flow>
 
 </mule>

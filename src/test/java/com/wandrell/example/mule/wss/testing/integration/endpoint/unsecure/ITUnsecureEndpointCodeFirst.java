@@ -40,13 +40,12 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
 @TestPropertySource({
         "classpath:config/endpoint/unsecure/test-endpoint-unsecure-code-first.properties",
         "classpath:config/soap/test-soap-code-first.properties" })
-public final class ITUnsecureEndpointFlowCodeFirst extends
-        AbstractITEndpointFlow {
+public final class ITUnsecureEndpointCodeFirst extends AbstractITEndpointFlow {
 
     /**
      * Default constructor.
      */
-    public ITUnsecureEndpointFlowCodeFirst() {
+    public ITUnsecureEndpointCodeFirst() {
         super();
     }
 
