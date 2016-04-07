@@ -1,9 +1,9 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-   xmlns:sam="http://wandrell.com/example/ws/entity">
+   xmlns:ent="http://wandrell.com/example/ws/entity">
    <soapenv:Header />
    <soapenv:Body>
-      <sam:getEntity>
+      <ent:getEntity>
          <id>1</id>
-      </sam:getEntity>
+      </ent:getEntity>
    </soapenv:Body>
 </soapenv:Envelope>
