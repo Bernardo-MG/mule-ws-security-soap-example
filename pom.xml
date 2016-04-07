@@ -247,7 +247,7 @@
       <commons.dbcp.version>1.2</commons.dbcp.version>
       <commons.logging.version>1.2</commons.logging.version>
       <commons.pool.version>1.6</commons.pool.version>
-      <ehcache.version>2.5.1</ehcache.version>
+      <ehcache.version>2.6.11</ehcache.version>
       <guava.version>19.0</guava.version>
       <h2.version>1.4.190</h2.version>
       <hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>

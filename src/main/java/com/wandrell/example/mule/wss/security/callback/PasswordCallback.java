@@ -73,7 +73,7 @@ public final class PasswordCallback implements CallbackHandler {
 
         passCallb = (WSPasswordCallback) callbacks[0];
 
-        if ("name".equalsIgnoreCase(passCallb.getIdentifier())) {
+        if ("myUser".equalsIgnoreCase(passCallb.getIdentifier())) {
             // User for password-based security
             passCallb.setPassword("myPassword");
         } else {

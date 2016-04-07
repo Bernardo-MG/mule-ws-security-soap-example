@@ -28,6 +28,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
  * Implementation of {@code AbstractITEndpointFlow} for the password protected
@@ -39,14 +40,14 @@ import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContext
 @TestPropertySource({
         "classpath:config/endpoint/password/test-endpoint-password-code-first.properties",
         "classpath:config/soap/test-soap-code-first-password.properties" })
-public final class ITPaswordEndpointFlowCodeFirst {
+public final class ITPaswordEndpointFlowCodeFirst extends
+        AbstractITEndpointFlow {
 
     /**
      * Default constructor.
      */
     public ITPaswordEndpointFlowCodeFirst() {
         super();
-        // TODO: Make this work
     }
 
 }
