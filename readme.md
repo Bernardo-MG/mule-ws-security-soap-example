@@ -24,6 +24,7 @@ The application is coded in Java, using Maven to manage the project.
 ### Prerequisites
 
 The project has been tested on the following Java versions:
+* JDK 8
 * JDK 7
 * OpenJDK 7
 
