@@ -22,38 +22,27 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.security;
+package com.wandrell.example.mule.wss.testing.util.config.properties;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+/**
+ * Configuration class for the test properties files paths.
+ * <p>
+ * These contain generic data required in several tests.
+ *
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
+public final class SoapPropertiesPaths {
 
-import java.io.IOException;
+    /**
+     * Properties file with the test SOAP messages paths.
+     */
+    public static final String TEST_SOAP = "classpath:config/test-soap.properties";
 
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.UnsupportedCallbackException;
-
-import org.apache.ws.security.WSPasswordCallback;
-
-public final class PasswordCallback implements CallbackHandler {
-
-    public PasswordCallback() {
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private SoapPropertiesPaths() {
         super();
-    }
-
-    @Override
-    public final void handle(final Callback[] callbacks) throws IOException,
-            UnsupportedCallbackException {
-        final WSPasswordCallback pc;
-
-        checkNotNull(callbacks, "Received a null pointer as callbacks");
-
-        pc = (WSPasswordCallback) callbacks[0];
-
-        if (pc.getIdentifier().equals("name")) {
-            pc.setPassword("password");
-        } else if (pc.getIdentifier().equals("joe")) {
-            pc.setPassword("secret");
-        }
     }
 
 }

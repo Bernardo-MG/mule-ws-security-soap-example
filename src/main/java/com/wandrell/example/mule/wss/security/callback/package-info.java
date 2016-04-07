@@ -21,28 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package com.wandrell.example.mule.wss.testing.util.config.properties;
-
 /**
- * Configuration class for the test properties files paths.
- * <p>
- * These contain generic data required in several tests.
- *
- * @author Bernardo Mart&iacute;nez Garrido
+ * Provides the callback handlers.
  */
-public final class SOAPPropertiesPaths {
 
-    /**
-     * Properties file with the test SOAP messages paths.
-     */
-    public static final String TEST_SOAP = "classpath:config/test-soap.properties";
+package com.wandrell.example.mule.wss.security.callback;
 
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private SOAPPropertiesPaths() {
-        super();
-    }
-
-}

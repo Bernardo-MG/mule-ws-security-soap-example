@@ -55,9 +55,9 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
     /**
      * The logger used for logging the transformer.
      */
-    private static final Logger        LOGGER = LoggerFactory
-            .getLogger(SoapEnvelopeStripper.class);
-    
+    private static final Logger LOGGER = LoggerFactory
+                                               .getLogger(SoapEnvelopeStripper.class);
+
     /**
      * Constructs a {@code SoapEnvelopeStripper}.
      */
@@ -149,7 +149,7 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
         final Element operation;      // SOAP message operation
 
         checkNotNull(src, "Received a null pointer as source");
-        
+
         LOGGER.debug(String.format("Stripping source: %s", src.toString()));
 
         try {

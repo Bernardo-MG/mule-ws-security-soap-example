@@ -36,9 +36,9 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(EndpointContextPaths.ENDPOINT_UNSECURE)
+@ContextConfiguration(EndpointContextPaths.UNSECURE)
 @TestPropertySource({
-        "classpath:config/endpoint/test-endpoint-unsecure-simple.properties",
+        "classpath:config/endpoint/unsecure/test-endpoint-unsecure-simple.properties",
         "classpath:config/soap/test-soap-simple.properties" })
 public final class ITUnsecureEndpointFlowSimple extends AbstractITEndpointFlow {
 

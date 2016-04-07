@@ -22,28 +22,31 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.client.unsecure;
+package com.wandrell.example.mule.wss.testing.integration.endpoint.password;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
-import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
+import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the unsecure simple client
- * flow.
+ * Implementation of {@code AbstractITEndpointFlow} for the password protected
+ * Code-First endpoint flow.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(ClientContextPaths.CLIENT_UNSECURE)
-@TestPropertySource({ "classpath:config/client/unsecure/test-client-unsecure-simple.properties" })
-public final class ITUnsecureClientFlowSimple extends AbstractITClientFlow {
+@ContextConfiguration(EndpointContextPaths.PASSWORD)
+@TestPropertySource({
+        "classpath:config/endpoint/password/test-endpoint-password-code-first.properties",
+        "classpath:config/soap/test-soap-code-first-password.properties" })
+public final class ITPaswordEndpointFlowCodeFirst {
 
     /**
      * Default constructor.
      */
-    public ITUnsecureClientFlowSimple() {
+    public ITPaswordEndpointFlowCodeFirst() {
         super();
+        // TODO: Make this work
     }
+
 }

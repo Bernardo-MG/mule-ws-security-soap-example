@@ -32,9 +32,14 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
 public final class EndpointContextPaths {
 
     /**
+     * Password protected endpoint context files.
+     */
+    public static final String PASSWORD = "classpath:context/endpoint/test-endpoint-password.xml";
+
+    /**
      * Unsecure endpoint context files.
      */
-    public static final String ENDPOINT_UNSECURE = "classpath:context/endpoint/test-endpoint-unsecure.xml";
+    public static final String UNSECURE = "classpath:context/endpoint/test-endpoint-unsecure.xml";
 
     /**
      * Private constructor to avoid initialization.
