@@ -28,7 +28,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
-import com.wandrell.example.mule.wss.testing.util.test.AbstractITClientFlow;
+import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
  * Implementation of {@code AbstractITClientFlow} for the unsecure consumer

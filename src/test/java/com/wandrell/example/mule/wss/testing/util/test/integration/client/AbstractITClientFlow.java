@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.util.test;
+package com.wandrell.example.mule.wss.testing.util.test.integration.client;
 
 import javax.annotation.Resource;
 
@@ -35,15 +35,19 @@ import org.junit.runner.RunWith;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * Abstract integration tests for an endpoint flow testing that it handles
- * messages correctly.
+ * Abstract integration tests for a client flow testing that it handles messages
+ * correctly.
+ * <p>
+ * A client expects the id of the queried entity, as an integer, for the
+ * message. It returns the entity as a XML.
  * <p>
  * Checks the following cases:
  * <ol>
- * <li>A SOAP envelope is processed and a valid response returned.</li>
+ * <li>A valid payload is processed and a valid response returned.</li>
  * </ol>
  * <p>
  * Pay attention to the fact that it requires the WS to be running, and a Spring
@@ -52,60 +56,55 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-public abstract class AbstractITEndpointFlow extends FunctionalTestCase {
+@TestPropertySource({ "classpath:config/soap/test-soap-jaxb.properties" })
+public class AbstractITClientFlow extends FunctionalTestCase {
 
     /**
      * Name of the flow being tested.
      */
-    @Value("${endpoint.flow}")
-    private String   endpointFlow;
+    @Value("${client.flow}")
+    private String   clientFlow;
     /**
      * Configuration files to be loaded to build the Mule context.
      */
     @Resource(name = "configFiles")
     private String[] files;
     /**
-     * Path to the SOAP envelope for the request.
+     * Path to the SOAP payload for the response.
      */
-    @Value("${soap.request.envelope.path}")
-    private String   requestEnvelopePath;
-    /**
-     * Path to the SOAP envelope for the response.
-     */
-    @Value("${soap.response.path}")
-    private String   responseEnvelopePath;
+    @Value("${soap.response.payload.path}")
+    private String   responsePath;
 
     /**
      * Default constructor.
      */
-    public AbstractITEndpointFlow() {
+    public AbstractITClientFlow() {
         super();
     }
 
     /**
-     * Tests that a SOAP envelope is processed and a valid response returned.
+     * Tests that a valid payload is processed and a valid response returned.
      * 
      * @throws Exception
      *             never, this is a required declaration
      */
     @Test
-    public final void testEndpoint_Envelope_ReturnsExpected() throws Exception {
-        final String result;   // Response from the endpoint
-        final String encoding; // Files encoding
-        final String request;  // SOAP request
-        final String response; // SOAP response
+    public void testClient() throws Exception {
+        final Integer[] payload; // Payload sent to the flow
+        final String result;     // Response from the endpoint
+        final String encoding;   // Files encoding
+        final String response;   // SOAP response
 
         // Loads the messages
         encoding = "UTF-8";
-        request = IOUtils.toString(
-                new ClassPathResource(requestEnvelopePath).getInputStream(),
-                encoding);
         response = IOUtils.toString(
-                new ClassPathResource(responseEnvelopePath).getInputStream(),
-                encoding);
+                new ClassPathResource(responsePath).getInputStream(), encoding);
+
+        // Prepares the payload
+        payload = new Integer[] { new Integer(1) };
 
         // Sends the request to the flow
-        result = runFlow(endpointFlow, request).getMessageAsString();
+        result = runFlow(clientFlow, payload).getMessageAsString();
 
         // Verifies results
         XMLUnit.setIgnoreWhitespace(true);

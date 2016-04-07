@@ -32,8 +32,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.test.AbstractITEndpointFlow;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
  * Implementation of {@code AbstractITEndpointFlow} for the unsecure consumer

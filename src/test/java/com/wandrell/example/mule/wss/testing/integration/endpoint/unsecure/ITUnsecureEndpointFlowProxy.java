@@ -26,8 +26,9 @@ package com.wandrell.example.mule.wss.testing.integration.endpoint.unsecure;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.test.AbstractITEndpointFlow;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
  * Implementation of {@code AbstractITEndpointFlow} for the unsecure proxy
