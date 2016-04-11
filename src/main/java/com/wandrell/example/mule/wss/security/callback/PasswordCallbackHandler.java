@@ -44,15 +44,15 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bernardo Martínez Garrido
  */
-public final class PasswordCallback implements CallbackHandler {
+public final class PasswordCallbackHandler implements CallbackHandler {
 
     /**
      * The logger used for logging the password callback handler usage.
      */
     private static final Logger LOGGER = LoggerFactory
-                                               .getLogger(PasswordCallback.class);
+                                               .getLogger(PasswordCallbackHandler.class);
 
-    public PasswordCallback() {
+    public PasswordCallbackHandler() {
         super();
     }
 

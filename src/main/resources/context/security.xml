@@ -6,4 +6,8 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	
+	<bean id="passwordCallbackHandler" class="${security.callback.password.class}"/>
+   
+   <bean id="passwordValidator" class="${security.validator.password.class}"/>
+	
 </beans>
