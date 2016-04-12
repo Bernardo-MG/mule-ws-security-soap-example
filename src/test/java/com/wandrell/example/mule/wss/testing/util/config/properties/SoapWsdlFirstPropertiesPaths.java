@@ -37,12 +37,12 @@ public final class SoapWsdlFirstPropertiesPaths {
     /**
      * Password protected SOAP messages.
      */
-    public static final String PASSWORD = "classpath:config/soap/test-soap-wsdl-first-password.properties";
+    public static final String PASSWORD = "classpath:config/soap/password/test-soap-wsdl-first-password.properties";
 
     /**
      * Unsecure SOAP messages.
      */
-    public static final String UNSECURE = "classpath:config/soap/test-soap-wsdl-first.properties";
+    public static final String UNSECURE = "classpath:config/soap/unsecure/test-soap-wsdl-first.properties";
 
     /**
      * Private constructor to avoid initialization.

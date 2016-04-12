@@ -37,12 +37,12 @@ public final class SoapSimplePropertiesPaths {
     /**
      * Password protected SOAP messages.
      */
-    public static final String PASSWORD = "classpath:config/soap/test-soap-simple-password.properties";
+    public static final String PASSWORD = "classpath:config/soap/password/test-soap-simple-password.properties";
 
     /**
      * Unsecure SOAP messages.
      */
-    public static final String UNSECURE = "classpath:config/soap/test-soap-simple.properties";
+    public static final String UNSECURE = "classpath:config/soap/unsecure/test-soap-simple.properties";
 
     /**
      * Private constructor to avoid initialization.
