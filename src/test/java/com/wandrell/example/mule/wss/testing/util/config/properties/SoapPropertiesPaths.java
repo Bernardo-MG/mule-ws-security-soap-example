@@ -37,7 +37,7 @@ public final class SoapPropertiesPaths {
     /**
      * Unsecure SOAP messages for the transformer.
      */
-    public static final String UNSECURE_TRANSFORMER         = "classpath:config/soap/test-soap-transformer.properties";
+    public static final String UNSECURE_TRANSFORMER = "classpath:config/soap/test-soap-transformer.properties";
 
     /**
      * Private constructor to avoid initialization.

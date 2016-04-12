@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2015 the original author or authors.
+ * Copyright (c) 2016 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,32 +22,31 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.util.config.properties;
+package com.wandrell.example.mule.wss.testing.integration.endpoint.password;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointWsdlFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapWsdlFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
- * Paths to the test SOAP messages for Code-First endpoints properties files.
- * <p>
- * Each file contains the information for finding or generating SOAP messages
- * for the tests.
- *
+ * Implementation of {@code AbstractITEndpointFlow} for the password protected
+ * Code-First endpoint flow.
+ * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class SoapCodeFirstPropertiesPaths {
+@ContextConfiguration(EndpointContextPaths.PASSWORD)
+@TestPropertySource({ EndpointWsdlFirstPropertiesPaths.PASSWORD,
+        SoapWsdlFirstPropertiesPaths.PASSWORD })
+public final class ITPasswordEndpointWsdlFirst extends AbstractITEndpointFlow {
 
     /**
-     * Unsecure SOAP messages.
+     * Default constructor.
      */
-    public static final String PASSWORD = "classpath:config/soap/test-soap-code-first-password.properties";
-
-    /**
-     * Unsecure SOAP messages.
-     */
-    public static final String UNSECURE = "classpath:config/soap/test-soap-code-first.properties";
-
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private SoapCodeFirstPropertiesPaths() {
+    public ITPasswordEndpointWsdlFirst() {
         super();
     }
 

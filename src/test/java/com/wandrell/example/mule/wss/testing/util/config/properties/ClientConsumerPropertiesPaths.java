@@ -27,8 +27,8 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
 /**
  * Paths to the consumer clients configuration properties files.
  * <p>
- * These files contain the data required for setting up a client test
- * context, and mostly indicate which flow to use when testing.
+ * These files contain the data required for setting up a client test context,
+ * and mostly indicate which flow to use when testing.
  *
  * @author Bernardo Martínez Garrido
  */

@@ -48,7 +48,7 @@ public final class UsernameTokenValidator implements Validator {
     /**
      * Default constructor.
      */
-    public UsernameTokenValidator(){
+    public UsernameTokenValidator() {
         super();
     }
 
@@ -63,7 +63,7 @@ public final class UsernameTokenValidator implements Validator {
                     usernameToken.getName()));
             throw new WSSecurityException(
                     WSSecurityException.FAILED_AUTHENTICATION);
-        } else if(!"myPassword".equals(usernameToken.getPassword())){
+        } else if (!"myPassword".equals(usernameToken.getPassword())) {
             LOGGER.debug(String.format("Password for username %s not valid",
                     usernameToken.getName()));
             throw new WSSecurityException(

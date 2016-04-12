@@ -37,7 +37,7 @@ public final class SoapProxyPropertiesPaths {
     /**
      * Unsecure WSDL-first SOAP messages.
      */
-    public static final String UNSECURE  = "classpath:config/soap/test-soap-proxy.properties";
+    public static final String UNSECURE = "classpath:config/soap/test-soap-proxy.properties";
 
     /**
      * Private constructor to avoid initialization.

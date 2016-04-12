@@ -40,6 +40,11 @@ public final class EndpointWsdlFirstPropertiesPaths {
     public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-wsdl-first.properties";
 
     /**
+     * Password protected endpoint.
+     */
+    public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-wsdl-first.properties";
+
+    /**
      * Private constructor to avoid initialization.
      */
     private EndpointWsdlFirstPropertiesPaths() {

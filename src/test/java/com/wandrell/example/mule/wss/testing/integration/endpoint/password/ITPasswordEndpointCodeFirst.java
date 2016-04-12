@@ -39,8 +39,7 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(EndpointContextPaths.PASSWORD)
-@TestPropertySource({
-    EndpointCodeFirstPropertiesPaths.PASSWORD,
+@TestPropertySource({ EndpointCodeFirstPropertiesPaths.PASSWORD,
         SoapCodeFirstPropertiesPaths.PASSWORD })
 public final class ITPasswordEndpointCodeFirst extends AbstractITEndpointFlow {
 

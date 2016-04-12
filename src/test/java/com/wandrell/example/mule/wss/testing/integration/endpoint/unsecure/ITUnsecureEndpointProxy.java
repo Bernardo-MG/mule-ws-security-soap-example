@@ -39,8 +39,7 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(EndpointContextPaths.UNSECURE)
-@TestPropertySource({
-    EndpointProxyPropertiesPaths.UNSECURE,
+@TestPropertySource({ EndpointProxyPropertiesPaths.UNSECURE,
         SoapProxyPropertiesPaths.UNSECURE })
 public final class ITUnsecureEndpointProxy extends AbstractITEndpointFlow {
 

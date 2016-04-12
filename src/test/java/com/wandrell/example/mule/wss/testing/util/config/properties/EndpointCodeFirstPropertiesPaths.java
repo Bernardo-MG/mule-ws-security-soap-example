@@ -35,14 +35,14 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
 public final class EndpointCodeFirstPropertiesPaths {
 
     /**
-     * Unsecure endpoint.
-     */
-    public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-code-first.properties";
-
-    /**
      * Password protected endpoint.
      */
     public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-code-first.properties";
+
+    /**
+     * Unsecure endpoint.
+     */
+    public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-code-first.properties";
 
     /**
      * Private constructor to avoid initialization.
