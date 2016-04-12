@@ -28,6 +28,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointConsumerPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapConsumerPropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
@@ -38,8 +40,8 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  */
 @ContextConfiguration(EndpointContextPaths.PASSWORD)
 @TestPropertySource({
-        "classpath:config/endpoint/password/test-endpoint-password-consumer.properties",
-        "classpath:config/soap/test-soap-consumer-password.properties" })
+    EndpointConsumerPropertiesPaths.PASSWORD,
+        SoapConsumerPropertiesPaths.PASSWORD })
 public final class ITPasswordEndpointConsumer extends AbstractITEndpointFlow {
 
     /**

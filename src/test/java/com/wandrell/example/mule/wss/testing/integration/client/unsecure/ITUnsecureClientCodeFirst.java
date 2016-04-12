@@ -28,22 +28,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.ClientCodeFirstPropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the unsecure consumer
+ * Implementation of {@code AbstractITClientFlow} for the unsecure Code-First
  * client flow.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(ClientContextPaths.CLIENT_UNSECURE)
-@TestPropertySource({ "classpath:config/client/unsecure/test-client-unsecure-consumer.properties" })
-public final class ITUnsecureClientFlowConsumer extends AbstractITClientFlow {
+@TestPropertySource({ ClientCodeFirstPropertiesPaths.UNSECURE })
+public final class ITUnsecureClientCodeFirst extends AbstractITClientFlow {
 
     /**
      * Default constructor.
      */
-    public ITUnsecureClientFlowConsumer() {
+    public ITUnsecureClientCodeFirst() {
         super();
     }
 

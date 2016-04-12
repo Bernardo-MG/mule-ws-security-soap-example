@@ -28,6 +28,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointWsdlFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapWsdlFirstPropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
@@ -37,9 +39,8 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(EndpointContextPaths.UNSECURE)
-@TestPropertySource({
-        "classpath:config/endpoint/unsecure/test-endpoint-unsecure-wsdl-first.properties",
-        "classpath:config/soap/test-soap-wsdl-first.properties" })
+@TestPropertySource({ EndpointWsdlFirstPropertiesPaths.UNSECURE,
+    SoapWsdlFirstPropertiesPaths.UNSECURE })
 public final class ITUnsecureEndpointWsdlFirst extends AbstractITEndpointFlow {
 
     /**

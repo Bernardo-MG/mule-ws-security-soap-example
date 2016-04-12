@@ -40,6 +40,7 @@ import org.testng.annotations.Test;
 import com.wandrell.example.mule.wss.flow.transformer.EntityXmlToModelTransformer;
 import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapPropertiesPaths;
 
 /**
  * Unit tests for {@link EntityXmlToModelTransformer} checking that the
@@ -56,15 +57,24 @@ import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPath
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
-@TestPropertySource({ "classpath:config/soap/test-soap-transformer.properties" })
+@TestPropertySource({ SoapPropertiesPaths.UNSECURE_TRANSFORMER })
 public final class TestEntityXmlToModelTransformer extends
         AbstractTestNGSpringContextTests {
 
+    /**
+     * Path to the Code-First endpoint message payload.
+     */
     @Value("${soap.response.codeFirst.payload.path}")
     private String codeFirstPath;
+    /**
+     * Path to the WSDL-First endpoint message payload.
+     */
     @Value("${soap.response.wsdlFirst.payload.path}")
     private String wsdlFirstPath;
 
+    /**
+     * Default constructor.
+     */
     public TestEntityXmlToModelTransformer() {
         super();
     }

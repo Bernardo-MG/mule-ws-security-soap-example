@@ -28,6 +28,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.ClientSimplePropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
@@ -37,13 +38,13 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(ClientContextPaths.CLIENT_UNSECURE)
-@TestPropertySource({ "classpath:config/client/unsecure/test-client-unsecure-simple.properties" })
-public final class ITUnsecureClientFlowSimple extends AbstractITClientFlow {
+@TestPropertySource({ ClientSimplePropertiesPaths.UNSECURE })
+public final class ITUnsecureClientSimple extends AbstractITClientFlow {
 
     /**
      * Default constructor.
      */
-    public ITUnsecureClientFlowSimple() {
+    public ITUnsecureClientSimple() {
         super();
     }
 }

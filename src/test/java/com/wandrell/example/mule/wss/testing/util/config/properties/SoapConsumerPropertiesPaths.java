@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2015 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,32 +22,32 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.endpoint.password;
-
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-
-import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointCodeFirstPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SoapCodeFirstPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
+package com.wandrell.example.mule.wss.testing.util.config.properties;
 
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the password protected
- * Code-First endpoint flow.
- * 
+ * Paths to the test SOAP messages for consumer endpoints properties files.
+ * <p>
+ * Each file contains the information for finding or generating SOAP messages
+ * for the tests.
+ *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(EndpointContextPaths.PASSWORD)
-@TestPropertySource({
-    EndpointCodeFirstPropertiesPaths.PASSWORD,
-        SoapCodeFirstPropertiesPaths.PASSWORD })
-public final class ITPasswordEndpointCodeFirst extends AbstractITEndpointFlow {
+public final class SoapConsumerPropertiesPaths {
 
     /**
-     * Default constructor.
+     * Unsecure SOAP messages.
      */
-    public ITPasswordEndpointCodeFirst() {
+    public static final String UNSECURE  = "classpath:config/soap/test-soap-consumer.properties";
+
+    /**
+     * Password protected SOAP messages.
+     */
+    public static final String PASSWORD  = "classpath:config/soap/test-soap-consumer-password.properties";
+
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private SoapConsumerPropertiesPaths() {
         super();
     }
 

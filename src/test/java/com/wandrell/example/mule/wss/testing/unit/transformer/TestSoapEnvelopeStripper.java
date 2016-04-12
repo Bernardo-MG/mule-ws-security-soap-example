@@ -41,6 +41,7 @@ import org.xml.sax.SAXException;
 
 import com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapWsdlFirstPropertiesPaths;
 
 /**
  * Unit tests for {@link SoapEnvelopeStripper} checking that the transformer
@@ -55,7 +56,7 @@ import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPath
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
-@TestPropertySource({ "classpath:config/soap/test-soap-wsdl-first.properties" })
+@TestPropertySource({ SoapWsdlFirstPropertiesPaths.UNSECURE })
 public final class TestSoapEnvelopeStripper extends
         AbstractTestNGSpringContextTests {
 
