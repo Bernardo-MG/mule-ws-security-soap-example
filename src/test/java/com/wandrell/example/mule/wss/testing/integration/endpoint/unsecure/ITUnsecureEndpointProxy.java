@@ -30,7 +30,7 @@ import org.springframework.test.context.TestPropertySource;
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointProxyPropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SoapProxyPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpoint;
 
 /**
  * Implementation of {@code AbstractITEndpointFlow} for the unsecure proxy
@@ -41,7 +41,7 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
 @ContextConfiguration(EndpointContextPaths.UNSECURE)
 @TestPropertySource({ EndpointProxyPropertiesPaths.UNSECURE,
         SoapProxyPropertiesPaths.UNSECURE })
-public final class ITUnsecureEndpointProxy extends AbstractITEndpointFlow {
+public final class ITUnsecureEndpointProxy extends AbstractITEndpoint {
 
     /**
      * Default constructor.

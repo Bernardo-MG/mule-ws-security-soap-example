@@ -30,7 +30,7 @@ import org.springframework.test.context.TestPropertySource;
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointSimplePropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SoapSimplePropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpoint;
 
 /**
  * Implementation of {@code AbstractITEndpointFlow} for the unsecure simple
@@ -41,7 +41,7 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
 @ContextConfiguration(EndpointContextPaths.UNSECURE)
 @TestPropertySource({ EndpointSimplePropertiesPaths.UNSECURE,
         SoapSimplePropertiesPaths.UNSECURE })
-public final class ITUnsecureEndpointSimple extends AbstractITEndpointFlow {
+public final class ITUnsecureEndpointSimple extends AbstractITEndpoint {
 
     /**
      * Default constructor.

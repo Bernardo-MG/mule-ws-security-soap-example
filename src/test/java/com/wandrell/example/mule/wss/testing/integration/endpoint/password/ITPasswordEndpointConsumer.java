@@ -30,7 +30,7 @@ import org.springframework.test.context.TestPropertySource;
 import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointConsumerPropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SoapConsumerPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITSecuredEndpoint;
 
 /**
  * Implementation of {@code AbstractITEndpointFlow} for the password protected
@@ -41,7 +41,7 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
 @ContextConfiguration(EndpointContextPaths.PASSWORD)
 @TestPropertySource({ EndpointConsumerPropertiesPaths.PASSWORD,
         SoapConsumerPropertiesPaths.PASSWORD })
-public final class ITPasswordEndpointConsumer extends AbstractITEndpointFlow {
+public final class ITPasswordEndpointConsumer extends AbstractITSecuredEndpoint {
 
     /**
      * Default constructor.

@@ -37,12 +37,12 @@ public final class EndpointProxyPropertiesPaths {
     /**
      * Unsecure endpoint.
      */
-    public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-proxy.properties";
+    public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-proxy.properties";
 
     /**
      * Unsecure endpoint.
      */
-    public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-proxy.properties";
+    public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-proxy.properties";
 
     /**
      * Private constructor to avoid initialization.

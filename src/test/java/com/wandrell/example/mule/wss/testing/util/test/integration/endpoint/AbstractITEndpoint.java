@@ -55,7 +55,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-public abstract class AbstractITEndpointFlow extends FunctionalTestCase {
+public abstract class AbstractITEndpoint extends FunctionalTestCase {
 
     /**
      * Name of the flow being tested.
@@ -81,7 +81,7 @@ public abstract class AbstractITEndpointFlow extends FunctionalTestCase {
     /**
      * Default constructor.
      */
-    public AbstractITEndpointFlow() {
+    public AbstractITEndpoint() {
         super();
     }
 
