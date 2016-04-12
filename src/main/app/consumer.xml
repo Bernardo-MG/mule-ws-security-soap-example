@@ -27,8 +27,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		service="${wsdl.service}" port="${wsdl.port}"
 		serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.password.codeFirst.path}">
 		<ws:security>
-			<ws:wss-username-token username="myUser"
-				password="myPassword" passwordType="TEXT" />
+			<ws:wss-username-token username="${security.credentials.user}"
+				password="${security.credentials.password}" passwordType="TEXT" />
 		</ws:security>
 	</ws:consumer-config>
 
