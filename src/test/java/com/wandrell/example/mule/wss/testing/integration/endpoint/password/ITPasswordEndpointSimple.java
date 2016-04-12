@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2015 the original author or authors.
+ * Copyright (c) 2016 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,32 +22,31 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.util.config.properties;
+package com.wandrell.example.mule.wss.testing.integration.endpoint.password;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointSimplePropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapSimplePropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpointFlow;
 
 /**
- * Paths to the WSDL-First endpoints configuration properties files.
- * <p>
- * These files contain the data required for setting up an endpoint test
- * context, and mostly indicate which flow to use when testing.
- *
- * @author Bernardo Martínez Garrido
+ * Implementation of {@code AbstractITEndpointFlow} for the password protected
+ * Code-First endpoint flow.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class EndpointWsdlFirstPropertiesPaths {
+@ContextConfiguration(EndpointContextPaths.PASSWORD)
+@TestPropertySource({ EndpointSimplePropertiesPaths.PASSWORD,
+        SoapSimplePropertiesPaths.PASSWORD })
+public final class ITPasswordEndpointSimple extends AbstractITEndpointFlow {
 
     /**
-     * Password protected endpoint.
+     * Default constructor.
      */
-    public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-wsdl-first.properties";
-
-    /**
-     * Unsecure endpoint.
-     */
-    public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-wsdl-first.properties";
-
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private EndpointWsdlFirstPropertiesPaths() {
+    public ITPasswordEndpointSimple() {
         super();
     }
 

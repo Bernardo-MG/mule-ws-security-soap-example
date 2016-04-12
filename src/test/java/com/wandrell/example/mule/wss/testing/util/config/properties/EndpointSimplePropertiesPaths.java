@@ -35,6 +35,11 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
 public final class EndpointSimplePropertiesPaths {
 
     /**
+     * Password protected endpoint.
+     */
+    public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-simple.properties";
+
+    /**
      * Unsecure endpoint.
      */
     public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-simple.properties";
