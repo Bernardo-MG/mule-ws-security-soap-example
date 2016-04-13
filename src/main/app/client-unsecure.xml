@@ -18,7 +18,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	<flow name="Client-HTTP-Unsecure-CodeFirst">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.codeFirst.path}" doc:name="HTTP Inbound Endpoint" />
-		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
 		<flow-ref name="Client-HTTP-Unsecure-CodeFirst-Endpoint"
 			doc:name="Send request" />
         <response>
@@ -38,7 +38,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	<flow name="Client-HTTP-Unsecure-WSDLFirst">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.wsdlFirst.path}" doc:name="HTTP Inbound Endpoint" />
-		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
 		<flow-ref name="Client-HTTP-Unsecure-WSDLFirst-Endpoint"
 			doc:name="Send request" />
         <response>
@@ -59,7 +59,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	<flow name="Client-HTTP-Unsecure-Simple">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.simple.path}" doc:name="HTTP Inbound Endpoint" />
-		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
 		<flow-ref name="Client-HTTP-Unsecure-Simple-Endpoint"
 			doc:name="Send request" />
         <response>
@@ -79,7 +79,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	<flow name="Client-HTTP-Unsecure-Proxy">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.proxy.path}" doc:name="HTTP Inbound Endpoint" />
-		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
 		<flow-ref name="Client-HTTP-Unsecure-Proxy-Endpoint"
 			doc:name="Send request" />
         <response>
@@ -97,7 +97,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	<flow name="Client-HTTP-Unsecure-Consumer">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.consumer.path}" doc:name="HTTP Inbound Endpoint" />
-		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
 		<flow-ref name="Client-HTTP-Unsecure-Consumer-Endpoint"
 			doc:name="Send request" />
         <response>
