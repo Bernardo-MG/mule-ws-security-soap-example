@@ -91,7 +91,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	</flow>
 	<sub-flow name="WS-Unsecure-Consumer-Endpoint">
         <logger message="Begins the unsecure consumer endpoint flow" level="INFO" doc:name="Logger"/>
-		<flow-ref name="Transform-ConsumerRequest" doc:name="Transform to a valid request" />
+		<flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
 		<ws:consumer config-ref="Consumer-Unsecure-CodeFirst"
 			operation="${wsdl.operation}" doc:name="Unsecure code-first consumer" />
 		<mulexml:dom-to-xml-transformer

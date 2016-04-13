@@ -52,7 +52,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			doc:name="Object to XML" />
 	</sub-flow>
 
-	<sub-flow name="Transform-ConsumerRequest-Vars">
+	<sub-flow name="Transform-Consumer-Request-Vars">
 		<set-variable variableName="id" value="#[payload[0]]"
 			doc:name="Save id variable" />
 		<set-payload value="&lt;root/&gt;" doc:name="Dummy XML document (for transformer)" />
@@ -62,7 +62,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		</mulexml:xslt-transformer>
 	</sub-flow>
 
-	<sub-flow name="Transform-ConsumerRequest">
+	<sub-flow name="Transform-Consumer-Request">
 		<object-to-string-transformer doc:name="Object to string" />
 		<transformer ref="SoapEnvelopeStripper" doc:name="Transform SOAP message" />
 	</sub-flow>
