@@ -14,7 +14,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
 
-	<flow name="Endpoint-Unsecure-CodeFirst-Flow">
+	<flow name="Endpoint-Unsecure-CodeFirst-HTTP">
 		<http:listener config-ref="Listener-Application"
 			doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.codeFirst.path}" />
 
@@ -32,7 +32,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure Code-First endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
-	<flow name="Endpoint-Unsecure-WSDLFirst-Flow">
+	<flow name="Endpoint-Unsecure-WSDLFirst-HTTP">
 		<http:listener config-ref="Listener-Application"
 			doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.wsdlFirst.path}" />
 
@@ -51,7 +51,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure WSDL-First endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
-	<flow name="Endpoint-Unsecure-Simple-Flow">
+	<flow name="Endpoint-Unsecure-Simple-HTTP">
 		<http:listener config-ref="Listener-Application"
 			path="${endpoint.unsecure.simple.path}" doc:name="HTTP Inbound Endpoint" />
 
@@ -67,7 +67,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure simple endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
-	<flow name="Endpoint-Unsecure-Proxy-Flow">
+	<flow name="Endpoint-Unsecure-Proxy-HTTP">
 		<http:listener config-ref="Listener-Application"
 			doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.proxy.path}" />
 
@@ -89,7 +89,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure proxy endpoint flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
-	<flow name="Endpoint-Unsecure-Consumer-Flow">
+	<flow name="Endpoint-Unsecure-Consumer-HTTP">
 		<http:listener config-ref="Listener-Application"
 			doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.consumer.path}" />
 		<flow-ref name="Endpoint-Unsecure-Consumer-Endpoint" doc:name="Send to endpoint" />

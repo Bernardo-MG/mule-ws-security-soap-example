@@ -15,7 +15,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
 
-	<flow name="HTTPClient-Unsecure-CodeFirst-Flow">
+	<flow name="HTTPClient-Unsecure-CodeFirst">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.codeFirst.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
@@ -35,7 +35,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure Code-First client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
-	<flow name="HTTPClient-Unsecure-WSDLFirst-Flow">
+	<flow name="HTTPClient-Unsecure-WSDLFirst">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.wsdlFirst.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
@@ -56,7 +56,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure WSDL-First client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
-	<flow name="HTTPClient-Unsecure-Simple-Flow">
+	<flow name="HTTPClient-Unsecure-Simple">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.simple.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
@@ -76,7 +76,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure simple client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
-	<flow name="HTTPClient-Unsecure-Proxy-Flow">
+	<flow name="HTTPClient-Unsecure-Proxy">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.proxy.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />
@@ -94,7 +94,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
         <logger message="Ends the unsecure proxy client flow" level="INFO" doc:name="Logger"/>
 	</sub-flow>
 
-	<flow name="HTTPClient-Unsecure-Consumer-Flow">
+	<flow name="HTTPClient-Unsecure-Consumer">
 		<http:listener config-ref="Listener-Application"
 			path="${client.password.consumer.path}" doc:name="HTTP Inbound Endpoint" />
 		<flow-ref name="ReadHTTPVariables" doc:name="Read HTPP variables" />

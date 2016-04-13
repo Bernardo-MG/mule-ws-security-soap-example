@@ -8,7 +8,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
-	<flow name="Test-HTTPClient-Unsecure-CodeFirst-Flow">
+	<flow name="Test-HTTPClient-Unsecure-CodeFirst">
 		<flow-ref name="HTTPClient-Unsecure-CodeFirst-Endpoint"
 			doc:name="Code-First endpoint" />
 		<response>
@@ -17,7 +17,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		</response>
 	</flow>
 
-	<flow name="Test-HTTPClient-Unsecure-WSDLFirst-Flow">
+	<flow name="Test-HTTPClient-Unsecure-WSDLFirst">
 		<flow-ref name="HTTPClient-Unsecure-WSDLFirst-Endpoint"
 			doc:name="WSDL-First endpoint" />
 		<response>
@@ -25,7 +25,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		</response>
 	</flow>
 
-	<flow name="Test-HTTPClient-Unsecure-Simple-Flow">
+	<flow name="Test-HTTPClient-Unsecure-Simple">
 		<flow-ref name="HTTPClient-Unsecure-Simple-Endpoint"
 			doc:name="Simple endpoint" />
 		<response>
@@ -34,7 +34,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		</response>
 	</flow>
 
-	<flow name="Test-HTTPClient-Unsecure-Proxy-Flow">
+	<flow name="Test-HTTPClient-Unsecure-Proxy">
 		<flow-ref name="HTTPClient-Unsecure-Proxy-Endpoint"
 			doc:name="Proxy endpoint" />
 		<response>
@@ -43,7 +43,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		</response>
 	</flow>
 	
-	<flow name="Test-HTTPClient-Unsecure-Consumer-Flow">
+	<flow name="Test-HTTPClient-Unsecure-Consumer">
 		<flow-ref name="HTTPClient-Unsecure-Consumer-Endpoint"
 			doc:name="Code-first unsecure endpoint consumer" />
 		<response>
