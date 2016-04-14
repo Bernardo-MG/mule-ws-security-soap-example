@@ -25,29 +25,29 @@
 package com.wandrell.example.mule.wss.testing.util.config.properties;
 
 /**
- * Paths to the simple endpoints configuration properties files.
+ * Paths to the Code-First web service configuration properties files.
  * <p>
- * These files contain the data required for setting up an endpoint test
+ * These files contain the data required for setting up a web service test
  * context, and mostly indicate which flow to use when testing.
  *
  * @author Bernardo Martínez Garrido
  */
-public final class EndpointSimplePropertiesPaths {
+public final class WebServiceCodeFirstPropertiesPaths {
 
     /**
-     * Password protected endpoint.
+     * Password protected.
      */
-    public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-simple.properties";
+    public static final String PASSWORD = "classpath:config/ws/password/test-ws-password-code-first.properties";
 
     /**
-     * Unsecure endpoint.
+     * Unsecure.
      */
-    public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-simple.properties";
+    public static final String UNSECURE = "classpath:config/ws/unsecure/test-ws-unsecure-code-first.properties";
 
     /**
      * Private constructor to avoid initialization.
      */
-    private EndpointSimplePropertiesPaths() {
+    private WebServiceCodeFirstPropertiesPaths() {
         super();
     }
 

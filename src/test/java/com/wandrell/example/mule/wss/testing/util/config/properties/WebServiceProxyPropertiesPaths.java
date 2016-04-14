@@ -25,29 +25,29 @@
 package com.wandrell.example.mule.wss.testing.util.config.properties;
 
 /**
- * Paths to the consumer endpoints configuration properties files.
+ * Paths to the proxy web service configuration properties files.
  * <p>
- * These files contain the data required for setting up an endpoint test
+ * These files contain the data required for setting up a web service test
  * context, and mostly indicate which flow to use when testing.
  *
  * @author Bernardo Martínez Garrido
  */
-public final class EndpointConsumerPropertiesPaths {
+public final class WebServiceProxyPropertiesPaths {
 
     /**
-     * Password protected endpoint.
+     * Password protected.
      */
-    public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-consumer.properties";
+    public static final String PASSWORD = "classpath:config/ws/password/test-ws-password-proxy.properties";
 
     /**
-     * Unsecure endpoint.
+     * Unsecure.
      */
-    public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-consumer.properties";
+    public static final String UNSECURE = "classpath:config/ws/unsecure/test-ws-unsecure-proxy.properties";
 
     /**
      * Private constructor to avoid initialization.
      */
-    private EndpointConsumerPropertiesPaths() {
+    private WebServiceProxyPropertiesPaths() {
         super();
     }
 

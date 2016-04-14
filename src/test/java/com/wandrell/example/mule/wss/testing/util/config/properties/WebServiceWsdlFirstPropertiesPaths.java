@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2015 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,31 +22,32 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.endpoint.password;
-
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-
-import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointProxyPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SoapProxyPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITSecuredEndpoint;
+package com.wandrell.example.mule.wss.testing.util.config.properties;
 
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the password protected
- * Code-First endpoint flow.
- * 
- * @author Bernardo Mart&iacute;nez Garrido
+ * Paths to the WSDL-First web service configuration properties files.
+ * <p>
+ * These files contain the data required for setting up a web service test
+ * context, and mostly indicate which flow to use when testing.
+ *
+ * @author Bernardo Martínez Garrido
  */
-@ContextConfiguration(EndpointContextPaths.PASSWORD)
-@TestPropertySource({ EndpointProxyPropertiesPaths.PASSWORD,
-        SoapProxyPropertiesPaths.PASSWORD })
-public final class ITPasswordEndpointProxy extends AbstractITSecuredEndpoint {
+public final class WebServiceWsdlFirstPropertiesPaths {
 
     /**
-     * Default constructor.
+     * Password protected.
      */
-    public ITPasswordEndpointProxy() {
+    public static final String PASSWORD = "classpath:config/ws/password/test-ws-password-wsdl-first.properties";
+
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE = "classpath:config/ws/unsecure/test-ws-unsecure-wsdl-first.properties";
+
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private WebServiceWsdlFirstPropertiesPaths() {
         super();
     }
 

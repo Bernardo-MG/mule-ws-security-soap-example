@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.endpoint.unsecure;
+package com.wandrell.example.mule.wss.testing.integration.ws.unsecure;
 
 import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;
@@ -33,8 +33,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
-import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointConsumerPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.context.WebServiceContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceConsumerPropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SoapConsumerPropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpoint;
 
@@ -49,10 +49,10 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(EndpointContextPaths.UNSECURE)
-@TestPropertySource({ EndpointConsumerPropertiesPaths.UNSECURE,
+@ContextConfiguration(WebServiceContextPaths.UNSECURE)
+@TestPropertySource({ WebServiceConsumerPropertiesPaths.UNSECURE,
         SoapConsumerPropertiesPaths.UNSECURE })
-public final class ITUnsecureEndpointConsumer extends AbstractITEndpoint {
+public final class ITUnsecureWebServiceConsumer extends AbstractITEndpoint {
 
     /**
      * Name of the flow being tested.
@@ -73,7 +73,7 @@ public final class ITUnsecureEndpointConsumer extends AbstractITEndpoint {
     /**
      * Default constructor.
      */
-    public ITUnsecureEndpointConsumer() {
+    public ITUnsecureWebServiceConsumer() {
         super();
     }
 

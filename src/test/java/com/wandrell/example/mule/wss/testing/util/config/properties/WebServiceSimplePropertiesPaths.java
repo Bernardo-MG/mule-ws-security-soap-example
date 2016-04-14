@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2016 the original author or authors.
+ * Copyright (c) 2015 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,31 +22,32 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.endpoint.unsecure;
-
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
-
-import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointProxyPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SoapProxyPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpoint;
+package com.wandrell.example.mule.wss.testing.util.config.properties;
 
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the unsecure proxy
- * endpoint flow.
- * 
- * @author Bernardo Mart&iacute;nez Garrido
+ * Paths to the simple web service configuration properties files.
+ * <p>
+ * These files contain the data required for setting up a web service test
+ * context, and mostly indicate which flow to use when testing.
+ *
+ * @author Bernardo Martínez Garrido
  */
-@ContextConfiguration(EndpointContextPaths.UNSECURE)
-@TestPropertySource({ EndpointProxyPropertiesPaths.UNSECURE,
-        SoapProxyPropertiesPaths.UNSECURE })
-public final class ITUnsecureEndpointProxy extends AbstractITEndpoint {
+public final class WebServiceSimplePropertiesPaths {
 
     /**
-     * Default constructor.
+     * Password protected.
      */
-    public ITUnsecureEndpointProxy() {
+    public static final String PASSWORD = "classpath:config/ws/password/test-ws-password-simple.properties";
+
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE = "classpath:config/ws/unsecure/test-ws-unsecure-simple.properties";
+
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private WebServiceSimplePropertiesPaths() {
         super();
     }
 

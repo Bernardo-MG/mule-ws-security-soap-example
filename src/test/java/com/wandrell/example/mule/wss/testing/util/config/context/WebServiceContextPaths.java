@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2015 the original author or authors.
+ * Copyright (c) 2016 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,32 +22,29 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.util.config.properties;
+package com.wandrell.example.mule.wss.testing.util.config.context;
 
 /**
- * Paths to the Code-First endpoints configuration properties files.
- * <p>
- * These files contain the data required for setting up an endpoint test
- * context, and mostly indicate which flow to use when testing.
+ * Configuration class for the test web service context files paths.
  *
- * @author Bernardo Martínez Garrido
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class EndpointCodeFirstPropertiesPaths {
+public final class WebServiceContextPaths {
 
     /**
-     * Password protected endpoint.
+     * Password protected.
      */
-    public static final String PASSWORD = "classpath:config/endpoint/password/test-endpoint-password-code-first.properties";
+    public static final String PASSWORD = "classpath:context/ws/test-ws-password.xml";
 
     /**
-     * Unsecure endpoint.
+     * Unsecure.
      */
-    public static final String UNSECURE = "classpath:config/endpoint/unsecure/test-endpoint-unsecure-code-first.properties";
+    public static final String UNSECURE = "classpath:context/ws/test-ws-unsecure.xml";
 
     /**
      * Private constructor to avoid initialization.
      */
-    private EndpointCodeFirstPropertiesPaths() {
+    private WebServiceContextPaths() {
         super();
     }
 

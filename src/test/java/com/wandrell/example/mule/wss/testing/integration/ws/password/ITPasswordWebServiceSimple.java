@@ -22,14 +22,14 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.endpoint.password;
+package com.wandrell.example.mule.wss.testing.integration.ws.password;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
-import com.wandrell.example.mule.wss.testing.util.config.context.EndpointContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.EndpointWsdlFirstPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SoapWsdlFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.context.WebServiceContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceSimplePropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapSimplePropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITSecuredEndpoint;
 
 /**
@@ -38,16 +38,15 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(EndpointContextPaths.PASSWORD)
-@TestPropertySource({ EndpointWsdlFirstPropertiesPaths.PASSWORD,
-        SoapWsdlFirstPropertiesPaths.PASSWORD })
-public final class ITPasswordEndpointWsdlFirst extends
-        AbstractITSecuredEndpoint {
+@ContextConfiguration(WebServiceContextPaths.PASSWORD)
+@TestPropertySource({ WebServiceSimplePropertiesPaths.PASSWORD,
+        SoapSimplePropertiesPaths.PASSWORD })
+public final class ITPasswordWebServiceSimple extends AbstractITSecuredEndpoint {
 
     /**
      * Default constructor.
      */
-    public ITPasswordEndpointWsdlFirst() {
+    public ITPasswordWebServiceSimple() {
         super();
     }
 

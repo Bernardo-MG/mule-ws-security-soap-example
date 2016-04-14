@@ -22,29 +22,32 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.util.config.context;
+package com.wandrell.example.mule.wss.testing.integration.ws.password;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.mule.wss.testing.util.config.context.WebServiceContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceCodeFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapCodeFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITSecuredEndpoint;
 
 /**
- * Configuration class for the test endpoint context files paths.
- *
+ * Implementation of {@code AbstractITEndpointFlow} for the password protected
+ * Code-First endpoint flow.
+ * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class EndpointContextPaths {
+@ContextConfiguration(WebServiceContextPaths.PASSWORD)
+@TestPropertySource({ WebServiceCodeFirstPropertiesPaths.PASSWORD,
+        SoapCodeFirstPropertiesPaths.PASSWORD })
+public final class ITPasswordWebServiceCodeFirst extends
+        AbstractITSecuredEndpoint {
 
     /**
-     * Password protected endpoint context files.
+     * Default constructor.
      */
-    public static final String PASSWORD = "classpath:context/endpoint/test-endpoint-password.xml";
-
-    /**
-     * Unsecure endpoint context files.
-     */
-    public static final String UNSECURE = "classpath:context/endpoint/test-endpoint-unsecure.xml";
-
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private EndpointContextPaths() {
+    public ITPasswordWebServiceCodeFirst() {
         super();
     }
 
