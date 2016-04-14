@@ -23,7 +23,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	<sub-flow name="WS-Unsecure-CodeFirst-Endpoint">
         <logger message="Begins the unsecure Code-First endpoint flow" level="INFO" doc:name="Logger"/>
 		<cxf:jaxws-service validationEnabled="${endpoint.validation}"
-			doc:name="Code-First endpoint interface" serviceClass="${endpoint.unsecure.codeFirst.interface.class}"
+			doc:name="Code-First endpoint interface" serviceClass="${endpoint.codeFirst.interface}"
 			namespace="${wsdl.namespace}" />
 		<component doc:name="Code-First endpoint implementation">
 			<spring-object bean="codeFirstUnsecureEndpoint" />
@@ -40,7 +40,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	<sub-flow name="WS-Unsecure-WSDLFirst-Endpoint">
         <logger message="Begins the unsecure WSDL-First endpoint flow" level="INFO" doc:name="Logger"/>
 		<cxf:jaxws-service validationEnabled="${endpoint.validation}"
-			doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.unsecure.wsdlFirst.interface.class}"
+			doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.wsdlFirst.interface}"
 			namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}"
 			service="${wsdl.service}" />
 		<component doc:name="WSDL-First endpoint implementation">
@@ -56,7 +56,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 	</flow>
 	<sub-flow name="WS-Unsecure-Simple-Endpoint">
         <logger message="Begins the unsecure simple endpoint flow" level="INFO" doc:name="Logger"/>
-		<cxf:simple-service serviceClass="${endpoint.unsecure.simple.class}"
+		<cxf:simple-service serviceClass="${endpoint.simple.class}"
 			service="${wsdl.service}" doc:name="Simple endpoint" />
 		<component doc:name="Simple endpoint implementation">
 			<spring-object bean="simpleUnsecureEndpoint" />

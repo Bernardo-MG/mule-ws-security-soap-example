@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.security;
+package com.wandrell.example.mule.wss.security.validator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
