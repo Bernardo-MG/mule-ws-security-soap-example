@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2015 the original author or authors.
+ * Copyright (c) 2016 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,33 +22,29 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.util.config.properties;
+package com.wandrell.example.mule.wss.testing.integration.client.password;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.ClientSimplePropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Paths to the consumer clients configuration properties files.
- * <p>
- * These files contain the data required for setting up a client test context,
- * and mostly indicate which flow to use when testing.
- *
- * @author Bernardo Martínez Garrido
+ * Implementation of {@code AbstractITClientFlow} for the password protected simple client
+ * flow.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ClientConsumerPropertiesPaths {
+@ContextConfiguration(ClientContextPaths.PASSWORD)
+@TestPropertySource({ ClientSimplePropertiesPaths.PASSWORD })
+public final class ITPasswordClientSimple extends AbstractITClientFlow {
 
     /**
-     * Unsecure.
+     * Default constructor.
      */
-    public static final String UNSECURE = "classpath:config/client/unsecure/test-client-unsecure-consumer.properties";
-
-    /**
-     * Password protected.
-     */
-    public static final String PASSWORD = "classpath:config/client/password/test-client-password-consumer.properties";
-
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private ClientConsumerPropertiesPaths() {
+    public ITPasswordClientSimple() {
         super();
     }
-
 }

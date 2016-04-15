@@ -41,7 +41,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SoapPropertiesPaths;
 
 /**
- * Abstract integration tests for a client flow testing that it handles messages
+ * Abstract integration tests for an unsecure client flow testing that it handles messages
  * correctly.
  * <p>
  * A client expects the id of the queried entity, as an integer, for the

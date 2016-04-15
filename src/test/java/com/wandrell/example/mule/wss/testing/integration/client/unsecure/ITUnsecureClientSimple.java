@@ -37,7 +37,7 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(ClientContextPaths.CLIENT_UNSECURE)
+@ContextConfiguration(ClientContextPaths.UNSECURE)
 @TestPropertySource({ ClientSimplePropertiesPaths.UNSECURE })
 public final class ITUnsecureClientSimple extends AbstractITClientFlow {
 

@@ -35,9 +35,14 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
 public final class ClientWsdlFirstPropertiesPaths {
 
     /**
-     * Unsecure endpoint.
+     * Unsecure.
      */
     public static final String UNSECURE = "classpath:config/client/unsecure/test-client-unsecure-wsdl-first.properties";
+
+    /**
+     * Password.
+     */
+    public static final String PASSWORD = "classpath:config/client/password/test-client-password-wsdl-first.properties";
 
     /**
      * Private constructor to avoid initialization.
