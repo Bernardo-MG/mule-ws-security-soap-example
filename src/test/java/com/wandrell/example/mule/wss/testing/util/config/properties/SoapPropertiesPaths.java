@@ -35,6 +35,11 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
 public final class SoapPropertiesPaths {
 
     /**
+     * JAXB created SOAP messages for the client.
+     */
+    public static final String JAXB = "classpath:config/soap/test-soap-jaxb.properties";
+
+    /**
      * Unsecure SOAP messages for the transformer.
      */
     public static final String UNSECURE_TRANSFORMER = "classpath:config/soap/test-soap-transformer.properties";

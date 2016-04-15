@@ -11,6 +11,10 @@
 		http://www.springframework.org/schema/util/spring-util-3.2.xsd
 	">
 
+    <description>
+        Context for testing unsecure clients.
+    </description>
+    
    <!-- Properties -->
 	<context:property-placeholder />
 

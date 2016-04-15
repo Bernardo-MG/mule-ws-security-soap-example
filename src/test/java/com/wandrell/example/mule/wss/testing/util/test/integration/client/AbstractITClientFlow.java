@@ -38,6 +38,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapPropertiesPaths;
+
 /**
  * Abstract integration tests for a client flow testing that it handles messages
  * correctly.
@@ -56,7 +58,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource({ "classpath:config/soap/test-soap-jaxb.properties" })
+@TestPropertySource({ SoapPropertiesPaths.JAXB })
 public class AbstractITClientFlow extends FunctionalTestCase {
 
     /**
