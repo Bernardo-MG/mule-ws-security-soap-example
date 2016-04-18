@@ -39,7 +39,7 @@ To run the demo just use the Anypoint Studio run option.
 By default the web services will be deployed to the following URL:
 
 ```
-http://localhost:8080/wss
+http://localhost:8080/mule-wss
 ```
 
 #### SOAP web service
@@ -51,6 +51,13 @@ http://localhost:8080/mule-wss/unsecure/code_first?wsdl
 http://localhost:8080/mule-wss/unsecure/wsdl_first?wsdl
 http://localhost:8080/mule-wss/unsecure/simple?wsdl
 http://localhost:8080/mule-wss/unsecure/proxy?wsdl
+```
+
+```
+http://localhost:8080/mule-wss/password/code_first?wsdl
+http://localhost:8080/mule-wss/password/wsdl_first?wsdl
+http://localhost:8080/mule-wss/password/simple?wsdl
+http://localhost:8080/mule-wss/password/proxy?wsdl
 ```
 
 The endpoint consumer does not support querying for the WSDl.
@@ -65,6 +72,14 @@ http://localhost:8080/mule-wss/client/unsecure/wsdl_first?id=1
 http://localhost:8080/mule-wss/client/unsecure/simple?id=1
 http://localhost:8080/mule-wss/client/unsecure/proxy?id=1
 http://localhost:8080/mule-wss/client/unsecure/consumer?id=1
+```
+
+```
+http://localhost:8080/mule-wss/client/password/code_first?id=1
+http://localhost:8080/mule-wss/client/password/wsdl_first?id=1
+http://localhost:8080/mule-wss/client/password/simple?id=1
+http://localhost:8080/mule-wss/client/password/proxy?id=1
+http://localhost:8080/mule-wss/client/password/consumer?id=1
 ```
 
 ## Collaborate
