@@ -39,7 +39,7 @@ To run the demo just use the Anypoint Studio run option.
 By default the web services will be deployed to the following URL:
 
 ```
-http://localhost:8080/swss
+http://localhost:8080/wss
 ```
 
 #### SOAP web service
@@ -47,10 +47,10 @@ http://localhost:8080/swss
 The following URLs allow using the various implementations of the SOAP service:
 
 ```
-http://localhost:8080/swss/unsecure/code_first?wsdl
-http://localhost:8080/swss/unsecure/wsdl_first?wsdl
-http://localhost:8080/swss/unsecure/simple?wsdl
-http://localhost:8080/swss/unsecure/proxy?wsdl
+http://localhost:8080/mule-wss/unsecure/code_first?wsdl
+http://localhost:8080/mule-wss/unsecure/wsdl_first?wsdl
+http://localhost:8080/mule-wss/unsecure/simple?wsdl
+http://localhost:8080/mule-wss/unsecure/proxy?wsdl
 ```
 
 The endpoint consumer does not support querying for the WSDl.
@@ -60,11 +60,11 @@ The endpoint consumer does not support querying for the WSDl.
 The following URLs allow making use of the HTTP client for the local web service:
 
 ```
-http://localhost:8080/swss/client/unsecure/code_first?id=1
-http://localhost:8080/swss/client/unsecure/wsdl_first?id=1
-http://localhost:8080/swss/client/unsecure/simple?id=1
-http://localhost:8080/swss/client/unsecure/proxy?id=1
-http://localhost:8080/swss/client/unsecure/consumer?id=1
+http://localhost:8080/mule-wss/client/unsecure/code_first?id=1
+http://localhost:8080/mule-wss/client/unsecure/wsdl_first?id=1
+http://localhost:8080/mule-wss/client/unsecure/simple?id=1
+http://localhost:8080/mule-wss/client/unsecure/proxy?id=1
+http://localhost:8080/mule-wss/client/unsecure/consumer?id=1
 ```
 
 ## Collaborate
