@@ -15,24 +15,24 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
 
-	<endpoint name="Endpoint-Password-CodeFirst" doc:name="Password protected Code-First endpoint"
+	<endpoint name="Endpoint-Signature-CodeFirst" doc:name="Signed Code-First endpoint"
 		exchange-pattern="request-response"
-		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.password.codeFirst.path}"
+		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.codeFirst.path}"
 		encoding="UTF-8" />
 
-	<endpoint name="Endpoint-Password-WSDLFirst" doc:name="Password protected WSDL-First endpoint"
+	<endpoint name="Endpoint-Signature-WSDLFirst" doc:name="Signed WSDL-First endpoint"
 		exchange-pattern="request-response"
-		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.password.wsdlFirst.path}"
+		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.wsdlFirst.path}"
 		encoding="UTF-8" />
 
-	<endpoint name="Endpoint-Password-Simple" doc:name="Password protected simple endpoint"
+	<endpoint name="Endpoint-Signature-Simple" doc:name="Signed simple endpoint"
 		exchange-pattern="request-response"
-		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.password.simple.path}"
+		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.simple.path}"
 		encoding="UTF-8" />
 
-	<endpoint name="Endpoint-Password-Proxy" doc:name="Password protected proxy endpoint"
+	<endpoint name="Endpoint-Signature-Proxy" doc:name="Signed proxy endpoint"
 		exchange-pattern="request-response"
-		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.password.proxy.path}"
+		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.proxy.path}"
 		encoding="UTF-8" />
 
 </mule>

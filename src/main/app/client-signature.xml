@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:jms="http://www.mulesoft.org/schema/mule/jms"
+	xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern" xmlns:ws="http://www.mulesoft.org/schema/mule/ws"
+	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/current/mule-jms.xsd
+http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/servlet http://www.mulesoft.org/schema/mule/servlet/current/mule-servlet.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
+
+	<flow name="Client-Signature-CodeFirst-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			path="${client.signature.codeFirst.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
+		<flow-ref name="Client-Signature-CodeFirst-Endpoint"
+			doc:name="Send request" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+	<sub-flow name="Client-Signature-CodeFirst-Endpoint">
+		<logger message="Begins the signed Code-First client flow"
+			level="INFO" doc:name="Logger" />
+		<cxf:jaxws-client serviceClass="${endpoint.codeFirst.interface}"
+			doc:name="Code-First client" operation="${wsdl.operation}">
+			<cxf:ws-security>
+				<cxf:ws-config>
+					<cxf:property key="action" value="Signature" />
+					<cxf:property key="signaturePropFile" value="wssecurity.properties" />
+				</cxf:ws-config>
+			</cxf:ws-security>
+		</cxf:jaxws-client>
+		<outbound-endpoint doc:name="Password Code-First endpoint"
+			ref="Endpoint-Signature-CodeFirst" />
+		<logger message="Ends the password protected Code-First client flow"
+			level="INFO" doc:name="Logger" />
+	</sub-flow>
+
+	<flow name="Client-Signature-WSDLFirst-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			path="${client.signature.wsdlFirst.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
+		<flow-ref name="Client-Signature-WSDLFirst-Endpoint"
+			doc:name="Send request" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+	<sub-flow name="Client-Signature-WSDLFirst-Endpoint">
+		<logger message="Begins the signed WSDL-First client flow"
+			level="INFO" doc:name="Logger" />
+		<cxf:jaxws-client clientClass="${client.wsdlFirst.class}"
+			wsdlLocation="${wsdl.path}" port="${wsdl.port}" doc:name="WSDL-First client"
+			operation="${wsdl.operation}">
+			<cxf:ws-security>
+				<cxf:ws-config>
+					<cxf:property key="action" value="Signature" />
+					<cxf:property key="signaturePropFile" value="wssecurity.properties" />
+				</cxf:ws-config>
+			</cxf:ws-security>
+		</cxf:jaxws-client>
+		<outbound-endpoint doc:name="Signed WSDL-First endpoint"
+			ref="Endpoint-Signature-WSDLFirst" />
+		<logger message="Ends the password protected WSDL-First client flow"
+			level="INFO" doc:name="Logger" />
+	</sub-flow>
+
+	<flow name="Client-Signature-Simple-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			path="${client.signature.simple.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
+		<flow-ref name="Client-Signature-Simple-Endpoint" doc:name="Send request" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+	<sub-flow name="Client-Signature-Simple-Endpoint">
+		<logger message="Begins the signed simple client flow" level="INFO"
+			doc:name="Logger" />
+		<cxf:simple-client serviceClass="${endpoint.simple.class}"
+			doc:name="Simple client" operation="${wsdl.operation}">
+			<cxf:ws-security>
+				<cxf:ws-config>
+					<cxf:property key="action" value="Signature" />
+					<cxf:property key="signaturePropFile" value="wssecurity.properties" />
+				</cxf:ws-config>
+			</cxf:ws-security>
+		</cxf:simple-client>
+		<outbound-endpoint doc:name="Signed simple endpoint"
+			ref="Endpoint-Signature-Simple" />
+		<logger message="Ends the password protected simple client flow"
+			level="INFO" doc:name="Logger" />
+	</sub-flow>
+
+	<flow name="Client-Signature-Proxy-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			path="${client.signature.proxy.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
+		<flow-ref name="Client-Signature-Proxy-Endpoint" doc:name="Send request" />
+		<response>
+			<mulexml:object-to-xml-transformer
+				doc:name="Object to XML" />
+		</response>
+	</flow>
+	<sub-flow name="Client-Signature-Proxy-Endpoint">
+		<logger message="Begins the signed proxy client flow" level="INFO"
+			doc:name="Logger" />
+		<cxf:jaxws-client operation="${wsdl.operation}"
+			serviceClass="${endpoint.codeFirst.interface}" doc:name="Code-First client">
+			<cxf:ws-security>
+				<cxf:ws-config>
+					<cxf:property key="action" value="Signature" />
+					<cxf:property key="signaturePropFile" value="wssecurity.properties" />
+				</cxf:ws-config>
+			</cxf:ws-security>
+		</cxf:jaxws-client>
+		<outbound-endpoint ref="Endpoint-Signature-Proxy"
+			doc:name="Signed proxy endpoint" />
+		<logger message="Ends the password protected proxy client flow"
+			level="INFO" doc:name="Logger" />
+	</sub-flow>
+
+	<flow name="Client-Signature-Consumer-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			path="${client.signature.consumer.path}" doc:name="HTTP Inbound Endpoint" />
+		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
+		<flow-ref name="Client-Signature-Consumer-Endpoint" doc:name="Send request" />
+		<response>
+			<flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+		</response>
+	</flow>
+	<sub-flow name="Client-Signature-Consumer-Endpoint">
+		<logger message="Begins the signed consumer client flow" level="INFO"
+			doc:name="Logger" />
+		<flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="Consumer-Signature-CodeFirst"
+			operation="${wsdl.operation}" doc:name="Signed code-first consumer" />
+		<logger message="Ends the password protected consumer client flow"
+			level="INFO" doc:name="Logger" />
+	</sub-flow>
+
+</mule>
