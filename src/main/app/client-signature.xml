@@ -38,9 +38,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 				</cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:jaxws-client>
-		<outbound-endpoint doc:name="Password Code-First endpoint"
+		<outbound-endpoint doc:name="Signed Code-First endpoint"
 			ref="Endpoint-Signature-CodeFirst" />
-		<logger message="Ends the password protected Code-First client flow"
+		<logger message="Ends the signed Code-First client flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
@@ -69,7 +69,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		</cxf:jaxws-client>
 		<outbound-endpoint doc:name="Signed WSDL-First endpoint"
 			ref="Endpoint-Signature-WSDLFirst" />
-		<logger message="Ends the password protected WSDL-First client flow"
+		<logger message="Ends the signed WSDL-First client flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
@@ -97,7 +97,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		</cxf:simple-client>
 		<outbound-endpoint doc:name="Signed simple endpoint"
 			ref="Endpoint-Signature-Simple" />
-		<logger message="Ends the password protected simple client flow"
+		<logger message="Ends the signed simple client flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
@@ -125,7 +125,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		</cxf:jaxws-client>
 		<outbound-endpoint ref="Endpoint-Signature-Proxy"
 			doc:name="Signed proxy endpoint" />
-		<logger message="Ends the password protected proxy client flow"
+		<logger message="Ends the signed proxy client flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
@@ -144,7 +144,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform to a valid request" />
 		<ws:consumer config-ref="Consumer-Signature-CodeFirst"
 			operation="${wsdl.operation}" doc:name="Signed code-first consumer" />
-		<logger message="Ends the password protected consumer client flow"
+		<logger message="Ends the signed consumer client flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
