@@ -76,6 +76,9 @@ public final class PasswordCallbackHandler implements CallbackHandler {
         if ("myUser".equalsIgnoreCase(passCallb.getIdentifier())) {
             // User for password-based security
             passCallb.setPassword("myPassword");
+        } else if ("swss-cert".equalsIgnoreCase(passCallb.getIdentifier())) {
+            // User for password-based security
+            passCallb.setPassword("123456");
         } else {
             // User not found
             LOGGER.debug(String.format("User for username %s not found",

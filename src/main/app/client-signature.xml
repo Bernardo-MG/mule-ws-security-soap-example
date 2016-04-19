@@ -33,8 +33,10 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Code-First client" operation="${wsdl.operation}">
 			<cxf:ws-security>
 				<cxf:ws-config>
-					<cxf:property key="action" value="Signature" />
-					<cxf:property key="signaturePropFile" value="wssecurity.properties" />
+					<cxf:property key="action" value="UsernameToken Signature" />
+					<cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="user" value="${security.keystore.user}" />
+               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
 				</cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:jaxws-client>
@@ -61,10 +63,12 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			wsdlLocation="${wsdl.path}" port="${wsdl.port}" doc:name="WSDL-First client"
 			operation="${wsdl.operation}">
 			<cxf:ws-security>
-				<cxf:ws-config>
-					<cxf:property key="action" value="Signature" />
-					<cxf:property key="signaturePropFile" value="wssecurity.properties" />
-				</cxf:ws-config>
+            <cxf:ws-config>
+               <cxf:property key="action" value="UsernameToken Signature" />
+               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="user" value="${security.keystore.user}" />
+               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+            </cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:jaxws-client>
 		<outbound-endpoint doc:name="Signed WSDL-First endpoint"
@@ -89,10 +93,12 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<cxf:simple-client serviceClass="${endpoint.simple.class}"
 			doc:name="Simple client" operation="${wsdl.operation}">
 			<cxf:ws-security>
-				<cxf:ws-config>
-					<cxf:property key="action" value="Signature" />
-					<cxf:property key="signaturePropFile" value="wssecurity.properties" />
-				</cxf:ws-config>
+            <cxf:ws-config>
+               <cxf:property key="action" value="UsernameToken Signature" />
+               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="user" value="${security.keystore.user}" />
+               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+            </cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:simple-client>
 		<outbound-endpoint doc:name="Signed simple endpoint"
@@ -117,10 +123,12 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<cxf:jaxws-client operation="${wsdl.operation}"
 			serviceClass="${endpoint.codeFirst.interface}" doc:name="Code-First client">
 			<cxf:ws-security>
-				<cxf:ws-config>
-					<cxf:property key="action" value="Signature" />
-					<cxf:property key="signaturePropFile" value="wssecurity.properties" />
-				</cxf:ws-config>
+            <cxf:ws-config>
+               <cxf:property key="action" value="UsernameToken Signature" />
+               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="user" value="${security.keystore.user}" />
+               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+            </cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:jaxws-client>
 		<outbound-endpoint ref="Endpoint-Signature-Proxy"
