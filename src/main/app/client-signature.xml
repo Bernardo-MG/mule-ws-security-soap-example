@@ -35,7 +35,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 				<cxf:ws-config>
 					<cxf:property key="action" value="UsernameToken Signature" />
 					<cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-               <cxf:property key="user" value="${security.keystore.user}" />
+               <cxf:property key="user" value="${keystore.alias}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
 				</cxf:ws-config>
 			</cxf:ws-security>
@@ -66,7 +66,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
             <cxf:ws-config>
                <cxf:property key="action" value="UsernameToken Signature" />
                <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-               <cxf:property key="user" value="${security.keystore.user}" />
+               <cxf:property key="user" value="${keystore.alias}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
 			</cxf:ws-security>
@@ -96,7 +96,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
             <cxf:ws-config>
                <cxf:property key="action" value="UsernameToken Signature" />
                <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-               <cxf:property key="user" value="${security.keystore.user}" />
+               <cxf:property key="user" value="${keystore.alias}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
 			</cxf:ws-security>
@@ -126,7 +126,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
             <cxf:ws-config>
                <cxf:property key="action" value="UsernameToken Signature" />
                <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-               <cxf:property key="user" value="${security.keystore.user}" />
+               <cxf:property key="user" value="${keystore.alias}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
 			</cxf:ws-security>

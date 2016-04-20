@@ -45,6 +45,11 @@ public final class ClientProxyPropertiesPaths {
     public static final String PASSWORD = "classpath:config/client/password/test-client-password-proxy.properties";
 
     /**
+     * Signed.
+     */
+    public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-proxy.properties";
+
+    /**
      * Private constructor to avoid initialization.
      */
     private ClientProxyPropertiesPaths() {

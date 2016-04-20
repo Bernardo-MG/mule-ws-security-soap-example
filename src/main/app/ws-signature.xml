@@ -21,7 +21,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="WS-Signature-CodeFirst-Endpoint">
-		<logger message="Begins the password protected Code-First endpoint flow"
+		<logger message="Begins the signed Code-First endpoint flow"
 			level="INFO" doc:name="Logger" />
 		<cxf:jaxws-service validationEnabled="${endpoint.validation}"
 			doc:name="Code-First endpoint interface" serviceClass="${endpoint.codeFirst.interface}"
@@ -37,7 +37,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<component doc:name="Code-First endpoint implementation">
 			<spring-object bean="codeFirstUnsecureEndpoint" />
 		</component>
-		<logger message="Ends the password protected Code-First endpoint flow"
+		<logger message="Ends the signed Code-First endpoint flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
@@ -48,7 +48,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="WS-Signature-WSDLFirst-Endpoint">
-		<logger message="Begins the password protected WSDL-First endpoint flow"
+		<logger message="Begins the signed WSDL-First endpoint flow"
 			level="INFO" doc:name="Logger" />
 		<cxf:jaxws-service validationEnabled="${endpoint.validation}"
 			doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.wsdlFirst.interface}"
@@ -64,7 +64,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<component doc:name="WSDL-First endpoint implementation">
 			<spring-object bean="wsdlFirstUnsecureEndpoint" />
 		</component>
-		<logger message="Ends the password protected WSDL-First endpoint flow"
+		<logger message="Ends the signed WSDL-First endpoint flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
@@ -74,7 +74,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="WS-Signature-Simple-Endpoint" doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="WS-Signature-Simple-Endpoint">
-		<logger message="Begins the password protected simple endpoint flow"
+		<logger message="Begins the signed simple endpoint flow"
 			level="INFO" doc:name="Logger" />
 		<cxf:simple-service serviceClass="${endpoint.simple.class}"
 			service="${wsdl.service}" doc:name="Simple endpoint">
@@ -89,7 +89,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<component doc:name="Simple endpoint implementation">
 			<spring-object bean="simpleUnsecureEndpoint" />
 		</component>
-		<logger message="Ends the password protected simple endpoint flow"
+		<logger message="Ends the signed simple endpoint flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
@@ -99,7 +99,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="WS-Signature-Proxy-Endpoint" doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="WS-Signature-Proxy-Endpoint">
-		<logger message="Begins the password protected proxy endpoint flow"
+		<logger message="Begins the signed proxy endpoint flow"
 			level="INFO" doc:name="Logger" />
 		<cxf:proxy-service namespace="${wsdl.namespace}"
 			payload="envelope" port="${wsdl.port}" service="${wsdl.service}"
@@ -119,7 +119,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<outbound-endpoint doc:name="Password protected code-first endpoint"
 			ref="Endpoint-Signature-CodeFirst" exchange-pattern="request-response" />
 		<flow-ref doc:name="Copy HTTP Headers" name="Copy-Headers" />
-		<logger message="Ends the password protected proxy endpoint flow"
+		<logger message="Ends the signed proxy endpoint flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 
@@ -130,14 +130,14 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Send to endpoint" />
 	</flow>
 	<sub-flow name="WS-Signature-Consumer-Endpoint">
-		<logger message="Begins the password protected consumer endpoint flow"
+		<logger message="Begins the signed consumer endpoint flow"
 			level="INFO" doc:name="Logger" />
 		<flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
 		<ws:consumer config-ref="Consumer-Signature-CodeFirst"
 			operation="${wsdl.operation}" doc:name="Signed code-first consumer" />
 		<mulexml:dom-to-xml-transformer
 			doc:name="Object to XML" />
-		<logger message="Ends the password protected consumer endpoint flow"
+		<logger message="Ends the signed consumer endpoint flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
 

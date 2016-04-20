@@ -42,6 +42,11 @@ public final class ClientContextPaths {
     public static final String PASSWORD = "classpath:context/client/test-client-password.xml";
 
     /**
+     * Signed.
+     */
+    public static final String SIGNATURE = "classpath:context/client/test-client-signature.xml";
+
+    /**
      * Private constructor to avoid initialization.
      */
     private ClientContextPaths() {

@@ -40,9 +40,14 @@ public final class ClientSimplePropertiesPaths {
     public static final String UNSECURE = "classpath:config/client/unsecure/test-client-unsecure-simple.properties";
 
     /**
-     * Password.
+     * Password protected.
      */
     public static final String PASSWORD = "classpath:config/client/password/test-client-password-simple.properties";
+
+    /**
+     * Signed.
+     */
+    public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-simple.properties";
 
     /**
      * Private constructor to avoid initialization.

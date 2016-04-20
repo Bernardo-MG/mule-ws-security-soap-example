@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2015 the original author or authors.
+ * Copyright (c) 2016 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,37 +22,29 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.util.config.properties;
+package com.wandrell.example.mule.wss.testing.integration.client.signature;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.ClientWsdlFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Paths to the Code-First clients configuration properties files.
- * <p>
- * These files contain the data required for setting up a client test context,
- * and mostly indicate which flow to use when testing.
- *
- * @author Bernardo Martínez Garrido
+ * Implementation of {@code AbstractITClientFlow} for the password protected WSDL-First
+ * client flow.
+ * 
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class ClientCodeFirstPropertiesPaths {
+@ContextConfiguration(ClientContextPaths.SIGNATURE)
+@TestPropertySource({ ClientWsdlFirstPropertiesPaths.SIGNATURE })
+public final class ITSignatureClientWsdlFirst extends AbstractITClientFlow {
 
     /**
-     * Unsecure.
+     * Default constructor.
      */
-    public static final String UNSECURE = "classpath:config/client/unsecure/test-client-unsecure-code-first.properties";
-
-    /**
-     * Password protected.
-     */
-    public static final String PASSWORD = "classpath:config/client/password/test-client-password-code-first.properties";
-
-    /**
-     * Signed.
-     */
-    public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-code-first.properties";
-
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private ClientCodeFirstPropertiesPaths() {
+    public ITSignatureClientWsdlFirst() {
         super();
     }
 

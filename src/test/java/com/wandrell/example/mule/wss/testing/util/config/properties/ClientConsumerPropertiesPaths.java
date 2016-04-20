@@ -45,6 +45,11 @@ public final class ClientConsumerPropertiesPaths {
     public static final String PASSWORD = "classpath:config/client/password/test-client-password-consumer.properties";
 
     /**
+     * Signed.
+     */
+    public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-consumer.properties";
+
+    /**
      * Private constructor to avoid initialization.
      */
     private ClientConsumerPropertiesPaths() {
