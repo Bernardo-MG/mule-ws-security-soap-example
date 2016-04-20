@@ -9,9 +9,7 @@ The project offers various examples showing how to set up the [WSS4J][wss4j] and
 The following authentication methods, along a web service without any kind of authentication, are used:
 
 - Plain password.
-- Digested password.
 - Signature.
-- Encryption.
 
 Each of them is applied to a different WS.
 
@@ -60,6 +58,13 @@ http://localhost:8080/mule-wss/password/simple?wsdl
 http://localhost:8080/mule-wss/password/proxy?wsdl
 ```
 
+```
+http://localhost:8080/mule-wss/signature/code_first?wsdl
+http://localhost:8080/mule-wss/signature/wsdl_first?wsdl
+http://localhost:8080/mule-wss/signature/simple?wsdl
+http://localhost:8080/mule-wss/signature/proxy?wsdl
+```
+
 The endpoint consumer does not support querying for the WSDl.
 
 #### Web service client
@@ -80,6 +85,14 @@ http://localhost:8080/mule-wss/client/password/wsdl_first?id=1
 http://localhost:8080/mule-wss/client/password/simple?id=1
 http://localhost:8080/mule-wss/client/password/proxy?id=1
 http://localhost:8080/mule-wss/client/password/consumer?id=1
+```
+
+```
+http://localhost:8080/mule-wss/client/signature/code_first?id=1
+http://localhost:8080/mule-wss/client/signature/wsdl_first?id=1
+http://localhost:8080/mule-wss/client/signature/simple?id=1
+http://localhost:8080/mule-wss/client/signature/proxy?id=1
+http://localhost:8080/mule-wss/client/signature/consumer?id=1
 ```
 
 ## Collaborate
