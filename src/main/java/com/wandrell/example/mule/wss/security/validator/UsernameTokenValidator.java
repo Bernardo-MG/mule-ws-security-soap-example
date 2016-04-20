@@ -32,6 +32,11 @@ import org.apache.ws.security.message.token.UsernameToken;
 import org.apache.ws.security.validate.Credential;
 import org.apache.ws.security.validate.Validator;
 
+/**
+ * Validator for username token security.
+ * 
+ * @author Bernardo Martínez Garrido
+ */
 public class UsernameTokenValidator implements Validator {
 
     public UsernameTokenValidator() {
