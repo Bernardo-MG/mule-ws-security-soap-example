@@ -34,6 +34,10 @@ import org.apache.ws.security.validate.Credential;
 import org.apache.ws.security.validate.SamlAssertionValidator;
 
 public final class SAMLCustomValidator extends SamlAssertionValidator {
+    
+    public SAMLCustomValidator(){
+        super();
+    }
 
     @Override
     public final Credential validate(final Credential credential,
@@ -45,20 +49,20 @@ public final class SAMLCustomValidator extends SamlAssertionValidator {
 
         returnedCredential = super.validate(credential, data);
 
-        //
-        // Do some custom validation on the assertion
-        //
+        // Reject self issued credentials
         AssertionWrapper assertion = credential.getAssertion();
         if (!"self".equals(assertion.getIssuerString())) {
             throw new WSSecurityException(WSSecurityException.FAILURE,
                     "invalidSAMLsecurity");
         }
 
+        // Reject if it doesn't support SAML 2.0
         if (assertion.getSaml2() == null) {
             throw new WSSecurityException(WSSecurityException.FAILURE,
                     "invalidSAMLsecurity");
         }
 
+        // Reject if there is no confirmation method
         String confirmationMethod = assertion.getConfirmationMethods().get(0);
         if (confirmationMethod == null) {
             throw new WSSecurityException(WSSecurityException.FAILURE,

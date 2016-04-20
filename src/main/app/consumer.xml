@@ -31,6 +31,16 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 				password="${security.credentials.password}" passwordType="TEXT" />
 		</ws:security>
 	</ws:consumer-config>
+	
+   <ws:consumer-config doc:name="Password protected with SAML Code-First endpoint consumer"
+      name="Consumer-Password-SAML-CodeFirst" wsdlLocation="${wsdl.path}"
+      service="${wsdl.service}" port="${wsdl.port}"
+      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.password.saml.codeFirst.path}">
+      <ws:security>
+         <ws:wss-username-token username="${security.credentials.user}"
+            password="${security.credentials.password}" passwordType="TEXT" />
+      </ws:security>
+   </ws:consumer-config>
 
 	<ws:consumer-config doc:name="Signed Code-First endpoint consumer"
 		name="Consumer-Signature-CodeFirst" wsdlLocation="${wsdl.path}"

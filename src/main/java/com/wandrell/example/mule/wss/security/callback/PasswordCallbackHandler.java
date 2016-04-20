@@ -73,6 +73,7 @@ public final class PasswordCallbackHandler implements CallbackHandler {
 
         passCallb = (WSPasswordCallback) callbacks[0];
 
+        // TODO: Users and passwords may be injected as dependencies
         if ("myUser".equalsIgnoreCase(passCallb.getIdentifier())) {
             // User for password-based security
             passCallb.setPassword("myPassword");
