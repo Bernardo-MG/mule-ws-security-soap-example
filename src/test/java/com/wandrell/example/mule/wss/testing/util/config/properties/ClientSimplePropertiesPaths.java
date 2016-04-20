@@ -50,6 +50,11 @@ public final class ClientSimplePropertiesPaths {
     public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-simple.properties";
 
     /**
+     * Encrypted.
+     */
+    public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-simple.properties";
+
+    /**
      * Private constructor to avoid initialization.
      */
     private ClientSimplePropertiesPaths() {

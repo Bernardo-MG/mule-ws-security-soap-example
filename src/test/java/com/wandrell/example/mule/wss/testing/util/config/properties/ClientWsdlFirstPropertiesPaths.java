@@ -50,6 +50,11 @@ public final class ClientWsdlFirstPropertiesPaths {
     public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-wsdl-first.properties";
 
     /**
+     * Encrypted.
+     */
+    public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-wsdl-first.properties";
+
+    /**
      * Private constructor to avoid initialization.
      */
     private ClientWsdlFirstPropertiesPaths() {
