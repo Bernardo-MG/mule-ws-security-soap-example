@@ -10,6 +10,7 @@ The following authentication methods, along a web service without any kind of au
 
 - Plain password.
 - Signature.
+- Encrypted message.
 
 Each of them is applied to a different WS.
 
@@ -65,6 +66,13 @@ http://localhost:8080/mule-wss/signature/simple?wsdl
 http://localhost:8080/mule-wss/signature/proxy?wsdl
 ```
 
+```
+http://localhost:8080/mule-wss/encryption/code_first?wsdl
+http://localhost:8080/mule-wss/encryption/wsdl_first?wsdl
+http://localhost:8080/mule-wss/encryption/simple?wsdl
+http://localhost:8080/mule-wss/encryption/proxy?wsdl
+```
+
 The endpoint consumer does not support querying for the WSDl.
 
 #### Web service client
@@ -93,6 +101,14 @@ http://localhost:8080/mule-wss/client/signature/wsdl_first?id=1
 http://localhost:8080/mule-wss/client/signature/simple?id=1
 http://localhost:8080/mule-wss/client/signature/proxy?id=1
 http://localhost:8080/mule-wss/client/signature/consumer?id=1
+```
+
+```
+http://localhost:8080/mule-wss/client/encryption/code_first?id=1
+http://localhost:8080/mule-wss/client/encryption/wsdl_first?id=1
+http://localhost:8080/mule-wss/client/encryption/simple?id=1
+http://localhost:8080/mule-wss/client/encryption/proxy?id=1
+http://localhost:8080/mule-wss/client/encryption/consumer?id=1
 ```
 
 ## Collaborate
