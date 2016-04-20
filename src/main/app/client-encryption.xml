@@ -33,14 +33,15 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Code-First client" operation="${wsdl.operation}">
 			<cxf:ws-security>
 				<cxf:ws-config>
-					<cxf:property key="action" value="UsernameToken Signature" />
-					<cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+					<cxf:property key="action" value="UsernameToken Encrypt" />
+					<cxf:property key="encryptionPropFile" value="${security.encryption.properties}" />
                <cxf:property key="user" value="${keystore.alias}" />
+               <cxf:property key="encryptionUser" value="${keystore.alias}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
 				</cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:jaxws-client>
-		<outbound-endpoint doc:name="Signed Code-First endpoint"
+		<outbound-endpoint doc:name="Encrypted Code-First endpoint"
 			ref="Endpoint-Encryption-CodeFirst" />
 		<logger message="Ends the encrypted Code-First client flow"
 			level="INFO" doc:name="Logger" />
@@ -64,14 +65,15 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			operation="${wsdl.operation}">
 			<cxf:ws-security>
             <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="action" value="UsernameToken Encrypt" />
+               <cxf:property key="encryptionPropFile" value="${security.encryption.properties}" />
                <cxf:property key="user" value="${keystore.alias}" />
+               <cxf:property key="encryptionUser" value="${keystore.alias}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:jaxws-client>
-		<outbound-endpoint doc:name="Signed WSDL-First endpoint"
+		<outbound-endpoint doc:name="Encrypted WSDL-First endpoint"
 			ref="Endpoint-Encryption-WSDLFirst" />
 		<logger message="Ends the encrypted WSDL-First client flow"
 			level="INFO" doc:name="Logger" />
@@ -94,14 +96,15 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Simple client" operation="${wsdl.operation}">
 			<cxf:ws-security>
             <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="action" value="UsernameToken Encrypt" />
+               <cxf:property key="encryptionPropFile" value="${security.encryption.properties}" />
                <cxf:property key="user" value="${keystore.alias}" />
+               <cxf:property key="encryptionUser" value="${keystore.alias}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:simple-client>
-		<outbound-endpoint doc:name="Signed simple endpoint"
+		<outbound-endpoint doc:name="Encrypted simple endpoint"
 			ref="Endpoint-Encryption-Simple" />
 		<logger message="Ends the encrypted simple client flow"
 			level="INFO" doc:name="Logger" />
@@ -124,15 +127,16 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			serviceClass="${endpoint.codeFirst.interface}" doc:name="Code-First client">
 			<cxf:ws-security>
             <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="action" value="UsernameToken Encrypt" />
+               <cxf:property key="encryptionPropFile" value="${security.encryption.properties}" />
                <cxf:property key="user" value="${keystore.alias}" />
+               <cxf:property key="encryptionUser" value="${keystore.alias}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
 			</cxf:ws-security>
 		</cxf:jaxws-client>
 		<outbound-endpoint ref="Endpoint-Encryption-Proxy"
-			doc:name="Signed proxy endpoint" />
+			doc:name="Encrypted proxy endpoint" />
 		<logger message="Ends the encrypted proxy client flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>
@@ -151,7 +155,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			doc:name="Logger" />
 		<flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform to a valid request" />
 		<ws:consumer config-ref="Consumer-Encryption-CodeFirst"
-			operation="${wsdl.operation}" doc:name="Signed code-first consumer" />
+			operation="${wsdl.operation}" doc:name="Encrypted code-first consumer" />
 		<logger message="Ends the encrypted consumer client flow"
 			level="INFO" doc:name="Logger" />
 	</sub-flow>

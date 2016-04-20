@@ -28,8 +28,8 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			namespace="${wsdl.namespace}">
 			<cxf:ws-security>
             <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="action" value="UsernameToken Encrypt" />
+               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
          </cxf:ws-security>
@@ -55,8 +55,8 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}">
 			<cxf:ws-security>
             <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="action" value="UsernameToken Encrypt" />
+               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
          </cxf:ws-security>
@@ -80,8 +80,8 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			service="${wsdl.service}" doc:name="Simple endpoint">
 			<cxf:ws-security>
             <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="action" value="UsernameToken Encrypt" />
+               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
          </cxf:ws-security>
@@ -107,8 +107,8 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 			enableMuleSoapHeaders="false">
 			<cxf:ws-security>
             <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+               <cxf:property key="action" value="UsernameToken Encrypt" />
+               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
                <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
             </cxf:ws-config>
          </cxf:ws-security>
