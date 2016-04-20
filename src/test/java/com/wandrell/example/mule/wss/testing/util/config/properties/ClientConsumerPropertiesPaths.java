@@ -35,24 +35,24 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
 public final class ClientConsumerPropertiesPaths {
 
     /**
-     * Unsecure.
+     * Encrypted.
      */
-    public static final String UNSECURE = "classpath:config/client/unsecure/test-client-unsecure-consumer.properties";
+    public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-consumer.properties";
 
     /**
      * Password protected.
      */
-    public static final String PASSWORD = "classpath:config/client/password/test-client-password-consumer.properties";
+    public static final String PASSWORD   = "classpath:config/client/password/test-client-password-consumer.properties";
 
     /**
      * Signed.
      */
-    public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-consumer.properties";
+    public static final String SIGNATURE  = "classpath:config/client/signature/test-client-signature-consumer.properties";
 
     /**
-     * Encrypted.
+     * Unsecure.
      */
-    public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-consumer.properties";
+    public static final String UNSECURE   = "classpath:config/client/unsecure/test-client-unsecure-consumer.properties";
 
     /**
      * Private constructor to avoid initialization.

@@ -37,7 +37,7 @@ public final class SoapPropertiesPaths {
     /**
      * JAXB created SOAP messages for the client.
      */
-    public static final String JAXB = "classpath:config/soap/test-soap-jaxb.properties";
+    public static final String JAXB                 = "classpath:config/soap/test-soap-jaxb.properties";
 
     /**
      * Unsecure SOAP messages for the transformer.

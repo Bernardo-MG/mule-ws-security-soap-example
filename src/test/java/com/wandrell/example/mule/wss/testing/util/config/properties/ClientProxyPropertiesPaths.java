@@ -35,24 +35,24 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
 public final class ClientProxyPropertiesPaths {
 
     /**
-     * Unsecure.
+     * Encrypted.
      */
-    public static final String UNSECURE = "classpath:config/client/unsecure/test-client-unsecure-proxy.properties";
+    public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-proxy.properties";
 
     /**
      * Password protected.
      */
-    public static final String PASSWORD = "classpath:config/client/password/test-client-password-proxy.properties";
+    public static final String PASSWORD   = "classpath:config/client/password/test-client-password-proxy.properties";
 
     /**
      * Signed.
      */
-    public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-proxy.properties";
+    public static final String SIGNATURE  = "classpath:config/client/signature/test-client-signature-proxy.properties";
 
     /**
-     * Encrypted.
+     * Unsecure.
      */
-    public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-proxy.properties";
+    public static final String UNSECURE   = "classpath:config/client/unsecure/test-client-unsecure-proxy.properties";
 
     /**
      * Private constructor to avoid initialization.

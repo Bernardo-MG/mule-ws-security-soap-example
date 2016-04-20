@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientConsum
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the password protected consumer
- * client flow.
+ * Implementation of {@code AbstractITClientFlow} for the password protected
+ * consumer client flow.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

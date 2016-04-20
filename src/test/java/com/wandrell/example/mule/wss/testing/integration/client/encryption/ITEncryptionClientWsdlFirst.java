@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientWsdlFi
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the password protected WSDL-First
- * client flow.
+ * Implementation of {@code AbstractITClientFlow} for the password protected
+ * WSDL-First client flow.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

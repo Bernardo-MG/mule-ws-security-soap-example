@@ -32,24 +32,24 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
 public final class ClientContextPaths {
 
     /**
-     * Unsecure.
+     * Encrypted.
      */
-    public static final String UNSECURE = "classpath:context/client/test-client-unsecure.xml";
+    public static final String ENCRYPTION = "classpath:context/client/test-client-encryption.xml";
 
     /**
      * Password protected.
      */
-    public static final String PASSWORD = "classpath:context/client/test-client-password.xml";
+    public static final String PASSWORD   = "classpath:context/client/test-client-password.xml";
 
     /**
      * Signed.
      */
-    public static final String SIGNATURE = "classpath:context/client/test-client-signature.xml";
+    public static final String SIGNATURE  = "classpath:context/client/test-client-signature.xml";
 
     /**
-     * Encrypted.
+     * Unsecure.
      */
-    public static final String ENCRYPTION = "classpath:context/client/test-client-encryption.xml";
+    public static final String UNSECURE   = "classpath:context/client/test-client-unsecure.xml";
 
     /**
      * Private constructor to avoid initialization.
