@@ -1,6 +1,6 @@
 # Mule WS-Security Example
 
-Small Mule application showing the use of Spring WS Security for a SOAP web service.
+Small Mule application showing the use of WS-Security for SOAP web services.
 
 ## Features
 
