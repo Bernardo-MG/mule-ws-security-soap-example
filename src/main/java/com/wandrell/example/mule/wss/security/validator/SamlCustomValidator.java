@@ -37,14 +37,15 @@ import org.apache.ws.security.validate.SamlAssertionValidator;
  * Validator for SAML messages.
  * <p>
  * It makes sure the message is configured correctly.
+ * 
  * @author Bernardo Martínez Garrido
  */
 public final class SamlCustomValidator extends SamlAssertionValidator {
-    
+
     /**
      * Default constructor.
      */
-    public SamlCustomValidator(){
+    public SamlCustomValidator() {
         super();
     }
 
@@ -82,11 +83,12 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
                     "invalidSAMLsecurity");
         }
 
-        //if (!"AllowGreetingServices".equals(assertion.getSaml2().getSubject()
-        //        .getNameID().getValue())) {
-        //    throw new WSSecurityException(WSSecurityException.FAILURE,
-        //            "invalidSAMLsecurity");
-        //}
+        // TODO: The subject name should be received in the constructor
+        if (!"EntityServices".equals(assertion.getSaml2().getSubject()
+                .getNameID().getValue())) {
+            throw new WSSecurityException(WSSecurityException.FAILURE,
+                    "invalidSAMLsecurity");
+        }
 
         return returnedCredential;
     }

@@ -7,6 +7,8 @@
 	">
 	
 	<bean id="passwordCallbackHandler" class="${security.callback.password.class}"/>
+   
+   <bean id="samlCallbackHandler" class="${security.callback.saml.class}"/>
 	
    <bean id="samlValidator" class="${security.validator.saml.class}"/>
    

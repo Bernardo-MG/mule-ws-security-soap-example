@@ -37,20 +37,20 @@ import org.apache.ws.security.validate.Validator;
  * 
  * @author Bernardo Martínez Garrido
  */
-public class UsernameTokenValidator implements Validator {
+public final class UsernameTokenValidator implements Validator {
 
     public UsernameTokenValidator() {
         super();
     }
 
     @Override
-    public final Credential validate(final Credential credential, final RequestData data)
-            throws WSSecurityException {
+    public final Credential validate(final Credential credential,
+            final RequestData data) throws WSSecurityException {
         final UsernameToken usernameToken;
 
         checkNotNull(credential, "Received a null pointer as credential");
         checkNotNull(data, "Received a null pointer as data");
-        
+
         usernameToken = credential.getUsernametoken();
 
         // TODO: Users and passwords may be injected as dependencies
