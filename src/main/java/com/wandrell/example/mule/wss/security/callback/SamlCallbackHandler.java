@@ -24,6 +24,8 @@
 
 package com.wandrell.example.mule.wss.security.callback;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.io.IOException;
 import java.util.Collections;
 
@@ -50,25 +52,30 @@ public final class SamlCallbackHandler implements CallbackHandler {
     /**
      * SAML 2.0 confirmation method.
      */
-    private String confirmationMethod;
+    private final String confirmationMethod;
+
     /**
      * Name of the subject.
      */
-    private String subjectName;
+    private final String subjectName;
+
     /**
      * Qualifier for the subject.
      */
-    private String subjectQualifier;
+    private final String subjectQualifier;
 
     /**
-     * Default constructor.
+     * Constructs a callback handler for the specified subject.
+     * 
+     * @param name name of the subject
+     * @param qualifier qualifier for the subject
      */
-    public SamlCallbackHandler() {
+    public SamlCallbackHandler(final String name,
+            final String qualifier) {
         super();
 
-        // TODO: Set these values through the constructor
-        subjectName = "EntityServices";
-        subjectQualifier = "www.wandrell.com";
+        subjectName = checkNotNull(name, "Received a null pointer as subject name");
+        subjectQualifier = checkNotNull(qualifier, "Received a null pointer as subject qualifier");
         confirmationMethod = SAML2Constants.CONF_SENDER_VOUCHES;
     }
 
@@ -79,12 +86,14 @@ public final class SamlCallbackHandler implements CallbackHandler {
         SubjectBean subject;                  // Subject data
         AuthenticationStatementBean authBean; // Auth statement
 
+        checkNotNull(callbacks, "Received a null pointer as callbacks");
+        
         for (final Callback callback : callbacks) {
             if (callback instanceof SAMLCallback) {
                 samlCallback = (SAMLCallback) callback;
 
-                subject = new SubjectBean(subjectName, subjectQualifier,
-                        confirmationMethod);
+                subject = new SubjectBean(getSubjectName(), getSubjectQualifier(),
+                        getConfirmationMethod());
 
                 samlCallback.setSamlVersion(SAMLVersion.VERSION_20);
                 samlCallback.setSubject(subject);
@@ -100,6 +109,33 @@ public final class SamlCallbackHandler implements CallbackHandler {
                         "Unrecognized Callback");
             }
         }
+    }
+
+    /**
+     * Returns the SAML 2.0 confirmation method.
+     * 
+     * @return the SAML 2.0 confirmation method
+     */
+    private final String getConfirmationMethod() {
+        return confirmationMethod;
+    }
+
+    /**
+     * Returns the name of the subject.
+     * 
+     * @return the name of the subject
+     */
+    private final String getSubjectName() {
+        return subjectName;
+    }
+
+    /**
+     * Returns the qualifier for the subject.
+     * 
+     * @return the qualifier for the subject
+     */
+    private final String getSubjectQualifier() {
+        return subjectQualifier;
     }
 
 }

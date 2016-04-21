@@ -43,10 +43,36 @@ import org.apache.ws.security.validate.SamlAssertionValidator;
 public final class SamlCustomValidator extends SamlAssertionValidator {
 
     /**
-     * Default constructor.
+     * The subject name.
      */
-    public SamlCustomValidator() {
+    private final String subjectName;
+    /**
+     * The issuer name.
+     */
+    private final String issuerName;
+
+    /**
+     * Default constructor.
+     * 
+     * @param name
+     *            the subject name
+     * @param issuer
+     *            the issuer name
+     */
+    public SamlCustomValidator(final String name,
+            final String issuer) {
         super();
+
+        subjectName = checkNotNull(name, "Received a null pointer as the subject name");
+        issuerName = checkNotNull(issuer, "Received a null pointer as the issuer name");
+    }
+
+    /**
+     * Returns the issuer name.
+     * @return the issuer name
+     */
+    public final String getIssuerName() {
+        return issuerName;
     }
 
     @Override
@@ -59,9 +85,9 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
 
         returnedCredential = super.validate(credential, data);
 
-        // Reject self issued credentials
+        // Reject not self issued credentials
         AssertionWrapper assertion = credential.getAssertion();
-        if (!"self".equals(assertion.getIssuerString())) {
+        if (!getIssuerName().equals(assertion.getIssuerString())) {
             throw new WSSecurityException(WSSecurityException.FAILURE,
                     "invalidSAMLsecurity");
         }
@@ -83,14 +109,22 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
                     "invalidSAMLsecurity");
         }
 
-        // TODO: The subject name should be received in the constructor
-        if (!"EntityServices".equals(assertion.getSaml2().getSubject()
-                .getNameID().getValue())) {
+        if (!getSubjectName().equals(
+                assertion.getSaml2().getSubject().getNameID().getValue())) {
             throw new WSSecurityException(WSSecurityException.FAILURE,
                     "invalidSAMLsecurity");
         }
 
         return returnedCredential;
+    }
+
+    /**
+     * Returns the name of the subject.
+     * 
+     * @return the name of the subject
+     */
+    private final String getSubjectName() {
+        return subjectName;
     }
 
 }
