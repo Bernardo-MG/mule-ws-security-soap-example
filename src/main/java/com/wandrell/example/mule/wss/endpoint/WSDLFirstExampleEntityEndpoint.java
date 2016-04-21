@@ -57,6 +57,7 @@ public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
      */
     private static final Logger        LOGGER = LoggerFactory
                                                       .getLogger(WSDLFirstExampleEntityEndpoint.class);
+
     /**
      * Service for accessing the {@code ExampleEntity} instances handled by the
      * web service.

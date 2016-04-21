@@ -66,6 +66,7 @@ public final class TestEntityXmlToModelTransformer extends
      */
     @Value("${soap.response.codeFirst.payload.path}")
     private String codeFirstPath;
+
     /**
      * Path to the WSDL-First endpoint message payload.
      */

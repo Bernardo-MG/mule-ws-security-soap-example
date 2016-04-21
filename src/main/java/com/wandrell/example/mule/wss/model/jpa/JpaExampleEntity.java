@@ -53,6 +53,7 @@ public final class JpaExampleEntity implements ExampleEntity {
      */
     @Transient
     private static final long serialVersionUID = 1328776989450853491L;
+
     /**
      * Entity's ID.
      */
@@ -60,6 +61,7 @@ public final class JpaExampleEntity implements ExampleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Integer           entityId;
+
     /**
      * Name of the entity.
      * <p>

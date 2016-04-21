@@ -37,22 +37,27 @@ public final class ClientWsdlFirstPropertiesPaths {
     /**
      * Encrypted.
      */
-    public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-wsdl-first.properties";
+    public static final String ENCRYPTION    = "classpath:config/client/encryption/test-client-encryption-wsdl-first.properties";
 
     /**
      * Password protected.
      */
-    public static final String PASSWORD   = "classpath:config/client/password/test-client-password-wsdl-first.properties";
+    public static final String PASSWORD      = "classpath:config/client/password/test-client-password-wsdl-first.properties";
+
+    /**
+     * Password protected with SAML.
+     */
+    public static final String PASSWORD_SAML = "classpath:config/client/password/saml/test-client-password-saml-wsdl-first.properties";
 
     /**
      * Signed.
      */
-    public static final String SIGNATURE  = "classpath:config/client/signature/test-client-signature-wsdl-first.properties";
+    public static final String SIGNATURE     = "classpath:config/client/signature/test-client-signature-wsdl-first.properties";
 
     /**
      * Unsecure.
      */
-    public static final String UNSECURE   = "classpath:config/client/unsecure/test-client-unsecure-wsdl-first.properties";
+    public static final String UNSECURE      = "classpath:config/client/unsecure/test-client-unsecure-wsdl-first.properties";
 
     /**
      * Private constructor to avoid initialization.

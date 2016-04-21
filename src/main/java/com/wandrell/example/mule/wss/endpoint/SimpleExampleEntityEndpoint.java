@@ -53,6 +53,7 @@ public final class SimpleExampleEntityEndpoint {
      */
     private static final Logger        LOGGER = LoggerFactory
                                                       .getLogger(SimpleExampleEntityEndpoint.class);
+
     /**
      * Service for accessing the {@code ExampleEntity} instances handled by the
      * web service.

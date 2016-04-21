@@ -47,6 +47,7 @@ public class AbstractITSecuredEndpoint extends AbstractITEndpoint {
      */
     @Value("${endpoint.flow}")
     private String endpointFlow;
+
     /**
      * Path to the invalid SOAP envelope for the request.
      */

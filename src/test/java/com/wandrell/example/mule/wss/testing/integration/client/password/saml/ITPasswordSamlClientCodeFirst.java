@@ -22,45 +22,29 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.endpoint;
+package com.wandrell.example.mule.wss.testing.integration.client.password.saml;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+
+import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.ClientCodeFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Constants for the {@link ExampleEntityEndpoint}.
- * <p>
- * These define such things as the namespace of the SOAP action used, and match
- * the data on the generated WSDL.
+ * Implementation of {@code AbstractITClientFlow} for the password protected
+ * Code-First client flow.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public class ExampleEntityEndpointConstants {
+@ContextConfiguration(ClientContextPaths.PASSWORD_SAML)
+@TestPropertySource({ ClientCodeFirstPropertiesPaths.PASSWORD_SAML })
+public final class ITPasswordSamlClientCodeFirst extends AbstractITClientFlow {
 
     /**
-     * The action for acquiring the entities.
-     * <p>
-     * When sending requests to the web service this action should be used if
-     * the authentication systems modifies the message.
+     * Default constructor.
      */
-    public static final String ACTION    = "http://wandrell.com/example/ws/entity/getEntity";
-
-    /**
-     * Namespace for the example entities.
-     */
-    public static final String ENTITY_NS = "http://wandrell.com/example/ws/entity";
-
-    /**
-     * Name for the operation used to acquire an entity.
-     */
-    public static final String REQUEST   = "getEntityRequest";
-
-    /**
-     * Name for the service used to acquire an entity.
-     */
-    public static final String SERVICE   = "EntityEndpointService";
-
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private ExampleEntityEndpointConstants() {
+    public ITPasswordSamlClientCodeFirst() {
         super();
     }
 

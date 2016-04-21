@@ -59,11 +59,13 @@ public final class ITUnsecureWebServiceConsumer extends AbstractITEndpoint {
      */
     @Value("${endpoint.flow}")
     private String endpointFlow;
+
     /**
      * Path to the SOAP payload for the request.
      */
     @Value("${soap.request.payload.path}")
     private String requestPayloadPath;
+
     /**
      * Path to the SOAP envelope for the response.
      */

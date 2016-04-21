@@ -56,11 +56,13 @@ public class XmlExampleEntity implements ExampleEntity, Serializable {
      */
     @XmlTransient
     private static final long serialVersionUID = 1328776989450853491L;
+
     /**
      * Entity's ID.
      */
     @XmlElement
     private Integer           id;
+
     /**
      * Name of the entity.
      * <p>

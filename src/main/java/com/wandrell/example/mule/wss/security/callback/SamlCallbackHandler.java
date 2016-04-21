@@ -67,15 +67,18 @@ public final class SamlCallbackHandler implements CallbackHandler {
     /**
      * Constructs a callback handler for the specified subject.
      * 
-     * @param name name of the subject
-     * @param qualifier qualifier for the subject
+     * @param name
+     *            name of the subject
+     * @param qualifier
+     *            qualifier for the subject
      */
-    public SamlCallbackHandler(final String name,
-            final String qualifier) {
+    public SamlCallbackHandler(final String name, final String qualifier) {
         super();
 
-        subjectName = checkNotNull(name, "Received a null pointer as subject name");
-        subjectQualifier = checkNotNull(qualifier, "Received a null pointer as subject qualifier");
+        subjectName = checkNotNull(name,
+                "Received a null pointer as subject name");
+        subjectQualifier = checkNotNull(qualifier,
+                "Received a null pointer as subject qualifier");
         confirmationMethod = SAML2Constants.CONF_SENDER_VOUCHES;
     }
 
@@ -87,13 +90,13 @@ public final class SamlCallbackHandler implements CallbackHandler {
         AuthenticationStatementBean authBean; // Auth statement
 
         checkNotNull(callbacks, "Received a null pointer as callbacks");
-        
+
         for (final Callback callback : callbacks) {
             if (callback instanceof SAMLCallback) {
                 samlCallback = (SAMLCallback) callback;
 
-                subject = new SubjectBean(getSubjectName(), getSubjectQualifier(),
-                        getConfirmationMethod());
+                subject = new SubjectBean(getSubjectName(),
+                        getSubjectQualifier(), getConfirmationMethod());
 
                 samlCallback.setSamlVersion(SAMLVersion.VERSION_20);
                 samlCallback.setSubject(subject);

@@ -37,22 +37,27 @@ public final class ClientSimplePropertiesPaths {
     /**
      * Encrypted.
      */
-    public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-simple.properties";
+    public static final String ENCRYPTION    = "classpath:config/client/encryption/test-client-encryption-simple.properties";
 
     /**
      * Password protected.
      */
-    public static final String PASSWORD   = "classpath:config/client/password/test-client-password-simple.properties";
+    public static final String PASSWORD      = "classpath:config/client/password/test-client-password-simple.properties";
+
+    /**
+     * Password protected with SAML.
+     */
+    public static final String PASSWORD_SAML = "classpath:config/client/password/saml/test-client-password-saml-simple.properties";
 
     /**
      * Signed.
      */
-    public static final String SIGNATURE  = "classpath:config/client/signature/test-client-signature-simple.properties";
+    public static final String SIGNATURE     = "classpath:config/client/signature/test-client-signature-simple.properties";
 
     /**
      * Unsecure.
      */
-    public static final String UNSECURE   = "classpath:config/client/unsecure/test-client-unsecure-simple.properties";
+    public static final String UNSECURE      = "classpath:config/client/unsecure/test-client-unsecure-simple.properties";
 
     /**
      * Private constructor to avoid initialization.

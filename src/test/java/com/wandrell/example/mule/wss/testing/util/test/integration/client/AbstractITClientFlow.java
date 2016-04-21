@@ -66,11 +66,13 @@ public class AbstractITClientFlow extends FunctionalTestCase {
      */
     @Value("${client.flow}")
     private String   clientFlow;
+
     /**
      * Configuration files to be loaded to build the Mule context.
      */
     @Resource(name = "configFiles")
     private String[] files;
+
     /**
      * Path to the SOAP payload for the response.
      */

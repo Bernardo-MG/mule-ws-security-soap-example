@@ -43,13 +43,14 @@ import org.apache.ws.security.validate.SamlAssertionValidator;
 public final class SamlCustomValidator extends SamlAssertionValidator {
 
     /**
-     * The subject name.
-     */
-    private final String subjectName;
-    /**
      * The issuer name.
      */
     private final String issuerName;
+
+    /**
+     * The subject name.
+     */
+    private final String subjectName;
 
     /**
      * Default constructor.
@@ -59,16 +60,18 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
      * @param issuer
      *            the issuer name
      */
-    public SamlCustomValidator(final String name,
-            final String issuer) {
+    public SamlCustomValidator(final String name, final String issuer) {
         super();
 
-        subjectName = checkNotNull(name, "Received a null pointer as the subject name");
-        issuerName = checkNotNull(issuer, "Received a null pointer as the issuer name");
+        subjectName = checkNotNull(name,
+                "Received a null pointer as the subject name");
+        issuerName = checkNotNull(issuer,
+                "Received a null pointer as the issuer name");
     }
 
     /**
      * Returns the issuer name.
+     * 
      * @return the issuer name
      */
     public final String getIssuerName() {

@@ -62,16 +62,19 @@ public abstract class AbstractITEndpoint extends FunctionalTestCase {
      */
     @Value("${endpoint.flow}")
     private String   endpointFlow;
+
     /**
      * Configuration files to be loaded to build the Mule context.
      */
     @Resource(name = "configFiles")
     private String[] files;
+
     /**
      * Path to the SOAP envelope for the request.
      */
     @Value("${soap.request.envelope.path}")
     private String   requestEnvelopePath;
+
     /**
      * Path to the SOAP envelope for the response.
      */

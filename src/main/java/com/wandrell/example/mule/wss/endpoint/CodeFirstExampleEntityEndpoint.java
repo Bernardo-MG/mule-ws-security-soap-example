@@ -66,6 +66,7 @@ public final class CodeFirstExampleEntityEndpoint implements
      */
     private static final Logger        LOGGER = LoggerFactory
                                                       .getLogger(CodeFirstExampleEntityEndpoint.class);
+
     /**
      * Service for accessing the {@code ExampleEntity} instances handled by the
      * web service.

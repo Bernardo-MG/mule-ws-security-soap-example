@@ -65,6 +65,7 @@ public final class TestSoapEnvelopeStripper extends
      */
     @Value("${soap.request.envelope.path}")
     private String envelopePath;
+
     /**
      * Path to a valid SOAP payload.
      */
