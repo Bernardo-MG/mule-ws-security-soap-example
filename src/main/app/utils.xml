@@ -67,4 +67,11 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<transformer ref="SoapEnvelopeStripper" doc:name="Transform SOAP message" />
 	</sub-flow>
 
+   <sub-flow name="Log-Payload">
+      <byte-array-to-string-transformer
+         doc:name="Byte Array to String" />
+      <logger message="Payload: #[payload]" level="INFO"
+         doc:name="Payload logger" />
+   </sub-flow>
+
 </mule>
