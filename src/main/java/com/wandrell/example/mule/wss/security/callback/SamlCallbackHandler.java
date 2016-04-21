@@ -38,6 +38,8 @@ import org.apache.ws.security.saml.ext.bean.AuthenticationStatementBean;
 import org.apache.ws.security.saml.ext.bean.SubjectBean;
 import org.apache.ws.security.saml.ext.builder.SAML2Constants;
 import org.opensaml.common.SAMLVersion;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Callback handler for handling SAML 2.0 messages. It will use a SAML
@@ -48,6 +50,12 @@ import org.opensaml.common.SAMLVersion;
  * @author Bernardo Martínez Garrido
  */
 public final class SamlCallbackHandler implements CallbackHandler {
+
+    /**
+     * The logger used for logging the callback handler.
+     */
+    private static final Logger        LOGGER = LoggerFactory
+                                                      .getLogger(SamlCallbackHandler.class);
 
     /**
      * SAML 2.0 confirmation method.
@@ -108,8 +116,9 @@ public final class SamlCallbackHandler implements CallbackHandler {
                 samlCallback.setAuthenticationStatementData(Collections
                         .singletonList(authBean));
             } else {
+                LOGGER.debug("Unrecognized callback");
                 throw new UnsupportedCallbackException(callback,
-                        "Unrecognized Callback");
+                        "Unrecognized callback");
             }
         }
     }

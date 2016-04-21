@@ -31,6 +31,8 @@ import org.apache.ws.security.handler.RequestData;
 import org.apache.ws.security.message.token.UsernameToken;
 import org.apache.ws.security.validate.Credential;
 import org.apache.ws.security.validate.Validator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Validator for username token security.
@@ -39,6 +41,15 @@ import org.apache.ws.security.validate.Validator;
  */
 public final class UsernameTokenValidator implements Validator {
 
+    /**
+     * The logger used for logging the validator.
+     */
+    private static final Logger LOGGER = LoggerFactory
+                                               .getLogger(SamlCustomValidator.class);
+
+    /**
+     * Default constructor.
+     */
     public UsernameTokenValidator() {
         super();
     }
@@ -57,6 +68,9 @@ public final class UsernameTokenValidator implements Validator {
         if (!"myPassword".equalsIgnoreCase(usernameToken.getPassword())) {
             throw new WSSecurityException(
                     WSSecurityException.FAILED_AUTHENTICATION);
+        } else {
+            LOGGER.debug(String.format("Rejected password %2$s for user %1$s",
+                    usernameToken.getName(),usernameToken.getPassword()));
         }
 
         return credential;

@@ -32,6 +32,8 @@ import org.apache.ws.security.saml.ext.AssertionWrapper;
 import org.apache.ws.security.saml.ext.OpenSAMLUtil;
 import org.apache.ws.security.validate.Credential;
 import org.apache.ws.security.validate.SamlAssertionValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Validator for SAML messages.
@@ -41,6 +43,12 @@ import org.apache.ws.security.validate.SamlAssertionValidator;
  * @author Bernardo Martínez Garrido
  */
 public final class SamlCustomValidator extends SamlAssertionValidator {
+
+    /**
+     * The logger used for logging the validator.
+     */
+    private static final Logger        LOGGER = LoggerFactory
+            .getLogger(SamlCustomValidator.class);
 
     /**
      * The issuer name.
@@ -91,31 +99,36 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
         // Reject not self issued credentials
         AssertionWrapper assertion = credential.getAssertion();
         if (!getIssuerName().equals(assertion.getIssuerString())) {
+            LOGGER.debug("Invalid issuer name");
             throw new WSSecurityException(WSSecurityException.FAILURE,
-                    "invalidSAMLsecurity");
+                    "Invalid issuer name");
         }
 
         // Reject if it doesn't support SAML 2.0
         if (assertion.getSaml2() == null) {
+            LOGGER.debug("SAML 2.0 not supported");
             throw new WSSecurityException(WSSecurityException.FAILURE,
-                    "invalidSAMLsecurity");
+                    "SAML 2.0 not supported");
         }
 
         // Reject if there is no confirmation method
         String confirmationMethod = assertion.getConfirmationMethods().get(0);
         if (confirmationMethod == null) {
+            LOGGER.debug("Invalid confirmation method");
             throw new WSSecurityException(WSSecurityException.FAILURE,
-                    "invalidSAMLsecurity");
+                    "Invalid confirmation method");
         }
         if (!OpenSAMLUtil.isMethodSenderVouches(confirmationMethod)) {
+            LOGGER.debug("Sender is not vouching for the message");
             throw new WSSecurityException(WSSecurityException.FAILURE,
-                    "invalidSAMLsecurity");
+                    "Sender is not vouching for the message");
         }
 
         if (!getSubjectName().equals(
                 assertion.getSaml2().getSubject().getNameID().getValue())) {
+            LOGGER.debug("Invalid subject name");
             throw new WSSecurityException(WSSecurityException.FAILURE,
-                    "invalidSAMLsecurity");
+                    "Invalid subject name");
         }
 
         return returnedCredential;

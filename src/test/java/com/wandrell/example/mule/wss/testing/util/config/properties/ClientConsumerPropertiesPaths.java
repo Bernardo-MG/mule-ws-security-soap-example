@@ -45,11 +45,6 @@ public final class ClientConsumerPropertiesPaths {
     public static final String PASSWORD      = "classpath:config/client/password/test-client-password-consumer.properties";
 
     /**
-     * Password protected with SAML.
-     */
-    public static final String PASSWORD_SAML = "classpath:config/client/password/saml/test-client-password-saml-consumer.properties";
-
-    /**
      * Signed.
      */
     public static final String SIGNATURE     = "classpath:config/client/signature/test-client-signature-consumer.properties";
