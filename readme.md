@@ -60,6 +60,13 @@ http://localhost:8080/mule-wss/password/proxy?wsdl
 ```
 
 ```
+http://localhost:8080/mule-wss/password/saml/code_first?wsdl
+http://localhost:8080/mule-wss/password/saml/wsdl_first?wsdl
+http://localhost:8080/mule-wss/password/saml/simple?wsdl
+http://localhost:8080/mule-wss/password/saml/proxy?wsdl
+```
+
+```
 http://localhost:8080/mule-wss/signature/code_first?wsdl
 http://localhost:8080/mule-wss/signature/wsdl_first?wsdl
 http://localhost:8080/mule-wss/signature/simple?wsdl
@@ -93,6 +100,13 @@ http://localhost:8080/mule-wss/client/password/wsdl_first?id=1
 http://localhost:8080/mule-wss/client/password/simple?id=1
 http://localhost:8080/mule-wss/client/password/proxy?id=1
 http://localhost:8080/mule-wss/client/password/consumer?id=1
+```
+
+```
+http://localhost:8080/mule-wss/client/password/saml/code_first?id=1
+http://localhost:8080/mule-wss/client/password/saml/wsdl_first?id=1
+http://localhost:8080/mule-wss/client/password/saml/simple?id=1
+http://localhost:8080/mule-wss/client/password/saml/proxy?id=1
 ```
 
 ```
