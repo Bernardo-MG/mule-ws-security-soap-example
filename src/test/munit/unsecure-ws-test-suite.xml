@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:context="http://www.springframework.org/schema/context"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:mock="http://www.mulesoft.org/schema/mule/mock"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd
+http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+
+    <munit:config name="munit" doc:name="Munit configuration"/>
+
+    <spring:beans>
+        <spring:import resource="classpath:utils.xml"/>
+    </spring:beans>
+
+    <munit:test name="Read-HTTP-Variables-Transforms-Variable" description="The id is read correctly from the HTTP parameters">
+        <munit:set payload="#['']" doc:name="Set valid id">
+            <munit:inbound-properties>
+                <munit:inbound-property key="http.query.params" value="#[['id':'1']]"/>
+            </munit:inbound-properties>
+        </munit:set>
+        <flow-ref name="Read-HTTP-Variables" doc:name="Unsecure code-first endpoint"/>
+        <munit:assert-not-null doc:name="Assert Not Null Payload"/>
+    </munit:test>
+
+</mule>

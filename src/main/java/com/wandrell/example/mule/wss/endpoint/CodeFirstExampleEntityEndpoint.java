@@ -31,6 +31,7 @@ import javax.jws.WebService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -102,19 +103,12 @@ public final class CodeFirstExampleEntityEndpoint implements
         entity = getExampleEntityService().findById(id);
 
         response = new XmlExampleEntity();
-        if (entity == null) {
-            LOGGER.debug("Entity not found");
-        } else {
-            // The entity is transformed from the persistence model to the XML
-            // one
-            response.setId(entity.getId());
-            response.setName(entity.getName());
+        BeanUtils.copyProperties(entity, response);
 
-            LOGGER.debug(String.format(
-                    "Found entity with id %1$d and name %2$s", entity.getId(),
-                    entity.getName()));
-        }
-
+        LOGGER.debug(String.format(
+                "Found entity with id %1$d and name %2$s", entity.getId(),
+                entity.getName()));
+        
         return response;
     }
 
