@@ -13,8 +13,8 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>mule</packaging>
 
-	<name>Mule WS-Security Example</name>
-	<description>An example showing how to configure WS-Security for SOAP web services in Mule</description>
+	<name>Secured Soap Web Services in Mule Example</name>
+	<description>An example showing how to set up secured SOAP web services in Mule</description>
 	<url>https://github.com/bernardo-mg/mule-wss-soap-example</url>
 	<inceptionYear>2016</inceptionYear>
 
@@ -246,7 +246,7 @@
 		<commons.logging.version>1.2</commons.logging.version>
 		<commons.pool.version>1.6</commons.pool.version>
 		<ehcache.version>2.7.0</ehcache.version>
-      <ehcache.core.version>2.5.1</ehcache.core.version>
+		<ehcache.core.version>2.5.1</ehcache.core.version>
 		<guava.version>19.0</guava.version>
 		<h2.version>1.4.190</h2.version>
 		<hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
@@ -258,7 +258,7 @@
 		<jaxen.version>1.1.1</jaxen.version>
 		<jboss.logging.version>3.3.0.Final</jboss.logging.version>
 		<jcodings.version>1.0.10</jcodings.version>
-		<jffi.version>1.2.11</jffi.version>
+		<jffi.version>1.2.12</jffi.version>
 		<jnr.ffi.version>1.0.4</jnr.ffi.version>
 		<junit.version>4.12</junit.version>
 		<log4j.version>2.1</log4j.version>
@@ -266,6 +266,8 @@
 		<mina.version>2.0.4</mina.version>
 		<mule.tools.version>1.1</mule.tools.version>
 		<mule.version>3.7.0</mule.version>
+		<munit.version>1.1.0</munit.version>
+		<munit.support.version>3.7.1</munit.support.version>
 		<opensaml.version>2.6.1</opensaml.version>
 		<slf4j.version>1.7.13</slf4j.version>
 		<spring.data.version>1.8.2.RELEASE</spring.data.version>
@@ -302,6 +304,7 @@
 		<plugin.jxr.version>2.5</plugin.jxr.version>
 		<plugin.lifecycle.version>1.0.0</plugin.lifecycle.version>
 		<plugin.mule.version>${mule.tools.version}</plugin.mule.version>
+		<plugin.munit.version>${munit.version}</plugin.munit.version>
 		<plugin.pmd.version>3.5</plugin.pmd.version>
 		<plugin.release.version>2.5.2</plugin.release.version>
 		<plugin.reports.version>2.8.1</plugin.reports.version>
@@ -856,6 +859,28 @@
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency><!-- Munit -->
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>mule-munit-support</artifactId>
+			<version>${munit.support.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency><!-- Munit runner -->
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<version>${munit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-extensions-support</artifactId>
+			<version>${mule.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-extensions-spring-support</artifactId>
+			<version>${mule.version}</version>
+		</dependency>
 	</dependencies>
 
 	<!-- ********************************************** -->
@@ -864,6 +889,14 @@
 
 	<build>
 		<defaultGoal>clean package</defaultGoal>
+		<testResources>
+			<testResource>
+				<directory>src/test/munit</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
 		<extensions>
 			<extension>
 				<!-- Wagon -->
@@ -1223,7 +1256,32 @@
 				<extensions>true</extensions>
 				<configuration>
 					<copyToAppsDirectory>true</copyToAppsDirectory>
+					<inclusions>
+						<inclusion>
+							<groupId>org.mule.modules</groupId>
+							<artifactId>mule-module-extensions-support</artifactId>
+						</inclusion>
+						<inclusion>
+							<groupId>org.mule.modules</groupId>
+							<artifactId>mule-module-extensions-spring-support</artifactId>
+						</inclusion>
+					</inclusions>
 				</configuration>
+			</plugin>
+			<plugin>
+				<!-- MUnit -->
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>${plugin.munit.version}</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<!-- Build Helper -->
