@@ -57,7 +57,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			doc:name="Save id variable" />
 		<set-payload value="&lt;root/&gt;" doc:name="Dummy XML document (for transformer)" />
 		<mulexml:xslt-transformer returnClass="java.lang.String"
-			xsl-file="xslt/request.xslt" doc:name="Create SOAP message">
+			xsl-file="${xslt.request.consumer}" doc:name="Create SOAP message">
 			<mulexml:context-property key="id" value="#[id]" />
 		</mulexml:xslt-transformer>
 	</sub-flow>
