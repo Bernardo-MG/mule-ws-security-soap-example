@@ -53,7 +53,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	</sub-flow>
 
 	<sub-flow name="Transform-Consumer-Request-Vars">
-		<set-variable variableName="id" value="#[payload[0]]"
+		<set-variable variableName="id" value="#[payload]"
 			doc:name="Save id variable" />
 		<set-payload value="&lt;root/&gt;" doc:name="Dummy XML document (for transformer)" />
 		<mulexml:xslt-transformer returnClass="java.lang.String"
