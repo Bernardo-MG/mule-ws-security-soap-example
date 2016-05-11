@@ -18,13 +18,13 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
     </spring:beans>
 
     <munit:test name="Read-HTTP-Variables-Acquires-Variable" description="The id is read correctly from the HTTP parameters">
-        <munit:set payload="#['']" doc:name="Set valid id">
+        <munit:set payload="#['']" doc:name="Set parameters">
             <munit:inbound-properties>
                 <munit:inbound-property key="http.query.params" value="#[['id':'1']]"/>
             </munit:inbound-properties>
         </munit:set>
         <flow-ref name="Read-HTTP-Variables" doc:name="Read-HTTP-Variables"/>
-        <munit:assert-not-null doc:name="Assert Not Null Payload"/>
+        <munit:assert-payload-equals expectedValue="#[new Integer(1)]" doc:name="Assert Payload"/>
     </munit:test>
 
 </mule>

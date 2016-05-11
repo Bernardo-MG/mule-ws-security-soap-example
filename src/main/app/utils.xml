@@ -33,7 +33,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<set-variable variableName="id"
 			value="#[Integer.parseInt(message.inboundProperties.'http.query.params'.id)]"
 			doc:name="id variable" />
-		<set-payload doc:name="Set payload" value="#[{id}]" />
+		<set-payload doc:name="Set payload" value="#[id]" />
 	</sub-flow>
 
 	<sub-flow name="Transform-Response">
