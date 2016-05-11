@@ -47,18 +47,18 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
     /**
      * The logger used for logging the validator.
      */
-    private static final Logger        LOGGER = LoggerFactory
-            .getLogger(SamlCustomValidator.class);
+    private static final Logger LOGGER = LoggerFactory
+                                               .getLogger(SamlCustomValidator.class);
 
     /**
      * The issuer name.
      */
-    private final String issuerName;
+    private final String        issuerName;
 
     /**
      * The subject name.
      */
-    private final String subjectName;
+    private final String        subjectName;
 
     /**
      * Default constructor.

@@ -105,10 +105,9 @@ public final class CodeFirstExampleEntityEndpoint implements
         response = new XmlExampleEntity();
         BeanUtils.copyProperties(entity, response);
 
-        LOGGER.debug(String.format(
-                "Found entity with id %1$d and name %2$s", entity.getId(),
-                entity.getName()));
-        
+        LOGGER.debug(String.format("Found entity with id %1$d and name %2$s",
+                entity.getId(), entity.getName()));
+
         return response;
     }
 

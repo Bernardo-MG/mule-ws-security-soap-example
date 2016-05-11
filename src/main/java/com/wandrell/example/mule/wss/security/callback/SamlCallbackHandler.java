@@ -54,23 +54,23 @@ public final class SamlCallbackHandler implements CallbackHandler {
     /**
      * The logger used for logging the callback handler.
      */
-    private static final Logger        LOGGER = LoggerFactory
-                                                      .getLogger(SamlCallbackHandler.class);
+    private static final Logger LOGGER = LoggerFactory
+                                               .getLogger(SamlCallbackHandler.class);
 
     /**
      * SAML 2.0 confirmation method.
      */
-    private final String confirmationMethod;
+    private final String        confirmationMethod;
 
     /**
      * Name of the subject.
      */
-    private final String subjectName;
+    private final String        subjectName;
 
     /**
      * Qualifier for the subject.
      */
-    private final String subjectQualifier;
+    private final String        subjectQualifier;
 
     /**
      * Constructs a callback handler for the specified subject.

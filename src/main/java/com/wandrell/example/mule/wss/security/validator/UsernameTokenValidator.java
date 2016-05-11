@@ -70,7 +70,7 @@ public final class UsernameTokenValidator implements Validator {
                     WSSecurityException.FAILED_AUTHENTICATION);
         } else {
             LOGGER.debug(String.format("Rejected password %2$s for user %1$s",
-                    usernameToken.getName(),usernameToken.getPassword()));
+                    usernameToken.getName(), usernameToken.getPassword()));
         }
 
         return credential;
