@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="${app.encoding}"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern" xmlns:ws="http://www.mulesoft.org/schema/mule/ws"
 	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
