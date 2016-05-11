@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="${app.encoding}"?>
 <mule xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern" xmlns:ws="http://www.mulesoft.org/schema/mule/ws"
 	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
@@ -18,21 +18,21 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<endpoint name="Endpoint-Unsecure-CodeFirst" doc:name="Unsecure Code-First endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.codeFirst.path}"
-		encoding="UTF-8" />
+		encoding="${app.encoding}" />
 
 	<endpoint name="Endpoint-Unsecure-WSDLFirst" doc:name="Unsecure WSDL-First endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.wsdlFirst.path}"
-		encoding="UTF-8" />
+		encoding="${app.encoding}" />
 
 	<endpoint name="Endpoint-Unsecure-Simple" doc:name="Unsecure simple endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.simple.path}"
-		encoding="UTF-8" />
+		encoding="${app.encoding}" />
 
 	<endpoint name="Endpoint-Unsecure-Proxy" doc:name="Unsecure proxy endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.proxy.path}"
-		encoding="UTF-8" />
+		encoding="${app.encoding}" />
 
 </mule>
