@@ -22,7 +22,28 @@
  * SOFTWARE.
  */
 /**
- * Provides the endpoints.
+ * Web service endpoints.
+ * <p>
+ * The various final endpoints will extend over the ones in this package by
+ * adding the required authentication protocols.
+ * <p>
+ * There is different endpoint for each variant.
+ * <p>
+ * For simple endpoints the
+ * {@link com.wandrell.example.mule.wss.endpoint.SimpleExampleEntityEndpoint
+ * SimpleExampleEntityEndpoint} is all that is needed.
+ * <p>
+ * A WSDL-first endpoint will use the
+ * {@link com.wandrell.example.mule.wss.endpoint.WSDLFirstExampleEntityEndpoint
+ * WSDLFirstExampleEntityEndpoint}, and the generated
+ * {@link com.wandrell.example.mule.wss.generated.EntityEndpoint EntityEndpoint}
+ * interface.
+ * <p>
+ * For the code-first endpoint the
+ * {@link com.wandrell.example.mule.wss.endpoint.CodeFirstExampleEntityEndpoint
+ * CodeFirstExampleEntityEndpoint}, and its interface the
+ * {@link com.wandrell.example.mule.wss.endpoint.ExampleEntityEndpoint
+ * ExampleEntityEndpoint}, are used.
  */
 
 package com.wandrell.example.mule.wss.endpoint;

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Provides the callback handlers.
+ * Security callback handlers.
  */
 
 package com.wandrell.example.mule.wss.security.callback;

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Provides the model.
+ * Model for the application.
  */
 
 package com.wandrell.example.mule.wss.model;

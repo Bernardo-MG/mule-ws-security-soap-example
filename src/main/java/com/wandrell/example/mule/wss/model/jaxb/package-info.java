@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Provides the JAXB annotated model.
+ * JAXB annotated model.
  */
 
 package com.wandrell.example.mule.wss.model.jaxb;

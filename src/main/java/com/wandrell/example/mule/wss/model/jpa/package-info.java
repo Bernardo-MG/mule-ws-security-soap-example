@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Provides the JPA annotated model.
+ * JPA annotated model.
  */
 
 package com.wandrell.example.mule.wss.model.jpa;

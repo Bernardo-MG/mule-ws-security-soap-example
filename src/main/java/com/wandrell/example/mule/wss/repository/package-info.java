@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Provides the repositories.
+ * Repositories for the persistence layer.
  */
 
 package com.wandrell.example.mule.wss.repository;

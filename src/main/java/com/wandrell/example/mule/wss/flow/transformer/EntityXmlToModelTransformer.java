@@ -44,6 +44,10 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  * <p>
  * There are two valid XML formats: one is the SOAP response, another is a XML
  * structure containing the entity data, which is just an id and a name.
+ * <p>
+ * For this reason instead of using a marshaller the values are acquired
+ * directly from the XML, taking advantage of the fact the received message is
+ * so simple.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */

@@ -22,7 +22,9 @@
  * SOFTWARE.
  */
 /**
- * Provides the security validators.
+ * Security validators.
+ * <p>
+ * These are used for the SAML security protocols instead of callback handlers.
  */
 
 package com.wandrell.example.mule.wss.security.validator;

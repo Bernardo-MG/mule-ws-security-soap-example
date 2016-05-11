@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Provides the domain services.
+ * Domain services.
  */
 
 package com.wandrell.example.mule.wss.service.domain;
