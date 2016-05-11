@@ -18,21 +18,21 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<endpoint name="Endpoint-Signature-CodeFirst" doc:name="Signed Code-First endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.codeFirst.path}"
-		encoding="UTF-8" />
+		encoding="${app.encoding}" />
 
 	<endpoint name="Endpoint-Signature-WSDLFirst" doc:name="Signed WSDL-First endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.wsdlFirst.path}"
-		encoding="UTF-8" />
+		encoding="${app.encoding}" />
 
 	<endpoint name="Endpoint-Signature-Simple" doc:name="Signed simple endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.simple.path}"
-		encoding="UTF-8" />
+		encoding="${app.encoding}" />
 
 	<endpoint name="Endpoint-Signature-Proxy" doc:name="Signed proxy endpoint"
 		exchange-pattern="request-response"
 		address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.proxy.path}"
-		encoding="UTF-8" />
+		encoding="${app.encoding}" />
 
 </mule>
