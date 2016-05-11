@@ -16,11 +16,11 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
 
 	<custom-transformer name="EntityXmlToModel"
-		class="com.wandrell.example.mule.wss.flow.transformer.EntityXmlToModelTransformer"
-		returnClass="com.wandrell.example.mule.wss.model.ExampleEntity" doc:name="Entity XML to model"/>
+		class="com.wandrell.example.mule.wss.flow.transformer.EntityXmlToModelTransformer" returnClass="${transformer.xmlToModel.return}"
+		doc:name="Entity XML to model" />
 
 	<custom-transformer name="SoapEnvelopeStripper"
-		class="com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper"
-		returnClass="java.lang.String" doc:name="SOAP request for transformer"/>
+		class="com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper" returnClass="${transformer.soapStripper.return}"
+		doc:name="SOAP envelope stripper" />
 
 </mule>
