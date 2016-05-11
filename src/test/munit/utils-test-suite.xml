@@ -13,6 +13,9 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 
     <munit:config name="munit" doc:name="Munit configuration"/>
 
+   <context:property-placeholder
+      location="classpath:config/util.properties" />
+
     <spring:beans>
         <spring:import resource="classpath:utils.xml"/>
     </spring:beans>

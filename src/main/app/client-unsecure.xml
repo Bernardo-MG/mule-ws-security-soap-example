@@ -21,8 +21,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
 		<flow-ref name="Client-Unsecure-CodeFirst-Endpoint" doc:name="Send request" />
 		<response>
-			<mulexml:object-to-xml-transformer
-				doc:name="Object to XML" />
+         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
 		</response>
 	</flow>
 	<sub-flow name="Client-Unsecure-CodeFirst-Endpoint">
@@ -63,8 +62,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
 		<flow-ref name="Client-Unsecure-Simple-Endpoint" doc:name="Send request" />
 		<response>
-			<mulexml:object-to-xml-transformer
-				doc:name="Object to XML" />
+         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
 		</response>
 	</flow>
 	<sub-flow name="Client-Unsecure-Simple-Endpoint">
@@ -84,8 +82,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 		<flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
 		<flow-ref name="Client-Unsecure-Proxy-Endpoint" doc:name="Send request" />
 		<response>
-			<mulexml:object-to-xml-transformer
-				doc:name="Object to XML" />
+         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
 		</response>
 	</flow>
 	<sub-flow name="Client-Unsecure-Proxy-Endpoint">
