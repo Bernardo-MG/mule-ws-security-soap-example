@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientConsum
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the unsecure consumer
- * client flow.
+ * Integration tests for an unsecure consumer client flow testing that it
+ * handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientConsumerPropertiesPaths.UNSECURE })
 public final class ITUnsecureClientConsumer extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITUnsecureClientConsumer() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITUnsecureClientConsumer() {
+		super();
+	}
 
 }

@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientWsdlFi
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the unsecure WSDL-First
- * client flow.
+ * Integration tests for an unsecure WSDL-first client flow testing that it
+ * handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientWsdlFirstPropertiesPaths.UNSECURE })
 public final class ITUnsecureClientWsdlFirst extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITUnsecureClientWsdlFirst() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITUnsecureClientWsdlFirst() {
+		super();
+	}
 
 }

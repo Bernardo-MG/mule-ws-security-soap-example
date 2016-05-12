@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientCodeFi
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the password protected
- * Code-First client flow.
+ * Integration tests for a signed code-first client flow testing that it handles
+ * messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientCodeFirstPropertiesPaths.SIGNATURE })
 public final class ITSignatureClientCodeFirst extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITSignatureClientCodeFirst() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITSignatureClientCodeFirst() {
+		super();
+	}
 
 }

@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientProxyP
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the password protected
- * Code-First client flow.
+ * Integration tests for a password protected SAML proxy client flow testing
+ * that it handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientProxyPropertiesPaths.PASSWORD_SAML })
 public final class ITPasswordSamlClientProxy extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITPasswordSamlClientProxy() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITPasswordSamlClientProxy() {
+		super();
+	}
 
 }

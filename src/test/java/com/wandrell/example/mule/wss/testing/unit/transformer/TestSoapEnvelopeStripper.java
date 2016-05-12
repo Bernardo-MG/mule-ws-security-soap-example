@@ -58,88 +58,88 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.SoapWsdlFirs
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
 @TestPropertySource({ SoapWsdlFirstPropertiesPaths.UNSECURE })
 public final class TestSoapEnvelopeStripper extends
-        AbstractTestNGSpringContextTests {
+		AbstractTestNGSpringContextTests {
 
-    /**
-     * Path to a valid SOAP envelope.
-     */
-    @Value("${soap.request.envelope.path}")
-    private String envelopePath;
+	/**
+	 * Path to a valid SOAP envelope.
+	 */
+	@Value("${soap.request.envelope.path}")
+	private String envelopePath;
 
-    /**
-     * Path to a valid SOAP payload.
-     */
-    @Value("${soap.request.payload.path}")
-    private String payloadPath;
+	/**
+	 * Path to a valid SOAP payload.
+	 */
+	@Value("${soap.request.payload.path}")
+	private String payloadPath;
 
-    /**
-     * Default constructor.
-     */
-    public TestSoapEnvelopeStripper() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public TestSoapEnvelopeStripper() {
+		super();
+	}
 
-    /**
-     * Tests that the transformer correctly strips SOAP envelopes.
-     * 
-     * @throws TransformerException
-     *             never, this is a required declaration
-     * @throws SAXException
-     *             never, this is a required declaration
-     * @throws IOException
-     *             never, this is a required declaration
-     */
-    @Test
-    public final void testTransform_Envelope() throws TransformerException,
-            SAXException, IOException {
-        final Transformer transformer; // Tested transformer
-        final String source;           // Message being transformed
-        final String expected;         // Expected result
-        final String result;           // Result from the transformation
+	/**
+	 * Tests that the transformer correctly strips SOAP envelopes.
+	 * 
+	 * @throws TransformerException
+	 *             never, this is a required declaration
+	 * @throws SAXException
+	 *             never, this is a required declaration
+	 * @throws IOException
+	 *             never, this is a required declaration
+	 */
+	@Test
+	public final void testTransform_Envelope() throws TransformerException,
+			SAXException, IOException {
+		final Transformer transformer; // Tested transformer
+		final String source; // Message being transformed
+		final String expected; // Expected result
+		final String result; // Result from the transformation
 
-        expected = IOUtils.toString(
-                new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
+		expected = IOUtils.toString(
+				new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
 
-        source = IOUtils.toString(
-                new ClassPathResource(envelopePath).getInputStream(), "UTF-8");
+		source = IOUtils.toString(
+				new ClassPathResource(envelopePath).getInputStream(), "UTF-8");
 
-        transformer = new SoapEnvelopeStripper();
+		transformer = new SoapEnvelopeStripper();
 
-        result = (String) transformer.transform(source, "UTF-8");
+		result = (String) transformer.transform(source, "UTF-8");
 
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(expected, result);
-    }
+		XMLUnit.setIgnoreWhitespace(true);
+		XMLAssert.assertXMLEqual(expected, result);
+	}
 
-    /**
-     * Tests that the transformer returns the XML message if it is not an
-     * envelope.
-     * 
-     * @throws TransformerException
-     *             never, this is a required declaration
-     * @throws SAXException
-     *             never, this is a required declaration
-     * @throws IOException
-     *             never, this is a required declaration
-     */
-    @Test
-    public final void testTransform_Payload() throws TransformerException,
-            SAXException, IOException {
-        final Transformer transformer; // Tested transformer
-        final String source;           // Message being transformed
-        final String expected;         // Expected result
-        final String result;           // Result from the transformation
+	/**
+	 * Tests that the transformer returns the XML message if it is not an
+	 * envelope.
+	 * 
+	 * @throws TransformerException
+	 *             never, this is a required declaration
+	 * @throws SAXException
+	 *             never, this is a required declaration
+	 * @throws IOException
+	 *             never, this is a required declaration
+	 */
+	@Test
+	public final void testTransform_Payload() throws TransformerException,
+			SAXException, IOException {
+		final Transformer transformer; // Tested transformer
+		final String source; // Message being transformed
+		final String expected; // Expected result
+		final String result; // Result from the transformation
 
-        source = IOUtils.toString(
-                new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
-        expected = source;
+		source = IOUtils.toString(
+				new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
+		expected = source;
 
-        transformer = new SoapEnvelopeStripper();
+		transformer = new SoapEnvelopeStripper();
 
-        result = (String) transformer.transform(source, "UTF-8");
+		result = (String) transformer.transform(source, "UTF-8");
 
-        XMLUnit.setIgnoreWhitespace(true);
-        XMLAssert.assertXMLEqual(expected, result);
-    }
+		XMLUnit.setIgnoreWhitespace(true);
+		XMLAssert.assertXMLEqual(expected, result);
+	}
 
 }

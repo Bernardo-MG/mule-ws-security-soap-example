@@ -28,26 +28,26 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.WebServiceContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SoapConsumerPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceConsumerPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpoint;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapProxyPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceProxyPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITSecuredEndpoint;
 
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the password protected
- * Code-First endpoint flow.
+ * Integration tests for a password protected proxy endpoint flow testing that
+ * it handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(WebServiceContextPaths.PASSWORD)
-@TestPropertySource({ WebServiceConsumerPropertiesPaths.PASSWORD,
-        SoapConsumerPropertiesPaths.PASSWORD })
-public final class ITPasswordWebServiceConsumer extends AbstractITEndpoint {
+@TestPropertySource({ WebServiceProxyPropertiesPaths.PASSWORD,
+		SoapProxyPropertiesPaths.PASSWORD })
+public final class ITPasswordEndpointProxy extends AbstractITSecuredEndpoint {
 
-    /**
-     * Default constructor.
-     */
-    public ITPasswordWebServiceConsumer() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITPasswordEndpointProxy() {
+		super();
+	}
 
 }

@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientWsdlFi
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the password protected
- * WSDL-First client flow.
+ * Integration tests for a password protected SAML WSDL-first client flow
+ * testing that it handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientWsdlFirstPropertiesPaths.PASSWORD_SAML })
 public final class ITPasswordSamlClientWsdlFirst extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITPasswordSamlClientWsdlFirst() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITPasswordSamlClientWsdlFirst() {
+		super();
+	}
 
 }

@@ -31,36 +31,36 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
  */
 public final class ClientContextPaths {
 
-    /**
-     * Encrypted.
-     */
-    public static final String ENCRYPTION    = "classpath:context/client/test-client-encryption.xml";
+	/**
+	 * Encrypted.
+	 */
+	public static final String ENCRYPTION = "classpath:context/client/test-client-encryption.xml";
 
-    /**
-     * Password protected.
-     */
-    public static final String PASSWORD      = "classpath:context/client/test-client-password.xml";
+	/**
+	 * Password protected.
+	 */
+	public static final String PASSWORD = "classpath:context/client/test-client-password.xml";
 
-    /**
-     * Password protected with SAML.
-     */
-    public static final String PASSWORD_SAML = "classpath:context/client/test-client-password-saml.xml";
+	/**
+	 * Password protected with SAML.
+	 */
+	public static final String PASSWORD_SAML = "classpath:context/client/test-client-password-saml.xml";
 
-    /**
-     * Signed.
-     */
-    public static final String SIGNATURE     = "classpath:context/client/test-client-signature.xml";
+	/**
+	 * Signed.
+	 */
+	public static final String SIGNATURE = "classpath:context/client/test-client-signature.xml";
 
-    /**
-     * Unsecure.
-     */
-    public static final String UNSECURE      = "classpath:context/client/test-client-unsecure.xml";
+	/**
+	 * Unsecure.
+	 */
+	public static final String UNSECURE = "classpath:context/client/test-client-unsecure.xml";
 
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private ClientContextPaths() {
-        super();
-    }
+	/**
+	 * Private constructor to avoid initialization.
+	 */
+	private ClientContextPaths() {
+		super();
+	}
 
 }

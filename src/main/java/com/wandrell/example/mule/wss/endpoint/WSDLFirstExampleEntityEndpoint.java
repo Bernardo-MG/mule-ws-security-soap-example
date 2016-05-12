@@ -52,71 +52,71 @@ import com.wandrell.example.mule.wss.service.domain.ExampleEntityService;
 @Singleton
 public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
 
-    /**
-     * The logger used for logging the entity endpoint.
-     */
-    private static final Logger        LOGGER = LoggerFactory
-                                                      .getLogger(WSDLFirstExampleEntityEndpoint.class);
+	/**
+	 * The logger used for logging the entity endpoint.
+	 */
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(WSDLFirstExampleEntityEndpoint.class);
 
-    /**
-     * Service for accessing the {@code ExampleEntity} instances handled by the
-     * web service.
-     */
-    private final ExampleEntityService entityService;
+	/**
+	 * Service for accessing the {@code ExampleEntity} instances handled by the
+	 * web service.
+	 */
+	private final ExampleEntityService entityService;
 
-    /**
-     * Constructs a {@code WSDLFirstExampleEntityEndpoint}.
-     * <p>
-     * The constructor is meant to make use of Spring's IOC system.
-     *
-     * @param service
-     *            the service for the {@code ExampleEntity} instances
-     */
-    @Autowired
-    public WSDLFirstExampleEntityEndpoint(final ExampleEntityService service) {
-        super();
+	/**
+	 * Constructs a {@code WSDLFirstExampleEntityEndpoint}.
+	 * <p>
+	 * The constructor is meant to make use of Spring's IOC system.
+	 *
+	 * @param service
+	 *            the service for the {@code ExampleEntity} instances
+	 */
+	@Autowired
+	public WSDLFirstExampleEntityEndpoint(final ExampleEntityService service) {
+		super();
 
-        entityService = checkNotNull(service,
-                "Received a null pointer as service");
-    }
+		entityService = checkNotNull(service,
+				"Received a null pointer as service");
+	}
 
-    @Override
-    public final GetEntityResponse.Return getEntity(final int id) {
-        final GetEntityResponse.Return response; // XML response with the entity
-                                                 // data
-        final ExampleEntity entity;              // Found entity
+	@Override
+	public final GetEntityResponse.Return getEntity(final int id) {
+		final GetEntityResponse.Return response; // XML response with the entity
+													// data
+		final ExampleEntity entity; // Found entity
 
-        checkNotNull(id, "Received a null pointer as id");
+		checkNotNull(id, "Received a null pointer as id");
 
-        LOGGER.debug(String.format("Received request for id %d", id));
+		LOGGER.debug(String.format("Received request for id %d", id));
 
-        // Acquires the entity
-        entity = getExampleEntityService().findById(id);
+		// Acquires the entity
+		entity = getExampleEntityService().findById(id);
 
-        response = new GetEntityResponse.Return();
-        if (entity == null) {
-            LOGGER.debug("Entity not found");
-        } else {
-            // The entity is transformed from the persistence model to the XML
-            // one
-            response.setId(entity.getId());
-            response.setName(entity.getName());
+		response = new GetEntityResponse.Return();
+		if (entity == null) {
+			LOGGER.debug("Entity not found");
+		} else {
+			// The entity is transformed from the persistence model to the XML
+			// one
+			response.setId(entity.getId());
+			response.setName(entity.getName());
 
-            LOGGER.debug(String.format(
-                    "Found entity with id %1$d and name %2$s", entity.getId(),
-                    entity.getName()));
-        }
+			LOGGER.debug(String.format(
+					"Found entity with id %1$d and name %2$s", entity.getId(),
+					entity.getName()));
+		}
 
-        return response;
-    }
+		return response;
+	}
 
-    /**
-     * Returns the service used to handle the {@code ExampleEntity} instances.
-     *
-     * @return the service used to handle the {@code ExampleEntity} instances
-     */
-    private final ExampleEntityService getExampleEntityService() {
-        return entityService;
-    }
+	/**
+	 * Returns the service used to handle the {@code ExampleEntity} instances.
+	 *
+	 * @return the service used to handle the {@code ExampleEntity} instances
+	 */
+	private final ExampleEntityService getExampleEntityService() {
+		return entityService;
+	}
 
 }

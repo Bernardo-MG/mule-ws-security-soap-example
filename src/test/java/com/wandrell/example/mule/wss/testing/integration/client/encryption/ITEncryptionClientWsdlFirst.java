@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientWsdlFi
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the password protected
- * WSDL-First client flow.
+ * Integration tests for an encrypted WSDL-first client flow testing that it
+ * handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientWsdlFirstPropertiesPaths.ENCRYPTION })
 public final class ITEncryptionClientWsdlFirst extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITEncryptionClientWsdlFirst() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITEncryptionClientWsdlFirst() {
+		super();
+	}
 
 }

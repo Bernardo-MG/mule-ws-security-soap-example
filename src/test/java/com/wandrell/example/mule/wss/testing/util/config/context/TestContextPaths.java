@@ -33,19 +33,19 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
  */
 public final class TestContextPaths {
 
-    /**
-     * Default context file.
-     * <p>
-     * For those test which don't need any context configuration but require
-     * loading Spring properties.
-     */
-    public static final String DEFAULT = "classpath:context/test-default.xml";
+	/**
+	 * Default context file.
+	 * <p>
+	 * For those test which don't need any context configuration but require
+	 * loading Spring properties.
+	 */
+	public static final String DEFAULT = "classpath:context/test-default.xml";
 
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private TestContextPaths() {
-        super();
-    }
+	/**
+	 * Private constructor to avoid initialization.
+	 */
+	private TestContextPaths() {
+		super();
+	}
 
 }

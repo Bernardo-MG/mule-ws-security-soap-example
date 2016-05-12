@@ -22,32 +22,33 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.ws.unsecure;
+package com.wandrell.example.mule.wss.testing.integration.ws.password;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.WebServiceContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SoapSimplePropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceSimplePropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpoint;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapWsdlFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceWsdlFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITSecuredEndpoint;
 
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the unsecure simple
- * endpoint flow.
+ * Integration tests for a password protected WSDL-first endpoint flow testing
+ * that it handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(WebServiceContextPaths.UNSECURE)
-@TestPropertySource({ WebServiceSimplePropertiesPaths.UNSECURE,
-        SoapSimplePropertiesPaths.UNSECURE })
-public final class ITUnsecureWebServiceSimple extends AbstractITEndpoint {
+@ContextConfiguration(WebServiceContextPaths.PASSWORD)
+@TestPropertySource({ WebServiceWsdlFirstPropertiesPaths.PASSWORD,
+		SoapWsdlFirstPropertiesPaths.PASSWORD })
+public final class ITPasswordEndpointWsdlFirst extends
+		AbstractITSecuredEndpoint {
 
-    /**
-     * Default constructor.
-     */
-    public ITUnsecureWebServiceSimple() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITPasswordEndpointWsdlFirst() {
+		super();
+	}
 
 }

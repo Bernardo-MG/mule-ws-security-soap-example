@@ -41,25 +41,24 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@WebService(serviceName = ExampleEntityEndpointConstants.SERVICE,
-        targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
+@WebService(serviceName = ExampleEntityEndpointConstants.SERVICE, targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
 public interface ExampleEntityEndpoint {
 
-    /**
-     * Returns a {@link XmlExampleEntity} containing the data for the id
-     * received.
-     * <p>
-     * The {@code id} parameter is taken from the Mule flow as a web parameter,
-     * and the returned bean is a JAXB annotated class.
-     * <p>
-     * Implementations are expected to take the data contained in the returned
-     * bean from the persistence layer.
-     * 
-     * @param id
-     *            id of the entity being queried
-     * @return the queried entity
-     */
-    public XmlExampleEntity getEntity(@WebParam(name = "id") @XmlElement(
-            required = true, nillable = false) final Integer id);
+	/**
+	 * Returns a {@link XmlExampleEntity} containing the data for the id
+	 * received.
+	 * <p>
+	 * The {@code id} parameter is taken from the Mule flow as a web parameter,
+	 * and the returned bean is a JAXB annotated class.
+	 * <p>
+	 * Implementations are expected to take the data contained in the returned
+	 * bean from the persistence layer.
+	 * 
+	 * @param id
+	 *            id of the entity being queried
+	 * @return the queried entity
+	 */
+	public XmlExampleEntity getEntity(
+			@WebParam(name = "id") @XmlElement(required = true, nillable = false) final Integer id);
 
 }

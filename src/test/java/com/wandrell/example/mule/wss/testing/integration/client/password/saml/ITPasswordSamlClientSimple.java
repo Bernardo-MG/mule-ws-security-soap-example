@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientSimple
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the password protected
- * simple client flow.
+ * Integration tests for a password protected SAML simple client flow testing
+ * that it handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,10 +41,10 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientSimplePropertiesPaths.PASSWORD_SAML })
 public final class ITPasswordSamlClientSimple extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITPasswordSamlClientSimple() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITPasswordSamlClientSimple() {
+		super();
+	}
 }

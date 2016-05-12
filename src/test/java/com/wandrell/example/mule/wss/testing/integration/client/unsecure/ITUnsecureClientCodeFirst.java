@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientCodeFi
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the unsecure Code-First
- * client flow.
+ * Integration tests for an unsecure code-first client flow testing that it
+ * handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientCodeFirstPropertiesPaths.UNSECURE })
 public final class ITUnsecureClientCodeFirst extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITUnsecureClientCodeFirst() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITUnsecureClientCodeFirst() {
+		super();
+	}
 
 }

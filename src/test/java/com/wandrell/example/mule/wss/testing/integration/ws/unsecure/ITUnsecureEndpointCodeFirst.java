@@ -28,26 +28,26 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
 import com.wandrell.example.mule.wss.testing.util.config.context.WebServiceContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.SoapProxyPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceProxyPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapCodeFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceCodeFirstPropertiesPaths;
 import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpoint;
 
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the unsecure proxy
- * endpoint flow.
+ * Integration tests for an unsecure code-first endpoint flow testing that it
+ * handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(WebServiceContextPaths.UNSECURE)
-@TestPropertySource({ WebServiceProxyPropertiesPaths.UNSECURE,
-        SoapProxyPropertiesPaths.UNSECURE })
-public final class ITUnsecureWebServiceProxy extends AbstractITEndpoint {
+@TestPropertySource({ WebServiceCodeFirstPropertiesPaths.UNSECURE,
+		SoapCodeFirstPropertiesPaths.UNSECURE })
+public final class ITUnsecureEndpointCodeFirst extends AbstractITEndpoint {
 
-    /**
-     * Default constructor.
-     */
-    public ITUnsecureWebServiceProxy() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITUnsecureEndpointCodeFirst() {
+		super();
+	}
 
 }

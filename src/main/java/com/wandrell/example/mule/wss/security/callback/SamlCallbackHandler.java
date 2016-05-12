@@ -51,103 +51,103 @@ import org.slf4j.LoggerFactory;
  */
 public final class SamlCallbackHandler implements CallbackHandler {
 
-    /**
-     * The logger used for logging the callback handler.
-     */
-    private static final Logger LOGGER = LoggerFactory
-                                               .getLogger(SamlCallbackHandler.class);
+	/**
+	 * The logger used for logging the callback handler.
+	 */
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(SamlCallbackHandler.class);
 
-    /**
-     * SAML 2.0 confirmation method.
-     */
-    private final String        confirmationMethod;
+	/**
+	 * SAML 2.0 confirmation method.
+	 */
+	private final String confirmationMethod;
 
-    /**
-     * Name of the subject.
-     */
-    private final String        subjectName;
+	/**
+	 * Name of the subject.
+	 */
+	private final String subjectName;
 
-    /**
-     * Qualifier for the subject.
-     */
-    private final String        subjectQualifier;
+	/**
+	 * Qualifier for the subject.
+	 */
+	private final String subjectQualifier;
 
-    /**
-     * Constructs a callback handler for the specified subject.
-     * 
-     * @param name
-     *            name of the subject
-     * @param qualifier
-     *            qualifier for the subject
-     */
-    public SamlCallbackHandler(final String name, final String qualifier) {
-        super();
+	/**
+	 * Constructs a callback handler for the specified subject.
+	 * 
+	 * @param name
+	 *            name of the subject
+	 * @param qualifier
+	 *            qualifier for the subject
+	 */
+	public SamlCallbackHandler(final String name, final String qualifier) {
+		super();
 
-        subjectName = checkNotNull(name,
-                "Received a null pointer as subject name");
-        subjectQualifier = checkNotNull(qualifier,
-                "Received a null pointer as subject qualifier");
-        confirmationMethod = SAML2Constants.CONF_SENDER_VOUCHES;
-    }
+		subjectName = checkNotNull(name,
+				"Received a null pointer as subject name");
+		subjectQualifier = checkNotNull(qualifier,
+				"Received a null pointer as subject qualifier");
+		confirmationMethod = SAML2Constants.CONF_SENDER_VOUCHES;
+	}
 
-    @Override
-    public final void handle(final Callback[] callbacks) throws IOException,
-            UnsupportedCallbackException {
-        SAMLCallback samlCallback;            // SAML callback
-        SubjectBean subject;                  // Subject data
-        AuthenticationStatementBean authBean; // Auth statement
+	/**
+	 * Returns the SAML 2.0 confirmation method.
+	 * 
+	 * @return the SAML 2.0 confirmation method
+	 */
+	private final String getConfirmationMethod() {
+		return confirmationMethod;
+	}
 
-        checkNotNull(callbacks, "Received a null pointer as callbacks");
+	/**
+	 * Returns the name of the subject.
+	 * 
+	 * @return the name of the subject
+	 */
+	private final String getSubjectName() {
+		return subjectName;
+	}
 
-        for (final Callback callback : callbacks) {
-            if (callback instanceof SAMLCallback) {
-                samlCallback = (SAMLCallback) callback;
+	/**
+	 * Returns the qualifier for the subject.
+	 * 
+	 * @return the qualifier for the subject
+	 */
+	private final String getSubjectQualifier() {
+		return subjectQualifier;
+	}
 
-                subject = new SubjectBean(getSubjectName(),
-                        getSubjectQualifier(), getConfirmationMethod());
+	@Override
+	public final void handle(final Callback[] callbacks) throws IOException,
+			UnsupportedCallbackException {
+		SAMLCallback samlCallback; // SAML callback
+		SubjectBean subject; // Subject data
+		AuthenticationStatementBean authBean; // Auth statement
 
-                samlCallback.setSamlVersion(SAMLVersion.VERSION_20);
-                samlCallback.setSubject(subject);
+		checkNotNull(callbacks, "Received a null pointer as callbacks");
 
-                authBean = new AuthenticationStatementBean();
-                authBean.setSubject(subject);
-                authBean.setAuthenticationMethod("Password");
+		for (final Callback callback : callbacks) {
+			if (callback instanceof SAMLCallback) {
+				samlCallback = (SAMLCallback) callback;
 
-                samlCallback.setAuthenticationStatementData(Collections
-                        .singletonList(authBean));
-            } else {
-                LOGGER.debug("Unrecognized callback");
-                throw new UnsupportedCallbackException(callback,
-                        "Unrecognized callback");
-            }
-        }
-    }
+				subject = new SubjectBean(getSubjectName(),
+						getSubjectQualifier(), getConfirmationMethod());
 
-    /**
-     * Returns the SAML 2.0 confirmation method.
-     * 
-     * @return the SAML 2.0 confirmation method
-     */
-    private final String getConfirmationMethod() {
-        return confirmationMethod;
-    }
+				samlCallback.setSamlVersion(SAMLVersion.VERSION_20);
+				samlCallback.setSubject(subject);
 
-    /**
-     * Returns the name of the subject.
-     * 
-     * @return the name of the subject
-     */
-    private final String getSubjectName() {
-        return subjectName;
-    }
+				authBean = new AuthenticationStatementBean();
+				authBean.setSubject(subject);
+				authBean.setAuthenticationMethod("Password");
 
-    /**
-     * Returns the qualifier for the subject.
-     * 
-     * @return the qualifier for the subject
-     */
-    private final String getSubjectQualifier() {
-        return subjectQualifier;
-    }
+				samlCallback.setAuthenticationStatementData(Collections
+						.singletonList(authBean));
+			} else {
+				LOGGER.debug("Unrecognized callback");
+				throw new UnsupportedCallbackException(callback,
+						"Unrecognized callback");
+			}
+		}
+	}
 
 }

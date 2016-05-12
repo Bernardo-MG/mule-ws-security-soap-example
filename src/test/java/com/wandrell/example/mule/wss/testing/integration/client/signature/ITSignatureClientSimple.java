@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientSimple
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the password protected
- * simple client flow.
+ * Integration tests for a signed simple client flow testing that it handles
+ * messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,10 +41,10 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientSimplePropertiesPaths.SIGNATURE })
 public final class ITSignatureClientSimple extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITSignatureClientSimple() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITSignatureClientSimple() {
+		super();
+	}
 }

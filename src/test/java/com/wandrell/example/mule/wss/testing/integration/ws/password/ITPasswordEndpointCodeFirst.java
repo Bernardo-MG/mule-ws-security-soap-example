@@ -33,22 +33,22 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceCo
 import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITSecuredEndpoint;
 
 /**
- * Implementation of {@code AbstractITEndpointFlow} for the password protected
- * Code-First endpoint flow.
+ * Integration tests for a password protected code-first endpoint flow testing
+ * that it handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(WebServiceContextPaths.PASSWORD)
 @TestPropertySource({ WebServiceCodeFirstPropertiesPaths.PASSWORD,
-        SoapCodeFirstPropertiesPaths.PASSWORD })
-public final class ITPasswordWebServiceCodeFirst extends
-        AbstractITSecuredEndpoint {
+		SoapCodeFirstPropertiesPaths.PASSWORD })
+public final class ITPasswordEndpointCodeFirst extends
+		AbstractITSecuredEndpoint {
 
-    /**
-     * Default constructor.
-     */
-    public ITPasswordWebServiceCodeFirst() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITPasswordEndpointCodeFirst() {
+		super();
+	}
 
 }

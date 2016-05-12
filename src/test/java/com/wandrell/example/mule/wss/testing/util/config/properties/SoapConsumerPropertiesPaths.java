@@ -34,21 +34,21 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
  */
 public final class SoapConsumerPropertiesPaths {
 
-    /**
-     * Password protected SOAP messages.
-     */
-    public static final String PASSWORD = "classpath:config/soap/password/test-soap-consumer-password.properties";
+	/**
+	 * Password protected SOAP messages.
+	 */
+	public static final String PASSWORD = "classpath:config/soap/password/test-soap-consumer-password.properties";
 
-    /**
-     * Unsecure SOAP messages.
-     */
-    public static final String UNSECURE = "classpath:config/soap/unsecure/test-soap-consumer.properties";
+	/**
+	 * Unsecure SOAP messages.
+	 */
+	public static final String UNSECURE = "classpath:config/soap/unsecure/test-soap-consumer.properties";
 
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private SoapConsumerPropertiesPaths() {
-        super();
-    }
+	/**
+	 * Private constructor to avoid initialization.
+	 */
+	private SoapConsumerPropertiesPaths() {
+		super();
+	}
 
 }

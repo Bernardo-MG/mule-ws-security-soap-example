@@ -31,21 +31,21 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
  */
 public final class WebServiceContextPaths {
 
-    /**
-     * Password protected.
-     */
-    public static final String PASSWORD = "classpath:context/ws/test-ws-password.xml";
+	/**
+	 * Password protected.
+	 */
+	public static final String PASSWORD = "classpath:context/ws/test-ws-password.xml";
 
-    /**
-     * Unsecure.
-     */
-    public static final String UNSECURE = "classpath:context/ws/test-ws-unsecure.xml";
+	/**
+	 * Unsecure.
+	 */
+	public static final String UNSECURE = "classpath:context/ws/test-ws-unsecure.xml";
 
-    /**
-     * Private constructor to avoid initialization.
-     */
-    private WebServiceContextPaths() {
-        super();
-    }
+	/**
+	 * Private constructor to avoid initialization.
+	 */
+	private WebServiceContextPaths() {
+		super();
+	}
 
 }

@@ -36,16 +36,16 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
  */
 public interface ExampleEntityService {
 
-    /**
-     * Returns a {@code ExampleEntity} with the given id.
-     * <p>
-     * If no instance exists with that id then the value {@code null} is
-     * returned.
-     *
-     * @param identifier
-     *            identifier of the {@code ExampleEntity} to find
-     * @return the {@code ExampleEntity} with the given id or {@code null}
-     */
-    public ExampleEntity findById(final Integer identifier);
+	/**
+	 * Returns a {@code ExampleEntity} with the given id.
+	 * <p>
+	 * If no instance exists with that id then the value {@code null} is
+	 * returned.
+	 *
+	 * @param identifier
+	 *            identifier of the {@code ExampleEntity} to find
+	 * @return the {@code ExampleEntity} with the given id or {@code null}
+	 */
+	public ExampleEntity findById(final Integer identifier);
 
 }

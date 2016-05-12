@@ -32,8 +32,8 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientProxyP
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Implementation of {@code AbstractITClientFlow} for the unsecure Code-First
- * client flow.
+ * Integration tests for an unsecure proxy client flow testing that it handles
+ * messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientProxyPropertiesPaths.UNSECURE })
 public final class ITUnsecureClientProxy extends AbstractITClientFlow {
 
-    /**
-     * Default constructor.
-     */
-    public ITUnsecureClientProxy() {
-        super();
-    }
+	/**
+	 * Default constructor.
+	 */
+	public ITUnsecureClientProxy() {
+		super();
+	}
 
 }

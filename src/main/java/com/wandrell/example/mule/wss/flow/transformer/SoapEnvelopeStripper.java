@@ -52,120 +52,120 @@ import org.slf4j.LoggerFactory;
  */
 public final class SoapEnvelopeStripper extends AbstractTransformer {
 
-    /**
-     * The logger used for logging the transformer.
-     */
-    private static final Logger LOGGER = LoggerFactory
-                                               .getLogger(SoapEnvelopeStripper.class);
+	/**
+	 * The logger used for logging the transformer.
+	 */
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(SoapEnvelopeStripper.class);
 
-    /**
-     * Constructs a {@code SoapEnvelopeStripper}.
-     */
-    public SoapEnvelopeStripper() {
-        super();
-    }
+	/**
+	 * Constructs a {@code SoapEnvelopeStripper}.
+	 */
+	public SoapEnvelopeStripper() {
+		super();
+	}
 
-    /**
-     * Acquires the body data from the received SOAP data.
-     * <p>
-     * The received element should be the root of a SOAP message, from which the
-     * element annotated as the body will be extracted.
-     * <p>
-     * This SOAP message should be using the base SOAP namespace,
-     * {@code http://schemas.xmlsoap.org/soap/envelope/}, or the 2003 revision,
-     * {@code http://www.w3.org/2003/05/soap-envelope}. Otherwise the body won't
-     * be found.
-     * 
-     * @param soap
-     *            the SOAP message element
-     * @return the SOAP body element
-     */
-    private final Element getBody(final Element soap) {
-        final Namespace soapNs;     // Base SOAP namespace
-        final Namespace soapNs2003; // 2003 revision SOAP namespace
-        Element body;               // Element with the SOAP body
+	@Override
+	protected final String doTransform(final Object src, final String enc)
+			throws TransformerException {
+		final Element root; // SOAP message root
+		final Element operation; // SOAP message operation
 
-        // Tries to find the body by using the base SOAP namespace
-        soapNs = Namespace
-                .getNamespace("http://schemas.xmlsoap.org/soap/envelope/");
-        body = soap.getChild("Body", soapNs);
-        if (body == null) {
-            body = soap.getChild("body", soapNs);
-        }
+		checkNotNull(src, "Received a null pointer as source");
 
-        if (body == null) {
-            // Body not found
-            // Now tries the 2003 revision namespace
-            soapNs2003 = Namespace
-                    .getNamespace("http://www.w3.org/2003/05/soap-envelope");
-            body = soap.getChild("Body", soapNs2003);
-            if (body == null) {
-                body = soap.getChild("body", soapNs2003);
-            }
-        }
+		LOGGER.debug(String.format("Stripping source: %s", src.toString()));
 
-        return body;
-    }
+		try {
+			root = parseElement(src.toString());
+			if (root.getName().equalsIgnoreCase("envelope")) {
+				// The root is a SOAP envelope
+				// Acquires the operation
+				operation = getOperation(getBody(root));
+			} else {
+				operation = root;
+			}
+		} catch (final Exception e) {
+			throw new TransformerException(this, e);
+		}
 
-    /**
-     * Returns the SOAP operation from the received SOAP body.
-     * <p>
-     * It will be just the first child in the body.
-     * 
-     * @param body
-     *            SOAP body with the SOAP operation
-     * @return the SOAP operation
-     */
-    private final Element getOperation(final Element body) {
-        return (Element) body.getChildren().iterator().next();
-    }
+		return new XMLOutputter().outputString(operation);
+	}
 
-    /**
-     * Parses a SOAP message and returns its root element.
-     * 
-     * @param soap
-     *            SOAP message to parse
-     * @return the SOAP message root element
-     * @throws JDOMException
-     *             if a JDOM error occurs during parsing
-     * @throws IOException
-     *             if a I/O error occurs during parsing
-     */
-    private final Element parseElement(final String soap) throws JDOMException,
-            IOException {
-        final SAXBuilder saxBuilder; // SAX builder to parse the SOAP message
+	/**
+	 * Acquires the body data from the received SOAP data.
+	 * <p>
+	 * The received element should be the root of a SOAP message, from which the
+	 * element annotated as the body will be extracted.
+	 * <p>
+	 * This SOAP message should be using the base SOAP namespace,
+	 * {@code http://schemas.xmlsoap.org/soap/envelope/}, or the 2003 revision,
+	 * {@code http://www.w3.org/2003/05/soap-envelope}. Otherwise the body won't
+	 * be found.
+	 * 
+	 * @param soap
+	 *            the SOAP message element
+	 * @return the SOAP body element
+	 */
+	private final Element getBody(final Element soap) {
+		final Namespace soapNs; // Base SOAP namespace
+		final Namespace soapNs2003; // 2003 revision SOAP namespace
+		Element body; // Element with the SOAP body
 
-        // Parses the SOAP message
-        saxBuilder = new SAXBuilder();
-        org.jdom.Document doc = saxBuilder.build(new StringReader(soap));
+		// Tries to find the body by using the base SOAP namespace
+		soapNs = Namespace
+				.getNamespace("http://schemas.xmlsoap.org/soap/envelope/");
+		body = soap.getChild("Body", soapNs);
+		if (body == null) {
+			body = soap.getChild("body", soapNs);
+		}
 
-        return doc.getRootElement();
-    }
+		if (body == null) {
+			// Body not found
+			// Now tries the 2003 revision namespace
+			soapNs2003 = Namespace
+					.getNamespace("http://www.w3.org/2003/05/soap-envelope");
+			body = soap.getChild("Body", soapNs2003);
+			if (body == null) {
+				body = soap.getChild("body", soapNs2003);
+			}
+		}
 
-    @Override
-    protected final String doTransform(final Object src, final String enc)
-            throws TransformerException {
-        final Element root;           // SOAP message root
-        final Element operation;      // SOAP message operation
+		return body;
+	}
 
-        checkNotNull(src, "Received a null pointer as source");
+	/**
+	 * Returns the SOAP operation from the received SOAP body.
+	 * <p>
+	 * It will be just the first child in the body.
+	 * 
+	 * @param body
+	 *            SOAP body with the SOAP operation
+	 * @return the SOAP operation
+	 */
+	private final Element getOperation(final Element body) {
+		return (Element) body.getChildren().iterator().next();
+	}
 
-        LOGGER.debug(String.format("Stripping source: %s", src.toString()));
+	/**
+	 * Parses a SOAP message and returns its root element.
+	 * 
+	 * @param soap
+	 *            SOAP message to parse
+	 * @return the SOAP message root element
+	 * @throws JDOMException
+	 *             if a JDOM error occurs during parsing
+	 * @throws IOException
+	 *             if a I/O error occurs during parsing
+	 */
+	private final Element parseElement(final String soap) throws JDOMException,
+			IOException {
+		final SAXBuilder saxBuilder; // SAX builder to parse the SOAP message
 
-        try {
-            root = parseElement(src.toString());
-            if (root.getName().equalsIgnoreCase("envelope")) {
-                // The root is a SOAP envelope
-                // Acquires the operation
-                operation = getOperation(getBody(root));
-            } else {
-                operation = root;
-            }
-        } catch (final Exception e) {
-            throw new TransformerException(this, e);
-        }
+		// Parses the SOAP message
+		saxBuilder = new SAXBuilder();
+		org.jdom.Document doc = saxBuilder.build(new StringReader(soap));
 
-        return new XMLOutputter().outputString(operation);
-    }
+		return doc.getRootElement();
+	}
 
 }
