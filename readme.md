@@ -16,6 +16,7 @@ These are applied to the different web services implementations which Mule suppo
 - Code-first
 - WSDL-first
 - Plain
+- Proxy
 - Consumer
 
 For each of them a HTTP client is included.
