@@ -1,6 +1,12 @@
 # Mule WS-Security Example
 
-Small [Mule][mule] application showing the use of [WS-Security][ws-security] for SOAP web services.
+Maven-based [Mule][mule] application showcasing the configuration of secured SOAP web services.
+
+Mule is an Enterprise Service Bus, meant to connect together online applications. This example just touches an specific part of the web services support it offers, to be precise the security layer.
+
+It includes an endpoint for each of the possible implementation Mule has (code-first, WSDL-first, simple, proxy and consumer). These are used to create secured endpoints for each of the various security protocols they can get (unsecured, password, signed and encrypted).
+
+It is meant to be just an example, and for that reason is kept as simple as possible. Still it will try to show how a real application would be built.
 
 ## Features
 
@@ -8,6 +14,7 @@ The project offers various examples showing how to set up the various WSS option
 
 - Unsecured
 - Password protected
+- Password protected with SAML
 - Signed
 - Encrypted
 
@@ -34,7 +41,7 @@ The project has been tested on the following Java versions:
 * JDK 7
 * OpenJDK 7
 
-It will require a Mule runtime environment. For development this is taken care by the [Anypoint Studio][anypoint-studio].
+It also requires a Mule runtime environment. For development this can be taken care by the [Anypoint Studio][anypoint-studio].
 
 All other dependencies are handled through Maven, and noted in the included POM file. This includes the plugins used for running the demo in an embedded web server.
 
@@ -156,8 +163,6 @@ The project has been released under the [MIT License][license].
 [issues]: https://github.com/bernardo-mg/mule-wss-soap-example/issues
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-ws-security-soap-example
-
-[ws-security]: https://www.oasis-open.org/committees/wss/
 
 [anypoint-studio]: https://www.mulesoft.com/platform/studio
 [mule]: https://www.mulesoft.com
