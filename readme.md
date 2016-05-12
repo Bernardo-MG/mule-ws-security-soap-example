@@ -4,7 +4,7 @@ Maven-based [Mule][mule] application showcasing the configuration of secured SOA
 
 Mule is an Enterprise Service Bus, meant to connect together online applications. This example just touches an specific part of the web services support it offers, to be precise the security layer.
 
-It includes an endpoint for each of the possible implementation Mule has (code-first, WSDL-first, simple, proxy and consumer). These are used to create secured endpoints for each of the various security protocols they can get (unsecured, password, signed and encrypted).
+It includes an endpoint for each type of endpoint Mule supports (code-first, WSDL-first, simple, proxy and consumer), and to these all the possible security protocols (unsecured, password, signed and encrypted) are applied.
 
 It is meant to be just an example, and for that reason is kept as simple as possible. Still it will try to show how a real application would be built.
 
