@@ -1,77 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans"
-	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+<mule xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns="http://www.mulesoft.org/schema/mule/core"
+   xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+   xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans"
+   xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
 
-	<sub-flow name="Copy-Headers">
-		<copy-properties doc:name="Copy HTTP headers"
-			propertyName="*" />
-		<remove-property doc:name="Remove host property"
-			propertyName="Host" />
-		<remove-property doc:name="Remove Content Length Header"
-			propertyName="Content-Length" />
-		<remove-property doc:name="Remove HTTP synthetic properties"
-			propertyName="http.*" />
-		<remove-property doc:name="Remove MULE properties"
-			propertyName="MULE_*" />
-		<remove-property doc:name="Remove Connection Header"
-			propertyName="Connection" />
-		<remove-property doc:name="Remove Transfer-encoding Header"
-			propertyName="transfer-encoding" />
-	</sub-flow>
+   <sub-flow name="Copy-Headers">
+      <copy-properties doc:name="Copy HTTP headers"
+         propertyName="*" />
+      <remove-property doc:name="Remove host property"
+         propertyName="Host" />
+      <remove-property doc:name="Remove Content Length Header"
+         propertyName="Content-Length" />
+      <remove-property doc:name="Remove HTTP synthetic properties"
+         propertyName="http.*" />
+      <remove-property doc:name="Remove MULE properties"
+         propertyName="MULE_*" />
+      <remove-property doc:name="Remove Connection Header"
+         propertyName="Connection" />
+      <remove-property doc:name="Remove Transfer-encoding Header"
+         propertyName="transfer-encoding" />
+   </sub-flow>
 
-	<sub-flow name="Read-HTTP-Variables">
-		<set-variable variableName="id"
-			value="#[Integer.parseInt(message.inboundProperties.'http.query.params'.id)]"
-			doc:name="id variable" />
-		<set-payload doc:name="Set payload" value="#[id]" />
-	</sub-flow>
+   <sub-flow name="Read-HTTP-Variables">
+      <set-variable variableName="id"
+         value="#[Integer.parseInt(message.inboundProperties.'http.query.params'.id)]"
+         doc:name="id variable" />
+      <set-payload doc:name="Set payload" value="#[id]" />
+   </sub-flow>
 
-	<sub-flow name="Transform-Response">
-		<choice doc:name="Choice">
-			<when expression="payload is javax.xml.stream.XMLStreamReader">
-				<mulexml:dom-to-xml-transformer
-					doc:name="DOM to XML" />
-			</when>
-			<otherwise>
-				<mulexml:object-to-xml-transformer
-					doc:name="Object to XML" />
-			</otherwise>
-		</choice>
-		<transformer ref="EntityXmlToModel" doc:name="XML to model" />
-		<mulexml:object-to-xml-transformer
-			doc:name="Object to XML" />
-	</sub-flow>
+   <sub-flow name="Transform-Response">
+      <choice doc:name="Choice">
+         <when expression="payload is javax.xml.stream.XMLStreamReader">
+            <mulexml:dom-to-xml-transformer
+               doc:name="DOM to XML" />
+         </when>
+         <otherwise>
+            <mulexml:object-to-xml-transformer
+               doc:name="Object to XML" />
+         </otherwise>
+      </choice>
+      <transformer ref="EntityXmlToModel" doc:name="XML to model" />
+      <mulexml:object-to-xml-transformer
+         doc:name="Object to XML" />
+   </sub-flow>
 
-	<sub-flow name="Transform-Consumer-Request-Vars">
-		<set-variable variableName="id" value="#[payload]"
-			doc:name="Save id variable" />
-		<set-payload value="&lt;root/&gt;" doc:name="Dummy XML document (for transformer)" />
-		<mulexml:xslt-transformer returnClass="java.lang.String"
-			xsl-file="${xslt.request.consumer}" doc:name="Create SOAP message">
-			<mulexml:context-property key="id" value="#[id]" />
-		</mulexml:xslt-transformer>
-	</sub-flow>
+   <sub-flow name="Transform-Consumer-Request-Vars">
+      <set-variable variableName="id" value="#[payload]" doc:name="Save id variable" />
+      <set-payload value="&lt;root/&gt;" doc:name="Dummy XML document (for transformer)" />
+      <mulexml:xslt-transformer returnClass="java.lang.String"
+         xsl-file="${xslt.request.consumer}" doc:name="Create SOAP message">
+         <mulexml:context-property key="id" value="#[id]" />
+      </mulexml:xslt-transformer>
+   </sub-flow>
 
-	<sub-flow name="Transform-Consumer-Request">
-		<object-to-string-transformer doc:name="Object to string" />
-		<transformer ref="SoapEnvelopeStripper" doc:name="Transform SOAP message" />
-	</sub-flow>
+   <sub-flow name="Transform-Consumer-Request">
+      <object-to-string-transformer doc:name="Object to string" />
+      <transformer ref="SoapEnvelopeStripper" doc:name="Transform SOAP message" />
+   </sub-flow>
 
    <sub-flow name="Log-Payload">
       <byte-array-to-string-transformer
          doc:name="Byte Array to String" />
-      <logger message="Payload: #[payload]" level="INFO"
-         doc:name="Payload logger" />
+      <logger message="Payload: #[payload]" level="INFO" doc:name="Payload logger" />
    </sub-flow>
 
 </mule>

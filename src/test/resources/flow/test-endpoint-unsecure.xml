@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans"
-	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+   xmlns:spring="http://www.springframework.org/schema/beans" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+   xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+   xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
-	<flow name="Test-Endpoint-Unsecure-CodeFirst">
-		<flow-ref name="WS-Unsecure-CodeFirst-Endpoint"
-			doc:name="Code-first unsecure endpoint" />
-	</flow>
+   <flow name="Test-Endpoint-Unsecure-CodeFirst">
+      <flow-ref name="WS-Unsecure-CodeFirst-Endpoint" doc:name="Code-first unsecure endpoint" />
+   </flow>
 
-	<flow name="Test-Endpoint-Unsecure-WSDLFirst">
-		<flow-ref name="WS-Unsecure-WSDLFirst-Endpoint"
-			doc:name="WSDL-first unsecure endpoint" />
-	</flow>
+   <flow name="Test-Endpoint-Unsecure-WSDLFirst">
+      <flow-ref name="WS-Unsecure-WSDLFirst-Endpoint" doc:name="WSDL-first unsecure endpoint" />
+   </flow>
 
-	<flow name="Test-Endpoint-Unsecure-Simple">
-		<flow-ref name="WS-Unsecure-Simple-Endpoint" doc:name="Simple unsecure endpoint" />
-	</flow>
+   <flow name="Test-Endpoint-Unsecure-Simple">
+      <flow-ref name="WS-Unsecure-Simple-Endpoint" doc:name="Simple unsecure endpoint" />
+   </flow>
 
-	<flow name="Test-Endpoint-Unsecure-Proxy">
-		<flow-ref name="WS-Unsecure-Proxy-Endpoint" doc:name="Proxied unsecure endpoint" />
-	</flow>
+   <flow name="Test-Endpoint-Unsecure-Proxy">
+      <flow-ref name="WS-Unsecure-Proxy-Endpoint" doc:name="Proxied unsecure endpoint" />
+   </flow>
 
-	<flow name="Test-Endpoint-Unsecure-Consumer">
-		<flow-ref name="WS-Unsecure-Consumer-Endpoint"
-			doc:name="Code-first unsecure endpoint consumer" />
-	</flow>
+   <flow name="Test-Endpoint-Unsecure-Consumer">
+      <flow-ref name="WS-Unsecure-Consumer-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
+   </flow>
 
 </mule>

@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans"
-	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+   xmlns:spring="http://www.springframework.org/schema/beans" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+   xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+   xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
-	<flow name="Test-Endpoint-Signature-CodeFirst">
-		<flow-ref name="WS-Signature-CodeFirst-Endpoint"
-			doc:name="Code-first password endpoint" />
-	</flow>
+   <flow name="Test-Endpoint-Signature-CodeFirst">
+      <flow-ref name="WS-Signature-CodeFirst-Endpoint" doc:name="Code-first password endpoint" />
+   </flow>
 
    <flow name="Test-Endpoint-Signature-WSDLFirst">
-      <flow-ref name="WS-Signature-WSDLFirst-Endpoint"
-         doc:name="WSDL-first password endpoint" />
+      <flow-ref name="WS-Signature-WSDLFirst-Endpoint" doc:name="WSDL-first password endpoint" />
    </flow>
 
    <flow name="Test-Endpoint-Signature-Simple">
-      <flow-ref name="WS-Signature-Simple-Endpoint"
-         doc:name="Simple password endpoint" />
+      <flow-ref name="WS-Signature-Simple-Endpoint" doc:name="Simple password endpoint" />
    </flow>
 
    <flow name="Test-Endpoint-Signature-Proxy">
-      <flow-ref name="WS-Signature-Proxy-Endpoint"
-         doc:name="Proxied password endpoint" />
+      <flow-ref name="WS-Signature-Proxy-Endpoint" doc:name="Proxied password endpoint" />
    </flow>
-   
-	<flow name="Test-Endpoint-Signature-Consumer">
-		<flow-ref name="WS-Signature-Consumer-Endpoint"
-			doc:name="Code-first password protected endpoint consumer" />
-	</flow>
+
+   <flow name="Test-Endpoint-Signature-Consumer">
+      <flow-ref name="WS-Signature-Consumer-Endpoint" doc:name="Code-first password protected endpoint consumer" />
+   </flow>
 
 </mule>

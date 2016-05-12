@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 
-	<bean id="passwordCallbackHandler" class="${security.callback.password.class}" />
+   <bean id="passwordCallbackHandler" class="${security.callback.password.class}" />
 
-	<bean id="samlCallbackHandler" class="${security.callback.saml.class}">
-		<constructor-arg index="0" type="java.lang.String"
-			value="${security.saml.subject.name}" />
-		<constructor-arg index="1" type="java.lang.String"
-			value="${security.saml.subject.qualifier}" />
-	</bean>
-
-	<bean id="samlValidator" class="${security.validator.saml.class}" >
+   <bean id="samlCallbackHandler" class="${security.callback.saml.class}">
       <constructor-arg index="0" type="java.lang.String"
          value="${security.saml.subject.name}" />
       <constructor-arg index="1" type="java.lang.String"
-         value="${security.saml.issuer}" />
+         value="${security.saml.subject.qualifier}" />
    </bean>
 
-	<bean id="usernameValidator" class="${security.validator.username.class}" />
+   <bean id="samlValidator" class="${security.validator.saml.class}">
+      <constructor-arg index="0" type="java.lang.String"
+         value="${security.saml.subject.name}" />
+      <constructor-arg index="1" type="java.lang.String" value="${security.saml.issuer}" />
+   </bean>
+
+   <bean id="usernameValidator" class="${security.validator.username.class}" />
 
 </beans>
