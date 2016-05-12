@@ -1,4 +1,4 @@
-# Mule Web Services Security Example
+# Mule SOAP Web Services WS-Security Example
 
 Maven-based [Mule][mule] application showcasing the configuration of secured SOAP web services.
 
