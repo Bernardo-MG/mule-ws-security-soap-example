@@ -1,20 +1,26 @@
 # Mule WS-Security Example
 
-Small Mule application showing the use of WS-Security for SOAP web services.
+Small [Mule][mule] application showing the use of [WS-Security][ws-security] for SOAP web services.
 
 ## Features
 
-The project offers various examples showing how to set up the [WSS4J][wss4j] and [XWSS][xwss] [WS-Security][ws-security] implementations for the [Spring-WS][spring-ws] framework.
+The project offers various examples showing how to set up the various WSS options offered by Mule:
 
-The following authentication methods, along a web service without any kind of authentication, are used:
+- Unsecured
+- Password protected
+- Signed
+- Encrypted
 
-- Plain password.
-- Signature.
-- Encrypted message.
+These are applied to the different web services implementations which Mule supports:
 
-Each of them is applied to a different WS.
+- Code-first
+- WSDL-first
+- Plain
+- Consumer
 
-Additionally, several tests making sure that the web services work as intended.
+For each of them a HTTP client is included.
+
+There are also several tests ensuring that the flows and endpoints work as expected.
 
 ## Usage
 
@@ -27,11 +33,13 @@ The project has been tested on the following Java versions:
 * JDK 7
 * OpenJDK 7
 
+It will require a Mule runtime environment. For development this is taken care by the [Anypoint Studio][anypoint-studio].
+
 All other dependencies are handled through Maven, and noted in the included POM file. This includes the plugins used for running the demo in an embedded web server.
 
 ### Running the demo
 
-To run the demo just use the Anypoint Studio run option.
+The easiest way to run the demo is using the Anypoint Studio run option.
 
 ### URLs for the web services
 
@@ -145,15 +153,10 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 The project has been released under the [MIT License][license].
 
 [issues]: https://github.com/bernardo-mg/mule-wss-soap-example/issues
-[javadoc-develop]: http://docs.wandrell.com/maven/mule-wss-soap-example/apidocs
-[javadoc-release]: http://docs.wandrell.com/development/maven/mule-wss-soap-example/apidocs
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-ws-security-soap-example
-[site-develop]: http://docs.wandrell.com/development/maven/mule-wss-soap-example
-[site-release]: http://docs.wandrell.com/maven/mule-wss-soap-example
 
 [ws-security]: https://www.oasis-open.org/committees/wss/
-[xwss]: https://docs.oracle.com/cd/E17802_01/webservices/webservices/docs/1.6/tutorial/doc/XWS-SecurityIntro4.html
-[wss4j]: https://ws.apache.org/wss4j/
 
-[spring-ws]: http://projects.spring.io/spring-ws/
+[anypoint-studio]: https://www.mulesoft.com/platform/studio
+[mule]: https://www.mulesoft.com
