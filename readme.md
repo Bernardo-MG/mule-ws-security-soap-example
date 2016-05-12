@@ -10,7 +10,7 @@ It is meant to be just an example, and for that reason is kept as simple as poss
 
 ## Features
 
-The project offers various examples showing how to set up the various WSS options offered by Mule:
+The project offers various examples showing how to set up the various security options offered by Mule:
 
 - Unsecured
 - Password protected
