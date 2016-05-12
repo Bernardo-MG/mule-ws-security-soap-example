@@ -6,7 +6,7 @@ Mule is an Enterprise Service Bus, meant to connect together online applications
 
 It includes an endpoint for each type of endpoint Mule supports (code-first, WSDL-first, simple, proxy and consumer), and to these all the possible security protocols (unsecured, password, signed and encrypted) are applied.
 
-It is meant to be just an example, and for that reason is kept as simple as possible. Still it will try to show how a real application would be built.
+It is meant to be just an example, and for that reason is kept as simple as possible, avoiding the use of external web services. Still it tries to show how a real application would be built.
 
 ## Features
 
