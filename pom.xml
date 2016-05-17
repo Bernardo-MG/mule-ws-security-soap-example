@@ -9,13 +9,13 @@
 	<!-- ********************************************** -->
 
 	<groupId>com.wandrell.example</groupId>
-	<artifactId>mule-wss-soap-example</artifactId>
+	<artifactId>mule-ws-security-soap-example</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule</packaging>
 
 	<name>Mule SOAP Web Services WS-Security Example</name>
 	<description>An example showing how to set up secured SOAP web services in Mule</description>
-	<url>https://github.com/bernardo-mg/mule-wss-soap-example</url>
+	<url>https://github.com/bernardo-mg/mule-ws-security-soap-example</url>
 	<inceptionYear>2016</inceptionYear>
 
 	<licenses>
@@ -31,20 +31,20 @@
 	<!-- ********************************************** -->
 
 	<scm>
-		<connection>scm:git:https://github.com/bernardo-mg/mule-wss-soap-example.git</connection>
-		<developerConnection>scm:git:https://github.com/bernardo-mg/mule-wss-soap-example.git</developerConnection>
+		<connection>scm:git:https://github.com/bernardo-mg/mule-ws-security-soap-example.git</connection>
+		<developerConnection>scm:git:https://github.com/bernardo-mg/mule-ws-security-soap-example.git</developerConnection>
 		<tag>head</tag>
-		<url>https://www.github.com/bernardo-mg/mule-wss-soap-example</url>
+		<url>https://www.github.com/bernardo-mg/mule-ws-security-soap-example</url>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://www.github.com/bernardo-mg/mule-wss-soap-example/issues</url>
+		<url>https://www.github.com/bernardo-mg/mule-ws-security-soap-example/issues</url>
 	</issueManagement>
 
 	<ciManagement>
 		<system>Travis CI</system>
-		<url>https://travis-ci.org/Bernardo-MG/mule-wss-soap-example</url>
+		<url>https://travis-ci.org/Bernardo-MG/mule-ws-security-soap-example</url>
 		<notifiers />
 	</ciManagement>
 
@@ -173,7 +173,7 @@
 				<site>
 					<id>site</id>
 					<name>Project Documentation Site</name>
-					<url>ftp://docs.wandrell.com/mule-wss-soap-example</url>
+					<url>ftp://docs.wandrell.com/mule-ws-security-soap-example</url>
 				</site>
 			</distributionManagement>
 		</profile>
@@ -185,7 +185,7 @@
 				<site>
 					<id>site-development</id>
 					<name>Project Development Documentation Site</name>
-					<url>ftp://docs.wandrell.com/mule-wss-soap-example</url>
+					<url>ftp://docs.wandrell.com/mule-ws-security-soap-example</url>
 				</site>
 			</distributionManagement>
 		</profile>

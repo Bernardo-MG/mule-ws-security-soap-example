@@ -144,7 +144,7 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 
 The project has been released under the [MIT License][license].
 
-[issues]: https://github.com/bernardo-mg/mule-wss-soap-example/issues
+[issues]: https://github.com/bernardo-mg/mule-ws-security-soap-example/issues
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-ws-security-soap-example
 

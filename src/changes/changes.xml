@@ -11,5 +11,10 @@
 				First release of the library.
 			</action>
 		</release>
+      <release version="1.0.1" date="2016-05-14" description="Fixes">
+         <action dev="bmg" type="fix">
+            Corrected the project links.
+         </action>
+      </release>
 	</body>
 </document>
