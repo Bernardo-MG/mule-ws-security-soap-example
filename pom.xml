@@ -277,7 +277,7 @@
       <spring.version>4.1.6.RELEASE</spring.version>
       <spring.ws.version>2.2.2.RELEASE</spring.ws.version>
       <stax.version>1.0-2</stax.version>
-      <testng.version>6.9.8</testng.version>
+      <testng.version>6.9.11</testng.version>
       <wss4j.version>1.6.19</wss4j.version>
       <xpp3.version>1.1.4c</xpp3.version>
       <xerces.version>2.11.0</xerces.version>
@@ -308,7 +308,7 @@
       <plugin.mule.version>${mule.tools.version}</plugin.mule.version>
       <plugin.munit.version>${munit.version}</plugin.munit.version>
       <plugin.pmd.version>3.6</plugin.pmd.version>
-      <plugin.release.version>2.5.2</plugin.release.version>
+      <plugin.release.version>2.5.3</plugin.release.version>
       <plugin.reports.version>2.9</plugin.reports.version>
       <plugin.resources.version>2.7</plugin.resources.version>
       <plugin.site.version>3.4</plugin.site.version>
@@ -529,6 +529,12 @@
                <artifactId>spring-aop</artifactId>
             </exclusion>
          </exclusions>
+      </dependency>
+      <dependency>
+         <!-- Spring Expression -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-expression</artifactId>
+         <version>${spring.version}</version>
       </dependency>
       <dependency>
          <!-- Spring JDBC -->
