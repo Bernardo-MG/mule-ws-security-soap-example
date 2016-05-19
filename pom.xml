@@ -370,12 +370,6 @@
          <artifactId>mule-module-spring-config</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <!-- Mule Transports -->
       <dependency>
@@ -507,28 +501,6 @@
          <groupId>org.springframework.data</groupId>
          <artifactId>spring-data-jpa</artifactId>
          <version>${spring.data.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-orm</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-tx</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-core</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-beans</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-aop</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Spring Expression -->
@@ -561,6 +533,12 @@
          <version>${spring.security.version}</version>
       </dependency>
       <dependency>
+         <!-- Spring Transactions -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-tx</artifactId>
+         <version>${spring.version}</version>
+      </dependency>
+      <dependency>
          <!-- Spring Web -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-web</artifactId>
@@ -571,20 +549,6 @@
          <groupId>org.springframework.ws</groupId>
          <artifactId>spring-ws-core</artifactId>
          <version>${spring.ws.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-core</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-beans</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-aop</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Spring WS XML -->
@@ -645,12 +609,6 @@
          <groupId>com.zaxxer</groupId>
          <artifactId>HikariCP-java6</artifactId>
          <version>${hikari.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <!-- ============================================== -->
       <!-- ================== LOGGING =================== -->
@@ -786,12 +744,6 @@
          <artifactId>mule-tests-functional</artifactId>
          <version>${mule.version}</version>
          <scope>test</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Mule Client -->
@@ -806,12 +758,6 @@
          <artifactId>mina-core</artifactId>
          <version>${mina.version}</version>
          <scope>test</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- TestNG -->
