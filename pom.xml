@@ -436,12 +436,6 @@
          <version>${spring.version}</version>
       </dependency>
       <dependency>
-         <!-- Spring Transaction -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-tx</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
-      <dependency>
          <!-- Spring Beans -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-beans</artifactId>
@@ -496,7 +490,7 @@
          <version>${spring.security.version}</version>
       </dependency>
       <dependency>
-         <!-- Spring Transactions -->
+         <!-- Spring Transaction -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
          <version>${spring.version}</version>
@@ -523,13 +517,13 @@
       <!-- ================= HIBERNATE ================== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- Entity JPA -->
+         <!-- Hibernate JPA 2 -->
          <groupId>org.hibernate.javax.persistence</groupId>
          <artifactId>hibernate-jpa-2.0-api</artifactId>
          <version>${hibernate.jpa.version}</version>
       </dependency>
       <dependency>
-         <!-- Entity Manager -->
+         <!-- Hibernate Entity Manager -->
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-entitymanager</artifactId>
          <version>${hibernate.version}</version>
@@ -550,16 +544,28 @@
       <!-- ================ PERSISTENCE ================= -->
       <!-- ============================================== -->
       <dependency>
-         <!-- H2 -->
-         <groupId>com.h2database</groupId>
-         <artifactId>h2</artifactId>
-         <version>${h2.version}</version>
-      </dependency>
-      <dependency>
          <!-- Apache Commons DBCP2 -->
          <groupId>commons-dbcp</groupId>
          <artifactId>commons-dbcp</artifactId>
          <version>${commons.dbcp.version}</version>
+      </dependency>
+      <dependency>
+         <!-- ehcache -->
+         <groupId>net.sf.ehcache</groupId>
+         <artifactId>ehcache</artifactId>
+         <version>${ehcache.version}</version>
+      </dependency>
+      <dependency>
+         <!-- ehcache core -->
+         <groupId>net.sf.ehcache</groupId>
+         <artifactId>ehcache-core</artifactId>
+         <version>${ehcache.core.version}</version>
+      </dependency>
+      <dependency>
+         <!-- H2 -->
+         <groupId>com.h2database</groupId>
+         <artifactId>h2</artifactId>
+         <version>${h2.version}</version>
       </dependency>
       <dependency>
          <!-- Hikari CP -->
@@ -571,10 +577,10 @@
       <!-- ================== LOGGING =================== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- Log4j SLF4J Bridge -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-slf4j-impl</artifactId>
-         <version>${log4j.version}</version>
+         <!-- Commons Logging -->
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+         <version>${commons.logging.version}</version>
       </dependency>
       <dependency>
          <!-- SLF4J API -->
@@ -583,9 +589,15 @@
          <version>${slf4j.version}</version>
       </dependency>
       <dependency>
-         <!-- LOG4J -->
+         <!-- Log4j -->
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-core</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Log4j SLF4J Bridge -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
          <version>${log4j.version}</version>
       </dependency>
       <dependency>
@@ -594,14 +606,16 @@
          <artifactId>jboss-logging</artifactId>
          <version>${jboss.logging.version}</version>
       </dependency>
-      <dependency>
-         <groupId>xerces</groupId>
-         <artifactId>xercesImpl</artifactId>
-         <version>${xerces.version}</version>
-      </dependency>
       <!-- ============================================== -->
       <!-- ================= SECURITY =================== -->
       <!-- ============================================== -->
+      <dependency>
+         <!-- OpenSAML -->
+         <groupId>org.opensaml</groupId>
+         <artifactId>opensaml</artifactId>
+         <version>${opensaml.version}</version>
+         <scope>provided</scope>
+      </dependency>
       <dependency>
          <!-- XWS Security -->
          <groupId>com.sun.xml.wss</groupId>
@@ -622,6 +636,47 @@
          <version>${wss4j.version}</version>
       </dependency>
       <!-- ============================================== -->
+      <!-- ==================== XML ===================== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- JAXB API -->
+         <groupId>javax.xml.bind</groupId>
+         <artifactId>jaxb-api</artifactId>
+         <version>${jaxb.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Jaxen -->
+         <groupId>jaxen</groupId>
+         <artifactId>jaxen</artifactId>
+         <version>${jaxen.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- StAX API -->
+         <groupId>javax.xml.stream</groupId>
+         <artifactId>stax-api</artifactId>
+         <version>${stax.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Xerces -->
+         <groupId>xerces</groupId>
+         <artifactId>xercesImpl</artifactId>
+         <version>${xerces.version}</version>
+      </dependency>
+      <dependency>
+         <!-- XML APIs -->
+         <groupId>xml-apis</groupId>
+         <artifactId>xml-apis</artifactId>
+         <version>${xmlapis.version}</version>
+      </dependency>
+      <dependency>
+         <!-- XPP3 min -->
+         <groupId>xpp3</groupId>
+         <artifactId>xpp3_min</artifactId>
+         <version>${xpp3.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- ============================================== -->
       <!-- =================== OTHER ==================== -->
       <!-- ============================================== -->
       <dependency>
@@ -638,22 +693,10 @@
          <version>${guava.version}</version>
       </dependency>
       <dependency>
-         <!-- JAXB API -->
-         <groupId>javax.xml.bind</groupId>
-         <artifactId>jaxb-api</artifactId>
-         <version>${jaxb.version}</version>
-      </dependency>
-      <dependency>
          <!-- Java Mail -->
          <groupId>javax.mail</groupId>
          <artifactId>mail</artifactId>
          <version>${mail.version}</version>
-      </dependency>
-      <dependency>
-         <!-- Java Mail -->
-         <groupId>javax.xml.stream</groupId>
-         <artifactId>stax-api</artifactId>
-         <version>${stax.version}</version>
       </dependency>
       <dependency>
          <!-- JCodings -->
@@ -677,12 +720,6 @@
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Commons Logging -->
-         <groupId>commons-logging</groupId>
-         <artifactId>commons-logging</artifactId>
-         <version>${commons.logging.version}</version>
-      </dependency>
-      <dependency>
          <!-- Commons Pool -->
          <groupId>commons-pool</groupId>
          <artifactId>commons-pool</artifactId>
@@ -695,50 +732,11 @@
          <version>${commons.collections.version}</version>
       </dependency>
       <dependency>
-         <!-- OpenSAML -->
-         <groupId>org.opensaml</groupId>
-         <artifactId>opensaml</artifactId>
-         <version>${opensaml.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- ehcache -->
-         <groupId>net.sf.ehcache</groupId>
-         <artifactId>ehcache</artifactId>
-         <version>${ehcache.version}</version>
-      </dependency>
-      <dependency>
-         <!-- ehcache core -->
-         <groupId>net.sf.ehcache</groupId>
-         <artifactId>ehcache-core</artifactId>
-         <version>${ehcache.core.version}</version>
-      </dependency>
-      <dependency>
          <!-- asm -->
          <groupId>asm</groupId>
          <artifactId>asm</artifactId>
          <version>${asm.version}</version>
          <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- XPP3 min -->
-         <groupId>xpp3</groupId>
-         <artifactId>xpp3_min</artifactId>
-         <version>${xpp3.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- Jaxen -->
-         <groupId>jaxen</groupId>
-         <artifactId>jaxen</artifactId>
-         <version>${jaxen.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- XML APIs -->
-         <groupId>xml-apis</groupId>
-         <artifactId>xml-apis</artifactId>
-         <version>${xmlapis.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
