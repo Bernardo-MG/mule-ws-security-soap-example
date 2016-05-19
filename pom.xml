@@ -364,104 +364,67 @@
    <!-- ********************************************** -->
 
    <dependencies>
-      <!-- Xml configuration -->
+      <!-- ============================================== -->
+      <!-- ============== MULE TRANSPORT ================ -->
+      <!-- ============================================== -->
       <dependency>
-         <groupId>org.mule.modules</groupId>
-         <artifactId>mule-module-spring-config</artifactId>
-         <version>${mule.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <!-- Mule Transports -->
-      <dependency>
+         <!-- Mule file transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-file</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule http transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-http</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Commons Codec -->
-         <groupId>commons-codec</groupId>
-         <artifactId>commons-codec</artifactId>
-         <version>${commons.codec.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
+         <!-- Mule JDBC transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-jdbc</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule JMS transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-jms</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule VM transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-vm</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
-      <!-- Mule Modules -->
+      <!-- ============================================== -->
+      <!-- =============== MULE MODULES ================= -->
+      <!-- ============================================== -->
       <dependency>
+         <!-- Mule scripting module -->
          <groupId>org.mule.modules</groupId>
          <artifactId>mule-module-scripting</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Jnr Ffi -->
-         <groupId>com.github.jnr</groupId>
-         <artifactId>jnr-ffi</artifactId>
-         <version>${jnr.ffi.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- JFfi -->
-         <groupId>com.github.jnr</groupId>
-         <artifactId>jffi</artifactId>
-         <version>${jffi.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- JCodings -->
-         <groupId>org.jruby.jcodings</groupId>
-         <artifactId>jcodings</artifactId>
-         <version>${jcodings.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
+         <!-- Mule Spring config module -->
          <groupId>org.mule.modules</groupId>
-         <artifactId>mule-module-xml</artifactId>
+         <artifactId>mule-module-spring-config</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- XPP3 min -->
-         <groupId>xpp3</groupId>
-         <artifactId>xpp3_min</artifactId>
-         <version>${xpp3.version}</version>
+         <!-- Mule XML module -->
+         <groupId>org.mule.modules</groupId>
+         <artifactId>mule-module-xml</artifactId>
+         <version>${mule.version}</version>
          <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- Jaxen -->
-         <groupId>jaxen</groupId>
-         <artifactId>jaxen</artifactId>
-         <version>${jaxen.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- XPP3 min -->
-         <groupId>xml-apis</groupId>
-         <artifactId>xml-apis</artifactId>
-         <version>${xmlapis.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ================== SPRING ==================== -->
@@ -570,12 +533,6 @@
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-entitymanager</artifactId>
          <version>${hibernate.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.hibernate.javax.persistence</groupId>
-               <artifactId>hibernate-jpa-2.0-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Hibernate Ehcache -->
@@ -668,6 +625,13 @@
       <!-- =================== OTHER ==================== -->
       <!-- ============================================== -->
       <dependency>
+         <!-- Commons Codec -->
+         <groupId>commons-codec</groupId>
+         <artifactId>commons-codec</artifactId>
+         <version>${commons.codec.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
          <!-- Guava -->
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
@@ -690,6 +654,27 @@
          <groupId>javax.xml.stream</groupId>
          <artifactId>stax-api</artifactId>
          <version>${stax.version}</version>
+      </dependency>
+      <dependency>
+         <!-- JCodings -->
+         <groupId>org.jruby.jcodings</groupId>
+         <artifactId>jcodings</artifactId>
+         <version>${jcodings.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- Jnr Ffi -->
+         <groupId>com.github.jnr</groupId>
+         <artifactId>jnr-ffi</artifactId>
+         <version>${jnr.ffi.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- JFfi -->
+         <groupId>com.github.jnr</groupId>
+         <artifactId>jffi</artifactId>
+         <version>${jffi.version}</version>
+         <scope>provided</scope>
       </dependency>
       <dependency>
          <!-- Commons Logging -->
@@ -734,6 +719,26 @@
          <artifactId>asm</artifactId>
          <version>${asm.version}</version>
          <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- XPP3 min -->
+         <groupId>xpp3</groupId>
+         <artifactId>xpp3_min</artifactId>
+         <version>${xpp3.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- Jaxen -->
+         <groupId>jaxen</groupId>
+         <artifactId>jaxen</artifactId>
+         <version>${jaxen.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- XML APIs -->
+         <groupId>xml-apis</groupId>
+         <artifactId>xml-apis</artifactId>
+         <version>${xmlapis.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ======= TEST ENVIRONMENT DEPENDENCIES ======== -->
