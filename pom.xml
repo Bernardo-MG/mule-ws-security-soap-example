@@ -277,7 +277,7 @@
       <spring.version>4.1.6.RELEASE</spring.version>
       <spring.ws.version>2.2.2.RELEASE</spring.ws.version>
       <stax.version>1.0-2</stax.version>
-      <testng.version>6.9.8</testng.version>
+      <testng.version>6.9.10</testng.version>
       <wss4j.version>1.6.19</wss4j.version>
       <xpp3.version>1.1.4c</xpp3.version>
       <xerces.version>2.11.0</xerces.version>
@@ -308,7 +308,7 @@
       <plugin.mule.version>${mule.tools.version}</plugin.mule.version>
       <plugin.munit.version>${munit.version}</plugin.munit.version>
       <plugin.pmd.version>3.6</plugin.pmd.version>
-      <plugin.release.version>2.5.2</plugin.release.version>
+      <plugin.release.version>2.5.3</plugin.release.version>
       <plugin.reports.version>2.9</plugin.reports.version>
       <plugin.resources.version>2.7</plugin.resources.version>
       <plugin.site.version>3.4</plugin.site.version>
@@ -364,110 +364,67 @@
    <!-- ********************************************** -->
 
    <dependencies>
-      <!-- Xml configuration -->
+      <!-- ============================================== -->
+      <!-- ============== MULE TRANSPORT ================ -->
+      <!-- ============================================== -->
       <dependency>
-         <groupId>org.mule.modules</groupId>
-         <artifactId>mule-module-spring-config</artifactId>
-         <version>${mule.version}</version>
-         <scope>provided</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
-      </dependency>
-      <!-- Mule Transports -->
-      <dependency>
+         <!-- Mule file transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-file</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule http transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-http</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Commons Codec -->
-         <groupId>commons-codec</groupId>
-         <artifactId>commons-codec</artifactId>
-         <version>${commons.codec.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
+         <!-- Mule JDBC transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-jdbc</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule JMS transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-jms</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule VM transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-vm</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
-      <!-- Mule Modules -->
+      <!-- ============================================== -->
+      <!-- =============== MULE MODULES ================= -->
+      <!-- ============================================== -->
       <dependency>
+         <!-- Mule scripting module -->
          <groupId>org.mule.modules</groupId>
          <artifactId>mule-module-scripting</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Jnr Ffi -->
-         <groupId>com.github.jnr</groupId>
-         <artifactId>jnr-ffi</artifactId>
-         <version>${jnr.ffi.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- JFfi -->
-         <groupId>com.github.jnr</groupId>
-         <artifactId>jffi</artifactId>
-         <version>${jffi.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- JCodings -->
-         <groupId>org.jruby.jcodings</groupId>
-         <artifactId>jcodings</artifactId>
-         <version>${jcodings.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
+         <!-- Mule Spring config module -->
          <groupId>org.mule.modules</groupId>
-         <artifactId>mule-module-xml</artifactId>
+         <artifactId>mule-module-spring-config</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- XPP3 min -->
-         <groupId>xpp3</groupId>
-         <artifactId>xpp3_min</artifactId>
-         <version>${xpp3.version}</version>
+         <!-- Mule XML module -->
+         <groupId>org.mule.modules</groupId>
+         <artifactId>mule-module-xml</artifactId>
+         <version>${mule.version}</version>
          <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- Jaxen -->
-         <groupId>jaxen</groupId>
-         <artifactId>jaxen</artifactId>
-         <version>${jaxen.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- XPP3 min -->
-         <groupId>xml-apis</groupId>
-         <artifactId>xml-apis</artifactId>
-         <version>${xmlapis.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ================== SPRING ==================== -->
@@ -476,12 +433,6 @@
          <!-- Spring AOP -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-aop</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-         <!-- Spring Transaction -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-tx</artifactId>
          <version>${spring.version}</version>
       </dependency>
       <dependency>
@@ -507,28 +458,12 @@
          <groupId>org.springframework.data</groupId>
          <artifactId>spring-data-jpa</artifactId>
          <version>${spring.data.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-orm</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-tx</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-core</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-beans</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-aop</artifactId>
-            </exclusion>
-         </exclusions>
+      </dependency>
+      <dependency>
+         <!-- Spring Expression -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-expression</artifactId>
+         <version>${spring.version}</version>
       </dependency>
       <dependency>
          <!-- Spring JDBC -->
@@ -555,6 +490,12 @@
          <version>${spring.security.version}</version>
       </dependency>
       <dependency>
+         <!-- Spring Transaction -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-tx</artifactId>
+         <version>${spring.version}</version>
+      </dependency>
+      <dependency>
          <!-- Spring Web -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-web</artifactId>
@@ -565,20 +506,6 @@
          <groupId>org.springframework.ws</groupId>
          <artifactId>spring-ws-core</artifactId>
          <version>${spring.ws.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-core</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-beans</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-aop</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Spring WS XML -->
@@ -590,22 +517,16 @@
       <!-- ================= HIBERNATE ================== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- Entity JPA -->
+         <!-- Hibernate JPA 2 -->
          <groupId>org.hibernate.javax.persistence</groupId>
          <artifactId>hibernate-jpa-2.0-api</artifactId>
          <version>${hibernate.jpa.version}</version>
       </dependency>
       <dependency>
-         <!-- Entity Manager -->
+         <!-- Hibernate Entity Manager -->
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-entitymanager</artifactId>
          <version>${hibernate.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.hibernate.javax.persistence</groupId>
-               <artifactId>hibernate-jpa-2.0-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Hibernate Ehcache -->
@@ -623,37 +544,43 @@
       <!-- ================ PERSISTENCE ================= -->
       <!-- ============================================== -->
       <dependency>
-         <!-- H2 -->
-         <groupId>com.h2database</groupId>
-         <artifactId>h2</artifactId>
-         <version>${h2.version}</version>
-      </dependency>
-      <dependency>
          <!-- Apache Commons DBCP2 -->
          <groupId>commons-dbcp</groupId>
          <artifactId>commons-dbcp</artifactId>
          <version>${commons.dbcp.version}</version>
       </dependency>
       <dependency>
+         <!-- ehcache -->
+         <groupId>net.sf.ehcache</groupId>
+         <artifactId>ehcache</artifactId>
+         <version>${ehcache.version}</version>
+      </dependency>
+      <dependency>
+         <!-- ehcache core -->
+         <groupId>net.sf.ehcache</groupId>
+         <artifactId>ehcache-core</artifactId>
+         <version>${ehcache.core.version}</version>
+      </dependency>
+      <dependency>
+         <!-- H2 -->
+         <groupId>com.h2database</groupId>
+         <artifactId>h2</artifactId>
+         <version>${h2.version}</version>
+      </dependency>
+      <dependency>
          <!-- Hikari CP -->
          <groupId>com.zaxxer</groupId>
          <artifactId>HikariCP-java6</artifactId>
          <version>${hikari.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <!-- ============================================== -->
       <!-- ================== LOGGING =================== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- Log4j SLF4J Bridge -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-slf4j-impl</artifactId>
-         <version>${log4j.version}</version>
+         <!-- Commons Logging -->
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+         <version>${commons.logging.version}</version>
       </dependency>
       <dependency>
          <!-- SLF4J API -->
@@ -662,9 +589,15 @@
          <version>${slf4j.version}</version>
       </dependency>
       <dependency>
-         <!-- LOG4J -->
+         <!-- Log4j -->
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-core</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Log4j SLF4J Bridge -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
          <version>${log4j.version}</version>
       </dependency>
       <dependency>
@@ -673,14 +606,16 @@
          <artifactId>jboss-logging</artifactId>
          <version>${jboss.logging.version}</version>
       </dependency>
-      <dependency>
-         <groupId>xerces</groupId>
-         <artifactId>xercesImpl</artifactId>
-         <version>${xerces.version}</version>
-      </dependency>
       <!-- ============================================== -->
       <!-- ================= SECURITY =================== -->
       <!-- ============================================== -->
+      <dependency>
+         <!-- OpenSAML -->
+         <groupId>org.opensaml</groupId>
+         <artifactId>opensaml</artifactId>
+         <version>${opensaml.version}</version>
+         <scope>provided</scope>
+      </dependency>
       <dependency>
          <!-- XWS Security -->
          <groupId>com.sun.xml.wss</groupId>
@@ -701,19 +636,61 @@
          <version>${wss4j.version}</version>
       </dependency>
       <!-- ============================================== -->
-      <!-- =================== OTHER ==================== -->
+      <!-- ==================== XML ===================== -->
       <!-- ============================================== -->
-      <dependency>
-         <!-- Guava -->
-         <groupId>com.google.guava</groupId>
-         <artifactId>guava</artifactId>
-         <version>${guava.version}</version>
-      </dependency>
       <dependency>
          <!-- JAXB API -->
          <groupId>javax.xml.bind</groupId>
          <artifactId>jaxb-api</artifactId>
          <version>${jaxb.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Jaxen -->
+         <groupId>jaxen</groupId>
+         <artifactId>jaxen</artifactId>
+         <version>${jaxen.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- StAX API -->
+         <groupId>javax.xml.stream</groupId>
+         <artifactId>stax-api</artifactId>
+         <version>${stax.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Xerces -->
+         <groupId>xerces</groupId>
+         <artifactId>xercesImpl</artifactId>
+         <version>${xerces.version}</version>
+      </dependency>
+      <dependency>
+         <!-- XML APIs -->
+         <groupId>xml-apis</groupId>
+         <artifactId>xml-apis</artifactId>
+         <version>${xmlapis.version}</version>
+      </dependency>
+      <dependency>
+         <!-- XPP3 min -->
+         <groupId>xpp3</groupId>
+         <artifactId>xpp3_min</artifactId>
+         <version>${xpp3.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- =================== OTHER ==================== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- Commons Codec -->
+         <groupId>commons-codec</groupId>
+         <artifactId>commons-codec</artifactId>
+         <version>${commons.codec.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- Guava -->
+         <groupId>com.google.guava</groupId>
+         <artifactId>guava</artifactId>
+         <version>${guava.version}</version>
       </dependency>
       <dependency>
          <!-- Java Mail -->
@@ -722,16 +699,25 @@
          <version>${mail.version}</version>
       </dependency>
       <dependency>
-         <!-- Java Mail -->
-         <groupId>javax.xml.stream</groupId>
-         <artifactId>stax-api</artifactId>
-         <version>${stax.version}</version>
+         <!-- JCodings -->
+         <groupId>org.jruby.jcodings</groupId>
+         <artifactId>jcodings</artifactId>
+         <version>${jcodings.version}</version>
+         <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Commons Logging -->
-         <groupId>commons-logging</groupId>
-         <artifactId>commons-logging</artifactId>
-         <version>${commons.logging.version}</version>
+         <!-- Jnr Ffi -->
+         <groupId>com.github.jnr</groupId>
+         <artifactId>jnr-ffi</artifactId>
+         <version>${jnr.ffi.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- JFfi -->
+         <groupId>com.github.jnr</groupId>
+         <artifactId>jffi</artifactId>
+         <version>${jffi.version}</version>
+         <scope>provided</scope>
       </dependency>
       <dependency>
          <!-- Commons Pool -->
@@ -744,25 +730,6 @@
          <groupId>commons-collections</groupId>
          <artifactId>commons-collections</artifactId>
          <version>${commons.collections.version}</version>
-      </dependency>
-      <dependency>
-         <!-- OpenSAML -->
-         <groupId>org.opensaml</groupId>
-         <artifactId>opensaml</artifactId>
-         <version>${opensaml.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- ehcache -->
-         <groupId>net.sf.ehcache</groupId>
-         <artifactId>ehcache</artifactId>
-         <version>${ehcache.version}</version>
-      </dependency>
-      <dependency>
-         <!-- ehcache core -->
-         <groupId>net.sf.ehcache</groupId>
-         <artifactId>ehcache-core</artifactId>
-         <version>${ehcache.core.version}</version>
       </dependency>
       <dependency>
          <!-- asm -->
@@ -780,12 +747,6 @@
          <artifactId>mule-tests-functional</artifactId>
          <version>${mule.version}</version>
          <scope>test</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Mule Client -->
@@ -800,12 +761,6 @@
          <artifactId>mina-core</artifactId>
          <version>${mina.version}</version>
          <scope>test</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- TestNG -->
