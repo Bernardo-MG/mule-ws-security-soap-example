@@ -26,6 +26,8 @@ These are applied to the different web services implementations which Mule suppo
 - Proxy
 - Consumer
 
+All the endpoints receive a request, try to acquire an object from the persistence layer and then return a response with it.
+
 For each of them a HTTP client is included.
 
 There are also several tests ensuring that the flows and endpoints work as expected.
