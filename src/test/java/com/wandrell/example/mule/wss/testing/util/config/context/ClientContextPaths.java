@@ -32,6 +32,11 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
 public final class ClientContextPaths {
 
 	/**
+	 * Consumer.
+	 */
+	public static final String CONSUMER = "classpath:context/client/test-client-consumer.xml";
+
+	/**
 	 * Encrypted.
 	 */
 	public static final String ENCRYPTION = "classpath:context/client/test-client-encryption.xml";

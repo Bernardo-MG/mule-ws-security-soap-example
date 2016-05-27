@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.client.encryption;
+package com.wandrell.example.mule.wss.testing.integration.client.consumer;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -32,19 +32,19 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientConsum
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Integration tests for an encrypted consumer client flow testing that it
- * handles messages correctly.
+ * Integration tests for a signed consumer client flow testing that it handles
+ * messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(ClientContextPaths.ENCRYPTION)
-@TestPropertySource({ ClientConsumerPropertiesPaths.ENCRYPTION })
-public final class ITEncryptionClientConsumer extends AbstractITClientFlow {
+@ContextConfiguration(ClientContextPaths.CONSUMER)
+@TestPropertySource({ ClientConsumerPropertiesPaths.SIGNATURE })
+public final class ITSignatureClientConsumer extends AbstractITClientFlow {
 
 	/**
 	 * Default constructor.
 	 */
-	public ITEncryptionClientConsumer() {
+	public ITSignatureClientConsumer() {
 		super();
 	}
 

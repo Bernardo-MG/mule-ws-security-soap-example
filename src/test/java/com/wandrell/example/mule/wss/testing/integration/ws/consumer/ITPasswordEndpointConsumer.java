@@ -22,29 +22,31 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.client.signature;
+package com.wandrell.example.mule.wss.testing.integration.ws.consumer;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
-import com.wandrell.example.mule.wss.testing.util.config.context.ClientContextPaths;
-import com.wandrell.example.mule.wss.testing.util.config.properties.ClientConsumerPropertiesPaths;
-import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
+import com.wandrell.example.mule.wss.testing.util.config.context.WebServiceContextPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.SoapConsumerPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.config.properties.WebServiceConsumerPropertiesPaths;
+import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.AbstractITEndpoint;
 
 /**
- * Integration tests for a signed consumer client flow testing that it handles
- * messages correctly.
+ * Integration tests for a password protected consumer endpoint flow testing
+ * that it handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(ClientContextPaths.SIGNATURE)
-@TestPropertySource({ ClientConsumerPropertiesPaths.SIGNATURE })
-public final class ITSignatureClientConsumer extends AbstractITClientFlow {
+@ContextConfiguration(WebServiceContextPaths.PASSWORD)
+@TestPropertySource({ WebServiceConsumerPropertiesPaths.PASSWORD,
+		SoapConsumerPropertiesPaths.PASSWORD })
+public final class ITPasswordEndpointConsumer extends AbstractITEndpoint {
 
 	/**
 	 * Default constructor.
 	 */
-	public ITSignatureClientConsumer() {
+	public ITPasswordEndpointConsumer() {
 		super();
 	}
 

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.client.password;
+package com.wandrell.example.mule.wss.testing.integration.client.consumer;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
@@ -32,19 +32,19 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.ClientConsum
 import com.wandrell.example.mule.wss.testing.util.test.integration.client.AbstractITClientFlow;
 
 /**
- * Integration tests for a password protected consumer client flow testing that
- * it handles messages correctly.
+ * Integration tests for an unsecure consumer client flow testing that it
+ * handles messages correctly.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(ClientContextPaths.PASSWORD)
-@TestPropertySource({ ClientConsumerPropertiesPaths.PASSWORD })
-public final class ITPasswordClientConsumer extends AbstractITClientFlow {
+@ContextConfiguration(ClientContextPaths.CONSUMER)
+@TestPropertySource({ ClientConsumerPropertiesPaths.UNSECURE })
+public final class ITUnsecureClientConsumer extends AbstractITClientFlow {
 
 	/**
 	 * Default constructor.
 	 */
-	public ITPasswordClientConsumer() {
+	public ITUnsecureClientConsumer() {
 		super();
 	}
 

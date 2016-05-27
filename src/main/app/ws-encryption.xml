@@ -124,20 +124,4 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="Logger" />
    </sub-flow>
 
-   <flow name="WS-Encryption-Consumer-HTTP-Listener">
-      <http:listener config-ref="Listener-Application" doc:name="HTTP Inbound Endpoint"
-         path="${endpoint.encryption.consumer.path}" />
-      <flow-ref name="WS-Encryption-Consumer-Endpoint" doc:name="Send to endpoint" />
-   </flow>
-   <sub-flow name="WS-Encryption-Consumer-Endpoint">
-      <logger message="Begins the encrypted consumer endpoint flow"
-         level="INFO" doc:name="Logger" />
-      <flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
-      <ws:consumer config-ref="Consumer-Encryption-CodeFirst"
-         operation="${wsdl.operation}" doc:name="Encrypted code-first consumer" />
-      <mulexml:dom-to-xml-transformer doc:name="Object to XML" />
-      <logger message="Ends the encrypted consumer endpoint flow" level="INFO"
-         doc:name="Logger" />
-   </sub-flow>
-
 </mule>

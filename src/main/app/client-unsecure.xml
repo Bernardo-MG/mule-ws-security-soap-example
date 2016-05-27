@@ -96,23 +96,4 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="Logger" />
    </sub-flow>
 
-   <flow name="Client-Unsecure-Consumer-HTTP-Listener">
-      <http:listener config-ref="Listener-Application" path="${client.unsecure.consumer.path}"
-         doc:name="HTTP Inbound Endpoint" />
-      <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
-      <flow-ref name="Client-Unsecure-Consumer-Endpoint" doc:name="Send request" />
-      <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-      </response>
-   </flow>
-   <sub-flow name="Client-Unsecure-Consumer-Endpoint">
-      <logger message="Begins the unsecure consumer client flow" level="INFO"
-         doc:name="Logger" />
-      <flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform to a valid request" />
-      <ws:consumer config-ref="Consumer-Unsecure-CodeFirst"
-         operation="${wsdl.operation}" doc:name="Unsecure code-first consumer" />
-      <logger message="Ends the unsecure consumer client flow" level="INFO"
-         doc:name="Logger" />
-   </sub-flow>
-
 </mule>

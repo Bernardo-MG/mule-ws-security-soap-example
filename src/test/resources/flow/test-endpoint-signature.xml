@@ -24,8 +24,4 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
       <flow-ref name="WS-Signature-Proxy-Endpoint" doc:name="Proxied password endpoint" />
    </flow>
 
-   <flow name="Test-Endpoint-Signature-Consumer">
-      <flow-ref name="WS-Signature-Consumer-Endpoint" doc:name="Code-first password protected endpoint consumer" />
-   </flow>
-
 </mule>

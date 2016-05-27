@@ -39,11 +39,4 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
       </response>
    </flow>
 
-   <flow name="Test-Client-Signature-Consumer">
-      <flow-ref name="Client-Signature-Consumer-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
-      <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-      </response>
-   </flow>
-
 </mule>

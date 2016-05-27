@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.testing.integration.ws.unsecure;
+package com.wandrell.example.mule.wss.testing.integration.ws.consumer;
 
 import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.XMLAssert;

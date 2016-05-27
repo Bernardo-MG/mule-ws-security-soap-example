@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern"
+	xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+	xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/servlet http://www.mulesoft.org/schema/mule/servlet/current/mule-servlet.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
+
+	<flow name="WS-Unsecure-Consumer-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.consumer.path}" />
+		<flow-ref name="WS-Unsecure-Consumer-Endpoint" doc:name="Send to endpoint" />
+	</flow>
+	<sub-flow name="WS-Unsecure-Consumer-Endpoint">
+		<logger message="Begins the unsecure consumer endpoint flow"
+			level="INFO" doc:name="Logger" />
+		<flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="Consumer-Unsecure-CodeFirst"
+			operation="${wsdl.operation}" doc:name="Unsecure code-first endpoint consumer" />
+		<mulexml:dom-to-xml-transformer
+			doc:name="Object to XML" />
+		<logger message="Ends the unsecure consumer endpoint flow"
+			level="INFO" doc:name="Logger" />
+	</sub-flow>
+
+	<flow name="WS-Password-Consumer-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			doc:name="HTTP Inbound Endpoint" path="${endpoint.password.consumer.path}" />
+		<flow-ref name="WS-Password-Consumer-Endpoint" doc:name="Send to endpoint" />
+	</flow>
+	<sub-flow name="WS-Password-Consumer-Endpoint">
+		<logger message="Begins the password protected consumer endpoint flow"
+			level="INFO" doc:name="Logger" />
+		<flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="Consumer-Password-CodeFirst"
+			operation="${wsdl.operation}" doc:name="Password protected code-first endpoint consumer" />
+		<mulexml:dom-to-xml-transformer
+			doc:name="Object to XML" />
+		<logger message="Ends the password protected consumer endpoint flow"
+			level="INFO" doc:name="Logger" />
+	</sub-flow>
+
+	<flow name="WS-Signature-Consumer-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			doc:name="HTTP Inbound Endpoint" path="${endpoint.signature.consumer.path}" />
+		<flow-ref name="WS-Signature-Consumer-Endpoint" doc:name="Send to endpoint" />
+	</flow>
+	<sub-flow name="WS-Signature-Consumer-Endpoint">
+		<logger message="Begins the signed consumer endpoint flow"
+			level="INFO" doc:name="Logger" />
+		<flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="Consumer-Signature-CodeFirst"
+			operation="${wsdl.operation}" doc:name="Signed code-first endpoint consumer" />
+		<mulexml:dom-to-xml-transformer
+			doc:name="Object to XML" />
+		<logger message="Ends the signed consumer endpoint flow" level="INFO"
+			doc:name="Logger" />
+	</sub-flow>
+
+	<flow name="WS-Encryption-Consumer-HTTP-Listener">
+		<http:listener config-ref="Listener-Application"
+			doc:name="HTTP Inbound Endpoint" path="${endpoint.encryption.consumer.path}" />
+		<flow-ref name="WS-Encryption-Consumer-Endpoint" doc:name="Send to endpoint" />
+	</flow>
+	<sub-flow name="WS-Encryption-Consumer-Endpoint">
+		<logger message="Begins the encrypted consumer endpoint flow"
+			level="INFO" doc:name="Logger" />
+		<flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
+		<ws:consumer config-ref="Consumer-Encryption-CodeFirst"
+			operation="${wsdl.operation}" doc:name="Encrypted code-first endpoint consumer" />
+		<mulexml:dom-to-xml-transformer
+			doc:name="Object to XML" />
+		<logger message="Ends the encrypted consumer endpoint flow"
+			level="INFO" doc:name="Logger" />
+	</sub-flow>
+
+</mule>

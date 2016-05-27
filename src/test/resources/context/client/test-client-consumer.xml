@@ -11,20 +11,22 @@
 	">
 
    <description>
-      Context for testing password protected clients.
+      Context for testing consumer clients.
    </description>
 
    <!-- Properties -->
    <context:property-placeholder />
 
    <util:list id="configFiles">
-      <value>src/test/resources/flow/test-client-password-saml.xml</value>
-      <value>src/main/app/endpoint-password-saml.xml</value>
-      <value>src/main/app/ws-password-saml.xml</value>
-      <value>src/main/app/client-password-saml.xml</value>
+      <value>src/test/resources/flow/test-client-consumer.xml</value>
+      <value>src/main/app/endpoint-consumer.xml</value>
+      <value>src/main/app/ws-consumer.xml</value>
+      <value>src/main/app/client-consumer.xml</value>
       <value>src/main/app/config.xml</value>
       <value>src/main/app/utils.xml</value>
       <value>src/main/app/transformer.xml</value>
+      <value>src/main/app/consumer.xml</value>
+      <value>src/main/app/keystore.xml</value>
    </util:list>
 
 </beans>
