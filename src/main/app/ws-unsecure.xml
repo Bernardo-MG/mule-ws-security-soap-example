@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern" xmlns:ws="http://www.mulesoft.org/schema/mule/ws"
-   xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
-   xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet"
-   xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+<mule xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern"
+   xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+   xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+   xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet" xmlns="http://www.mulesoft.org/schema/mule/core"
+   xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
    xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
@@ -14,26 +15,38 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
 
    <flow name="WS-Unsecure-CodeFirst-HTTP-Listener">
-      <http:listener config-ref="Listener-Application" doc:name="HTTP Inbound Endpoint"
-         path="${endpoint.unsecure.codeFirst.path}" />
+      <http:listener config-ref="Listener-Application"
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.codeFirst.path}" />
       <flow-ref name="WS-Unsecure-CodeFirst-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-Unsecure-CodeFirst-Endpoint">
       <logger message="Begins the unsecure Code-First endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:jaxws-service validationEnabled="${endpoint.validation}"
-         doc:name="Code-First endpoint interface" serviceClass="${endpoint.codeFirst.interface}"
-         namespace="${wsdl.namespace}" />
+      <cxf:jaxws-service doc:name="Code-First endpoint interface"
+         serviceClass="${endpoint.codeFirst.interface}" namespace="${wsdl.namespace}">
+         <cxf:inInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inInterceptors>
+         <cxf:inFaultInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inFaultInterceptors>
+         <cxf:outInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outInterceptors>
+         <cxf:outFaultInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outFaultInterceptors>
+      </cxf:jaxws-service>
       <component doc:name="Code-First endpoint implementation">
          <spring-object bean="codeFirstUnsecureEndpoint" />
       </component>
-      <logger message="Ends the unsecure Code-First endpoint flow" level="INFO"
-         doc:name="Logger" />
+      <logger message="Ends the unsecure Code-First endpoint flow"
+         level="INFO" doc:name="Logger" />
    </sub-flow>
 
    <flow name="WS-Unsecure-WSDLFirst-HTTP-Listener">
-      <http:listener config-ref="Listener-Application" doc:name="HTTP Inbound Endpoint"
-         path="${endpoint.unsecure.wsdlFirst.path}" />
+      <http:listener config-ref="Listener-Application"
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.wsdlFirst.path}" />
       <flow-ref name="WS-Unsecure-WSDLFirst-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-Unsecure-WSDLFirst-Endpoint">
@@ -41,24 +54,50 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          level="INFO" doc:name="Logger" />
       <cxf:jaxws-service validationEnabled="${endpoint.validation}"
          doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.wsdlFirst.interface}"
-         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}" />
+         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}">
+         <cxf:inInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inInterceptors>
+         <cxf:inFaultInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inFaultInterceptors>
+         <cxf:outInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outInterceptors>
+         <cxf:outFaultInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outFaultInterceptors>
+      </cxf:jaxws-service>
       <component doc:name="WSDL-First endpoint implementation">
          <spring-object bean="wsdlFirstUnsecureEndpoint" />
       </component>
-      <logger message="Ends the unsecure WSDL-First endpoint flow" level="INFO"
-         doc:name="Logger" />
+      <logger message="Ends the unsecure WSDL-First endpoint flow"
+         level="INFO" doc:name="Logger" />
    </sub-flow>
 
    <flow name="WS-Unsecure-Simple-HTTP-Listener">
-      <http:listener config-ref="Listener-Application" path="${endpoint.unsecure.simple.path}"
-         doc:name="HTTP Inbound Endpoint" />
+      <http:listener config-ref="Listener-Application"
+         path="${endpoint.unsecure.simple.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="WS-Unsecure-Simple-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-Unsecure-Simple-Endpoint">
-      <logger message="Begins the unsecure simple endpoint flow" level="INFO"
-         doc:name="Logger" />
+      <logger message="Begins the unsecure simple endpoint flow"
+         level="INFO" doc:name="Logger" />
       <cxf:simple-service serviceClass="${endpoint.simple.class}"
-         service="${wsdl.service}" doc:name="Simple endpoint" />
+         service="${wsdl.service}" doc:name="Simple endpoint">
+         <cxf:inInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inInterceptors>
+         <cxf:inFaultInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inFaultInterceptors>
+         <cxf:outInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outInterceptors>
+         <cxf:outFaultInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outFaultInterceptors>
+      </cxf:simple-service>
       <component doc:name="Simple endpoint implementation">
          <spring-object bean="simpleUnsecureEndpoint" />
       </component>
@@ -67,17 +106,30 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    </sub-flow>
 
    <flow name="WS-Unsecure-Proxy-HTTP-Listener">
-      <http:listener config-ref="Listener-Application" doc:name="HTTP Inbound Endpoint"
-         path="${endpoint.unsecure.proxy.path}" />
+      <http:listener config-ref="Listener-Application"
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.proxy.path}" />
       <flow-ref name="WS-Unsecure-Proxy-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-Unsecure-Proxy-Endpoint">
-      <logger message="Begins the unsecure proxy endpoint flow" level="INFO"
-         doc:name="Logger" />
+      <logger message="Begins the unsecure proxy endpoint flow"
+         level="INFO" doc:name="Logger" />
       <cxf:proxy-service namespace="${wsdl.namespace}"
          payload="envelope" port="${wsdl.port}" service="${wsdl.service}"
          doc:name="Proxy endpoint" wsdlLocation="${wsdl.path}"
-         enableMuleSoapHeaders="false" />
+         enableMuleSoapHeaders="false">
+         <cxf:inInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inInterceptors>
+         <cxf:inFaultInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inFaultInterceptors>
+         <cxf:outInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outInterceptors>
+         <cxf:outFaultInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outFaultInterceptors>
+      </cxf:proxy-service>
       <flow-ref doc:name="Copy HTTP Headers" name="Copy-Headers" />
       <cxf:proxy-client doc:name="Proxy client"
          enableMuleSoapHeaders="false" payload="envelope" />

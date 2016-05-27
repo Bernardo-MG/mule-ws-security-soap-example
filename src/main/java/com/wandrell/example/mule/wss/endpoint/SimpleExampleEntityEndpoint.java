@@ -41,6 +41,8 @@ import com.wandrell.example.mule.wss.service.domain.ExampleEntityService;
 /**
  * Class for a Mule simple endpoint. This kind of endpoint will be built
  * directly from a Java bean, without making use of Java WS annotations.
+ * <p>
+ * This will be used to create a CXF Simple service.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
