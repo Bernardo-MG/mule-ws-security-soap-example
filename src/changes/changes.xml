@@ -22,5 +22,10 @@
             Corrected the project links.
          </action>
       </release>
+      <release version="1.1.0" date="2016-05-27" description="Moved consumers to their own files">
+         <action dev="bmg" type="update">
+            Separated consumers from CXF components in the flows and tests.
+         </action>
+      </release>
    </body>
 </document>
