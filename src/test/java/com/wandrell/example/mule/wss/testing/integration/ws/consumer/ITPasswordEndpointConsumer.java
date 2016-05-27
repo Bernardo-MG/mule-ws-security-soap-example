@@ -38,7 +38,7 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(WebServiceContextPaths.PASSWORD)
+@ContextConfiguration(WebServiceContextPaths.CONSUMER)
 @TestPropertySource({ WebServiceConsumerPropertiesPaths.PASSWORD,
 		SoapConsumerPropertiesPaths.PASSWORD })
 public final class ITPasswordEndpointConsumer extends AbstractITEndpoint {

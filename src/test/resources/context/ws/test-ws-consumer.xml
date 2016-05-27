@@ -19,11 +19,15 @@
 
    <util:list id="configFiles">
       <value>src/test/resources/flow/test-endpoint-consumer.xml</value>
-      <value>src/main/app/endpoint-consumer.xml</value>
+      <value>src/main/app/endpoint-password.xml</value>
+      <value>src/main/app/endpoint-unsecure.xml</value>
       <value>src/main/app/ws-consumer.xml</value>
+      <value>src/main/app/ws-password.xml</value>
+      <value>src/main/app/ws-unsecure.xml</value>
       <value>src/main/app/config.xml</value>
       <value>src/main/app/utils.xml</value>
       <value>src/main/app/transformer.xml</value>
+      <value>src/main/app/consumer.xml</value>
       <value>src/main/app/keystore.xml</value>
    </util:list>
 

@@ -42,6 +42,11 @@ public final class WebServiceContextPaths {
 	public static final String UNSECURE = "classpath:context/ws/test-ws-unsecure.xml";
 
 	/**
+	 * Consumer.
+	 */
+	public static final String CONSUMER = "classpath:context/ws/test-ws-consumer.xml";
+
+	/**
 	 * Private constructor to avoid initialization.
 	 */
 	private WebServiceContextPaths() {
