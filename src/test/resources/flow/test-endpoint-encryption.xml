@@ -8,20 +8,20 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
-   <flow name="Test-Endpoint-Encryption-CodeFirst">
-      <flow-ref name="WS-Encryption-CodeFirst-Endpoint" doc:name="Code-first password endpoint" />
+   <flow name="Test-CXF-Endpoint-Encryption-CodeFirst">
+      <flow-ref name="WS-CXF-Encryption-CodeFirst-Endpoint" doc:name="Code-first password endpoint" />
    </flow>
 
-   <flow name="Test-Endpoint-Encryption-WSDLFirst">
-      <flow-ref name="WS-Encryption-WSDLFirst-Endpoint" doc:name="WSDL-first password endpoint" />
+   <flow name="Test-CXF-Endpoint-Encryption-WSDLFirst">
+      <flow-ref name="WS-CXF-Encryption-WSDLFirst-Endpoint" doc:name="WSDL-first password endpoint" />
    </flow>
 
-   <flow name="Test-Endpoint-Encryption-Simple">
-      <flow-ref name="WS-Encryption-Simple-Endpoint" doc:name="Simple password endpoint" />
+   <flow name="Test-CXF-Endpoint-Encryption-Simple">
+      <flow-ref name="WS-CXF-Encryption-Simple-Endpoint" doc:name="Simple password endpoint" />
    </flow>
 
-   <flow name="Test-Endpoint-Encryption-Proxy">
-      <flow-ref name="WS-Encryption-Proxy-Endpoint" doc:name="Proxied password endpoint" />
+   <flow name="Test-CXF-Endpoint-Encryption-Proxy">
+      <flow-ref name="WS-CXF-Encryption-Proxy-Endpoint" doc:name="Proxied password endpoint" />
    </flow>
 
 </mule>

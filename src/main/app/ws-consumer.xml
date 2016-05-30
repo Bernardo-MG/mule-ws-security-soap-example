@@ -14,12 +14,12 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
 
-   <flow name="WS-Unsecure-Consumer-HTTP-Listener">
+   <flow name="WS-Consumer-Unsecure-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.consumer.path}" />
-      <flow-ref name="WS-Unsecure-Consumer-Endpoint" doc:name="Send to endpoint" />
+      <flow-ref name="WS-Consumer-Unsecure-Endpoint" doc:name="Send to endpoint" />
    </flow>
-   <sub-flow name="WS-Unsecure-Consumer-Endpoint">
+   <sub-flow name="WS-Consumer-Unsecure-Endpoint">
       <logger message="Begins the unsecure consumer endpoint flow"
          level="INFO" doc:name="Logger" />
       <flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
@@ -31,12 +31,12 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          level="INFO" doc:name="Logger" />
    </sub-flow>
 
-   <flow name="WS-Password-Consumer-HTTP-Listener">
+   <flow name="WS-Consumer-Password-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.password.consumer.path}" />
-      <flow-ref name="WS-Password-Consumer-Endpoint" doc:name="Send to endpoint" />
+      <flow-ref name="WS-Consumer-Password-Endpoint" doc:name="Send to endpoint" />
    </flow>
-   <sub-flow name="WS-Password-Consumer-Endpoint">
+   <sub-flow name="WS-Consumer-Password-Endpoint">
       <logger message="Begins the password protected consumer endpoint flow"
          level="INFO" doc:name="Logger" />
       <flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
@@ -48,12 +48,12 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          level="INFO" doc:name="Logger" />
    </sub-flow>
 
-   <flow name="WS-Signature-Consumer-HTTP-Listener">
+   <flow name="WS-Consumer-Signature-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.signature.consumer.path}" />
-      <flow-ref name="WS-Signature-Consumer-Endpoint" doc:name="Send to endpoint" />
+      <flow-ref name="WS-Consumer-Signature-Endpoint" doc:name="Send to endpoint" />
    </flow>
-   <sub-flow name="WS-Signature-Consumer-Endpoint">
+   <sub-flow name="WS-Consumer-Signature-Endpoint">
       <logger message="Begins the signed consumer endpoint flow"
          level="INFO" doc:name="Logger" />
       <flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />
@@ -65,12 +65,12 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="Logger" />
    </sub-flow>
 
-   <flow name="WS-Encryption-Consumer-HTTP-Listener">
+   <flow name="WS-Consumer-Encryption-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.encryption.consumer.path}" />
-      <flow-ref name="WS-Encryption-Consumer-Endpoint" doc:name="Send to endpoint" />
+      <flow-ref name="WS-Consumer-Encryption-Endpoint" doc:name="Send to endpoint" />
    </flow>
-   <sub-flow name="WS-Encryption-Consumer-Endpoint">
+   <sub-flow name="WS-Consumer-Encryption-Endpoint">
       <logger message="Begins the encrypted consumer endpoint flow"
          level="INFO" doc:name="Logger" />
       <flow-ref name="Transform-Consumer-Request" doc:name="Transform to a valid request" />

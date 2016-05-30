@@ -8,20 +8,20 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
-   <flow name="Test-Endpoint-Unsecure-CodeFirst">
-      <flow-ref name="WS-Unsecure-CodeFirst-Endpoint" doc:name="Code-first unsecure endpoint" />
+   <flow name="Test-CXF-Endpoint-Unsecure-CodeFirst">
+      <flow-ref name="WS-CXF-Unsecure-CodeFirst-Endpoint" doc:name="Code-first unsecure endpoint" />
    </flow>
 
-   <flow name="Test-Endpoint-Unsecure-WSDLFirst">
-      <flow-ref name="WS-Unsecure-WSDLFirst-Endpoint" doc:name="WSDL-first unsecure endpoint" />
+   <flow name="Test-CXF-Endpoint-Unsecure-WSDLFirst">
+      <flow-ref name="WS-CXF-Unsecure-WSDLFirst-Endpoint" doc:name="WSDL-first unsecure endpoint" />
    </flow>
 
-   <flow name="Test-Endpoint-Unsecure-Simple">
-      <flow-ref name="WS-Unsecure-Simple-Endpoint" doc:name="Simple unsecure endpoint" />
+   <flow name="Test-CXF-Endpoint-Unsecure-Simple">
+      <flow-ref name="WS-CXF-Unsecure-Simple-Endpoint" doc:name="Simple unsecure endpoint" />
    </flow>
 
-   <flow name="Test-Endpoint-Unsecure-Proxy">
-      <flow-ref name="WS-Unsecure-Proxy-Endpoint" doc:name="Proxied unsecure endpoint" />
+   <flow name="Test-CXF-Endpoint-Unsecure-Proxy">
+      <flow-ref name="WS-CXF-Unsecure-Proxy-Endpoint" doc:name="Proxied unsecure endpoint" />
    </flow>
 
 </mule>

@@ -8,20 +8,20 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
-   <flow name="Test-Endpoint-Unsecure-Consumer">
-      <flow-ref name="WS-Unsecure-Consumer-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
+   <flow name="Test-Consumer-Endpoint-Unsecure">
+      <flow-ref name="WS-Consumer-Unsecure-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
    </flow>
 
-   <flow name="Test-Endpoint-Password-Consumer">
-      <flow-ref name="WS-Password-Consumer-Endpoint" doc:name="Code-first password protected endpoint consumer" />
+   <flow name="Test-Consumer-Endpoint-Password">
+      <flow-ref name="WS-Consumer-Password-Endpoint" doc:name="Code-first password protected endpoint consumer" />
    </flow>
 
-   <flow name="Test-Endpoint-Signature-Consumer">
-      <flow-ref name="WS-Signature-Consumer-Endpoint" doc:name="Code-first password protected endpoint consumer" />
+   <flow name="Test-Consumer-Endpoint-Signature">
+      <flow-ref name="WS-Consumer-Signature-Endpoint" doc:name="Code-first password protected endpoint consumer" />
    </flow>
 
-   <flow name="Test-Endpoint-Encryption-Consumer">
-      <flow-ref name="WS-Encryption-Consumer-Endpoint" doc:name="Code-first password protected endpoint consumer" />
+   <flow name="Test-Consumer-Endpoint-Encryption">
+      <flow-ref name="WS-Consumer-Encryption-Endpoint" doc:name="Code-first password protected endpoint consumer" />
    </flow>
 
 </mule>

@@ -14,12 +14,12 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
 
-   <flow name="WS-Unsecure-CodeFirst-HTTP-Listener">
+   <flow name="WS-CXF-Unsecure-CodeFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.codeFirst.path}" />
-      <flow-ref name="WS-Unsecure-CodeFirst-Endpoint" doc:name="Send to endpoint" />
+      <flow-ref name="WS-CXF-Unsecure-CodeFirst-Endpoint" doc:name="Send to endpoint" />
    </flow>
-   <sub-flow name="WS-Unsecure-CodeFirst-Endpoint">
+   <sub-flow name="WS-CXF-Unsecure-CodeFirst-Endpoint">
       <logger message="Begins the unsecure Code-First endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:jaxws-service doc:name="Code-First endpoint interface"
@@ -47,9 +47,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <flow name="WS-Unsecure-WSDLFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.wsdlFirst.path}" />
-      <flow-ref name="WS-Unsecure-WSDLFirst-Endpoint" doc:name="Send to endpoint" />
+      <flow-ref name="WS-CXF-Unsecure-WSDLFirst-Endpoint" doc:name="Send to endpoint" />
    </flow>
-   <sub-flow name="WS-Unsecure-WSDLFirst-Endpoint">
+   <sub-flow name="WS-CXF-Unsecure-WSDLFirst-Endpoint">
       <logger message="Begins the unsecure WSDL-First endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:jaxws-service validationEnabled="${endpoint.validation}"
@@ -78,9 +78,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <flow name="WS-Unsecure-Simple-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          path="${endpoint.unsecure.simple.path}" doc:name="HTTP Inbound Endpoint" />
-      <flow-ref name="WS-Unsecure-Simple-Endpoint" doc:name="Send to endpoint" />
+      <flow-ref name="WS-CXF-Unsecure-Simple-Endpoint" doc:name="Send to endpoint" />
    </flow>
-   <sub-flow name="WS-Unsecure-Simple-Endpoint">
+   <sub-flow name="WS-CXF-Unsecure-Simple-Endpoint">
       <logger message="Begins the unsecure simple endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:simple-service serviceClass="${endpoint.simple.class}"
@@ -108,9 +108,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <flow name="WS-Unsecure-Proxy-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.proxy.path}" />
-      <flow-ref name="WS-Unsecure-Proxy-Endpoint" doc:name="Send to endpoint" />
+      <flow-ref name="WS-CXF-Unsecure-Proxy-Endpoint" doc:name="Send to endpoint" />
    </flow>
-   <sub-flow name="WS-Unsecure-Proxy-Endpoint">
+   <sub-flow name="WS-CXF-Unsecure-Proxy-Endpoint">
       <logger message="Begins the unsecure proxy endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:proxy-service namespace="${wsdl.namespace}"
