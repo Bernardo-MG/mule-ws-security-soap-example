@@ -20,7 +20,7 @@
    <util:list id="configFiles">
       <value>src/test/resources/flow/test-client-unsecure.xml</value>
       <value>src/main/app/endpoint-unsecure.xml</value>
-      <value>src/main/app/ws-unsecure.xml</value>
+      <value>src/main/app/ws-cxf-unsecure.xml</value>
       <value>src/main/app/client-unsecure.xml</value>
       <value>src/main/app/config.xml</value>
       <value>src/main/app/utils.xml</value>

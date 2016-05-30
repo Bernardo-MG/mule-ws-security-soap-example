@@ -22,8 +22,8 @@
       <value>src/main/app/endpoint-password.xml</value>
       <value>src/main/app/endpoint-unsecure.xml</value>
       <value>src/main/app/ws-consumer.xml</value>
-      <value>src/main/app/ws-password.xml</value>
-      <value>src/main/app/ws-unsecure.xml</value>
+      <value>src/main/app/ws-cxf-password.xml</value>
+      <value>src/main/app/ws-cxf-unsecure.xml</value>
       <value>src/main/app/config.xml</value>
       <value>src/main/app/utils.xml</value>
       <value>src/main/app/transformer.xml</value>
