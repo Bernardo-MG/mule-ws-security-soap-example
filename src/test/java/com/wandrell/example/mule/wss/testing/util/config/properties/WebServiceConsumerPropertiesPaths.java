@@ -37,12 +37,12 @@ public final class WebServiceConsumerPropertiesPaths {
 	/**
 	 * Password protected.
 	 */
-	public static final String PASSWORD = "classpath:config/ws/consumer/test-ws-password-consumer.properties";
+	public static final String PASSWORD = "classpath:config/ws/consumer/test-ws-consumer-password.properties";
 
 	/**
 	 * Unsecure.
 	 */
-	public static final String UNSECURE = "classpath:config/ws/consumer/test-ws-unsecure-consumer.properties";
+	public static final String UNSECURE = "classpath:config/ws/consumer/test-ws-consumer-unsecure.properties";
 
 	/**
 	 * Private constructor to avoid initialization.

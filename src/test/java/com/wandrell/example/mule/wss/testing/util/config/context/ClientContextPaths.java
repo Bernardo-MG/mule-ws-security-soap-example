@@ -39,22 +39,22 @@ public final class ClientContextPaths {
 	/**
 	 * Encrypted.
 	 */
-	public static final String ENCRYPTION = "classpath:context/client/test-client-encryption.xml";
+	public static final String ENCRYPTION = "classpath:context/client/test-client-cxf-encryption.xml";
 
 	/**
 	 * Password protected.
 	 */
-	public static final String PASSWORD = "classpath:context/client/test-client-password.xml";
+	public static final String PASSWORD = "classpath:context/client/test-client-cxf-password.xml";
 
 	/**
 	 * Password protected with SAML.
 	 */
-	public static final String PASSWORD_SAML = "classpath:context/client/test-client-password-saml.xml";
+	public static final String PASSWORD_SAML = "classpath:context/client/test-client-cxf-password-saml.xml";
 
 	/**
 	 * Signed.
 	 */
-	public static final String SIGNATURE = "classpath:context/client/test-client-signature.xml";
+	public static final String SIGNATURE = "classpath:context/client/test-client-cxf-signature.xml";
 
 	/**
 	 * Unsecure.

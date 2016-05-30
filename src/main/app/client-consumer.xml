@@ -15,16 +15,16 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
 
-   <flow name="Client-Unsecure-Consumer-HTTP-Listener">
+   <flow name="Client-Consumer-Unsecure-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          path="${client.unsecure.consumer.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
-      <flow-ref name="Client-Unsecure-Consumer-Endpoint" doc:name="Send request" />
+      <flow-ref name="Client-Consumer-Unsecure-Endpoint" doc:name="Send request" />
         <response>
             <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
         </response>
    </flow>
-   <sub-flow name="Client-Unsecure-Consumer-Endpoint">
+   <sub-flow name="Client-Consumer-Unsecure-Endpoint">
       <logger message="Begins the unsecure consumer client flow"
          level="INFO" doc:name="Logger" />
       <flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform to a valid request" />
@@ -34,16 +34,16 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="Logger" />
    </sub-flow>
 
-   <flow name="Client-Password-Consumer-HTTP-Listener">
+   <flow name="Client-Consumer-Password-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          path="${client.password.consumer.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
-      <flow-ref name="Client-Password-Consumer-Endpoint" doc:name="Send request" />
+      <flow-ref name="Client-Consumer-Password-Endpoint" doc:name="Send request" />
         <response>
             <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
         </response>
    </flow>
-   <sub-flow name="Client-Password-Consumer-Endpoint">
+   <sub-flow name="Client-Consumer-Password-Endpoint">
       <logger message="Begins the password protected consumer client flow"
          level="INFO" doc:name="Logger" />
       <flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform to a valid request" />
@@ -53,16 +53,16 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          level="INFO" doc:name="Logger" />
    </sub-flow>
 
-   <flow name="Client-Signature-Consumer-HTTP-Listener">
+   <flow name="Client-Consumer-Signature-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          path="${client.signature.consumer.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
-      <flow-ref name="Client-Signature-Consumer-Endpoint" doc:name="Send request" />
+      <flow-ref name="Client-Consumer-Signature-Endpoint" doc:name="Send request" />
         <response>
             <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
         </response>
    </flow>
-   <sub-flow name="Client-Signature-Consumer-Endpoint">
+   <sub-flow name="Client-Consumer-Signature-Endpoint">
       <logger message="Begins the signed consumer client flow" level="INFO"
          doc:name="Logger" />
       <flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform to a valid request" />
@@ -72,17 +72,17 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="Logger" />
    </sub-flow>
 
-   <flow name="Client-Encryption-Consumer-HTTP-Listener">
+   <flow name="Client-Consumer-Encryption-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          path="${client.encryption.consumer.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
-      <flow-ref name="Client-Encryption-Consumer-Endpoint"
+      <flow-ref name="Client-Consumer-Encryption-Endpoint"
          doc:name="Send request" />
         <response>
             <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
         </response>
    </flow>
-   <sub-flow name="Client-Encryption-Consumer-Endpoint">
+   <sub-flow name="Client-Consumer-Encryption-Endpoint">
       <logger message="Begins the encrypted consumer client flow"
          level="INFO" doc:name="Logger" />
       <flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform to a valid request" />

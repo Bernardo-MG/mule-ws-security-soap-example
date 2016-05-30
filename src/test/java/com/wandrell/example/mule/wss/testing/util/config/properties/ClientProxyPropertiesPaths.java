@@ -37,27 +37,27 @@ public final class ClientProxyPropertiesPaths {
 	/**
 	 * Encrypted.
 	 */
-	public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-proxy.properties";
+	public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-cxf-encryption-proxy.properties";
 
 	/**
 	 * Password protected.
 	 */
-	public static final String PASSWORD = "classpath:config/client/password/test-client-password-proxy.properties";
+	public static final String PASSWORD = "classpath:config/client/password/test-client-cxf-password-proxy.properties";
 
 	/**
 	 * Password protected with SAML.
 	 */
-	public static final String PASSWORD_SAML = "classpath:config/client/password/saml/test-client-password-saml-proxy.properties";
+	public static final String PASSWORD_SAML = "classpath:config/client/password/saml/test-client-cxf-password-saml-proxy.properties";
 
 	/**
 	 * Signed.
 	 */
-	public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-proxy.properties";
+	public static final String SIGNATURE = "classpath:config/client/signature/test-client-cxf-signature-proxy.properties";
 
 	/**
 	 * Unsecure.
 	 */
-	public static final String UNSECURE = "classpath:config/client/unsecure/test-client-unsecure-proxy.properties";
+	public static final String UNSECURE = "classpath:config/client/unsecure/test-client-cxf-unsecure-proxy.properties";
 
 	/**
 	 * Private constructor to avoid initialization.

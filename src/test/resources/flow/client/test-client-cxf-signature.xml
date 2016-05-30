@@ -8,31 +8,34 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
 
-   <flow name="Test-Client-Consumer-Unsecure">
-      <flow-ref name="Client-Consumer-Unsecure-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
+   <flow name="Test-Client-CXF-Signature-CodeFirst">
+      <flow-ref name="Client-CXF-Signature-CodeFirst-Endpoint" doc:name="Code-First endpoint" />
+      <response>
+         <mulexml:object-to-xml-transformer
+            doc:name="Object to XML" />
+      </response>
+   </flow>
+
+   <flow name="Test-Client-CXF-Signature-WSDLFirst">
+      <flow-ref name="Client-CXF-Signature-WSDLFirst-Endpoint" doc:name="WSDL-First endpoint" />
       <response>
          <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
       </response>
    </flow>
 
-   <flow name="Test-Client-Consumer-Password">
-      <flow-ref name="Client-Consumer-Password-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
+   <flow name="Test-Client-CXF-Signature-Simple">
+      <flow-ref name="Client-CXF-Signature-Simple-Endpoint" doc:name="Simple endpoint" />
       <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+         <mulexml:object-to-xml-transformer
+            doc:name="Object to XML" />
       </response>
    </flow>
 
-   <flow name="Test-Client-Consumer-Signature">
-      <flow-ref name="Client-Consumer-Signature-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
+   <flow name="Test-Client-CXF-Signature-Proxy">
+      <flow-ref name="Client-CXF-Signature-Proxy-Endpoint" doc:name="Proxy endpoint" />
       <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-      </response>
-   </flow>
-
-   <flow name="Test-Client-Consumer-Encryption">
-      <flow-ref name="Client-Consumer-Encryption-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
-      <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
+         <mulexml:object-to-xml-transformer
+            doc:name="Object to XML" />
       </response>
    </flow>
 
