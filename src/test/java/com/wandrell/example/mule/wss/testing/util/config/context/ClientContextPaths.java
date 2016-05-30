@@ -59,7 +59,7 @@ public final class ClientContextPaths {
 	/**
 	 * Unsecure.
 	 */
-	public static final String UNSECURE = "classpath:context/client/test-client-unsecure.xml";
+	public static final String UNSECURE = "classpath:context/client/test-client-cxf-unsecure.xml";
 
 	/**
 	 * Private constructor to avoid initialization.
