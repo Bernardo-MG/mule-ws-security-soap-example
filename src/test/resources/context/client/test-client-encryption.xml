@@ -19,7 +19,7 @@
 
    <util:list id="configFiles">
       <value>src/test/resources/flow/client/test-client-encryption.xml</value>
-      <value>src/main/app/endpoint-encryption.xml</value>
+      <value>src/main/app/endpoint-cxf-encryption.xml</value>
       <value>src/main/app/ws-cxf-encryption.xml</value>
       <value>src/main/app/client-encryption.xml</value>
       <value>src/main/app/config.xml</value>

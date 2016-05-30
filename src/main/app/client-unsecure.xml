@@ -30,7 +30,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:jaxws-client serviceClass="${endpoint.codeFirst.interface}"
          doc:name="Code-First client" operation="${wsdl.operation}" />
       <outbound-endpoint doc:name="Unsecure Code-First endpoint"
-         ref="Endpoint-Unsecure-CodeFirst" />
+         ref="Endpoint-CXF-Unsecure-CodeFirst" />
       <logger message="Ends the unsecure Code-First client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -51,7 +51,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          wsdlLocation="${wsdl.path}" port="${wsdl.port}" doc:name="WSDL-First client"
          operation="${wsdl.operation}" />
       <outbound-endpoint doc:name="Unsecure WSDL-First endpoint"
-         ref="Endpoint-Unsecure-WSDLFirst" />
+         ref="Endpoint-CXF-Unsecure-WSDLFirst" />
       <logger message="Ends the unsecure WSDL-First client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -71,7 +71,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:simple-client serviceClass="${endpoint.simple.class}"
          doc:name="Simple client" operation="${wsdl.operation}" />
       <outbound-endpoint doc:name="Unsecure simple endpoint"
-         ref="Endpoint-Unsecure-Simple" />
+         ref="Endpoint-CXF-Unsecure-Simple" />
       <logger message="Ends the unsecure simple client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -90,7 +90,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="Logger" />
       <cxf:jaxws-client operation="${wsdl.operation}"
          serviceClass="${endpoint.codeFirst.interface}" doc:name="Code-First client" />
-      <outbound-endpoint ref="Endpoint-Unsecure-Proxy"
+      <outbound-endpoint ref="Endpoint-CXF-Unsecure-Proxy"
          doc:name="Unsecure proxy endpoint" />
       <logger message="Ends the unsecure proxy client flow" level="INFO"
          doc:name="Logger" />

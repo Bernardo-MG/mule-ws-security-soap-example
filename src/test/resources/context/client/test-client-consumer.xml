@@ -19,10 +19,10 @@
 
    <util:list id="configFiles">
       <value>src/test/resources/flow/client/test-client-consumer.xml</value>
-      <value>src/main/app/endpoint-encryption.xml</value>
-      <value>src/main/app/endpoint-password.xml</value>
-      <value>src/main/app/endpoint-signature.xml</value>
-      <value>src/main/app/endpoint-unsecure.xml</value>
+      <value>src/main/app/endpoint-cxf-encryption.xml</value>
+      <value>src/main/app/endpoint-cxf-password.xml</value>
+      <value>src/main/app/endpoint-cxf-signature.xml</value>
+      <value>src/main/app/endpoint-cxf-unsecure.xml</value>
       <value>src/main/app/ws-consumer.xml</value>
       <value>src/main/app/ws-cxf-encryption.xml</value>
       <value>src/main/app/ws-cxf-password.xml</value>

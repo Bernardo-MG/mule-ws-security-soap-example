@@ -134,7 +134,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:proxy-client doc:name="Proxy client"
          enableMuleSoapHeaders="false" payload="envelope" />
       <outbound-endpoint doc:name="Unsecure code-first endpoint"
-         ref="Endpoint-Unsecure-CodeFirst" exchange-pattern="request-response" />
+         ref="Endpoint-CXF-Unsecure-CodeFirst" exchange-pattern="request-response" />
       <flow-ref doc:name="Copy HTTP Headers" name="Copy-Headers" />
       <logger message="Ends the unsecure proxy endpoint flow" level="INFO"
          doc:name="Logger" />

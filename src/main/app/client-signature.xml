@@ -39,7 +39,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          </cxf:ws-security>
       </cxf:jaxws-client>
       <outbound-endpoint doc:name="Signed Code-First endpoint"
-         ref="Endpoint-Signature-CodeFirst" />
+         ref="Endpoint-CXF-Signature-CodeFirst" />
       <logger message="Ends the signed Code-First client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -69,7 +69,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          </cxf:ws-security>
       </cxf:jaxws-client>
       <outbound-endpoint doc:name="Signed WSDL-First endpoint"
-         ref="Endpoint-Signature-WSDLFirst" />
+         ref="Endpoint-CXF-Signature-WSDLFirst" />
       <logger message="Ends the signed WSDL-First client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -98,7 +98,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          </cxf:ws-security>
       </cxf:simple-client>
       <outbound-endpoint doc:name="Signed simple endpoint"
-         ref="Endpoint-Signature-Simple" />
+         ref="Endpoint-CXF-Signature-Simple" />
       <logger message="Ends the signed simple client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -126,7 +126,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
             </cxf:ws-config>
          </cxf:ws-security>
       </cxf:jaxws-client>
-      <outbound-endpoint ref="Endpoint-Signature-Proxy"
+      <outbound-endpoint ref="Endpoint-CXF-Signature-Proxy"
          doc:name="Signed proxy endpoint" />
       <logger message="Ends the signed proxy client flow" level="INFO"
          doc:name="Logger" />

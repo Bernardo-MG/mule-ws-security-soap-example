@@ -15,24 +15,24 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
 
-   <endpoint name="Endpoint-Encryption-CodeFirst" doc:name="Signed Code-First endpoint"
+   <endpoint name="Endpoint-CXF-Signature-CodeFirst" doc:name="Signed Code-First endpoint"
       exchange-pattern="request-response"
-      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.encryption.codeFirst.path}"
+      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.codeFirst.path}"
       encoding="${app.encoding}" />
 
-   <endpoint name="Endpoint-Encryption-WSDLFirst" doc:name="Signed WSDL-First endpoint"
+   <endpoint name="Endpoint-CXF-Signature-WSDLFirst" doc:name="Signed WSDL-First endpoint"
       exchange-pattern="request-response"
-      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.encryption.wsdlFirst.path}"
+      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.wsdlFirst.path}"
       encoding="${app.encoding}" />
 
-   <endpoint name="Endpoint-Encryption-Simple" doc:name="Signed simple endpoint"
+   <endpoint name="Endpoint-CXF-Signature-Simple" doc:name="Signed simple endpoint"
       exchange-pattern="request-response"
-      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.encryption.simple.path}"
+      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.simple.path}"
       encoding="${app.encoding}" />
 
-   <endpoint name="Endpoint-Encryption-Proxy" doc:name="Signed proxy endpoint"
+   <endpoint name="Endpoint-CXF-Signature-Proxy" doc:name="Signed proxy endpoint"
       exchange-pattern="request-response"
-      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.encryption.proxy.path}"
+      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.proxy.path}"
       encoding="${app.encoding}" />
 
 </mule>

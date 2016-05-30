@@ -41,7 +41,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          </cxf:ws-security>
       </cxf:jaxws-client>
       <outbound-endpoint doc:name="Encrypted Code-First endpoint"
-         ref="Endpoint-Encryption-CodeFirst" />
+         ref="Endpoint-CXF-Encryption-CodeFirst" />
       <logger message="Ends the encrypted Code-First client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -73,7 +73,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          </cxf:ws-security>
       </cxf:jaxws-client>
       <outbound-endpoint doc:name="Encrypted WSDL-First endpoint"
-         ref="Endpoint-Encryption-WSDLFirst" />
+         ref="Endpoint-CXF-Encryption-WSDLFirst" />
       <logger message="Ends the encrypted WSDL-First client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -104,7 +104,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          </cxf:ws-security>
       </cxf:simple-client>
       <outbound-endpoint doc:name="Encrypted simple endpoint"
-         ref="Endpoint-Encryption-Simple" />
+         ref="Endpoint-CXF-Encryption-Simple" />
       <logger message="Ends the encrypted simple client flow" level="INFO"
          doc:name="Logger" />
    </sub-flow>
@@ -134,7 +134,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
             </cxf:ws-config>
          </cxf:ws-security>
       </cxf:jaxws-client>
-      <outbound-endpoint ref="Endpoint-Encryption-Proxy"
+      <outbound-endpoint ref="Endpoint-CXF-Encryption-Proxy"
          doc:name="Encrypted proxy endpoint" />
       <logger message="Ends the encrypted proxy client flow" level="INFO"
          doc:name="Logger" />

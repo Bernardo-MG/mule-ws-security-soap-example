@@ -163,7 +163,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:proxy-client doc:name="Proxy client"
          enableMuleSoapHeaders="false" payload="envelope" />
       <outbound-endpoint doc:name="Password protected code-first endpoint"
-         ref="Endpoint-Signature-CodeFirst" exchange-pattern="request-response" />
+         ref="Endpoint-CXF-Signature-CodeFirst" exchange-pattern="request-response" />
       <flow-ref doc:name="Copy HTTP Headers" name="Copy-Headers" />
       <logger message="Ends the signed proxy endpoint flow" level="INFO"
          doc:name="Logger" />
