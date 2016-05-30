@@ -16,14 +16,14 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-CXF-Signature-CodeFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.signature.codeFirst.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.signature.codeFirst.path}" />
       <flow-ref name="WS-CXF-Signature-CodeFirst-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-CXF-Signature-CodeFirst-Endpoint">
       <logger message="Begins the signed Code-First endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:jaxws-service validationEnabled="${endpoint.validation}"
-         doc:name="Code-First endpoint interface" serviceClass="${endpoint.codeFirst.interface}"
+         doc:name="Code-First endpoint interface" serviceClass="${endpoint.cxf.codeFirst.interface}"
          namespace="${wsdl.namespace}">
          <cxf:ws-security>
             <cxf:ws-config>
@@ -54,14 +54,14 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Signature-WSDLFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.signature.wsdlFirst.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.signature.wsdlFirst.path}" />
       <flow-ref name="WS-CXF-Signature-WSDLFirst-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-CXF-Signature-WSDLFirst-Endpoint">
       <logger message="Begins the signed WSDL-First endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:jaxws-service validationEnabled="${endpoint.validation}"
-         doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.wsdlFirst.interface}"
+         doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.cxf.wsdlFirst.interface}"
          namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}">
          <cxf:ws-security>
             <cxf:ws-config>
@@ -92,13 +92,13 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Signature-Simple-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         path="${endpoint.signature.simple.path}" doc:name="HTTP Inbound Endpoint" />
+         path="${endpoint.cxf.signature.simple.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="WS-CXF-Signature-Simple-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-CXF-Signature-Simple-Endpoint">
       <logger message="Begins the signed simple endpoint flow" level="INFO"
          doc:name="Logger" />
-      <cxf:simple-service serviceClass="${endpoint.simple.class}"
+      <cxf:simple-service serviceClass="${endpoint.cxf.simple.class}"
          service="${wsdl.service}" doc:name="Simple endpoint">
          <cxf:ws-security>
             <cxf:ws-config>
@@ -129,7 +129,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Signature-Proxy-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.signature.proxy.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.signature.proxy.path}" />
       <flow-ref name="WS-CXF-Signature-Proxy-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-CXF-Signature-Proxy-Endpoint">

@@ -17,22 +17,22 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
    <endpoint name="Endpoint-CXF-Signature-CodeFirst" doc:name="Signed Code-First endpoint"
       exchange-pattern="request-response"
-      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.codeFirst.path}"
+      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.signature.codeFirst.path}"
       encoding="${app.encoding}" />
 
    <endpoint name="Endpoint-CXF-Signature-WSDLFirst" doc:name="Signed WSDL-First endpoint"
       exchange-pattern="request-response"
-      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.wsdlFirst.path}"
+      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.signature.wsdlFirst.path}"
       encoding="${app.encoding}" />
 
    <endpoint name="Endpoint-CXF-Signature-Simple" doc:name="Signed simple endpoint"
       exchange-pattern="request-response"
-      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.simple.path}"
+      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.signature.simple.path}"
       encoding="${app.encoding}" />
 
    <endpoint name="Endpoint-CXF-Signature-Proxy" doc:name="Signed proxy endpoint"
       exchange-pattern="request-response"
-      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.proxy.path}"
+      address="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.signature.proxy.path}"
       encoding="${app.encoding}" />
 
 </mule>

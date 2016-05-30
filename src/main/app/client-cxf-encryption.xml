@@ -17,7 +17,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="Client-CXF-Encryption-CodeFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         path="${client.encryption.codeFirst.path}" doc:name="HTTP Inbound Endpoint" />
+         path="${client.cxf.encryption.codeFirst.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
       <flow-ref name="Client-CXF-Encryption-CodeFirst-Endpoint" doc:name="Send request" />
       <response>
@@ -27,7 +27,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="Client-CXF-Encryption-CodeFirst-Endpoint">
       <logger message="Begins the encrypted Code-First client flow"
          level="INFO" doc:name="Logger" />
-      <cxf:jaxws-client serviceClass="${endpoint.codeFirst.interface}"
+      <cxf:jaxws-client serviceClass="${endpoint.cxf.codeFirst.interface}"
          doc:name="Code-First client" operation="${wsdl.operation}">
          <cxf:ws-security>
             <cxf:ws-config>
@@ -48,7 +48,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="Client-CXF-Encryption-WSDLFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         path="${client.encryption.wsdlFirst.path}" doc:name="HTTP Inbound Endpoint" />
+         path="${client.cxf.encryption.wsdlFirst.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
       <flow-ref name="Client-CXF-Encryption-WSDLFirst-Endpoint" doc:name="Send request" />
       <response>
@@ -58,7 +58,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="Client-CXF-Encryption-WSDLFirst-Endpoint">
       <logger message="Begins the encrypted WSDL-First client flow"
          level="INFO" doc:name="Logger" />
-      <cxf:jaxws-client clientClass="${client.wsdlFirst.class}"
+      <cxf:jaxws-client clientClass="${client.cxf.wsdlFirst.class}"
          wsdlLocation="${wsdl.path}" port="${wsdl.port}" doc:name="WSDL-First client"
          operation="${wsdl.operation}">
          <cxf:ws-security>
@@ -79,7 +79,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    </sub-flow>
 
    <flow name="Client-CXF-Encryption-Simple-HTTP-Listener">
-      <http:listener config-ref="Listener-Application" path="${client.encryption.simple.path}"
+      <http:listener config-ref="Listener-Application" path="${client.cxf.encryption.simple.path}"
          doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
       <flow-ref name="Client-CXF-Encryption-Simple-Endpoint" doc:name="Send request" />
@@ -90,7 +90,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="Client-CXF-Encryption-Simple-Endpoint">
       <logger message="Begins the encrypted simple client flow" level="INFO"
          doc:name="Logger" />
-      <cxf:simple-client serviceClass="${endpoint.simple.class}"
+      <cxf:simple-client serviceClass="${endpoint.cxf.simple.class}"
          doc:name="Simple client" operation="${wsdl.operation}">
          <cxf:ws-security>
             <cxf:ws-config>
@@ -110,7 +110,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    </sub-flow>
 
    <flow name="Client-CXF-Encryption-Proxy-HTTP-Listener">
-      <http:listener config-ref="Listener-Application" path="${client.encryption.proxy.path}"
+      <http:listener config-ref="Listener-Application" path="${client.cxf.encryption.proxy.path}"
          doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
       <flow-ref name="Client-CXF-Encryption-Proxy-Endpoint" doc:name="Send request" />
@@ -122,7 +122,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <logger message="Begins the encrypted proxy client flow" level="INFO"
          doc:name="Logger" />
       <cxf:jaxws-client operation="${wsdl.operation}"
-         serviceClass="${endpoint.codeFirst.interface}" doc:name="Code-First client">
+         serviceClass="${endpoint.cxf.codeFirst.interface}" doc:name="Code-First client">
          <cxf:ws-security>
             <cxf:ws-config>
                <cxf:property key="action" value="UsernameToken Encrypt" />

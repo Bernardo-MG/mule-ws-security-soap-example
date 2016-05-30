@@ -16,14 +16,14 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-CXF-Encryption-CodeFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.encryption.codeFirst.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.encryption.codeFirst.path}" />
       <flow-ref name="WS-CXF-Encryption-CodeFirst-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-CXF-Encryption-CodeFirst-Endpoint">
       <logger message="Begins the encrypted Code-First endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:jaxws-service validationEnabled="${endpoint.validation}"
-         doc:name="Code-First endpoint interface" serviceClass="${endpoint.codeFirst.interface}"
+         doc:name="Code-First endpoint interface" serviceClass="${endpoint.cxf.codeFirst.interface}"
          namespace="${wsdl.namespace}">
          <cxf:ws-security>
             <cxf:ws-config>
@@ -54,14 +54,14 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Encryption-WSDLFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.encryption.wsdlFirst.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.encryption.wsdlFirst.path}" />
       <flow-ref name="WS-CXF-Encryption-WSDLFirst-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-CXF-Encryption-WSDLFirst-Endpoint">
       <logger message="Begins the encrypted WSDL-First endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:jaxws-service validationEnabled="${endpoint.validation}"
-         doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.wsdlFirst.interface}"
+         doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.cxf.wsdlFirst.interface}"
          namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}">
          <cxf:ws-security>
             <cxf:ws-config>
@@ -92,13 +92,13 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Encryption-Simple-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         path="${endpoint.encryption.simple.path}" doc:name="HTTP Inbound Endpoint" />
+         path="${endpoint.cxf.encryption.simple.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="WS-CXF-Encryption-Simple-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-CXF-Encryption-Simple-Endpoint">
       <logger message="Begins the encrypted simple endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:simple-service serviceClass="${endpoint.simple.class}"
+      <cxf:simple-service serviceClass="${endpoint.cxf.simple.class}"
          service="${wsdl.service}" doc:name="Simple endpoint">
          <cxf:ws-security>
             <cxf:ws-config>
@@ -129,7 +129,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Encryption-Proxy-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.encryption.proxy.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.encryption.proxy.path}" />
       <flow-ref name="WS-CXF-Encryption-Proxy-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-CXF-Encryption-Proxy-Endpoint">

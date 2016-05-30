@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Consumer-Unsecure-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.unsecure.consumer.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.consumer.unsecure.path}" />
       <flow-ref name="WS-Consumer-Unsecure-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-Consumer-Unsecure-Endpoint">
@@ -33,7 +33,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Consumer-Password-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.password.consumer.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.consumer.password.path}" />
       <flow-ref name="WS-Consumer-Password-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-Consumer-Password-Endpoint">
@@ -50,7 +50,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Consumer-Signature-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.signature.consumer.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.consumer.signature.path}" />
       <flow-ref name="WS-Consumer-Signature-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-Consumer-Signature-Endpoint">
@@ -67,7 +67,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 
    <flow name="WS-Consumer-Encryption-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
-         doc:name="HTTP Inbound Endpoint" path="${endpoint.encryption.consumer.path}" />
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.consumer.encryption.path}" />
       <flow-ref name="WS-Consumer-Encryption-Endpoint" doc:name="Send to endpoint" />
    </flow>
    <sub-flow name="WS-Consumer-Encryption-Endpoint">
