@@ -24,6 +24,9 @@
       </release>
       <release version="1.1.0" date="2016-05-27" description="Diferentiation between consumers and CXF">
          <action dev="bmg" type="update">
+            Changed URLs to better show the WS or client type used.
+         </action>
+         <action dev="bmg" type="update">
             Separated consumers from CXF components in the flows and tests.
          </action>
          <action dev="bmg" type="update">
