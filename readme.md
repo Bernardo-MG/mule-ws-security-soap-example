@@ -20,8 +20,8 @@ The project offers various examples showing how to set up the various security o
 
 These are applied to the different web services implementations which Mule supports:
 
-- Code-first CXF, created from custom JAXB classes
-- WSDL-first CXF, created from generated JAXB classes
+- Code-first JAX-WS CXF, created from custom JAXB classes
+- WSDL-first JAX-WS CXF, created from generated JAXB classes
 - Plain CXF, created from POJOs
 - Proxy CXF, which handles plain SOAP messages instead of beans
 - Consumer, which takes the body of a SOAP message and transforms it for the other services
