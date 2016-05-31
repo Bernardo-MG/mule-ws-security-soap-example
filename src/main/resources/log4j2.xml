@@ -10,9 +10,9 @@
     </Appenders>
     <Loggers>
         <!-- CXF is used heavily by Mule for web services -->
-        <AsyncLogger name="org.apache.cxf" level="WARN"/>
+        <AsyncLogger name="org.apache.cxf" level="DEBUG"/>
 
-        <!-- Apache Commons tend to make a lot of noise which can clutter the log-->
+        <!-- Apache Commons tends to make a lot of noise which can clutter the log-->
         <AsyncLogger name="org.apache" level="WARN"/>
 
         <!-- Reduce startup noise -->

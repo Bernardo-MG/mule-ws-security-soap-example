@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+   xmlns:spring="http://www.springframework.org/schema/beans" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+   xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+   xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
+
+   <flow name="Test-Consumer-Endpoint-Unsecure">
+      <flow-ref name="WS-Consumer-Unsecure-Endpoint" doc:name="Code-first unsecure endpoint consumer" />
+   </flow>
+
+   <flow name="Test-Consumer-Endpoint-Password">
+      <flow-ref name="WS-Consumer-Password-Endpoint" doc:name="Code-first password protected endpoint consumer" />
+   </flow>
+
+   <flow name="Test-Consumer-Endpoint-Signature">
+      <flow-ref name="WS-Consumer-Signature-Endpoint" doc:name="Code-first password protected endpoint consumer" />
+   </flow>
+
+   <flow name="Test-Consumer-Endpoint-Encryption">
+      <flow-ref name="WS-Consumer-Encryption-Endpoint" doc:name="Code-first password protected endpoint consumer" />
+   </flow>
+
+</mule>

@@ -34,12 +34,17 @@ public final class WebServiceContextPaths {
 	/**
 	 * Password protected.
 	 */
-	public static final String PASSWORD = "classpath:context/ws/test-ws-password.xml";
+	public static final String PASSWORD = "classpath:context/ws/test-ws-cxf-password.xml";
 
 	/**
 	 * Unsecure.
 	 */
-	public static final String UNSECURE = "classpath:context/ws/test-ws-unsecure.xml";
+	public static final String UNSECURE = "classpath:context/ws/test-ws-cxf-unsecure.xml";
+
+	/**
+	 * Consumer.
+	 */
+	public static final String CONSUMER = "classpath:context/ws/test-ws-consumer.xml";
 
 	/**
 	 * Private constructor to avoid initialization.
