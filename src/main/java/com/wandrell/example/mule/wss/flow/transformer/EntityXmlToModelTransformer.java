@@ -60,22 +60,6 @@ public final class EntityXmlToModelTransformer extends AbstractTransformer {
 		super();
 	}
 
-	@Override
-	protected final XmlExampleEntity doTransform(final Object src,
-			final String enc) throws TransformerException {
-		final XmlExampleEntity sample; // Parsed entity
-
-		checkNotNull(src, "Received a null pointer as source");
-
-		try {
-			sample = parseEntity(src.toString());
-		} catch (JDOMException | IOException e) {
-			throw new TransformerException(this, e);
-		}
-
-		return sample;
-	}
-
 	/**
 	 * Parses a {@code XmlExampleEntity} from the received XML.
 	 * 
@@ -115,6 +99,22 @@ public final class EntityXmlToModelTransformer extends AbstractTransformer {
 		entity.setName(entityNode.getChild("name").getText());
 
 		return entity;
+	}
+
+	@Override
+	protected final XmlExampleEntity doTransform(final Object src,
+			final String enc) throws TransformerException {
+		final XmlExampleEntity sample; // Parsed entity
+
+		checkNotNull(src, "Received a null pointer as source");
+
+		try {
+			sample = parseEntity(src.toString());
+		} catch (JDOMException | IOException e) {
+			throw new TransformerException(this, e);
+		}
+
+		return sample;
 	}
 
 }

@@ -37,12 +37,12 @@ public final class WebServiceCodeFirstPropertiesPaths {
 	/**
 	 * Password protected.
 	 */
-	public static final String PASSWORD = "classpath:config/ws/password/test-ws-cxf-password-code-first.properties";
+	public static final String PASSWORD = "classpath:config/ws/cxf/password/test-ws-cxf-password-code-first.properties";
 
 	/**
 	 * Unsecure.
 	 */
-	public static final String UNSECURE = "classpath:config/ws/unsecure/test-ws-cxf-unsecure-code-first.properties";
+	public static final String UNSECURE = "classpath:config/ws/cxf/unsecure/test-ws-cxf-unsecure-code-first.properties";
 
 	/**
 	 * Private constructor to avoid initialization.

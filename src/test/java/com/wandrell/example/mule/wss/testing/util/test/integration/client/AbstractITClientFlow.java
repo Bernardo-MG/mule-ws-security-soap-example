@@ -86,11 +86,6 @@ public class AbstractITClientFlow extends FunctionalTestCase {
 		super();
 	}
 
-	@Override
-	protected String getConfigResources() {
-		return StringUtils.join(files, ", ");
-	}
-
 	/**
 	 * Tests that a valid payload is processed and a valid response returned.
 	 * 
@@ -118,6 +113,11 @@ public class AbstractITClientFlow extends FunctionalTestCase {
 		// Verifies results
 		XMLUnit.setIgnoreWhitespace(true);
 		XMLAssert.assertXMLEqual(response, result);
+	}
+
+	@Override
+	protected String getConfigResources() {
+		return StringUtils.join(files, ", ");
 	}
 
 }

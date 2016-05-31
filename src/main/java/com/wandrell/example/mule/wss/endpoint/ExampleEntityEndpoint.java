@@ -46,9 +46,9 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  */
 @WebService(serviceName = ExampleEntityEndpointConstants.SERVICE, targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
 @WSDLDocumentationCollection({
-	@WSDLDocumentation("The only portType"),
-	@WSDLDocumentation(value = "Web service for testing WSS", placement = WSDLDocumentation.Placement.TOP),
-	@WSDLDocumentation(value = "Web service binding", placement = WSDLDocumentation.Placement.BINDING) })
+		@WSDLDocumentation("The only portType"),
+		@WSDLDocumentation(value = "Web service for testing WSS", placement = WSDLDocumentation.Placement.TOP),
+		@WSDLDocumentation(value = "Web service binding", placement = WSDLDocumentation.Placement.BINDING) })
 public interface ExampleEntityEndpoint {
 
 	/**
