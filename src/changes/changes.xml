@@ -22,7 +22,7 @@
             Corrected the project links.
          </action>
       </release>
-      <release version="1.1.0" date="2016-05-31" description="Diferentiation between consumers and CXF">
+      <release version="2.0.0" date="2016-05-31" description="Diferentiation between consumers and CXF">
          <action dev="bmg" type="update">
             Changed URLs to better show the WS or client type used.
          </action>
@@ -34,6 +34,11 @@
          </action>
          <action dev="bmg" type="update">
             CXF services now use a base configuration, including a config file.
+         </action>
+      </release>
+      <release version="2.1.0" date="2016-05-31" description="Extended configuration">
+         <action dev="bmg" type="update">
+            Added documentation annotations for the code-first WSDL.
          </action>
       </release>
    </body>
