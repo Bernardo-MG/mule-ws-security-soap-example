@@ -45,7 +45,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          level="INFO" doc:name="Logger" />
    </sub-flow>
 
-   <flow name="WS-Signature-WSDLFirst-HTTP-Listener">
+   <flow name="WS-CXF-Signature-WSDLFirst-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.signature.wsdlFirst.path}" />
       <flow-ref name="WS-CXF-Signature-WSDLFirst-Endpoint" doc:name="Send to endpoint" />
@@ -76,7 +76,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          level="INFO" doc:name="Logger" />
    </sub-flow>
 
-   <flow name="WS-Signature-Simple-HTTP-Listener">
+   <flow name="WS-CXF-Signature-Simple-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          path="${endpoint.cxf.signature.simple.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="WS-CXF-Signature-Simple-Endpoint" doc:name="Send to endpoint" />
@@ -84,8 +84,8 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Signature-Simple-Endpoint">
       <logger message="Begins the signed simple endpoint flow" level="INFO"
          doc:name="Logger" />
-      <cxf:proxy-service serviceClass="${endpoint.cxf.simple.class}"
-         service="${wsdl.service}" doc:name="Simple endpoint" configuration-ref="CXF_Configuration" payload="body">
+      <cxf:simple-service serviceClass="${endpoint.cxf.simple.class}"
+         service="${wsdl.service}" doc:name="Simple endpoint" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -98,7 +98,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          <cxf:outFaultInterceptors>
             <spring:ref bean="loggingOutInterceptor" />
          </cxf:outFaultInterceptors>
-      </cxf:proxy-service>
+      </cxf:simple-service>
       <component doc:name="Simple endpoint implementation">
          <spring-object bean="simpleUnsecureEndpoint" />
       </component>
@@ -106,7 +106,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="Logger" />
    </sub-flow>
 
-   <flow name="WS-Signature-Proxy-HTTP-Listener">
+   <flow name="WS-CXF-Signature-Proxy-HTTP-Listener">
       <http:listener config-ref="Listener-Application"
          doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.signature.proxy.path}" />
       <flow-ref name="WS-CXF-Signature-Proxy-Endpoint" doc:name="Send to endpoint" />
