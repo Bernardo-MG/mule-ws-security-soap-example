@@ -23,7 +23,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <logger message="Begins the unsecure Code-First endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:jaxws-service doc:name="Code-First endpoint interface"
-         serviceClass="${endpoint.cxf.codeFirst.interface}" namespace="${wsdl.namespace}">
+         serviceClass="${endpoint.cxf.codeFirst.interface}" namespace="${wsdl.namespace}" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -52,9 +52,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Unsecure-WSDLFirst-Endpoint">
       <logger message="Begins the unsecure WSDL-First endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:jaxws-service validationEnabled="${endpoint.validation}"
+      <cxf:jaxws-service 
          doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.cxf.wsdlFirst.interface}"
-         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}">
+         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -84,7 +84,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <logger message="Begins the unsecure simple endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:simple-service serviceClass="${endpoint.cxf.simple.class}"
-         service="${wsdl.service}" doc:name="Simple endpoint">
+         service="${wsdl.service}" doc:name="Simple endpoint" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -116,7 +116,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:proxy-service namespace="${wsdl.namespace}"
          payload="envelope" port="${wsdl.port}" service="${wsdl.service}"
          doc:name="Proxy endpoint" wsdlLocation="${wsdl.path}"
-         enableMuleSoapHeaders="false">
+         enableMuleSoapHeaders="false" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>

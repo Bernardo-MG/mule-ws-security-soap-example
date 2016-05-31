@@ -22,16 +22,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Encryption-CodeFirst-Endpoint">
       <logger message="Begins the encrypted Code-First endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:jaxws-service validationEnabled="${endpoint.validation}"
+      <cxf:jaxws-service 
          doc:name="Code-First endpoint interface" serviceClass="${endpoint.cxf.codeFirst.interface}"
-         namespace="${wsdl.namespace}">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Encrypt" />
-               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         namespace="${wsdl.namespace}" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -60,16 +53,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Encryption-WSDLFirst-Endpoint">
       <logger message="Begins the encrypted WSDL-First endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:jaxws-service validationEnabled="${endpoint.validation}"
+      <cxf:jaxws-service 
          doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.cxf.wsdlFirst.interface}"
-         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Encrypt" />
-               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -99,14 +85,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <logger message="Begins the encrypted simple endpoint flow"
          level="INFO" doc:name="Logger" />
       <cxf:simple-service serviceClass="${endpoint.cxf.simple.class}"
-         service="${wsdl.service}" doc:name="Simple endpoint">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Encrypt" />
-               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         service="${wsdl.service}" doc:name="Simple endpoint" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -138,14 +117,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:proxy-service namespace="${wsdl.namespace}"
          payload="envelope" port="${wsdl.port}" service="${wsdl.service}"
          doc:name="Proxy endpoint" wsdlLocation="${wsdl.path}"
-         enableMuleSoapHeaders="false">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Encrypt" />
-               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         enableMuleSoapHeaders="false" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>

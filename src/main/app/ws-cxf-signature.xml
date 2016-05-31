@@ -22,16 +22,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Signature-CodeFirst-Endpoint">
       <logger message="Begins the signed Code-First endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:jaxws-service validationEnabled="${endpoint.validation}"
+      <cxf:jaxws-service 
          doc:name="Code-First endpoint interface" serviceClass="${endpoint.cxf.codeFirst.interface}"
-         namespace="${wsdl.namespace}">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         namespace="${wsdl.namespace}" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -60,16 +53,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Signature-WSDLFirst-Endpoint">
       <logger message="Begins the signed WSDL-First endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:jaxws-service validationEnabled="${endpoint.validation}"
+      <cxf:jaxws-service 
          doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.cxf.wsdlFirst.interface}"
-         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -98,15 +84,8 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Signature-Simple-Endpoint">
       <logger message="Begins the signed simple endpoint flow" level="INFO"
          doc:name="Logger" />
-      <cxf:simple-service serviceClass="${endpoint.cxf.simple.class}"
-         service="${wsdl.service}" doc:name="Simple endpoint">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+      <cxf:proxy-service serviceClass="${endpoint.cxf.simple.class}"
+         service="${wsdl.service}" doc:name="Simple endpoint" configuration-ref="CXF_Configuration" payload="body">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -119,7 +98,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          <cxf:outFaultInterceptors>
             <spring:ref bean="loggingOutInterceptor" />
          </cxf:outFaultInterceptors>
-      </cxf:simple-service>
+      </cxf:proxy-service>
       <component doc:name="Simple endpoint implementation">
          <spring-object bean="simpleUnsecureEndpoint" />
       </component>
@@ -138,14 +117,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:proxy-service namespace="${wsdl.namespace}"
          payload="envelope" port="${wsdl.port}" service="${wsdl.service}"
          doc:name="Proxy endpoint" wsdlLocation="${wsdl.path}"
-         enableMuleSoapHeaders="false">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Signature" />
-               <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         enableMuleSoapHeaders="false" configuration-ref="CXF_Configuration">
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>

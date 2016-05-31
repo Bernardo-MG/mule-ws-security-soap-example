@@ -35,4 +35,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
       name="Listener-Application" basePath="${app.url.path}" host="${app.url.host}"
       port="${app.url.port}" />
 
+   <cxf:configuration name="CXF_Configuration"
+      enableMuleSoapHeaders="${cxf.enableMuleSoapHeaders}" 
+      initializeStaticBusInstance="${cxf.initializeStaticBusInstance}"
+      doc:name="CXF Configuration" />
+
 </mule>
