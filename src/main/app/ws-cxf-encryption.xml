@@ -98,7 +98,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Encryption-Simple-Endpoint">
       <logger message="Begins the encrypted simple endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:simple-service validationEnabled="${endpoint.validation}"
+      <cxf:simple-service
          serviceClass="${endpoint.cxf.simple.class}"
          service="${wsdl.service}" doc:name="Simple endpoint" configuration-ref="CXF_Configuration">
          <cxf:ws-security>
@@ -136,11 +136,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
    <sub-flow name="WS-CXF-Encryption-Proxy-Endpoint">
       <logger message="Begins the encrypted proxy endpoint flow"
          level="INFO" doc:name="Logger" />
-      <cxf:proxy-service validationEnabled="${endpoint.validation}"
-         namespace="${wsdl.namespace}"
+      <cxf:proxy-service namespace="${wsdl.namespace}"
          payload="envelope" port="${wsdl.port}" service="${wsdl.service}"
-         doc:name="Proxy endpoint" wsdlLocation="${wsdl.path}"
-         enableMuleSoapHeaders="false" configuration-ref="CXF_Configuration">
+         doc:name="Proxy endpoint" wsdlLocation="${wsdl.path}" configuration-ref="CXF_Configuration">
          <cxf:ws-security>
             <cxf:ws-config>
                <cxf:property key="action" value="UsernameToken Encrypt" />
