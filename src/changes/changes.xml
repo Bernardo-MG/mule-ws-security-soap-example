@@ -33,7 +33,7 @@
             Renamed files and flows to make easier notice which ones use CXF.
          </action>
          <action dev="bmg" type="update">
-            CXF services now use a base configuration.
+            CXF services now use a base configuration, including a config file.
          </action>
       </release>
    </body>

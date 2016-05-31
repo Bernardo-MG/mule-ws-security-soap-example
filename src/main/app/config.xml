@@ -38,6 +38,6 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
    <cxf:configuration name="CXF_Configuration"
       enableMuleSoapHeaders="${cxf.enableMuleSoapHeaders}" 
       initializeStaticBusInstance="${cxf.initializeStaticBusInstance}"
-      doc:name="CXF Configuration" />
+      doc:name="CXF Configuration" configurationLocation="${cxf.configFile}"/>
 
 </mule>
