@@ -40,8 +40,6 @@
          <action dev="bmg" type="update">
             Added documentation annotations for the code-first WSDL.
          </action>
-      </release>
-      <release version="2.1.1" date="2016-06-02" description="Keystore private key">
          <action dev="bmg" type="update">
             The private key password and key store password are now handled through
             two different properties values.
