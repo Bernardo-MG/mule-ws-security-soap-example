@@ -10,7 +10,7 @@
 
    <groupId>com.wandrell.example</groupId>
    <artifactId>mule-ws-security-soap-example</artifactId>
-   <version>2.1.1-SNAPSHOT</version>
+   <version>2.1.1</version>
    <packaging>mule</packaging>
 
    <name>Mule SOAP Web Services WS-Security Example</name>
