@@ -86,15 +86,6 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
 		return issuerName;
 	}
 
-	/**
-	 * Returns the name of the subject.
-	 * 
-	 * @return the name of the subject
-	 */
-	private final String getSubjectName() {
-		return subjectName;
-	}
-
 	@Override
 	public final Credential validate(final Credential credential,
 			final RequestData data) throws WSSecurityException {
@@ -141,6 +132,15 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
 		}
 
 		return returnedCredential;
+	}
+
+	/**
+	 * Returns the name of the subject.
+	 * 
+	 * @return the name of the subject
+	 */
+	private final String getSubjectName() {
+		return subjectName;
 	}
 
 }

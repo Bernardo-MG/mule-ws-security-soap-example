@@ -90,33 +90,6 @@ public final class SamlCallbackHandler implements CallbackHandler {
 		confirmationMethod = SAML2Constants.CONF_SENDER_VOUCHES;
 	}
 
-	/**
-	 * Returns the SAML 2.0 confirmation method.
-	 * 
-	 * @return the SAML 2.0 confirmation method
-	 */
-	private final String getConfirmationMethod() {
-		return confirmationMethod;
-	}
-
-	/**
-	 * Returns the name of the subject.
-	 * 
-	 * @return the name of the subject
-	 */
-	private final String getSubjectName() {
-		return subjectName;
-	}
-
-	/**
-	 * Returns the qualifier for the subject.
-	 * 
-	 * @return the qualifier for the subject
-	 */
-	private final String getSubjectQualifier() {
-		return subjectQualifier;
-	}
-
 	@Override
 	public final void handle(final Callback[] callbacks) throws IOException,
 			UnsupportedCallbackException {
@@ -148,6 +121,33 @@ public final class SamlCallbackHandler implements CallbackHandler {
 						"Unrecognized callback");
 			}
 		}
+	}
+
+	/**
+	 * Returns the SAML 2.0 confirmation method.
+	 * 
+	 * @return the SAML 2.0 confirmation method
+	 */
+	private final String getConfirmationMethod() {
+		return confirmationMethod;
+	}
+
+	/**
+	 * Returns the name of the subject.
+	 * 
+	 * @return the name of the subject
+	 */
+	private final String getSubjectName() {
+		return subjectName;
+	}
+
+	/**
+	 * Returns the qualifier for the subject.
+	 * 
+	 * @return the qualifier for the subject
+	 */
+	private final String getSubjectQualifier() {
+		return subjectQualifier;
 	}
 
 }

@@ -37,12 +37,12 @@ public final class WebServiceSimplePropertiesPaths {
 	/**
 	 * Password protected.
 	 */
-	public static final String PASSWORD = "classpath:config/ws/password/test-ws-cxf-password-simple.properties";
+	public static final String PASSWORD = "classpath:config/ws/cxf/password/test-ws-cxf-password-simple.properties";
 
 	/**
 	 * Unsecure.
 	 */
-	public static final String UNSECURE = "classpath:config/ws/unsecure/test-ws-cxf-unsecure-simple.properties";
+	public static final String UNSECURE = "classpath:config/ws/cxf/unsecure/test-ws-cxf-unsecure-simple.properties";
 
 	/**
 	 * Private constructor to avoid initialization.
