@@ -28,6 +28,9 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlElement;
 
+import org.apache.cxf.annotations.WSDLDocumentation;
+import org.apache.cxf.annotations.WSDLDocumentationCollection;
+
 import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
 
 /**
@@ -42,6 +45,10 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @WebService(serviceName = ExampleEntityEndpointConstants.SERVICE, targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
+@WSDLDocumentationCollection({
+		@WSDLDocumentation("The only portType"),
+		@WSDLDocumentation(value = "Web service for testing WSS", placement = WSDLDocumentation.Placement.TOP),
+		@WSDLDocumentation(value = "Web service binding", placement = WSDLDocumentation.Placement.BINDING) })
 public interface ExampleEntityEndpoint {
 
 	/**
@@ -58,6 +65,7 @@ public interface ExampleEntityEndpoint {
 	 *            id of the entity being queried
 	 * @return the queried entity
 	 */
+	@WSDLDocumentation("Returns the entity with the specified id")
 	public XmlExampleEntity getEntity(
 			@WebParam(name = "id") @XmlElement(required = true, nillable = false) final Integer id);
 

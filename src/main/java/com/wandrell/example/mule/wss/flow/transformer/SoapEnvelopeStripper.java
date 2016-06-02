@@ -65,32 +65,6 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
 		super();
 	}
 
-	@Override
-	protected final String doTransform(final Object src, final String enc)
-			throws TransformerException {
-		final Element root; // SOAP message root
-		final Element operation; // SOAP message operation
-
-		checkNotNull(src, "Received a null pointer as source");
-
-		LOGGER.debug(String.format("Stripping source: %s", src.toString()));
-
-		try {
-			root = parseElement(src.toString());
-			if (root.getName().equalsIgnoreCase("envelope")) {
-				// The root is a SOAP envelope
-				// Acquires the operation
-				operation = getOperation(getBody(root));
-			} else {
-				operation = root;
-			}
-		} catch (final Exception e) {
-			throw new TransformerException(this, e);
-		}
-
-		return new XMLOutputter().outputString(operation);
-	}
-
 	/**
 	 * Acquires the body data from the received SOAP data.
 	 * <p>
@@ -166,6 +140,32 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
 		org.jdom.Document doc = saxBuilder.build(new StringReader(soap));
 
 		return doc.getRootElement();
+	}
+
+	@Override
+	protected final String doTransform(final Object src, final String enc)
+			throws TransformerException {
+		final Element root; // SOAP message root
+		final Element operation; // SOAP message operation
+
+		checkNotNull(src, "Received a null pointer as source");
+
+		LOGGER.debug(String.format("Stripping source: %s", src.toString()));
+
+		try {
+			root = parseElement(src.toString());
+			if (root.getName().equalsIgnoreCase("envelope")) {
+				// The root is a SOAP envelope
+				// Acquires the operation
+				operation = getOperation(getBody(root));
+			} else {
+				operation = root;
+			}
+		} catch (final Exception e) {
+			throw new TransformerException(this, e);
+		}
+
+		return new XMLOutputter().outputString(operation);
 	}
 
 }

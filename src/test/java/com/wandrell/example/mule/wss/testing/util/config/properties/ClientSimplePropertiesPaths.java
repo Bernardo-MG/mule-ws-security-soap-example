@@ -37,27 +37,27 @@ public final class ClientSimplePropertiesPaths {
 	/**
 	 * Encrypted.
 	 */
-	public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-cxf-encryption-simple.properties";
+	public static final String ENCRYPTION = "classpath:config/client/cxf/encryption/test-client-cxf-encryption-simple.properties";
 
 	/**
 	 * Password protected.
 	 */
-	public static final String PASSWORD = "classpath:config/client/password/test-client-cxf-password-simple.properties";
+	public static final String PASSWORD = "classpath:config/client/cxf/password/test-client-cxf-password-simple.properties";
 
 	/**
 	 * Password protected with SAML.
 	 */
-	public static final String PASSWORD_SAML = "classpath:config/client/password/saml/test-client-cxf-password-saml-simple.properties";
+	public static final String PASSWORD_SAML = "classpath:config/client/cxf/password/saml/test-client-cxf-password-saml-simple.properties";
 
 	/**
 	 * Signed.
 	 */
-	public static final String SIGNATURE = "classpath:config/client/signature/test-client-cxf-signature-simple.properties";
+	public static final String SIGNATURE = "classpath:config/client/cxf/signature/test-client-cxf-signature-simple.properties";
 
 	/**
 	 * Unsecure.
 	 */
-	public static final String UNSECURE = "classpath:config/client/unsecure/test-client-cxf-unsecure-simple.properties";
+	public static final String UNSECURE = "classpath:config/client/cxf/unsecure/test-client-cxf-unsecure-simple.properties";
 
 	/**
 	 * Private constructor to avoid initialization.
