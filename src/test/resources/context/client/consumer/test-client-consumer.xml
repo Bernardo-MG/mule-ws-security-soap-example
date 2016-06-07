@@ -29,6 +29,7 @@
       <value>src/main/app/ws-cxf-signature.xml</value>
       <value>src/main/app/ws-cxf-unsecure.xml</value>
       <value>src/main/app/client-consumer.xml</value>
+      <value>src/main/app/security-cxf.xml</value>
       <value>src/main/app/config.xml</value>
       <value>src/main/app/utils.xml</value>
       <value>src/main/app/transformer.xml</value>

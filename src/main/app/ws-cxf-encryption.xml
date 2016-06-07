@@ -25,13 +25,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:jaxws-service validationEnabled="${endpoint.validation}"
          doc:name="Code-First endpoint interface" serviceClass="${endpoint.cxf.codeFirst.interface}"
          namespace="${wsdl.namespace}" configuration-ref="CXF_Configuration">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Encrypt" />
-               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         <cxf:ws-security ref="encryptionConfigEndpoint"/>
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -63,13 +57,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:jaxws-service validationEnabled="${endpoint.validation}"
          doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.cxf.wsdlFirst.interface}"
          namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}" configuration-ref="CXF_Configuration">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Encrypt" />
-               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         <cxf:ws-security ref="encryptionConfigEndpoint"/>
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -101,13 +89,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:simple-service
          serviceClass="${endpoint.cxf.simple.class}"
          service="${wsdl.service}" doc:name="Simple endpoint" configuration-ref="CXF_Configuration">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Encrypt" />
-               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         <cxf:ws-security ref="encryptionConfigEndpoint"/>
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
@@ -139,13 +121,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <cxf:proxy-service namespace="${wsdl.namespace}"
          payload="envelope" port="${wsdl.port}" service="${wsdl.service}"
          doc:name="Proxy endpoint" wsdlLocation="${wsdl.path}" configuration-ref="CXF_Configuration">
-         <cxf:ws-security>
-            <cxf:ws-config>
-               <cxf:property key="action" value="UsernameToken Encrypt" />
-               <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-               <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
-            </cxf:ws-config>
-         </cxf:ws-security>
+         <cxf:ws-security ref="encryptionConfigEndpoint"/>
          <cxf:inInterceptors>
             <spring:ref bean="loggingInInterceptor" />
          </cxf:inInterceptors>
