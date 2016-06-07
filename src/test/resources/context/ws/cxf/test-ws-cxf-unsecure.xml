@@ -21,6 +21,7 @@
       <value>src/test/resources/flow/ws/cxf/test-cxf-endpoint-unsecure.xml</value>
       <value>src/main/app/endpoint-cxf-unsecure.xml</value>
       <value>src/main/app/ws-cxf-unsecure.xml</value>
+      <value>src/main/app/security-cxf.xml</value>
       <value>src/main/app/config.xml</value>
       <value>src/main/app/utils.xml</value>
       <value>src/main/app/transformer.xml</value>

@@ -45,5 +45,10 @@
             two different properties values.
          </action>
       </release>
+      <release version="2.2.0" date="2016-06-07" description="CXF configuration changes">
+         <action dev="bmg" type="update">
+            CXF security configuration now uses global configurations.
+         </action>
+      </release>
    </body>
 </document>

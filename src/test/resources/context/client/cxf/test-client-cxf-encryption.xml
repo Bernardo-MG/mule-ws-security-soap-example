@@ -22,6 +22,7 @@
       <value>src/main/app/endpoint-cxf-encryption.xml</value>
       <value>src/main/app/ws-cxf-encryption.xml</value>
       <value>src/main/app/client-cxf-encryption.xml</value>
+      <value>src/main/app/security-cxf.xml</value>
       <value>src/main/app/config.xml</value>
       <value>src/main/app/utils.xml</value>
       <value>src/main/app/transformer.xml</value>
