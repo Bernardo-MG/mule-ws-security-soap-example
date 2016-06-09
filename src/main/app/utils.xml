@@ -37,16 +37,16 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
       <choice doc:name="Choice">
          <when expression="payload is javax.xml.stream.XMLStreamReader">
             <mulexml:dom-to-xml-transformer
-               doc:name="DOM to XML" />
+               doc:name="DOM to XML" mimeType="text/xml"/>
          </when>
          <otherwise>
             <mulexml:object-to-xml-transformer
-               doc:name="Object to XML" />
+               doc:name="Object to XML" mimeType="text/xml"/>
          </otherwise>
       </choice>
       <transformer ref="EntityXmlToModel" doc:name="XML to model" />
       <mulexml:object-to-xml-transformer
-         doc:name="Object to XML" />
+         doc:name="Object to XML" mimeType="text/xml"/>
    </sub-flow>
 
    <sub-flow name="Transform-Consumer-Request-Vars">
