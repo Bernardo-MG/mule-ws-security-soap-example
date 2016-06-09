@@ -2,11 +2,11 @@
 
 Maven-based [Mule][mule] application showcasing the configuration of secured SOAP web services.
 
-Mule is an Enterprise Service Bus, meant to connect together online applications. This example just touches an specific part of the web services support it offers, to be precise the security layer.
+Mule is an Enterprise Service Bus, meant to connect together online applications. This example just touches an specific part of the web services support it offers, to be precise the security layer, and is prepared for the Community Edition.
 
-It includes an endpoint for each type of endpoint Mule supports (code-first, WSDL-first, simple, proxy and consumer), and to these all the possible security protocols (unsecured, password, signed and encrypted) are applied.
+It includes an endpoint for each type of endpoint Mule supports, which are four ways of implementing a CXF endpoint and an endpoint consumer. To these all the possible security protocols (unsecured, password, signed and encrypted) are applied.
 
-It is meant to be just an example, and for that reason is kept as simple as possible, avoiding the use of external web services. Still it tries to show how a real application would be built.
+It is meant to be just an example, and for that reason is kept as simple as possible, avoiding the use of external web services. Still it tries to show how a real application would be built, and is divided into layers, including services and persistence.
 
 ## Features
 
@@ -43,7 +43,7 @@ The project has been tested on the following Java versions:
 * JDK 7
 * OpenJDK 7
 
-It also requires a Mule runtime environment. For development this can be taken care by the [Anypoint Studio][anypoint-studio].
+It also requires a Mule runtime environment, which may be the Community or Enterprise Edition. For development this can be taken care by the [Anypoint Studio][anypoint-studio].
 
 All other dependencies are handled through Maven, and noted in the included POM file. This includes the plugins used for running the demo in an embedded web server.
 
