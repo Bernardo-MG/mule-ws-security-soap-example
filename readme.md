@@ -43,7 +43,8 @@ The project has been tested on the following Java versions:
 * JDK 7
 * OpenJDK 7
 
-It also requires a Mule runtime environment, which may be the Community or Enterprise Edition. For development this can be taken care by the [Anypoint Studio][anypoint-studio].
+As it is a Mule project, it also requires the following Mule version:
+* Mule 3.7.0CE
 
 All other dependencies are handled through Maven, and noted in the included POM file. This includes the plugins used for running the demo in an embedded web server.
 
@@ -150,5 +151,4 @@ The project has been released under the [MIT License][license].
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-ws-security-soap-example
 
-[anypoint-studio]: https://www.mulesoft.com/platform/studio
 [mule]: https://www.mulesoft.com
