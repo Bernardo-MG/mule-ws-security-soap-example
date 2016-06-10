@@ -267,7 +267,6 @@
       <log4j.version>2.6.1</log4j.version>
       <mail.version>1.4.7</mail.version>
       <mina.version>2.0.13</mina.version>
-      <mule.tools.version>1.1</mule.tools.version>
       <mule.version>3.7.0</mule.version>
       <munit.version>1.1.0</munit.version>
       <munit.support.version>3.7.1</munit.support.version>
@@ -306,7 +305,7 @@
       <plugin.jdepend.version>2.0</plugin.jdepend.version>
       <plugin.jxr.version>2.5</plugin.jxr.version>
       <plugin.lifecycle.version>1.0.0</plugin.lifecycle.version>
-      <plugin.mule.version>${mule.tools.version}</plugin.mule.version>
+      <plugin.mule.version>1.1</plugin.mule.version>
       <plugin.munit.version>${munit.version}</plugin.munit.version>
       <plugin.pmd.version>3.6</plugin.pmd.version>
       <plugin.release.version>2.5.3</plugin.release.version>
