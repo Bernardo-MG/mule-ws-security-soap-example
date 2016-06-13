@@ -54,7 +54,7 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
 public final class EntityXmlToModelTransformer extends AbstractTransformer {
 
     /**
-     * Constructs a {@code EntityXmlToModelTransformer}.
+     * Default constructor.
      */
     public EntityXmlToModelTransformer() {
         super();

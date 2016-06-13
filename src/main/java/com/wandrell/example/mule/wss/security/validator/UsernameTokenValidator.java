@@ -48,32 +48,67 @@ public final class UsernameTokenValidator implements Validator {
                                                .getLogger(SamlCustomValidator.class);
 
     /**
-     * Default constructor.
+     * Valid user.
      */
-    public UsernameTokenValidator() {
+    private final String        user;
+
+    /**
+     * Password for the user.
+     */
+    private final String        password;
+
+    /**
+     * Default constructor.
+     * 
+     * @param username
+     *            valid username
+     * @param pass
+     *            password for the username
+     */
+    public UsernameTokenValidator(final String username, final String pass) {
         super();
+
+        user = checkNotNull(username, "Received a null pointer as username");
+        password = checkNotNull(pass, "Received a null pointer as password");
     }
 
     @Override
     public final Credential validate(final Credential credential,
             final RequestData data) throws WSSecurityException {
-        final UsernameToken usernameToken;
+        final UsernameToken usernameToken; // Token to validate
 
         checkNotNull(credential, "Received a null pointer as credential");
         checkNotNull(data, "Received a null pointer as data");
 
         usernameToken = credential.getUsernametoken();
 
-        // TODO: Users and passwords may be injected as dependencies
-        if (!"myPassword".equalsIgnoreCase(usernameToken.getPassword())) {
-            throw new WSSecurityException(
-                    WSSecurityException.FAILED_AUTHENTICATION);
-        } else {
+        if ((!getUser().equals(usernameToken.getName()))
+                || (!getPassword().equals(usernameToken.getPassword()))) {
             LOGGER.debug(String.format("Rejected password %2$s for user %1$s",
                     usernameToken.getName(), usernameToken.getPassword()));
+            throw new WSSecurityException(
+                    WSSecurityException.FAILED_AUTHENTICATION);
         }
 
         return credential;
+    }
+
+    /**
+     * Returns the user password.
+     * 
+     * @return the user password
+     */
+    private final String getPassword() {
+        return password;
+    }
+
+    /**
+     * Returns the valid user.
+     * 
+     * @return the valid user
+     */
+    private final String getUser() {
+        return user;
     }
 
 }

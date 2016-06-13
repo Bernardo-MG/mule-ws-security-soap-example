@@ -59,7 +59,7 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
                                                .getLogger(SoapEnvelopeStripper.class);
 
     /**
-     * Constructs a {@code SoapEnvelopeStripper}.
+     * Default constructor.
      */
     public SoapEnvelopeStripper() {
         super();
