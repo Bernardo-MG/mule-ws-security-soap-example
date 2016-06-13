@@ -38,8 +38,6 @@ import org.apache.ws.security.saml.ext.bean.AuthenticationStatementBean;
 import org.apache.ws.security.saml.ext.bean.SubjectBean;
 import org.apache.ws.security.saml.ext.builder.SAML2Constants;
 import org.opensaml.common.SAMLVersion;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Callback handler for handling SAML 2.0 messages. It will use a SAML
@@ -52,25 +50,29 @@ import org.slf4j.LoggerFactory;
 public final class SamlCallbackHandler implements CallbackHandler {
 
     /**
-     * The logger used for logging the callback handler.
-     */
-    private static final Logger LOGGER = LoggerFactory
-                                               .getLogger(SamlCallbackHandler.class);
-
-    /**
      * SAML 2.0 confirmation method.
      */
-    private final String        confirmationMethod;
+    private final String      confirmationMethod = SAML2Constants.CONF_SENDER_VOUCHES;
 
     /**
      * Name of the subject.
      */
-    private final String        subjectName;
+    private final String      subjectName;
 
     /**
      * Qualifier for the subject.
      */
-    private final String        subjectQualifier;
+    private final String      subjectQualifier;
+
+    /**
+     * Supported SAML version.
+     */
+    private final SAMLVersion samlVersion        = SAMLVersion.VERSION_20;
+
+    /**
+     * Supported authentication method.
+     */
+    private final String      authentication     = "Password";
 
     /**
      * Constructs a callback handler for the specified subject.
@@ -87,14 +89,22 @@ public final class SamlCallbackHandler implements CallbackHandler {
                 "Received a null pointer as subject name");
         subjectQualifier = checkNotNull(qualifier,
                 "Received a null pointer as subject qualifier");
-        confirmationMethod = SAML2Constants.CONF_SENDER_VOUCHES;
+    }
+
+    /**
+     * Returns the supported authentication method.
+     * 
+     * @return the supported authentication method
+     */
+    public String getAuthentication() {
+        return authentication;
     }
 
     @Override
     public final void handle(final Callback[] callbacks) throws IOException,
             UnsupportedCallbackException {
-        SAMLCallback samlCallback; // SAML callback
-        SubjectBean subject; // Subject data
+        SAMLCallback samlCallback;            // SAML callback
+        SubjectBean subject;                  // Subject data
         AuthenticationStatementBean authBean; // Auth statement
 
         checkNotNull(callbacks, "Received a null pointer as callbacks");
@@ -106,17 +116,16 @@ public final class SamlCallbackHandler implements CallbackHandler {
                 subject = new SubjectBean(getSubjectName(),
                         getSubjectQualifier(), getConfirmationMethod());
 
-                samlCallback.setSamlVersion(SAMLVersion.VERSION_20);
+                samlCallback.setSamlVersion(getSamlVersion());
                 samlCallback.setSubject(subject);
 
                 authBean = new AuthenticationStatementBean();
                 authBean.setSubject(subject);
-                authBean.setAuthenticationMethod("Password");
+                authBean.setAuthenticationMethod(getAuthentication());
 
                 samlCallback.setAuthenticationStatementData(Collections
                         .singletonList(authBean));
             } else {
-                LOGGER.debug("Unrecognized callback");
                 throw new UnsupportedCallbackException(callback,
                         "Unrecognized callback");
             }
@@ -130,6 +139,15 @@ public final class SamlCallbackHandler implements CallbackHandler {
      */
     private final String getConfirmationMethod() {
         return confirmationMethod;
+    }
+
+    /**
+     * Returns the supported SAML version.
+     * 
+     * @return the supported SAML version
+     */
+    private SAMLVersion getSamlVersion() {
+        return samlVersion;
     }
 
     /**

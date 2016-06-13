@@ -95,6 +95,9 @@ public final class PasswordCallbackHandler implements CallbackHandler {
                             "User data for username %s not found",
                             passCallb.getIdentifier()));
                 }
+            } else {
+                throw new UnsupportedCallbackException(callback,
+                        "Unrecognized callback");
             }
         }
 

@@ -40,7 +40,7 @@
       <cxf:ws-config>
          <cxf:property key="action" value="SAMLTokenUnsigned" />
          <cxf:property key="samlPropFile" value="${security.saml.properties}" />
-         <cxf:property key="samlCallbackRef" value-ref="samlCallbackHandler" />
+         <cxf:property key="samlCallbackRef" value-ref="samlPasswordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
 

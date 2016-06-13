@@ -52,9 +52,6 @@
       </release>
       <release version="2.3.0" date="2016-06-13" description="Callback handler changes">
          <action dev="bmg" type="update">
-            Added Spring-WS Security classes for the password callback handler.
-         </action>
-         <action dev="bmg" type="update">
             The password callback handler is now initialized with the expected data.
          </action>
          <action dev="bmg" type="update">

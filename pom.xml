@@ -238,10 +238,12 @@
    <properties>
       <!-- Encoding -->
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+      <project.reporting.outputEncoding>${project.build.sourceEncoding}
+      </project.reporting.outputEncoding>
       <!-- Java version -->
       <maven.compiler.source>1.7</maven.compiler.source>
-      <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+      <maven.compiler.target>${maven.compiler.source}
+      </maven.compiler.target>
       <!-- Manifest data -->
       <manifest.name>com/wandrell/example/mule/wss</manifest.name>
       <!-- Dependencies versions -->
@@ -509,12 +511,6 @@
          <!-- Spring WS -->
          <groupId>org.springframework.ws</groupId>
          <artifactId>spring-ws-core</artifactId>
-         <version>${spring.ws.version}</version>
-      </dependency>
-      <dependency>
-         <!-- Spring WS Security -->
-         <groupId>org.springframework.ws</groupId>
-         <artifactId>spring-ws-security</artifactId>
          <version>${spring.ws.version}</version>
       </dependency>
       <dependency>
