@@ -53,68 +53,68 @@ import com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity;
  */
 public final class EntityXmlToModelTransformer extends AbstractTransformer {
 
-	/**
-	 * Constructs a {@code EntityXmlToModelTransformer}.
-	 */
-	public EntityXmlToModelTransformer() {
-		super();
-	}
+    /**
+     * Constructs a {@code EntityXmlToModelTransformer}.
+     */
+    public EntityXmlToModelTransformer() {
+        super();
+    }
 
-	/**
-	 * Parses a {@code XmlExampleEntity} from the received XML.
-	 * 
-	 * @param xml
-	 *            the XML to parse
-	 * @return a {@code XmlExampleEntity} parsed from the XML
-	 * @throws JDOMException
-	 *             if a JDOM error occurs during parsing
-	 * @throws IOException
-	 *             if a I/O error occurs during parsing
-	 */
-	private final XmlExampleEntity parseEntity(final String xml)
-			throws JDOMException, IOException {
-		final SAXBuilder saxBuilder; // SAX builder to parse the SOAP message
-		final Element entityNode; // Node with the entity data
-		final Element root; // Root of the parsed XML
-		final XmlExampleEntity entity; // Entity with the parsed data
-		final Document doc; // Document created from the XML
+    /**
+     * Parses a {@code XmlExampleEntity} from the received XML.
+     * 
+     * @param xml
+     *            the XML to parse
+     * @return a {@code XmlExampleEntity} parsed from the XML
+     * @throws JDOMException
+     *             if a JDOM error occurs during parsing
+     * @throws IOException
+     *             if a I/O error occurs during parsing
+     */
+    private final XmlExampleEntity parseEntity(final String xml)
+            throws JDOMException, IOException {
+        final SAXBuilder saxBuilder; // SAX builder to parse the SOAP message
+        final Element entityNode; // Node with the entity data
+        final Element root; // Root of the parsed XML
+        final XmlExampleEntity entity; // Entity with the parsed data
+        final Document doc; // Document created from the XML
 
-		// Parses the XML
-		saxBuilder = new SAXBuilder();
-		doc = saxBuilder.build(new StringReader(xml));
+        // Parses the XML
+        saxBuilder = new SAXBuilder();
+        doc = saxBuilder.build(new StringReader(xml));
 
-		// Acquires the root and the entity node
-		root = doc.getRootElement();
-		if (root.getChildren().size() == 1) {
-			// The root is wrapped
-			// This is a SOAP response
-			entityNode = (Element) root.getChildren().iterator().next();
-		} else {
-			entityNode = root;
-		}
+        // Acquires the root and the entity node
+        root = doc.getRootElement();
+        if (root.getChildren().size() == 1) {
+            // The root is wrapped
+            // This is a SOAP response
+            entityNode = (Element) root.getChildren().iterator().next();
+        } else {
+            entityNode = root;
+        }
 
-		// Creates the resulting entity
-		entity = new XmlExampleEntity();
-		entity.setId(Integer.parseInt(entityNode.getChild("id").getText()));
-		entity.setName(entityNode.getChild("name").getText());
+        // Creates the resulting entity
+        entity = new XmlExampleEntity();
+        entity.setId(Integer.parseInt(entityNode.getChild("id").getText()));
+        entity.setName(entityNode.getChild("name").getText());
 
-		return entity;
-	}
+        return entity;
+    }
 
-	@Override
-	protected final XmlExampleEntity doTransform(final Object src,
-			final String enc) throws TransformerException {
-		final XmlExampleEntity sample; // Parsed entity
+    @Override
+    protected final XmlExampleEntity doTransform(final Object src,
+            final String enc) throws TransformerException {
+        final XmlExampleEntity sample; // Parsed entity
 
-		checkNotNull(src, "Received a null pointer as source");
+        checkNotNull(src, "Received a null pointer as source");
 
-		try {
-			sample = parseEntity(src.toString());
-		} catch (JDOMException | IOException e) {
-			throw new TransformerException(this, e);
-		}
+        try {
+            sample = parseEntity(src.toString());
+        } catch (JDOMException | IOException e) {
+            throw new TransformerException(this, e);
+        }
 
-		return sample;
-	}
+        return sample;
+    }
 
 }

@@ -44,103 +44,103 @@ import org.slf4j.LoggerFactory;
  */
 public final class SamlCustomValidator extends SamlAssertionValidator {
 
-	/**
-	 * The logger used for logging the validator.
-	 */
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(SamlCustomValidator.class);
+    /**
+     * The logger used for logging the validator.
+     */
+    private static final Logger LOGGER = LoggerFactory
+                                               .getLogger(SamlCustomValidator.class);
 
-	/**
-	 * The issuer name.
-	 */
-	private final String issuerName;
+    /**
+     * The issuer name.
+     */
+    private final String        issuerName;
 
-	/**
-	 * The subject name.
-	 */
-	private final String subjectName;
+    /**
+     * The subject name.
+     */
+    private final String        subjectName;
 
-	/**
-	 * Default constructor.
-	 * 
-	 * @param name
-	 *            the subject name
-	 * @param issuer
-	 *            the issuer name
-	 */
-	public SamlCustomValidator(final String name, final String issuer) {
-		super();
+    /**
+     * Default constructor.
+     * 
+     * @param name
+     *            the subject name
+     * @param issuer
+     *            the issuer name
+     */
+    public SamlCustomValidator(final String name, final String issuer) {
+        super();
 
-		subjectName = checkNotNull(name,
-				"Received a null pointer as the subject name");
-		issuerName = checkNotNull(issuer,
-				"Received a null pointer as the issuer name");
-	}
+        subjectName = checkNotNull(name,
+                "Received a null pointer as the subject name");
+        issuerName = checkNotNull(issuer,
+                "Received a null pointer as the issuer name");
+    }
 
-	/**
-	 * Returns the issuer name.
-	 * 
-	 * @return the issuer name
-	 */
-	public final String getIssuerName() {
-		return issuerName;
-	}
+    /**
+     * Returns the issuer name.
+     * 
+     * @return the issuer name
+     */
+    public final String getIssuerName() {
+        return issuerName;
+    }
 
-	@Override
-	public final Credential validate(final Credential credential,
-			final RequestData data) throws WSSecurityException {
-		final Credential returnedCredential; // Credential to work with
+    @Override
+    public final Credential validate(final Credential credential,
+            final RequestData data) throws WSSecurityException {
+        final Credential returnedCredential; // Credential to work with
 
-		checkNotNull(credential, "Received a null pointer as credential");
-		checkNotNull(data, "Received a null pointer as data");
+        checkNotNull(credential, "Received a null pointer as credential");
+        checkNotNull(data, "Received a null pointer as data");
 
-		returnedCredential = super.validate(credential, data);
+        returnedCredential = super.validate(credential, data);
 
-		// Reject not self issued credentials
-		AssertionWrapper assertion = credential.getAssertion();
-		if (!getIssuerName().equals(assertion.getIssuerString())) {
-			LOGGER.debug("Invalid issuer name");
-			throw new WSSecurityException(WSSecurityException.FAILURE,
-					"Invalid issuer name");
-		}
+        // Reject not self issued credentials
+        AssertionWrapper assertion = credential.getAssertion();
+        if (!getIssuerName().equals(assertion.getIssuerString())) {
+            LOGGER.debug("Invalid issuer name");
+            throw new WSSecurityException(WSSecurityException.FAILURE,
+                    "Invalid issuer name");
+        }
 
-		// Reject if it doesn't support SAML 2.0
-		if (assertion.getSaml2() == null) {
-			LOGGER.debug("SAML 2.0 not supported");
-			throw new WSSecurityException(WSSecurityException.FAILURE,
-					"SAML 2.0 not supported");
-		}
+        // Reject if it doesn't support SAML 2.0
+        if (assertion.getSaml2() == null) {
+            LOGGER.debug("SAML 2.0 not supported");
+            throw new WSSecurityException(WSSecurityException.FAILURE,
+                    "SAML 2.0 not supported");
+        }
 
-		// Reject if there is no confirmation method
-		String confirmationMethod = assertion.getConfirmationMethods().get(0);
-		if (confirmationMethod == null) {
-			LOGGER.debug("Invalid confirmation method");
-			throw new WSSecurityException(WSSecurityException.FAILURE,
-					"Invalid confirmation method");
-		}
-		if (!OpenSAMLUtil.isMethodSenderVouches(confirmationMethod)) {
-			LOGGER.debug("Sender is not vouching for the message");
-			throw new WSSecurityException(WSSecurityException.FAILURE,
-					"Sender is not vouching for the message");
-		}
+        // Reject if there is no confirmation method
+        String confirmationMethod = assertion.getConfirmationMethods().get(0);
+        if (confirmationMethod == null) {
+            LOGGER.debug("Invalid confirmation method");
+            throw new WSSecurityException(WSSecurityException.FAILURE,
+                    "Invalid confirmation method");
+        }
+        if (!OpenSAMLUtil.isMethodSenderVouches(confirmationMethod)) {
+            LOGGER.debug("Sender is not vouching for the message");
+            throw new WSSecurityException(WSSecurityException.FAILURE,
+                    "Sender is not vouching for the message");
+        }
 
-		if (!getSubjectName().equals(
-				assertion.getSaml2().getSubject().getNameID().getValue())) {
-			LOGGER.debug("Invalid subject name");
-			throw new WSSecurityException(WSSecurityException.FAILURE,
-					"Invalid subject name");
-		}
+        if (!getSubjectName().equals(
+                assertion.getSaml2().getSubject().getNameID().getValue())) {
+            LOGGER.debug("Invalid subject name");
+            throw new WSSecurityException(WSSecurityException.FAILURE,
+                    "Invalid subject name");
+        }
 
-		return returnedCredential;
-	}
+        return returnedCredential;
+    }
 
-	/**
-	 * Returns the name of the subject.
-	 * 
-	 * @return the name of the subject
-	 */
-	private final String getSubjectName() {
-		return subjectName;
-	}
+    /**
+     * Returns the name of the subject.
+     * 
+     * @return the name of the subject
+     */
+    private final String getSubjectName() {
+        return subjectName;
+    }
 
 }

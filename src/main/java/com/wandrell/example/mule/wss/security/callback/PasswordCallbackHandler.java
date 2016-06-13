@@ -55,6 +55,7 @@ public final class PasswordCallbackHandler implements CallbackHandler {
      * Valid user.
      */
     private final String        user;
+
     /**
      * Password for the user.
      */
@@ -62,30 +63,17 @@ public final class PasswordCallbackHandler implements CallbackHandler {
 
     /**
      * Default constructor.
+     * 
+     * @param username
+     *            valid username
+     * @param pass
+     *            password for the username
      */
     public PasswordCallbackHandler(final String username, final String pass) {
         super();
 
-        user = checkNotNull(username,
-                "Received a null pointer as username");
-        password = checkNotNull(pass,
-                "Received a null pointer as password");
-    }
-
-    /**
-     * Returns the valid user.
-     * @return the valid user
-     */
-    public final String getUser() {
-        return user;
-    }
-
-    /**
-     * Returns the user password.
-     * @return the user password
-     */
-    public final String getPassword() {
-        return password;
+        user = checkNotNull(username, "Received a null pointer as username");
+        password = checkNotNull(pass, "Received a null pointer as password");
     }
 
     @Override
@@ -105,7 +93,7 @@ public final class PasswordCallbackHandler implements CallbackHandler {
 
         passCallb = (WSPasswordCallback) callbacks[0];
 
-        if (getUser().equalsIgnoreCase(passCallb.getIdentifier())) {
+        if (getUser().equals(passCallb.getIdentifier())) {
             // User for password-based security
             passCallb.setPassword(getPassword());
         } else {
@@ -113,6 +101,24 @@ public final class PasswordCallbackHandler implements CallbackHandler {
             LOGGER.debug(String.format("User for username %s not found",
                     passCallb.getIdentifier()));
         }
+    }
+
+    /**
+     * Returns the user password.
+     * 
+     * @return the user password
+     */
+    private final String getPassword() {
+        return password;
+    }
+
+    /**
+     * Returns the valid user.
+     * 
+     * @return the valid user
+     */
+    private final String getUser() {
+        return user;
     }
 
 }

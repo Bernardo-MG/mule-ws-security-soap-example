@@ -48,7 +48,7 @@
       <cxf:ws-config>
          <cxf:property key="action" value="UsernameToken Signature" />
          <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-         <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
 
@@ -57,7 +57,7 @@
          <cxf:property key="action" value="UsernameToken Signature" />
          <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
          <cxf:property key="user" value="${keystore.alias}" />
-         <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
 

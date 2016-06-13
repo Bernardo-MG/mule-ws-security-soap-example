@@ -41,39 +41,39 @@ import org.slf4j.LoggerFactory;
  */
 public final class UsernameTokenValidator implements Validator {
 
-	/**
-	 * The logger used for logging the validator.
-	 */
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(SamlCustomValidator.class);
+    /**
+     * The logger used for logging the validator.
+     */
+    private static final Logger LOGGER = LoggerFactory
+                                               .getLogger(SamlCustomValidator.class);
 
-	/**
-	 * Default constructor.
-	 */
-	public UsernameTokenValidator() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public UsernameTokenValidator() {
+        super();
+    }
 
-	@Override
-	public final Credential validate(final Credential credential,
-			final RequestData data) throws WSSecurityException {
-		final UsernameToken usernameToken;
+    @Override
+    public final Credential validate(final Credential credential,
+            final RequestData data) throws WSSecurityException {
+        final UsernameToken usernameToken;
 
-		checkNotNull(credential, "Received a null pointer as credential");
-		checkNotNull(data, "Received a null pointer as data");
+        checkNotNull(credential, "Received a null pointer as credential");
+        checkNotNull(data, "Received a null pointer as data");
 
-		usernameToken = credential.getUsernametoken();
+        usernameToken = credential.getUsernametoken();
 
-		// TODO: Users and passwords may be injected as dependencies
-		if (!"myPassword".equalsIgnoreCase(usernameToken.getPassword())) {
-			throw new WSSecurityException(
-					WSSecurityException.FAILED_AUTHENTICATION);
-		} else {
-			LOGGER.debug(String.format("Rejected password %2$s for user %1$s",
-					usernameToken.getName(), usernameToken.getPassword()));
-		}
+        // TODO: Users and passwords may be injected as dependencies
+        if (!"myPassword".equalsIgnoreCase(usernameToken.getPassword())) {
+            throw new WSSecurityException(
+                    WSSecurityException.FAILED_AUTHENTICATION);
+        } else {
+            LOGGER.debug(String.format("Rejected password %2$s for user %1$s",
+                    usernameToken.getName(), usernameToken.getPassword()));
+        }
 
-		return credential;
-	}
+        return credential;
+    }
 
 }

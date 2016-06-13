@@ -55,66 +55,69 @@ import com.wandrell.example.mule.wss.service.domain.ExampleEntityService;
  */
 @Service
 @Singleton
-@WebService(endpointInterface = "com.wandrell.example.mule.wss.endpoint.ExampleEntityEndpoint", serviceName = ExampleEntityEndpointConstants.SERVICE, targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
+@WebService(
+        endpointInterface = "com.wandrell.example.mule.wss.endpoint.ExampleEntityEndpoint",
+        serviceName = ExampleEntityEndpointConstants.SERVICE,
+        targetNamespace = ExampleEntityEndpointConstants.ENTITY_NS)
 public final class CodeFirstExampleEntityEndpoint implements
-		ExampleEntityEndpoint {
+        ExampleEntityEndpoint {
 
-	/**
-	 * The logger used for logging the entity endpoint.
-	 */
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(CodeFirstExampleEntityEndpoint.class);
+    /**
+     * The logger used for logging the entity endpoint.
+     */
+    private static final Logger        LOGGER = LoggerFactory
+                                                      .getLogger(CodeFirstExampleEntityEndpoint.class);
 
-	/**
-	 * Service for accessing the {@code ExampleEntity} instances handled by the
-	 * web service.
-	 */
-	private final ExampleEntityService entityService;
+    /**
+     * Service for accessing the {@code ExampleEntity} instances handled by the
+     * web service.
+     */
+    private final ExampleEntityService entityService;
 
-	/**
-	 * Constructs a {@code CodeFirstExampleEntityEndpoint}.
-	 * <p>
-	 * The constructor is meant to make use of Spring's IOC system.
-	 *
-	 * @param service
-	 *            the service for the {@code ExampleEntity} instances
-	 */
-	@Autowired
-	public CodeFirstExampleEntityEndpoint(final ExampleEntityService service) {
-		super();
+    /**
+     * Constructs a {@code CodeFirstExampleEntityEndpoint}.
+     * <p>
+     * The constructor is meant to make use of Spring's IOC system.
+     *
+     * @param service
+     *            the service for the {@code ExampleEntity} instances
+     */
+    @Autowired
+    public CodeFirstExampleEntityEndpoint(final ExampleEntityService service) {
+        super();
 
-		entityService = checkNotNull(service,
-				"Received a null pointer as service");
-	}
+        entityService = checkNotNull(service,
+                "Received a null pointer as service");
+    }
 
-	@Override
-	public XmlExampleEntity getEntity(final Integer id) {
-		final XmlExampleEntity response; // XML response with the entity data
-		final ExampleEntity entity; // Found entity
+    @Override
+    public XmlExampleEntity getEntity(final Integer id) {
+        final XmlExampleEntity response; // XML response with the entity data
+        final ExampleEntity entity; // Found entity
 
-		checkNotNull(id, "Received a null pointer as id");
+        checkNotNull(id, "Received a null pointer as id");
 
-		LOGGER.debug(String.format("Received request for id %d", id));
+        LOGGER.debug(String.format("Received request for id %d", id));
 
-		// Acquires the entity
-		entity = getExampleEntityService().findById(id);
+        // Acquires the entity
+        entity = getExampleEntityService().findById(id);
 
-		response = new XmlExampleEntity();
-		BeanUtils.copyProperties(entity, response);
+        response = new XmlExampleEntity();
+        BeanUtils.copyProperties(entity, response);
 
-		LOGGER.debug(String.format("Found entity with id %1$d and name %2$s",
-				entity.getId(), entity.getName()));
+        LOGGER.debug(String.format("Found entity with id %1$d and name %2$s",
+                entity.getId(), entity.getName()));
 
-		return response;
-	}
+        return response;
+    }
 
-	/**
-	 * Returns the service used to handle the {@code ExampleEntity} instances.
-	 *
-	 * @return the service used to handle the {@code ExampleEntity} instances
-	 */
-	private final ExampleEntityService getExampleEntityService() {
-		return entityService;
-	}
+    /**
+     * Returns the service used to handle the {@code ExampleEntity} instances.
+     *
+     * @return the service used to handle the {@code ExampleEntity} instances
+     */
+    private final ExampleEntityService getExampleEntityService() {
+        return entityService;
+    }
 
 }
