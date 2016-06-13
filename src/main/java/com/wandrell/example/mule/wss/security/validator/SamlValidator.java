@@ -42,13 +42,13 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Bernardo Martínez Garrido
  */
-public final class SamlCustomValidator extends SamlAssertionValidator {
+public final class SamlValidator extends SamlAssertionValidator {
 
     /**
      * The logger used for logging the validator.
      */
     private static final Logger LOGGER = LoggerFactory
-                                               .getLogger(SamlCustomValidator.class);
+                                               .getLogger(SamlValidator.class);
 
     /**
      * The issuer name.
@@ -68,7 +68,7 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
      * @param issuer
      *            the issuer name
      */
-    public SamlCustomValidator(final String name, final String issuer) {
+    public SamlValidator(final String name, final String issuer) {
         super();
 
         subjectName = checkNotNull(name,
@@ -77,19 +77,11 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
                 "Received a null pointer as the issuer name");
     }
 
-    /**
-     * Returns the issuer name.
-     * 
-     * @return the issuer name
-     */
-    public final String getIssuerName() {
-        return issuerName;
-    }
-
     @Override
     public final Credential validate(final Credential credential,
             final RequestData data) throws WSSecurityException {
         final Credential returnedCredential; // Credential to work with
+        final String confirmationMethod;     // Confirmation method
 
         checkNotNull(credential, "Received a null pointer as credential");
         checkNotNull(data, "Received a null pointer as data");
@@ -112,18 +104,21 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
         }
 
         // Reject if there is no confirmation method
-        String confirmationMethod = assertion.getConfirmationMethods().get(0);
+        confirmationMethod = assertion.getConfirmationMethods().get(0);
         if (confirmationMethod == null) {
             LOGGER.debug("Invalid confirmation method");
             throw new WSSecurityException(WSSecurityException.FAILURE,
                     "Invalid confirmation method");
         }
+        
+        // Reject if the sender does not vouch for the message
         if (!OpenSAMLUtil.isMethodSenderVouches(confirmationMethod)) {
             LOGGER.debug("Sender is not vouching for the message");
             throw new WSSecurityException(WSSecurityException.FAILURE,
                     "Sender is not vouching for the message");
         }
 
+        // Reject if the subject name is not the expected one
         if (!getSubjectName().equals(
                 assertion.getSaml2().getSubject().getNameID().getValue())) {
             LOGGER.debug("Invalid subject name");
@@ -132,6 +127,15 @@ public final class SamlCustomValidator extends SamlAssertionValidator {
         }
 
         return returnedCredential;
+    }
+
+    /**
+     * Returns the issuer name.
+     * 
+     * @return the issuer name
+     */
+    private final String getIssuerName() {
+        return issuerName;
     }
 
     /**

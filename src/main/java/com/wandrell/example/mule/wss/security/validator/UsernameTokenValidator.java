@@ -45,7 +45,7 @@ public final class UsernameTokenValidator implements Validator {
      * The logger used for logging the validator.
      */
     private static final Logger LOGGER = LoggerFactory
-                                               .getLogger(SamlCustomValidator.class);
+                                               .getLogger(SamlValidator.class);
 
     /**
      * Valid user.
