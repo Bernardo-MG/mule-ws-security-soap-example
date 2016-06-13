@@ -39,9 +39,9 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 import org.xml.sax.SAXException;
 
-import com.wandrell.example.mule.wss.flow.transformer.SoapEnvelopeStripper;
 import com.wandrell.example.mule.wss.testing.util.config.context.TestContextPaths;
 import com.wandrell.example.mule.wss.testing.util.config.properties.SoapWsdlFirstPropertiesPaths;
+import com.wandrell.example.mule.wss.transformer.SoapEnvelopeStripper;
 
 /**
  * Unit tests for {@link SoapEnvelopeStripper} checking that the transformer

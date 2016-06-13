@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.wandrell.example.mule.wss.flow.transformer;
+package com.wandrell.example.mule.wss.transformer;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
