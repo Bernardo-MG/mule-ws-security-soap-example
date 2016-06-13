@@ -46,48 +46,73 @@ import org.slf4j.LoggerFactory;
  */
 public final class PasswordCallbackHandler implements CallbackHandler {
 
-	/**
-	 * The logger used for logging the password callback handler usage.
-	 */
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(PasswordCallbackHandler.class);
+    /**
+     * The logger used for logging the password callback handler usage.
+     */
+    private static final Logger LOGGER = LoggerFactory
+                                               .getLogger(PasswordCallbackHandler.class);
+    /**
+     * Valid user.
+     */
+    private final String        user;
+    /**
+     * Password for the user.
+     */
+    private final String        password;
 
-	/**
-	 * Default constructor.
-	 */
-	public PasswordCallbackHandler() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public PasswordCallbackHandler(final String username, final String pass) {
+        super();
 
-	@Override
-	public final void handle(final Callback[] callbacks) throws IOException,
-			UnsupportedCallbackException {
-		final Callback callback; // The callback to use
-		final WSPasswordCallback passCallb; // Casted callback
+        user = checkNotNull(username,
+                "Received a null pointer as username");
+        password = checkNotNull(pass,
+                "Received a null pointer as password");
+    }
 
-		checkNotNull(callbacks, "Received a null pointer as callbacks");
-		checkArgument(callbacks.length > 0, "No callbacks received");
+    /**
+     * Returns the valid user.
+     * @return the valid user
+     */
+    public final String getUser() {
+        return user;
+    }
 
-		callback = callbacks[0];
-		if (!(callback instanceof WSPasswordCallback)) {
-			throw new UnsupportedCallbackException(callback,
-					"The received callback is not a WSPasswordCallback");
-		}
+    /**
+     * Returns the user password.
+     * @return the user password
+     */
+    public final String getPassword() {
+        return password;
+    }
 
-		passCallb = (WSPasswordCallback) callbacks[0];
+    @Override
+    public final void handle(final Callback[] callbacks) throws IOException,
+            UnsupportedCallbackException {
+        final Callback callback; // The callback to use
+        final WSPasswordCallback passCallb; // Casted callback
 
-		// TODO: Users and passwords may be injected as dependencies
-		if ("myUser".equalsIgnoreCase(passCallb.getIdentifier())) {
-			// User for password-based security
-			passCallb.setPassword("myPassword");
-		} else if ("swss-cert".equalsIgnoreCase(passCallb.getIdentifier())) {
-			// User for password-based security
-			passCallb.setPassword("123456");
-		} else {
-			// User not found
-			LOGGER.debug(String.format("User for username %s not found",
-					passCallb.getIdentifier()));
-		}
-	}
+        checkNotNull(callbacks, "Received a null pointer as callbacks");
+        checkArgument(callbacks.length > 0, "No callbacks received");
+
+        callback = callbacks[0];
+        if (!(callback instanceof WSPasswordCallback)) {
+            throw new UnsupportedCallbackException(callback,
+                    "The received callback is not a WSPasswordCallback");
+        }
+
+        passCallb = (WSPasswordCallback) callbacks[0];
+
+        if (getUser().equalsIgnoreCase(passCallb.getIdentifier())) {
+            // User for password-based security
+            passCallb.setPassword(getPassword());
+        } else {
+            // User not found
+            LOGGER.debug(String.format("User for username %s not found",
+                    passCallb.getIdentifier()));
+        }
+    }
 
 }

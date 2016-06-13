@@ -50,9 +50,12 @@
             CXF security configuration now uses global configurations.
          </action>
       </release>
-      <release version="2.3.0" date="2016-06-07" description="Spring WS Security">
+      <release version="2.3.0" date="2016-06-13" description="Callback handler changes">
          <action dev="bmg" type="update">
-            Added Spring-WS Security classes.
+            Added Spring-WS Security classes for the password callback handler.
+         </action>
+         <action dev="bmg" type="update">
+            The password callback handler is now initialized with the expected data.
          </action>
       </release>
    </body>
