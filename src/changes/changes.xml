@@ -50,5 +50,10 @@
             CXF security configuration now uses global configurations.
          </action>
       </release>
+      <release version="2.3.0" date="2016-06-07" description="Spring WS Security">
+         <action dev="bmg" type="update">
+            Added Spring-WS Security classes.
+         </action>
+      </release>
    </body>
 </document>

@@ -5,8 +5,15 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 
-   <bean id="passwordCallbackHandler" class="${security.callback.password.class}" />
+   <!-- Security service -->
+   <bean id="userDetailsService" class="${service.userDetails.class}" />
 
+   <!-- Password callback handler -->
+   <bean id="passwordCallbackHandler" class="${security.callback.password.class}">
+      <property name="userDetailsService" ref="userDetailsService" />
+   </bean>
+
+   <!-- SAML password callback handler -->
    <bean id="samlCallbackHandler" class="${security.callback.saml.class}">
       <constructor-arg index="0" type="java.lang.String"
          value="${security.saml.subject.name}" />
@@ -14,12 +21,14 @@
          value="${security.saml.subject.qualifier}" />
    </bean>
 
+   <!-- SAML validator -->
    <bean id="samlValidator" class="${security.validator.saml.class}">
       <constructor-arg index="0" type="java.lang.String"
          value="${security.saml.subject.name}" />
       <constructor-arg index="1" type="java.lang.String" value="${security.saml.issuer}" />
    </bean>
 
+   <!-- Username validator -->
    <bean id="usernameValidator" class="${security.validator.username.class}" />
 
 </beans>
