@@ -24,7 +24,6 @@
 
 package com.wandrell.example.mule.wss.security.callback;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.IOException;
@@ -79,28 +78,26 @@ public final class PasswordCallbackHandler implements CallbackHandler {
     @Override
     public final void handle(final Callback[] callbacks) throws IOException,
             UnsupportedCallbackException {
-        final Callback callback; // The callback to use
-        final WSPasswordCallback passCallb; // Casted callback
+        WSPasswordCallback passCallb; // Casted callback
 
         checkNotNull(callbacks, "Received a null pointer as callbacks");
-        checkArgument(callbacks.length > 0, "No callbacks received");
 
-        callback = callbacks[0];
-        if (!(callback instanceof WSPasswordCallback)) {
-            throw new UnsupportedCallbackException(callback,
-                    "The received callback is not a WSPasswordCallback");
+        for (final Callback callback : callbacks) {
+            if (callback instanceof WSPasswordCallback) {
+                passCallb = (WSPasswordCallback) callback;
+
+                if (getUser().equals(passCallb.getIdentifier())) {
+                    // Valid user
+                    passCallb.setPassword(getPassword());
+                } else {
+                    // Invalid user
+                    LOGGER.debug(String.format(
+                            "User data for username %s not found",
+                            passCallb.getIdentifier()));
+                }
+            }
         }
 
-        passCallb = (WSPasswordCallback) callbacks[0];
-
-        if (getUser().equals(passCallb.getIdentifier())) {
-            // User for password-based security
-            passCallb.setPassword(getPassword());
-        } else {
-            // User not found
-            LOGGER.debug(String.format("User for username %s not found",
-                    passCallb.getIdentifier()));
-        }
     }
 
     /**
