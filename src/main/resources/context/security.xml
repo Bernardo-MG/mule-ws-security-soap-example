@@ -28,6 +28,14 @@
       <constructor-arg index="1" type="java.lang.String" value="${security.saml.issuer}" />
    </bean>
 
+   <!-- Keystore password callback handler -->
+   <bean id="keystorePasswordCallbackHandler" class="${security.callback.password.keystore.class}"/>
+
+   <!-- Keystore callback handler -->
+   <bean id="keystoreCallbackHandler" class="${security.callback.keystore.class}">
+      <property name="privateKeyPassword" value="${keystore.password}" />
+   </bean>
+
    <!-- Username validator -->
    <bean id="usernameValidator" class="${security.validator.username.class}" />
 
