@@ -38,6 +38,11 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
          <spring:constructor-arg
             value="classpath:soap/request/request-unsecure-payload.xml" type="java.io.InputStream" />
       </spring:bean>
+      <spring:bean id="requestMessage" class="org.apache.commons.io.IOUtils"
+         factory-method="toString">
+         <spring:constructor-arg
+            value="classpath:soap/request/request-unsecure.xml" type="java.io.InputStream" />
+      </spring:bean>
    </spring:beans>
 
    <munit:test name="Read-HTTP-Variables-Acquires-Variable"
@@ -77,6 +82,17 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
       <flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform-Consumer-Request-Vars" />
       <munit:assert-payload-equals
          expectedValue="#[app.registry.requestOperation]" doc:name="Expected response" />
+   </munit:test>
+
+   <munit:test name="Transform-Consumer-Request-XmlExampleEntity-Generates-SOAP"
+      description="A GetEntityResponse.Return is transformed into the expected XML result">
+      <munit:set payload="#[app.registry.requestMessage]"
+         doc:name="Set entity" />
+      <flow-ref name="Transform-Consumer-Request" doc:name="Transform-Consumer-Request" />
+      <munit:set payload="#[payload.trim().replaceAll(&quot;\\s+&quot;,&quot;&quot;)]"
+         doc:name="Trim result" />
+      <munit:assert-payload-equals
+         expectedValue="#[app.registry.requestOperation.trim().replaceAll(&quot;\\s+&quot;,&quot;&quot;)]" doc:name="Expected response" />
    </munit:test>
 
 </mule>
