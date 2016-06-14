@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.mulesoft.org/schema/mule/core"
-   xmlns:mock="http://www.mulesoft.org/schema/mule/mock" xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
-   xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans"
-   xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<mule xmlns:context="http://www.springframework.org/schema/context"
+   xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:mock="http://www.mulesoft.org/schema/mule/mock"
+   xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+   xmlns:spring="http://www.springframework.org/schema/beans" xmlns:core="http://www.mulesoft.org/schema/mule/core"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd
 http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
@@ -16,19 +17,53 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 
    <spring:beans>
       <spring:import resource="classpath:utils.xml" />
+      <spring:import resource="classpath:transformer.xml" />
+      <spring:bean id="xmlExampleEntity"
+         class="com.wandrell.example.mule.wss.model.jaxb.XmlExampleEntity">
+         <spring:property name="id" value="1" />
+         <spring:property name="name" value="xmlExampleEntity_1" />
+      </spring:bean>
+      <spring:bean id="xmlExampleEntityResponse" class="org.apache.commons.io.IOUtils"
+         factory-method="toString">
+         <spring:constructor-arg
+            value="classpath:soap/transform/XmlExampleEntity.xml" type="java.io.InputStream" />
+      </spring:bean>
+      <spring:bean id="generatedEntity"
+         class="com.wandrell.example.mule.wss.generated.GetEntityResponse.Return">
+         <spring:property name="id" value="1" />
+         <spring:property name="name" value="xmlExampleEntity_1" />
+      </spring:bean>
    </spring:beans>
 
    <munit:test name="Read-HTTP-Variables-Acquires-Variable"
       description="The id is read correctly from the HTTP parameters">
-      <munit:set payload="#['']" doc:name="Set parameters">
+      <munit:set payload="#['']" doc:name="Set HTTP id">
          <munit:inbound-properties>
             <munit:inbound-property key="http.query.params"
                value="#[['id':'1']]" />
          </munit:inbound-properties>
       </munit:set>
       <flow-ref name="Read-HTTP-Variables" doc:name="Read-HTTP-Variables" />
-      <munit:assert-payload-equals expectedValue="#[new Integer(1)]"
-         doc:name="Assert Payload" />
+      <munit:assert-payload-equals
+         expectedValue="#[new Integer(1)]" doc:name="Id in payload" />
+   </munit:test>
+
+   <munit:test name="Transform-Response-Transforms-XmlExampleEntity"
+      description="An XmlExampleEntity is transformed into the expected XML result">
+      <munit:set payload="#[app.registry.xmlExampleEntity]"
+         doc:name="Set entity" />
+      <flow-ref name="Transform-Response" doc:name="Transform-Response" />
+      <munit:assert-payload-equals
+         expectedValue="#[app.registry.xmlExampleEntityResponse]" doc:name="Expected response" />
+   </munit:test>
+
+   <munit:test name="Transform-Response-Transforms-Generated-Entity"
+      description="A GetEntityResponse.Return is transformed into the expected XML result">
+      <munit:set payload="#[app.registry.generatedEntity]"
+         doc:name="Set entity" />
+      <flow-ref name="Transform-Response" doc:name="Transform-Response" />
+      <munit:assert-payload-equals
+         expectedValue="#[app.registry.xmlExampleEntityResponse]" doc:name="Expected response" />
    </munit:test>
 
 </mule>
