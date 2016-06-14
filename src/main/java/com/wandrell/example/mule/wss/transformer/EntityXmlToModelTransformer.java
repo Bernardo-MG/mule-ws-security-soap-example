@@ -73,11 +73,11 @@ public final class EntityXmlToModelTransformer extends AbstractTransformer {
      */
     private final XmlExampleEntity parseEntity(final String xml)
             throws JDOMException, IOException {
-        final SAXBuilder saxBuilder; // SAX builder to parse the SOAP message
-        final Element entityNode; // Node with the entity data
-        final Element root; // Root of the parsed XML
+        final SAXBuilder saxBuilder;   // SAX builder to parse the SOAP message
+        final Element entityNode;      // Node with the entity data
+        final Element root;            // Root of the parsed XML
         final XmlExampleEntity entity; // Entity with the parsed data
-        final Document doc; // Document created from the XML
+        final Document doc;            // Document created from the XML
 
         // Parses the XML
         saxBuilder = new SAXBuilder();

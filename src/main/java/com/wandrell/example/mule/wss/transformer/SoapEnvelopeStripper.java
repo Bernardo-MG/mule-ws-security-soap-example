@@ -55,8 +55,20 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
     /**
      * The logger used for logging the transformer.
      */
-    private static final Logger LOGGER = LoggerFactory
-                                               .getLogger(SoapEnvelopeStripper.class);
+    private static final Logger LOGGER   = LoggerFactory
+                                                 .getLogger(SoapEnvelopeStripper.class);
+
+    /**
+     * Soap 1.2 namespace.
+     */
+    private static final Namespace     soap12ns = Namespace
+                                                 .getNamespace("http://www.w3.org/2003/05/soap-envelope");
+
+    /**
+     * Soap 1.1 namespace.
+     */
+    private static final Namespace     soap11ns = Namespace
+                                                 .getNamespace("http://schemas.xmlsoap.org/soap/envelope/");
 
     /**
      * Default constructor.
@@ -71,36 +83,27 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
      * The received element should be the root of a SOAP message, from which the
      * element annotated as the body will be extracted.
      * <p>
-     * This SOAP message should be using the base SOAP namespace,
-     * {@code http://schemas.xmlsoap.org/soap/envelope/}, or the 2003 revision,
-     * {@code http://www.w3.org/2003/05/soap-envelope}. Otherwise the body won't
-     * be found.
+     * To acquire the body both the SOAP 1.1 and 1.2 namespaces will be used.
      * 
      * @param soap
      *            the SOAP message element
      * @return the SOAP body element
      */
     private final Element getBody(final Element soap) {
-        final Namespace soapNs; // Base SOAP namespace
-        final Namespace soapNs2003; // 2003 revision SOAP namespace
-        Element body; // Element with the SOAP body
+        Element body;                // Element with the SOAP body
 
-        // Tries to find the body by using the base SOAP namespace
-        soapNs = Namespace
-                .getNamespace("http://schemas.xmlsoap.org/soap/envelope/");
-        body = soap.getChild("Body", soapNs);
+        // Tries to find the body by using the SOAP 1.1 namespace
+        body = soap.getChild("Body", getSoap11Namespace());
         if (body == null) {
-            body = soap.getChild("body", soapNs);
+            body = soap.getChild("body", getSoap11Namespace());
         }
 
         if (body == null) {
             // Body not found
-            // Now tries the 2003 revision namespace
-            soapNs2003 = Namespace
-                    .getNamespace("http://www.w3.org/2003/05/soap-envelope");
-            body = soap.getChild("Body", soapNs2003);
+            // Now tries the SOAP 1.2 namespace
+            body = soap.getChild("Body", getSoap12Namespace());
             if (body == null) {
-                body = soap.getChild("body", soapNs2003);
+                body = soap.getChild("body", getSoap12Namespace());
             }
         }
 
@@ -118,6 +121,24 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
      */
     private final Element getOperation(final Element body) {
         return (Element) body.getChildren().iterator().next();
+    }
+
+    /**
+     * Returns the SOAP 1.1 namespace.
+     * 
+     * @return the SOAP 1.1 namespace
+     */
+    private final Namespace getSoap11Namespace() {
+        return soap11ns;
+    }
+
+    /**
+     * Returns the SOAP 1.2 namespace.
+     * 
+     * @return the SOAP 1.2 namespace
+     */
+    private final Namespace getSoap12Namespace() {
+        return soap12ns;
     }
 
     /**
