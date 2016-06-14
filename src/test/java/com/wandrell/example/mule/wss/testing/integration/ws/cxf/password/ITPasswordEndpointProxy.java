@@ -40,14 +40,14 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  */
 @ContextConfiguration(WebServiceContextPaths.PASSWORD)
 @TestPropertySource({ WebServiceProxyPropertiesPaths.PASSWORD,
-		SoapProxyPropertiesPaths.PASSWORD })
+        SoapProxyPropertiesPaths.PASSWORD })
 public final class ITPasswordEndpointProxy extends AbstractITSecuredEndpoint {
 
-	/**
-	 * Default constructor.
-	 */
-	public ITPasswordEndpointProxy() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public ITPasswordEndpointProxy() {
+        super();
+    }
 
 }

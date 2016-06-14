@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientCodeFirstPropertiesPaths.ENCRYPTION })
 public final class ITEncryptionClientCodeFirst extends AbstractITClientFlow {
 
-	/**
-	 * Default constructor.
-	 */
-	public ITEncryptionClientCodeFirst() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public ITEncryptionClientCodeFirst() {
+        super();
+    }
 
 }

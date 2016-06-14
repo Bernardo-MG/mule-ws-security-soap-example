@@ -110,7 +110,7 @@ public final class SamlValidator extends SamlAssertionValidator {
             throw new WSSecurityException(WSSecurityException.FAILURE,
                     "Invalid confirmation method");
         }
-        
+
         // Reject if the sender does not vouch for the message
         if (!OpenSAMLUtil.isMethodSenderVouches(confirmationMethod)) {
             LOGGER.debug("Sender is not vouching for the message");

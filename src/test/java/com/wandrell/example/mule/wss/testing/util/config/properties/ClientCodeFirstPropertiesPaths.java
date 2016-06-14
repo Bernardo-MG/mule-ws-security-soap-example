@@ -34,36 +34,36 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
  */
 public final class ClientCodeFirstPropertiesPaths {
 
-	/**
-	 * Encrypted.
-	 */
-	public static final String ENCRYPTION = "classpath:config/client/cxf/encryption/test-client-cxf-encryption-code-first.properties";
+    /**
+     * Encrypted.
+     */
+    public static final String ENCRYPTION    = "classpath:config/client/cxf/encryption/test-client-cxf-encryption-code-first.properties";
 
-	/**
-	 * Password protected.
-	 */
-	public static final String PASSWORD = "classpath:config/client/cxf/password/test-client-cxf-password-code-first.properties";
+    /**
+     * Password protected.
+     */
+    public static final String PASSWORD      = "classpath:config/client/cxf/password/test-client-cxf-password-code-first.properties";
 
-	/**
-	 * Password protected with SAML.
-	 */
-	public static final String PASSWORD_SAML = "classpath:config/client/cxf/password/saml/test-client-cxf-password-saml-code-first.properties";
+    /**
+     * Password protected with SAML.
+     */
+    public static final String PASSWORD_SAML = "classpath:config/client/cxf/password/saml/test-client-cxf-password-saml-code-first.properties";
 
-	/**
-	 * Signed.
-	 */
-	public static final String SIGNATURE = "classpath:config/client/cxf/signature/test-client-cxf-signature-code-first.properties";
+    /**
+     * Signed.
+     */
+    public static final String SIGNATURE     = "classpath:config/client/cxf/signature/test-client-cxf-signature-code-first.properties";
 
-	/**
-	 * Unsecure.
-	 */
-	public static final String UNSECURE = "classpath:config/client/cxf/unsecure/test-client-cxf-unsecure-code-first.properties";
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE      = "classpath:config/client/cxf/unsecure/test-client-cxf-unsecure-code-first.properties";
 
-	/**
-	 * Private constructor to avoid initialization.
-	 */
-	private ClientCodeFirstPropertiesPaths() {
-		super();
-	}
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private ClientCodeFirstPropertiesPaths() {
+        super();
+    }
 
 }

@@ -61,63 +61,63 @@ import com.wandrell.example.mule.wss.testing.util.config.properties.SoapProperti
 @TestPropertySource({ SoapPropertiesPaths.JAXB })
 public class AbstractITClientFlow extends FunctionalTestCase {
 
-	/**
-	 * Name of the flow being tested.
-	 */
-	@Value("${client.flow}")
-	private String clientFlow;
+    /**
+     * Name of the flow being tested.
+     */
+    @Value("${client.flow}")
+    private String   clientFlow;
 
-	/**
-	 * Configuration files to be loaded to build the Mule context.
-	 */
-	@Resource(name = "configFiles")
-	private String[] files;
+    /**
+     * Configuration files to be loaded to build the Mule context.
+     */
+    @Resource(name = "configFiles")
+    private String[] files;
 
-	/**
-	 * Path to the SOAP payload for the response.
-	 */
-	@Value("${soap.response.payload.path}")
-	private String responsePath;
+    /**
+     * Path to the SOAP payload for the response.
+     */
+    @Value("${soap.response.payload.path}")
+    private String   responsePath;
 
-	/**
-	 * Default constructor.
-	 */
-	public AbstractITClientFlow() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public AbstractITClientFlow() {
+        super();
+    }
 
-	/**
-	 * Tests that a valid payload is processed and a valid response returned.
-	 * 
-	 * @throws Exception
-	 *             never, this is a required declaration
-	 */
-	@Test
-	public void testClient() throws Exception {
-		final Integer[] payload; // Payload sent to the flow
-		final String result; // Response from the endpoint
-		final String encoding; // Files encoding
-		final String response; // SOAP response
+    /**
+     * Tests that a valid payload is processed and a valid response returned.
+     * 
+     * @throws Exception
+     *             never, this is a required declaration
+     */
+    @Test
+    public void testClient() throws Exception {
+        final Integer[] payload; // Payload sent to the flow
+        final String result; // Response from the endpoint
+        final String encoding; // Files encoding
+        final String response; // SOAP response
 
-		// Loads the messages
-		encoding = "UTF-8";
-		response = IOUtils.toString(
-				new ClassPathResource(responsePath).getInputStream(), encoding);
+        // Loads the messages
+        encoding = "UTF-8";
+        response = IOUtils.toString(
+                new ClassPathResource(responsePath).getInputStream(), encoding);
 
-		// Prepares the payload
-		payload = new Integer[] { new Integer(1) };
+        // Prepares the payload
+        payload = new Integer[] { new Integer(1) };
 
-		// Sends the request to the flow
-		result = runFlow(clientFlow, payload).getMessageAsString();
+        // Sends the request to the flow
+        result = runFlow(clientFlow, payload).getMessageAsString();
 
-		// Verifies results
-		XMLUnit.setIgnoreWhitespace(true);
-		XMLAssert.assertXMLEqual(response, result);
-	}
+        // Verifies results
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(response, result);
+    }
 
-	@Override
-	protected String getConfigResources() {
-		return StringUtils.join(files, ", ");
-	}
+    @Override
+    protected String getConfigResources() {
+        return StringUtils.join(files, ", ");
+    }
 
 }

@@ -31,26 +31,26 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
  */
 public final class WebServiceContextPaths {
 
-	/**
-	 * Consumer.
-	 */
-	public static final String CONSUMER = "classpath:context/ws/consumer/test-ws-consumer.xml";
+    /**
+     * Consumer.
+     */
+    public static final String CONSUMER = "classpath:context/ws/consumer/test-ws-consumer.xml";
 
-	/**
-	 * Password protected.
-	 */
-	public static final String PASSWORD = "classpath:context/ws/cxf/test-ws-cxf-password.xml";
+    /**
+     * Password protected.
+     */
+    public static final String PASSWORD = "classpath:context/ws/cxf/test-ws-cxf-password.xml";
 
-	/**
-	 * Unsecure.
-	 */
-	public static final String UNSECURE = "classpath:context/ws/cxf/test-ws-cxf-unsecure.xml";
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE = "classpath:context/ws/cxf/test-ws-cxf-unsecure.xml";
 
-	/**
-	 * Private constructor to avoid initialization.
-	 */
-	private WebServiceContextPaths() {
-		super();
-	}
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private WebServiceContextPaths() {
+        super();
+    }
 
 }

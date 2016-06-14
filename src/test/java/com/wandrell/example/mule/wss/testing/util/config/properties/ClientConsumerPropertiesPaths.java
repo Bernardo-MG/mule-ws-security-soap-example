@@ -34,31 +34,31 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
  */
 public final class ClientConsumerPropertiesPaths {
 
-	/**
-	 * Encrypted.
-	 */
-	public static final String ENCRYPTION = "classpath:config/client/consumer/test-client-consumer-encryption-consumer.properties";
+    /**
+     * Encrypted.
+     */
+    public static final String ENCRYPTION = "classpath:config/client/consumer/test-client-consumer-encryption-consumer.properties";
 
-	/**
-	 * Password protected.
-	 */
-	public static final String PASSWORD = "classpath:config/client/consumer/test-client-consumer-password-consumer.properties";
+    /**
+     * Password protected.
+     */
+    public static final String PASSWORD   = "classpath:config/client/consumer/test-client-consumer-password-consumer.properties";
 
-	/**
-	 * Signed.
-	 */
-	public static final String SIGNATURE = "classpath:config/client/consumer/test-client-consumer-signature-consumer.properties";
+    /**
+     * Signed.
+     */
+    public static final String SIGNATURE  = "classpath:config/client/consumer/test-client-consumer-signature-consumer.properties";
 
-	/**
-	 * Unsecure.
-	 */
-	public static final String UNSECURE = "classpath:config/client/consumer/test-client-consumer-unsecure-consumer.properties";
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE   = "classpath:config/client/consumer/test-client-consumer-unsecure-consumer.properties";
 
-	/**
-	 * Private constructor to avoid initialization.
-	 */
-	private ClientConsumerPropertiesPaths() {
-		super();
-	}
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private ClientConsumerPropertiesPaths() {
+        super();
+    }
 
 }

@@ -29,8 +29,7 @@
  * EntityXmlToModelTransformer} is used, as part of some of the helper flows, to
  * ensure all the clients return XML messages using the same format.
  * <p>
- * The
- * {@link com.wandrell.example.mule.wss.transformer.SoapEnvelopeStripper
+ * The {@link com.wandrell.example.mule.wss.transformer.SoapEnvelopeStripper
  * SoapEnvelopeStripper} takes out the body contents from a SOAP message, and is
  * meant to be used for the consumers, which will build their own SOAP message
  * from this data.

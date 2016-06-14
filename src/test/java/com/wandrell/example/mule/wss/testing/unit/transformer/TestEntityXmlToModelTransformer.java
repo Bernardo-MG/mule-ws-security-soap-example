@@ -59,79 +59,79 @@ import com.wandrell.example.mule.wss.transformer.EntityXmlToModelTransformer;
 @ContextConfiguration(locations = { TestContextPaths.DEFAULT })
 @TestPropertySource({ SoapPropertiesPaths.UNSECURE_TRANSFORMER })
 public final class TestEntityXmlToModelTransformer extends
-		AbstractTestNGSpringContextTests {
+        AbstractTestNGSpringContextTests {
 
-	/**
-	 * Path to the Code-First endpoint message payload.
-	 */
-	@Value("${soap.response.codeFirst.payload.path}")
-	private String codeFirstPath;
+    /**
+     * Path to the Code-First endpoint message payload.
+     */
+    @Value("${soap.response.codeFirst.payload.path}")
+    private String codeFirstPath;
 
-	/**
-	 * Path to the WSDL-First endpoint message payload.
-	 */
-	@Value("${soap.response.wsdlFirst.payload.path}")
-	private String wsdlFirstPath;
+    /**
+     * Path to the WSDL-First endpoint message payload.
+     */
+    @Value("${soap.response.wsdlFirst.payload.path}")
+    private String wsdlFirstPath;
 
-	/**
-	 * Default constructor.
-	 */
-	public TestEntityXmlToModelTransformer() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public TestEntityXmlToModelTransformer() {
+        super();
+    }
 
-	/**
-	 * Tests that the transformer correctly parses a XML message from a
-	 * code-first endpoint.
-	 * 
-	 * @throws TransformerException
-	 *             never, this is a required declaration
-	 * @throws IOException
-	 *             never, this is a required declaration
-	 */
-	@Test
-	public final void testTransform_CodeFirst() throws TransformerException,
-			IOException {
-		final Transformer transformer; // Transformer to test
-		final ExampleEntity entity; // Parsed entity
-		final String source; // Message to parse
+    /**
+     * Tests that the transformer correctly parses a XML message from a
+     * code-first endpoint.
+     * 
+     * @throws TransformerException
+     *             never, this is a required declaration
+     * @throws IOException
+     *             never, this is a required declaration
+     */
+    @Test
+    public final void testTransform_CodeFirst() throws TransformerException,
+            IOException {
+        final Transformer transformer; // Transformer to test
+        final ExampleEntity entity; // Parsed entity
+        final String source; // Message to parse
 
-		source = IOUtils.toString(
-				new ClassPathResource(codeFirstPath).getInputStream(), "UTF-8");
+        source = IOUtils.toString(
+                new ClassPathResource(codeFirstPath).getInputStream(), "UTF-8");
 
-		transformer = new EntityXmlToModelTransformer();
+        transformer = new EntityXmlToModelTransformer();
 
-		entity = (ExampleEntity) transformer.transform(source, "UTF-8");
+        entity = (ExampleEntity) transformer.transform(source, "UTF-8");
 
-		Assert.assertEquals(entity.getId(), new Integer(1));
-		Assert.assertEquals(entity.getName(), "name_1");
-	}
+        Assert.assertEquals(entity.getId(), new Integer(1));
+        Assert.assertEquals(entity.getName(), "name_1");
+    }
 
-	/**
-	 * Tests that the transformer correctly parses a XML message from a
-	 * WSDL-first endpoint.
-	 * 
-	 * @throws TransformerException
-	 *             never, this is a required declaration
-	 * @throws IOException
-	 *             never, this is a required declaration
-	 */
-	@Test
-	public final void testTransform_WSDLFirst() throws TransformerException,
-			IOException {
-		final Transformer transformer; // Transformer to test
-		final ExampleEntity entity; // Parsed entity
-		final String source; // Message to parse
+    /**
+     * Tests that the transformer correctly parses a XML message from a
+     * WSDL-first endpoint.
+     * 
+     * @throws TransformerException
+     *             never, this is a required declaration
+     * @throws IOException
+     *             never, this is a required declaration
+     */
+    @Test
+    public final void testTransform_WSDLFirst() throws TransformerException,
+            IOException {
+        final Transformer transformer; // Transformer to test
+        final ExampleEntity entity; // Parsed entity
+        final String source; // Message to parse
 
-		source = IOUtils.toString(
-				new ClassPathResource(wsdlFirstPath).getInputStream(), "UTF-8");
+        source = IOUtils.toString(
+                new ClassPathResource(wsdlFirstPath).getInputStream(), "UTF-8");
 
-		transformer = new EntityXmlToModelTransformer();
+        transformer = new EntityXmlToModelTransformer();
 
-		entity = (ExampleEntity) transformer.transform(source, "UTF-8");
+        entity = (ExampleEntity) transformer.transform(source, "UTF-8");
 
-		Assert.assertEquals(entity.getId(), new Integer(1));
-		Assert.assertEquals(entity.getName(), "name_1");
-	}
+        Assert.assertEquals(entity.getId(), new Integer(1));
+        Assert.assertEquals(entity.getName(), "name_1");
+    }
 
 }

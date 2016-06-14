@@ -40,14 +40,14 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  */
 @ContextConfiguration(WebServiceContextPaths.UNSECURE)
 @TestPropertySource({ WebServiceCodeFirstPropertiesPaths.UNSECURE,
-		SoapCodeFirstPropertiesPaths.UNSECURE })
+        SoapCodeFirstPropertiesPaths.UNSECURE })
 public final class ITUnsecureEndpointCodeFirst extends AbstractITEndpoint {
 
-	/**
-	 * Default constructor.
-	 */
-	public ITUnsecureEndpointCodeFirst() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public ITUnsecureEndpointCodeFirst() {
+        super();
+    }
 
 }

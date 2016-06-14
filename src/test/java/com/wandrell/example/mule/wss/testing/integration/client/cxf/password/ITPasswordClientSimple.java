@@ -41,10 +41,10 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientSimplePropertiesPaths.PASSWORD })
 public final class ITPasswordClientSimple extends AbstractITClientFlow {
 
-	/**
-	 * Default constructor.
-	 */
-	public ITPasswordClientSimple() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public ITPasswordClientSimple() {
+        super();
+    }
 }

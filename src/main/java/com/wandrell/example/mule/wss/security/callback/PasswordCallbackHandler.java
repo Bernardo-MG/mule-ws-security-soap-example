@@ -50,7 +50,7 @@ public final class PasswordCallbackHandler implements CallbackHandler {
      */
     private static final Logger LOGGER = LoggerFactory
                                                .getLogger(PasswordCallbackHandler.class);
-    
+
     /**
      * Valid user.
      */

@@ -42,46 +42,46 @@ import org.testng.Assert;
  */
 public class AbstractITSecuredEndpoint extends AbstractITEndpoint {
 
-	/**
-	 * Name of the flow being tested.
-	 */
-	@Value("${endpoint.flow}")
-	private String endpointFlow;
+    /**
+     * Name of the flow being tested.
+     */
+    @Value("${endpoint.flow}")
+    private String endpointFlow;
 
-	/**
-	 * Path to the invalid SOAP envelope for the request.
-	 */
-	@Value("${soap.request.envelope.invalid.path}")
-	private String requestInvalidEnvelopePath;
+    /**
+     * Path to the invalid SOAP envelope for the request.
+     */
+    @Value("${soap.request.envelope.invalid.path}")
+    private String requestInvalidEnvelopePath;
 
-	/**
-	 * Default constructor.
-	 */
-	public AbstractITSecuredEndpoint() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public AbstractITSecuredEndpoint() {
+        super();
+    }
 
-	@Test
-	public final void testEndpoint_Envelope_Invalid() throws Exception {
-		final String exception;// Exception message from the endpoint
-		final String encoding; // Files encoding
-		final String request; // SOAP request
+    @Test
+    public final void testEndpoint_Envelope_Invalid() throws Exception {
+        final String exception;// Exception message from the endpoint
+        final String encoding; // Files encoding
+        final String request; // SOAP request
 
-		// Loads the messages
-		encoding = "UTF-8";
-		request = IOUtils.toString(new ClassPathResource(
-				requestInvalidEnvelopePath).getInputStream(), encoding);
-		// response = IOUtils.toString(
-		// new ClassPathResource(responseEnvelopePath).getInputStream(),
-		// encoding);
+        // Loads the messages
+        encoding = "UTF-8";
+        request = IOUtils.toString(new ClassPathResource(
+                requestInvalidEnvelopePath).getInputStream(), encoding);
+        // response = IOUtils.toString(
+        // new ClassPathResource(responseEnvelopePath).getInputStream(),
+        // encoding);
 
-		// Sends the request to the flow
-		exception = runFlow(endpointFlow, request).getMessage()
-				.getExceptionPayload().getMessage();
+        // Sends the request to the flow
+        exception = runFlow(endpointFlow, request).getMessage()
+                .getExceptionPayload().getMessage();
 
-		// Verifies that an exception message was returned
-		Assert.assertTrue(exception != null);
-		Assert.assertTrue(!exception.isEmpty());
-	}
+        // Verifies that an exception message was returned
+        Assert.assertTrue(exception != null);
+        Assert.assertTrue(!exception.isEmpty());
+    }
 
 }

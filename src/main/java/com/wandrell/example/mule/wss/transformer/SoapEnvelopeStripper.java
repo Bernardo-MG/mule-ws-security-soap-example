@@ -55,20 +55,20 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
     /**
      * The logger used for logging the transformer.
      */
-    private static final Logger LOGGER   = LoggerFactory
-                                                 .getLogger(SoapEnvelopeStripper.class);
+    private static final Logger    LOGGER   = LoggerFactory
+                                                    .getLogger(SoapEnvelopeStripper.class);
 
     /**
      * Soap 1.2 namespace.
      */
-    private static final Namespace     soap12ns = Namespace
-                                                 .getNamespace("http://www.w3.org/2003/05/soap-envelope");
+    private static final Namespace soap12ns = Namespace
+                                                    .getNamespace("http://www.w3.org/2003/05/soap-envelope");
 
     /**
      * Soap 1.1 namespace.
      */
-    private static final Namespace     soap11ns = Namespace
-                                                 .getNamespace("http://schemas.xmlsoap.org/soap/envelope/");
+    private static final Namespace soap11ns = Namespace
+                                                    .getNamespace("http://schemas.xmlsoap.org/soap/envelope/");
 
     /**
      * Default constructor.
@@ -166,7 +166,7 @@ public final class SoapEnvelopeStripper extends AbstractTransformer {
     @Override
     protected final String doTransform(final Object src, final String enc)
             throws TransformerException {
-        final Element root; // SOAP message root
+        final Element root;      // SOAP message root
         final Element operation; // SOAP message operation
 
         checkNotNull(src, "Received a null pointer as source");
