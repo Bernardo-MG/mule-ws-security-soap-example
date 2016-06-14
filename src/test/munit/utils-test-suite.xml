@@ -23,15 +23,20 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
          <spring:property name="id" value="1" />
          <spring:property name="name" value="xmlExampleEntity_1" />
       </spring:bean>
+      <spring:bean id="generatedEntity"
+         class="com.wandrell.example.mule.wss.generated.GetEntityResponse.Return">
+         <spring:property name="id" value="1" />
+         <spring:property name="name" value="xmlExampleEntity_1" />
+      </spring:bean>
       <spring:bean id="xmlExampleEntityResponse" class="org.apache.commons.io.IOUtils"
          factory-method="toString">
          <spring:constructor-arg
             value="classpath:soap/transform/XmlExampleEntity.xml" type="java.io.InputStream" />
       </spring:bean>
-      <spring:bean id="generatedEntity"
-         class="com.wandrell.example.mule.wss.generated.GetEntityResponse.Return">
-         <spring:property name="id" value="1" />
-         <spring:property name="name" value="xmlExampleEntity_1" />
+      <spring:bean id="requestOperation" class="org.apache.commons.io.IOUtils"
+         factory-method="toString">
+         <spring:constructor-arg
+            value="classpath:soap/request/request-unsecure-payload.xml" type="java.io.InputStream" />
       </spring:bean>
    </spring:beans>
 
@@ -64,6 +69,14 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
       <flow-ref name="Transform-Response" doc:name="Transform-Response" />
       <munit:assert-payload-equals
          expectedValue="#[app.registry.xmlExampleEntityResponse]" doc:name="Expected response" />
+   </munit:test>
+
+   <munit:test name="Transform-Consumer-Request-Vars-Generates-SOAP"
+      description="A GetEntityResponse.Return is transformed into the expected XML result">
+      <munit:set payload="#[1]" doc:name="Set id" />
+      <flow-ref name="Transform-Consumer-Request-Vars" doc:name="Transform-Consumer-Request-Vars" />
+      <munit:assert-payload-equals
+         expectedValue="#[app.registry.requestOperation]" doc:name="Expected response" />
    </munit:test>
 
 </mule>
