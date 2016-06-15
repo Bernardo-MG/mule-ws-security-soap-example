@@ -31,6 +31,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 
    <sub-flow name="Read-HTTP-Variables">
         <set-payload value="#[Integer.parseInt(message.inboundProperties.'http.query.params'.id)]" mimeType="text/plain" doc:name="Set id to payload"/>
+        <set-variable variableName="userName" value="#[message.inboundProperties.'http.query.params'.user]" doc:name="Load username"/>
    </sub-flow>
 
    <sub-flow name="Transform-Response">
@@ -61,7 +62,6 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
    </sub-flow>
 
    <sub-flow name="Transform-Consumer-Request">
-        <logger message="Payload: #[payload]" level="INFO" doc:name="Copy_of_Payload logger"/>
       <object-to-string-transformer doc:name="Object to string" />
       <transformer ref="SoapEnvelopeStripper" doc:name="Transform SOAP message" />
    </sub-flow>

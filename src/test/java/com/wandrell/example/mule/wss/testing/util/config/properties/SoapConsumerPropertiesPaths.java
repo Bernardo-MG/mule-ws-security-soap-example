@@ -25,7 +25,7 @@
 package com.wandrell.example.mule.wss.testing.util.config.properties;
 
 /**
- * Paths to the test SOAP messages for consumer endpoints properties files.
+ * Paths to the test SOAP messages properties files for consumers.
  * <p>
  * Each file contains the information for finding or generating SOAP messages
  * for the tests.

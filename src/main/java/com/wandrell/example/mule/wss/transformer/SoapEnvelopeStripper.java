@@ -47,6 +47,10 @@ import org.slf4j.LoggerFactory;
  * <p>
  * If the received object does not have an envelope element as the root then it
  * will be returned back.
+ * <p>
+ * Note that this transformer can probably be swapped by an xpath operation in
+ * the Mule flows, but this way it serves as an example of how to implement and
+ * use a transformer.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
