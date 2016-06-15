@@ -100,9 +100,9 @@ public final class TestSoapEnvelopeStripper extends
     public final void testTransform_Envelope_11() throws TransformerException,
             SAXException, IOException {
         final Transformer transformer; // Tested transformer
-        final String source; // Message being transformed
-        final String expected; // Expected result
-        final String result; // Result from the transformation
+        final String source;           // Message being transformed
+        final String expected;         // Expected result
+        final String result;           // Result from the transformation
 
         expected = IOUtils.toString(
                 new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
@@ -134,9 +134,9 @@ public final class TestSoapEnvelopeStripper extends
     public final void testTransform_Envelope_12() throws TransformerException,
             SAXException, IOException {
         final Transformer transformer; // Tested transformer
-        final String source; // Message being transformed
-        final String expected; // Expected result
-        final String result; // Result from the transformation
+        final String source;           // Message being transformed
+        final String expected;         // Expected result
+        final String result;           // Result from the transformation
 
         expected = IOUtils.toString(
                 new ClassPathResource(payloadPath).getInputStream(), "UTF-8");
@@ -169,9 +169,9 @@ public final class TestSoapEnvelopeStripper extends
     public final void testTransform_Payload() throws TransformerException,
             SAXException, IOException {
         final Transformer transformer; // Tested transformer
-        final String source; // Message being transformed
-        final String expected; // Expected result
-        final String result; // Result from the transformation
+        final String source;           // Message being transformed
+        final String expected;         // Expected result
+        final String result;           // Result from the transformation
 
         source = IOUtils.toString(
                 new ClassPathResource(payloadPath).getInputStream(), "UTF-8");

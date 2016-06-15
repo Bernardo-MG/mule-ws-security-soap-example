@@ -93,8 +93,8 @@ public final class TestEntityXmlToModelTransformer extends
     public final void testTransform_CodeFirst() throws TransformerException,
             IOException {
         final Transformer transformer; // Transformer to test
-        final ExampleEntity entity; // Parsed entity
-        final String source; // Message to parse
+        final ExampleEntity entity;    // Parsed entity
+        final String source;           // Message to parse
 
         source = IOUtils.toString(
                 new ClassPathResource(codeFirstPath).getInputStream(), "UTF-8");
@@ -120,8 +120,8 @@ public final class TestEntityXmlToModelTransformer extends
     public final void testTransform_WSDLFirst() throws TransformerException,
             IOException {
         final Transformer transformer; // Transformer to test
-        final ExampleEntity entity; // Parsed entity
-        final String source; // Message to parse
+        final ExampleEntity entity;    // Parsed entity
+        final String source;           // Message to parse
 
         source = IOUtils.toString(
                 new ClassPathResource(wsdlFirstPath).getInputStream(), "UTF-8");

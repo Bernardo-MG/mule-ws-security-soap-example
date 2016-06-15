@@ -63,9 +63,9 @@ public class AbstractITSecuredEndpoint extends AbstractITEndpoint {
 
     @Test
     public final void testEndpoint_Envelope_Invalid() throws Exception {
-        final String exception;// Exception message from the endpoint
-        final String encoding; // Files encoding
-        final String request; // SOAP request
+        final String exception; // Exception message from the endpoint
+        final String encoding;  // Files encoding
+        final String request;   // SOAP request
 
         // Loads the messages
         encoding = "UTF-8";

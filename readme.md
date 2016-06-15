@@ -6,7 +6,7 @@ Mule is an Enterprise Service Bus, meant to connect together online applications
 
 It includes an endpoint for each type of endpoint Mule supports, which are four ways of implementing a CXF endpoint and an endpoint consumer. To these all the possible security protocols (unsecured, password, signed and encrypted) are applied.
 
-It is meant to be just an example, and for that reason is kept as simple as possible, avoiding the use of external web services. Still it tries to show how a real application would be built, and is divided into layers, including services and persistence.
+It is meant to be just an example, and for that reason is kept as simple as possible, avoiding the use of external web services. Still it tries to show how a real application would be built, and is divided into layers, including services and persistence, created with the help of Spring.
 
 ## Features
 

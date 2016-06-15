@@ -33,8 +33,8 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.repository.ExampleEntityRepository;
 
 /**
- * Default implementation of {@link ExampleEntityService}, making use of Spring
- * for dependency injection.
+ * Default implementation of {@link ExampleEntityService}, prepared to make use
+ * of Spring for dependency injection.
  * <p>
  * It uses an {@link ExampleEntityRepository} for acquiring the entities.
  *

@@ -95,9 +95,9 @@ public class AbstractITClientFlow extends FunctionalTestCase {
     @Test
     public void testClient() throws Exception {
         final Integer[] payload; // Payload sent to the flow
-        final String result; // Response from the endpoint
-        final String encoding; // Files encoding
-        final String response; // SOAP response
+        final String result;     // Response from the endpoint
+        final String encoding;   // Files encoding
+        final String response;   // SOAP response
 
         // Loads the messages
         encoding = "UTF-8";

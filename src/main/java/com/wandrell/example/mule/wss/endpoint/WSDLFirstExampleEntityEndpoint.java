@@ -84,7 +84,7 @@ public final class WSDLFirstExampleEntityEndpoint implements EntityEndpoint {
     public final GetEntityResponse.Return getEntity(final int id) {
         final GetEntityResponse.Return response; // XML response with the entity
                                                  // data
-        final ExampleEntity entity; // Found entity
+        final ExampleEntity entity;              // Found entity
 
         checkNotNull(id, "Received a null pointer as id");
 

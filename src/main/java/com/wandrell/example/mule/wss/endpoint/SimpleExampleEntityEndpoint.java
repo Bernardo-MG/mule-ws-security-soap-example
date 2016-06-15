@@ -95,7 +95,7 @@ public final class SimpleExampleEntityEndpoint {
     public final XmlExampleEntity getEntity(@XmlElement(required = true,
             nillable = false) final Integer id) {
         final XmlExampleEntity response; // XML response with the entity data
-        final ExampleEntity entity; // Found entity
+        final ExampleEntity entity;      // Found entity
 
         if (id != null) {
             checkNotNull(id, "Received a null pointer as id");
@@ -110,8 +110,7 @@ public final class SimpleExampleEntityEndpoint {
                 LOGGER.debug("Entity not found");
             } else {
                 // The entity is transformed from the persistence model to the
-                // XML
-                // one
+                // XML one
                 response.setId(entity.getId());
                 response.setName(entity.getName());
 

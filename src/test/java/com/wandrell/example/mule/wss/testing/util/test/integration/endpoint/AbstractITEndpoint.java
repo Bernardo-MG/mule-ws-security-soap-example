@@ -96,9 +96,9 @@ public abstract class AbstractITEndpoint extends FunctionalTestCase {
      */
     @Test
     public final void testEndpoint_Envelope_ReturnsExpected() throws Exception {
-        final String result; // Response from the endpoint
+        final String result;   // Response from the endpoint
         final String encoding; // Files encoding
-        final String request; // SOAP request
+        final String request;  // SOAP request
         final String response; // SOAP response
 
         // Loads the messages

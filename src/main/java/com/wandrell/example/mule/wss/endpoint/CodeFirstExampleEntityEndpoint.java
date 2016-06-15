@@ -93,7 +93,7 @@ public final class CodeFirstExampleEntityEndpoint implements
     @Override
     public XmlExampleEntity getEntity(final Integer id) {
         final XmlExampleEntity response; // XML response with the entity data
-        final ExampleEntity entity; // Found entity
+        final ExampleEntity entity;      // Found entity
 
         checkNotNull(id, "Received a null pointer as id");
 
