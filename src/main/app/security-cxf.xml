@@ -21,7 +21,7 @@
    <cxf:ws-security name="passwordConfigClient">
       <cxf:ws-config>
          <cxf:property key="action" value="UsernameToken" />
-         <cxf:property key="user" value="#[flowVars.userName]"/>
+         <cxf:property key="user" value="${security.credentials.user}"/>
          <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
