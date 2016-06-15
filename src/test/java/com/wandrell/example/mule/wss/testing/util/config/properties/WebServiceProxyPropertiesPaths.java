@@ -34,21 +34,21 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
  */
 public final class WebServiceProxyPropertiesPaths {
 
-	/**
-	 * Password protected.
-	 */
-	public static final String PASSWORD = "classpath:config/ws/cxf/password/test-ws-cxf-password-proxy.properties";
+    /**
+     * Password protected.
+     */
+    public static final String PASSWORD = "classpath:config/ws/cxf/password/test-ws-cxf-password-proxy.properties";
 
-	/**
-	 * Unsecure.
-	 */
-	public static final String UNSECURE = "classpath:config/ws/cxf/unsecure/test-ws-cxf-unsecure-proxy.properties";
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE = "classpath:config/ws/cxf/unsecure/test-ws-cxf-unsecure-proxy.properties";
 
-	/**
-	 * Private constructor to avoid initialization.
-	 */
-	private WebServiceProxyPropertiesPaths() {
-		super();
-	}
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private WebServiceProxyPropertiesPaths() {
+        super();
+    }
 
 }

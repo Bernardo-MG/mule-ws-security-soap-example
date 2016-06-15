@@ -37,6 +37,6 @@ import com.wandrell.example.mule.wss.model.jpa.JpaExampleEntity;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 public interface ExampleEntityRepository extends
-		JpaRepository<JpaExampleEntity, Integer> {
+        JpaRepository<JpaExampleEntity, Integer> {
 
 }

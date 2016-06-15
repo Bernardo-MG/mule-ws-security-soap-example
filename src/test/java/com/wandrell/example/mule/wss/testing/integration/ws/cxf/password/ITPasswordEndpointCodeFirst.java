@@ -40,15 +40,15 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.endpoint.Abst
  */
 @ContextConfiguration(WebServiceContextPaths.PASSWORD)
 @TestPropertySource({ WebServiceCodeFirstPropertiesPaths.PASSWORD,
-		SoapCodeFirstPropertiesPaths.PASSWORD })
+        SoapCodeFirstPropertiesPaths.PASSWORD })
 public final class ITPasswordEndpointCodeFirst extends
-		AbstractITSecuredEndpoint {
+        AbstractITSecuredEndpoint {
 
-	/**
-	 * Default constructor.
-	 */
-	public ITPasswordEndpointCodeFirst() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public ITPasswordEndpointCodeFirst() {
+        super();
+    }
 
 }

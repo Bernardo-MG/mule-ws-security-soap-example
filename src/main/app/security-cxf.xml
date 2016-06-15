@@ -21,7 +21,7 @@
    <cxf:ws-security name="passwordConfigClient">
       <cxf:ws-config>
          <cxf:property key="action" value="UsernameToken" />
-         <cxf:property key="user" value="${security.credentials.user}" />
+         <cxf:property key="user" value="${security.credentials.user}"/>
          <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
@@ -40,7 +40,7 @@
       <cxf:ws-config>
          <cxf:property key="action" value="SAMLTokenUnsigned" />
          <cxf:property key="samlPropFile" value="${security.saml.properties}" />
-         <cxf:property key="samlCallbackRef" value-ref="samlCallbackHandler" />
+         <cxf:property key="samlCallbackRef" value-ref="samlPasswordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
 
@@ -48,7 +48,7 @@
       <cxf:ws-config>
          <cxf:property key="action" value="UsernameToken Signature" />
          <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
-         <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
 
@@ -57,7 +57,7 @@
          <cxf:property key="action" value="UsernameToken Signature" />
          <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
          <cxf:property key="user" value="${keystore.alias}" />
-         <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
 
@@ -65,7 +65,7 @@
       <cxf:ws-config>
          <cxf:property key="action" value="UsernameToken Encrypt" />
          <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
-         <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
 
@@ -75,7 +75,7 @@
          <cxf:property key="encryptionPropFile" value="${security.encryption.properties}" />
          <cxf:property key="user" value="${keystore.alias}" />
          <cxf:property key="encryptionUser" value="${keystore.alias}" />
-         <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
       </cxf:ws-config>
    </cxf:ws-security>
 

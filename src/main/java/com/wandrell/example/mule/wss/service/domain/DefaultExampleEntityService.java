@@ -33,8 +33,8 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
 import com.wandrell.example.mule.wss.repository.ExampleEntityRepository;
 
 /**
- * Default implementation of {@link ExampleEntityService}, making use of Spring
- * for dependency injection.
+ * Default implementation of {@link ExampleEntityService}, prepared to make use
+ * of Spring for dependency injection.
  * <p>
  * It uses an {@link ExampleEntityRepository} for acquiring the entities.
  *
@@ -43,46 +43,46 @@ import com.wandrell.example.mule.wss.repository.ExampleEntityRepository;
 @Service
 public class DefaultExampleEntityService implements ExampleEntityService {
 
-	/**
-	 * Repository for the {@code ExampleEntity} instances handled by the
-	 * service.
-	 * <p>
-	 * This is injected by Spring.
-	 */
-	private final ExampleEntityRepository entityRepository;
+    /**
+     * Repository for the {@code ExampleEntity} instances handled by the
+     * service.
+     * <p>
+     * This is injected by Spring.
+     */
+    private final ExampleEntityRepository entityRepository;
 
-	/**
-	 * Constructs a {@code DefaultExampleEntityService}.
-	 * <p>
-	 * The constructor is meant to make use of Spring's IOC system.
-	 *
-	 * @param repository
-	 *            the repository for the {@code ExampleEntity} instances
-	 */
-	@Autowired
-	public DefaultExampleEntityService(final ExampleEntityRepository repository) {
-		super();
+    /**
+     * Constructs a {@code DefaultExampleEntityService}.
+     * <p>
+     * The constructor is meant to make use of Spring's IOC system.
+     *
+     * @param repository
+     *            the repository for the {@code ExampleEntity} instances
+     */
+    @Autowired
+    public DefaultExampleEntityService(final ExampleEntityRepository repository) {
+        super();
 
-		this.entityRepository = checkNotNull(repository,
-				"Received a null pointer as repository");
-	}
+        this.entityRepository = checkNotNull(repository,
+                "Received a null pointer as repository");
+    }
 
-	@Override
-	public final ExampleEntity findById(final Integer identifier) {
-		checkNotNull(identifier, "Received a null pointer as identifier");
+    @Override
+    public final ExampleEntity findById(final Integer identifier) {
+        checkNotNull(identifier, "Received a null pointer as identifier");
 
-		return getExampleEntityRepository().findOne(identifier);
-	}
+        return getExampleEntityRepository().findOne(identifier);
+    }
 
-	/**
-	 * Returns the repository used to acquire the {@code ExampleEntity}
-	 * instances.
-	 *
-	 * @return the repository used to acquire the {@code ExampleEntity}
-	 *         instances
-	 */
-	private final ExampleEntityRepository getExampleEntityRepository() {
-		return entityRepository;
-	}
+    /**
+     * Returns the repository used to acquire the {@code ExampleEntity}
+     * instances.
+     *
+     * @return the repository used to acquire the {@code ExampleEntity}
+     *         instances
+     */
+    private final ExampleEntityRepository getExampleEntityRepository() {
+        return entityRepository;
+    }
 
 }

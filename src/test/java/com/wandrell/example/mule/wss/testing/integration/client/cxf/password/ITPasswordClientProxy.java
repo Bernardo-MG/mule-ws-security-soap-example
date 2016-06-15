@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientProxyPropertiesPaths.PASSWORD })
 public final class ITPasswordClientProxy extends AbstractITClientFlow {
 
-	/**
-	 * Default constructor.
-	 */
-	public ITPasswordClientProxy() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public ITPasswordClientProxy() {
+        super();
+    }
 
 }

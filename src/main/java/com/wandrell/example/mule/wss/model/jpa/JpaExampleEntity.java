@@ -48,84 +48,84 @@ import com.wandrell.example.mule.wss.model.ExampleEntity;
 @Table(name = "example_entities")
 public final class JpaExampleEntity implements ExampleEntity {
 
-	/**
-	 * Serialization ID.
-	 */
-	@Transient
-	private static final long serialVersionUID = 1328776989450853491L;
+    /**
+     * Serialization ID.
+     */
+    @Transient
+    private static final long serialVersionUID = 1328776989450853491L;
 
-	/**
-	 * Entity's ID.
-	 */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false, unique = true)
-	private Integer entityId;
+    /**
+     * Entity's ID.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
+    private Integer           entityId;
 
-	/**
-	 * Name of the entity.
-	 * <p>
-	 * This is to have additional data apart from the id, to be used on the
-	 * tests.
-	 */
-	@Column(name = "name", nullable = false)
-	private String entityName;
+    /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the
+     * tests.
+     */
+    @Column(name = "name", nullable = false)
+    private String            entityName;
 
-	/**
-	 * Constructs a {@code JPAExampleEntity}.
-	 */
-	public JpaExampleEntity() {
-		super();
-	}
+    /**
+     * Constructs a {@code JPAExampleEntity}.
+     */
+    public JpaExampleEntity() {
+        super();
+    }
 
-	@Override
-	public final boolean equals(final Object obj) {
-		if (this == obj) {
-			return true;
-		}
+    @Override
+    public final boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
 
-		if (obj == null) {
-			return false;
-		}
+        if (obj == null) {
+            return false;
+        }
 
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
 
-		final JpaExampleEntity other = (JpaExampleEntity) obj;
-		return Objects.equals(entityId, other.entityId);
-	}
+        final JpaExampleEntity other = (JpaExampleEntity) obj;
+        return Objects.equals(entityId, other.entityId);
+    }
 
-	@Override
-	public final Integer getId() {
-		return entityId;
-	}
+    @Override
+    public final Integer getId() {
+        return entityId;
+    }
 
-	@Override
-	public final String getName() {
-		return entityName;
-	}
+    @Override
+    public final String getName() {
+        return entityName;
+    }
 
-	@Override
-	public final int hashCode() {
-		return Objects.hash(entityId);
-	}
+    @Override
+    public final int hashCode() {
+        return Objects.hash(entityId);
+    }
 
-	@Override
-	public final void setId(final Integer identifier) {
-		entityId = checkNotNull(identifier,
-				"Received a null pointer as identifier");
-	}
+    @Override
+    public final void setId(final Integer identifier) {
+        entityId = checkNotNull(identifier,
+                "Received a null pointer as identifier");
+    }
 
-	@Override
-	public final void setName(final String name) {
-		entityName = checkNotNull(name, "Received a null pointer as name");
-	}
+    @Override
+    public final void setName(final String name) {
+        entityName = checkNotNull(name, "Received a null pointer as name");
+    }
 
-	@Override
-	public final String toString() {
-		return MoreObjects.toStringHelper(this).add("entityId", entityId)
-				.toString();
-	}
+    @Override
+    public final String toString() {
+        return MoreObjects.toStringHelper(this).add("entityId", entityId)
+                .toString();
+    }
 
 }

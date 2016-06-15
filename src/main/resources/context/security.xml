@@ -5,21 +5,37 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 
-   <bean id="passwordCallbackHandler" class="${security.callback.password.class}" />
+   <!-- Password callback handler -->
+   <bean id="passwordCallbackHandler" class="${security.callback.password.class}">
+      <constructor-arg value="${security.credentials.user}"/>
+      <constructor-arg value="${security.credentials.password}"/>
+   </bean>
 
-   <bean id="samlCallbackHandler" class="${security.callback.saml.class}">
+   <!-- SAML password callback handler -->
+   <bean id="samlPasswordCallbackHandler" class="${security.callback.password.saml.class}">
       <constructor-arg index="0" type="java.lang.String"
          value="${security.saml.subject.name}" />
       <constructor-arg index="1" type="java.lang.String"
          value="${security.saml.subject.qualifier}" />
    </bean>
 
+   <!-- SAML validator -->
    <bean id="samlValidator" class="${security.validator.saml.class}">
       <constructor-arg index="0" type="java.lang.String"
          value="${security.saml.subject.name}" />
       <constructor-arg index="1" type="java.lang.String" value="${security.saml.issuer}" />
    </bean>
 
-   <bean id="usernameValidator" class="${security.validator.username.class}" />
+   <!-- Username validator -->
+   <bean id="usernameValidator" class="${security.validator.username.class}">
+      <constructor-arg value="${security.credentials.user}"/>
+      <constructor-arg value="${security.credentials.password}"/>
+   </bean>
+
+   <!-- Keystore password callback handler -->
+   <bean id="keystorePasswordCallbackHandler" class="${security.callback.password.keystore.class}">
+      <constructor-arg value="${keystore.alias}"/>
+      <constructor-arg value="${keystore.private.password}"/>
+   </bean>
 
 </beans>

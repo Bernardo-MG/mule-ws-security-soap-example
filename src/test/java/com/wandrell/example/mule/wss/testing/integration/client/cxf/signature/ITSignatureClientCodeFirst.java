@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientCodeFirstPropertiesPaths.SIGNATURE })
 public final class ITSignatureClientCodeFirst extends AbstractITClientFlow {
 
-	/**
-	 * Default constructor.
-	 */
-	public ITSignatureClientCodeFirst() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public ITSignatureClientCodeFirst() {
+        super();
+    }
 
 }

@@ -20,9 +20,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          path="${client.cxf.unsecure.codeFirst.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
       <flow-ref name="Client-CXF-Unsecure-CodeFirst-Endpoint" doc:name="Send request" />
-      <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-      </response>
+        <response>
+            <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
+        </response>
    </flow>
    <sub-flow name="Client-CXF-Unsecure-CodeFirst-Endpoint">
       <logger message="Begins the unsecure Code-First client flow" level="INFO"
@@ -40,9 +40,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          path="${client.cxf.unsecure.wsdlFirst.path}" doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
       <flow-ref name="Client-CXF-Unsecure-WSDLFirst-Endpoint" doc:name="Send request" />
-      <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-      </response>
+        <response>
+            <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
+        </response>
    </flow>
    <sub-flow name="Client-CXF-Unsecure-WSDLFirst-Endpoint">
       <logger message="Begins the unsecure WSDL-First client flow" level="INFO"
@@ -61,9 +61,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
       <flow-ref name="Client-CXF-Unsecure-Simple-Endpoint" doc:name="Send request" />
-      <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-      </response>
+        <response>
+            <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
+        </response>
    </flow>
    <sub-flow name="Client-CXF-Unsecure-Simple-Endpoint">
       <logger message="Begins the unsecure simple client flow" level="INFO"
@@ -81,9 +81,9 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
          doc:name="HTTP Inbound Endpoint" />
       <flow-ref name="Read-HTTP-Variables" doc:name="Read HTPP variables" />
       <flow-ref name="Client-CXF-Unsecure-Proxy-Endpoint" doc:name="Send request" />
-      <response>
-         <flow-ref name="Transform-Response" doc:name="Transform to a valid response" />
-      </response>
+        <response>
+            <flow-ref name="Transform-Response" doc:name="Transform to a valid response"/>
+        </response>
    </flow>
    <sub-flow name="Client-CXF-Unsecure-Proxy-Endpoint">
       <logger message="Begins the unsecure proxy client flow" level="INFO"

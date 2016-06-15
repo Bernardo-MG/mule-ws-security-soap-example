@@ -31,41 +31,41 @@ package com.wandrell.example.mule.wss.testing.util.config.context;
  */
 public final class ClientContextPaths {
 
-	/**
-	 * Consumer.
-	 */
-	public static final String CONSUMER = "classpath:context/client/consumer/test-client-consumer.xml";
+    /**
+     * Consumer.
+     */
+    public static final String CONSUMER      = "classpath:context/client/consumer/test-client-consumer.xml";
 
-	/**
-	 * Encrypted.
-	 */
-	public static final String ENCRYPTION = "classpath:context/client/cxf/test-client-cxf-encryption.xml";
+    /**
+     * Encrypted.
+     */
+    public static final String ENCRYPTION    = "classpath:context/client/cxf/test-client-cxf-encryption.xml";
 
-	/**
-	 * Password protected.
-	 */
-	public static final String PASSWORD = "classpath:context/client/cxf/test-client-cxf-password.xml";
+    /**
+     * Password protected.
+     */
+    public static final String PASSWORD      = "classpath:context/client/cxf/test-client-cxf-password.xml";
 
-	/**
-	 * Password protected with SAML.
-	 */
-	public static final String PASSWORD_SAML = "classpath:context/client/cxf/test-client-cxf-password-saml.xml";
+    /**
+     * Password protected with SAML.
+     */
+    public static final String PASSWORD_SAML = "classpath:context/client/cxf/test-client-cxf-password-saml.xml";
 
-	/**
-	 * Signed.
-	 */
-	public static final String SIGNATURE = "classpath:context/client/cxf/test-client-cxf-signature.xml";
+    /**
+     * Signed.
+     */
+    public static final String SIGNATURE     = "classpath:context/client/cxf/test-client-cxf-signature.xml";
 
-	/**
-	 * Unsecure.
-	 */
-	public static final String UNSECURE = "classpath:context/client/cxf/test-client-cxf-unsecure.xml";
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE      = "classpath:context/client/cxf/test-client-cxf-unsecure.xml";
 
-	/**
-	 * Private constructor to avoid initialization.
-	 */
-	private ClientContextPaths() {
-		super();
-	}
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private ClientContextPaths() {
+        super();
+    }
 
 }

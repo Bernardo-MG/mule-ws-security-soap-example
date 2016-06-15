@@ -41,11 +41,11 @@ import com.wandrell.example.mule.wss.testing.util.test.integration.client.Abstra
 @TestPropertySource({ ClientConsumerPropertiesPaths.UNSECURE })
 public final class ITUnsecureClientConsumer extends AbstractITClientFlow {
 
-	/**
-	 * Default constructor.
-	 */
-	public ITUnsecureClientConsumer() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public ITUnsecureClientConsumer() {
+        super();
+    }
 
 }
