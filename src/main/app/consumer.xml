@@ -27,7 +27,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
       serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.password.codeFirst.path}">
       <ws:security>
          <ws:wss-username-token username="${security.credentials.user}"
-            password="${security.credentials.password}" passwordType="TEXT" />
+            password="${security.credentials.password}" passwordType="DIGEST" />
       </ws:security>
    </ws:consumer-config>
 
@@ -37,7 +37,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
       serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.signature.codeFirst.path}">
       <ws:security>
          <ws:wss-username-token username="${keystore.alias}"
-            password="${keystore.password}" passwordType="TEXT" />
+            password="${keystore.password}" passwordType="DIGEST" />
          <ws:wss-sign tlsContext-ref="keystoreContext" />
       </ws:security>
    </ws:consumer-config>
@@ -48,7 +48,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
       serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.encryption.codeFirst.path}">
       <ws:security>
          <ws:wss-username-token username="${keystore.alias}"
-            password="${keystore.password}" passwordType="TEXT" />
+            password="${keystore.password}" passwordType="DIGEST" />
          <ws:wss-encrypt tlsContext-ref="truststoreContext"
             alias="${keystore.alias}" />
       </ws:security>
