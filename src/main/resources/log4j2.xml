@@ -7,6 +7,9 @@
             <SizeBasedTriggeringPolicy size="10 MB" />
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d [%t] %-5p %c - %m%n" />
+        </Console>
     </Appenders>
     <Loggers>
         <!-- CXF is used heavily by Mule for web services -->
