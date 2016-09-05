@@ -2,11 +2,11 @@
 
 Maven-based [Mule][mule] application showcasing the configuration of secured SOAP web services.
 
-Mule is an Enterprise Service Bus, meant to connect together online applications. This example just touches an specific part of the web services support it offers, to be precise the security layer.
+Mule is an Enterprise Service Bus, meant to connect together online applications. This example just touches an specific part of the web services support it offers, to be precise the security layer, and is prepared for the Community Edition.
 
-It includes an endpoint for each type of endpoint Mule supports (code-first, WSDL-first, simple, proxy and consumer), and to these all the possible security protocols (unsecured, password, signed and encrypted) are applied.
+It includes an endpoint for each type of endpoint Mule supports, which are four ways of implementing a CXF endpoint and an endpoint consumer. To these all the possible security protocols (unsecured, password, signed and encrypted) are applied.
 
-It is meant to be just an example, and for that reason is kept as simple as possible, avoiding the use of external web services. Still it tries to show how a real application would be built.
+It is meant to be just an example, and for that reason is kept as simple as possible, avoiding the use of external web services. Still it tries to show how a real application would be built, and is divided into layers, including services and persistence, created with the help of Spring.
 
 ## Features
 
@@ -20,11 +20,13 @@ The project offers various examples showing how to set up the various security o
 
 These are applied to the different web services implementations which Mule supports:
 
-- Code-first
-- WSDL-first
-- Plain
-- Proxy
-- Consumer
+- CXF with a code-first JAX-WS frontend, created from custom JAXB classes
+- CXF with a WSDL-first JAX-WS frontend, created from generated JAXB classes
+- CXF with a plain frontend, created from POJOs
+- CXF with a proxy frontend, which handles plain SOAP messages instead of beans
+- Consumer, which takes the body of a SOAP message and transforms it for the other services
+
+All the endpoints receive a request, try to acquire an object from the persistence layer and then return a response with it.
 
 For each of them a HTTP client is included.
 
@@ -41,7 +43,8 @@ The project has been tested on the following Java versions:
 * JDK 7
 * OpenJDK 7
 
-It also requires a Mule runtime environment. For development this can be taken care by the [Anypoint Studio][anypoint-studio].
+As it is a Mule project, it also requires the following Mule version:
+* Mule 3.7.0CE
 
 All other dependencies are handled through Maven, and noted in the included POM file. This includes the plugins used for running the demo in an embedded web server.
 
@@ -65,31 +68,30 @@ The endpoint consumer does not support querying for the WSDL, and only accepts t
 
 |Authentication method|Endpoint type|URL|
 |:-:|:-:|:-:|
-|Unsecure|Code-First|[http://localhost:8080/mule-wss/unsecure/code_first?wsdl](http://localhost:8080/mule-wss/unsecure/code_first?wsdl)|
-|Unsecure|WSDL-First|[http://localhost:8080/mule-wss/unsecure/wsdl_first?wsdl](http://localhost:8080/mule-wss/unsecure/wsdl_first?wsdl)|
-|Unsecure|Simple|[http://localhost:8080/mule-wss/unsecure/simple?wsdl](http://localhost:8080/mule-wss/unsecure/simple?wsdl)|
-|Unsecure|Proxy|[http://localhost:8080/mule-wss/unsecure/proxy?wsdl](http://localhost:8080/mule-wss/unsecure/proxy?wsdl)|
-|Unsecure|Consumer|[http://localhost:8080/mule-wss/unsecure/consumer](http://localhost:8080/mule-wss/unsecure/consumer)|
-|Password|Code-First|[http://localhost:8080/mule-wss/password/code_first?wsdl](http://localhost:8080/mule-wss/password/code_first?wsdl)|
-|Password|WSDL-First|[http://localhost:8080/mule-wss/password/wsdl_first?wsdl](http://localhost:8080/mule-wss/password/wsdl_first?wsdl)|
-|Password|Simple|[http://localhost:8080/mule-wss/password/simple?wsdl](http://localhost:8080/mule-wss/password/simple?wsdl)|
-|Password|Proxy|[http://localhost:8080/mule-wss/password/proxy?wsdl](http://localhost:8080/mule-wss/password/proxy?wsdl)|
-|Password|Consumer|[http://localhost:8080/mule-wss/password/consumer](http://localhost:8080/mule-wss/password/consumer)|
-|Password with SAML|Code-First|[http://localhost:8080/mule-wss/password/saml/code_first?wsdl](http://localhost:8080/mule-wss/password/saml/code_first?wsdl)|
-|Password with SAML|WSDL-First|[http://localhost:8080/mule-wss/password/saml/wsdl_first?wsdl](http://localhost:8080/mule-wss/password/saml/wsdl_first?wsdl)|
-|Password with SAML|Simple|[http://localhost:8080/mule-wss/password/saml/simple?wsdl](http://localhost:8080/mule-wss/password/saml/simple?wsdl)|
-|Password with SAML|Proxy|[http://localhost:8080/mule-wss/password/saml/proxy?wsdl](http://localhost:8080/mule-wss/password/saml/proxy?wsdl)|
-|Password with SAML|Consumer|[http://localhost:8080/mule-wss/password/saml/consumer](http://localhost:8080/mule-wss/password/saml/consumer)|
-|Signature|Code-First|[http://localhost:8080/mule-wss/signature/code_first?wsdl](http://localhost:8080/mule-wss/signature/code_first?wsdl)|
-|Signature|WSDL-First|[http://localhost:8080/mule-wss/signature/wsdl_first?wsdl](http://localhost:8080/mule-wss/signature/wsdl_first?wsdl)|
-|Signature|Simple|[http://localhost:8080/mule-wss/signature/simple?wsdl](http://localhost:8080/mule-wss/signature/simple?wsdl)|
-|Signature|Proxy|[http://localhost:8080/mule-wss/signature/proxy?wsdl](http://localhost:8080/mule-wss/signature/proxy?wsdl)|
-|Signature|Consumer|[http://localhost:8080/mule-wss/signature/consumer](http://localhost:8080/mule-wss/signature/consumer)|
-|Encryption|Code-First|[http://localhost:8080/mule-wss/encryption/code_first?wsdl](http://localhost:8080/mule-wss/encryption/code_first?wsdl)|
-|Encryption|WSDL-First|[http://localhost:8080/mule-wss/encryption/wsdl_first?wsdl](http://localhost:8080/mule-wss/encryption/wsdl_first?wsdl)|
-|Encryption|Simple|[http://localhost:8080/mule-wss/encryption/simple?wsdl](http://localhost:8080/mule-wss/encryption/simple?wsdl)|
-|Encryption|Proxy|[http://localhost:8080/mule-wss/encryption/proxy?wsdl](http://localhost:8080/mule-wss/encryption/proxy?wsdl)|
-|Encryption|Consumer|[http://localhost:8080/mule-wss/encryption/consumer](http://localhost:8080/mule-wss/encryption/consumer)|
+|Unsecure|Code-First|[http://localhost:8080/mule-wss/cxf/unsecure/code_first?wsdl](http://localhost:8080/mule-wss/cxf/unsecure/code_first?wsdl)|
+|Unsecure|WSDL-First|[http://localhost:8080/mule-wss/cxf/unsecure/wsdl_first?wsdl](http://localhost:8080/mule-wss/cxf/unsecure/wsdl_first?wsdl)|
+|Unsecure|Simple|[http://localhost:8080/mule-wss/cxf/unsecure/simple?wsdl](http://localhost:8080/mule-wss/cxf/unsecure/simple?wsdl)|
+|Unsecure|Proxy|[http://localhost:8080/mule-wss/cxf/unsecure/proxy?wsdl](http://localhost:8080/mule-wss/cxf/unsecure/proxy?wsdl)|
+|Unsecure|Consumer|[http://localhost:8080/mule-wss/consumer/unsecure](http://localhost:8080/mule-wss/consumer/unsecure)|
+|Password|Code-First|[http://localhost:8080/mule-wss/cxf/password/code_first?wsdl](http://localhost:8080/mule-wss/cxf/password/code_first?wsdl)|
+|Password|WSDL-First|[http://localhost:8080/mule-wss/cxf/password/wsdl_first?wsdl](http://localhost:8080/mule-wss/cxf/password/wsdl_first?wsdl)|
+|Password|Simple|[http://localhost:8080/mule-wss/cxf/password/simple?wsdl](http://localhost:8080/mule-wss/cxf/password/simple?wsdl)|
+|Password|Proxy|[http://localhost:8080/mule-wss/cxf/password/proxy?wsdl](http://localhost:8080/mule-wss/cxf/password/proxy?wsdl)|
+|Password|Consumer|[http://localhost:8080/mule-wss/consumer/password](http://localhost:8080/mule-wss/consumer/password)|
+|Password with SAML|Code-First|[http://localhost:8080/mule-wss/cxf/password/saml/code_first?wsdl](http://localhost:8080/mule-wss/cxf/password/saml/code_first?wsdl)|
+|Password with SAML|WSDL-First|[http://localhost:8080/mule-wss/cxf/password/saml/wsdl_first?wsdl](http://localhost:8080/mule-wss/cxf/password/saml/wsdl_first?wsdl)|
+|Password with SAML|Simple|[http://localhost:8080/mule-wss/cxf/password/saml/simple?wsdl](http://localhost:8080/mule-wss/cxf/password/saml/simple?wsdl)|
+|Password with SAML|Proxy|[http://localhost:8080/mule-wss/cxf/password/saml/proxy?wsdl](http://localhost:8080/mule-wss/cxf/password/saml/proxy?wsdl)|
+|Signature|Code-First|[http://localhost:8080/mule-wss/cxf/signature/code_first?wsdl](http://localhost:8080/mule-wss/cxf/signature/code_first?wsdl)|
+|Signature|WSDL-First|[http://localhost:8080/mule-wss/cxf/signature/wsdl_first?wsdl](http://localhost:8080/mule-wss/cxf/signature/wsdl_first?wsdl)|
+|Signature|Simple|[http://localhost:8080/mule-wss/cxf/signature/simple?wsdl](http://localhost:8080/mule-wss/cxf/signature/simple?wsdl)|
+|Signature|Proxy|[http://localhost:8080/mule-wss/cxf/signature/proxy?wsdl](http://localhost:8080/mule-wss/cxf/signature/proxy?wsdl)|
+|Signature|Consumer|[http://localhost:8080/mule-wss/consumer/signature](http://localhost:8080/mule-wss/consumer/signature)|
+|Encryption|Code-First|[http://localhost:8080/mule-wss/cxf/encryption/code_first?wsdl](http://localhost:8080/mule-wss/cxf/encryption/code_first?wsdl)|
+|Encryption|WSDL-First|[http://localhost:8080/mule-wss/cxf/encryption/wsdl_first?wsdl](http://localhost:8080/mule-wss/cxf/encryption/wsdl_first?wsdl)|
+|Encryption|Simple|[http://localhost:8080/mule-wss/cxf/encryption/simple?wsdl](http://localhost:8080/mule-wss/cxf/encryption/simple?wsdl)|
+|Encryption|Proxy|[http://localhost:8080/mule-wss/cxf/encryption/proxy?wsdl](http://localhost:8080/mule-wss/cxf/encryption/proxy?wsdl)|
+|Encryption|Consumer|[http://localhost:8080/mule-wss/consumer/encryption](http://localhost:8080/mule-wss/consumer/encryption)|
 
 #### Web service client
 
@@ -99,31 +101,30 @@ To change the entity queried just change the id value on the URL.
 
 |Authentication method|Endpoint type|URL|
 |:-:|:-:|:-:|
-|Unsecure|Code-First|[http://localhost:8080/mule-wss/client/unsecure/code_first?id=1](http://localhost:8080/mule-wss/client/unsecure/code_first?id=1)|
-|Unsecure|WSDL-First|[http://localhost:8080/mule-wss/client/unsecure/wsdl_first?id=1](http://localhost:8080/mule-wss/client/unsecure/wsdl_first?id=1)|
-|Unsecure|Simple|[http://localhost:8080/mule-wss/client/unsecure/simple?id=1](http://localhost:8080/mule-wss/client/unsecure/simple?id=1)|
-|Unsecure|Proxy|[http://localhost:8080/mule-wss/client/unsecure/proxy?id=1](http://localhost:8080/mule-wss/client/unsecure/proxy?id=1)|
-|Unsecure|Consumer|[http://localhost:8080/mule-wss/client/unsecure/consumer?id=1](http://localhost:8080/mule-wss/client/unsecure/consumer?id=1)|
-|Password|Code-First|[http://localhost:8080/mule-wss/client/password/code_first?id=1](http://localhost:8080/mule-wss/client/password/code_first?id=1)|
-|Password|WSDL-First|[http://localhost:8080/mule-wss/client/password/wsdl_first?id=1](http://localhost:8080/mule-wss/client/password/wsdl_first?id=1)|
-|Password|Simple|[http://localhost:8080/mule-wss/client/password/simple?id=1](http://localhost:8080/mule-wss/client/password/simple?id=1)|
-|Password|Proxy|[http://localhost:8080/mule-wss/client/password/proxy?id=1](http://localhost:8080/mule-wss/client/password/proxy?id=1)|
-|Password|Consumer|[http://localhost:8080/mule-wss/client/password/consumer?id=1](http://localhost:8080/mule-wss/client/password/consumer?id=1)|
-|Password with SAML|Code-First|[http://localhost:8080/mule-wss/client/password/saml/code_first?id=1](http://localhost:8080/mule-wss/client/password/saml/code_first?id=1)|
-|Password with SAML|WSDL-First|[http://localhost:8080/mule-wss/client/password/saml/wsdl_first?id=1](http://localhost:8080/mule-wss/client/password/saml/wsdl_first?id=1)|
-|Password with SAML|Simple|[http://localhost:8080/mule-wss/client/password/saml/simple?id=1](http://localhost:8080/mule-wss/client/password/saml/simple?id=1)|
-|Password with SAML|Proxy|[http://localhost:8080/mule-wss/client/password/saml/proxy?id=1](http://localhost:8080/mule-wss/client/password/saml/proxy?id=1)|
-|Password with SAML|Consumer|[http://localhost:8080/mule-wss/client/password/saml/consumer?id=1](http://localhost:8080/mule-wss/client/password/saml/consumer?id=1)|
-|Signature|Code-First|[http://localhost:8080/mule-wss/client/signature/code_first?id=1](http://localhost:8080/mule-wss/client/signature/code_first?id=1)|
-|Signature|WSDL-First|[http://localhost:8080/mule-wss/client/signature/wsdl_first?id=1](http://localhost:8080/mule-wss/client/signature/wsdl_first?id=1)|
-|Signature|Simple|[http://localhost:8080/mule-wss/client/signature/simple?id=1](http://localhost:8080/mule-wss/client/signature/simple?id=1)|
-|Signature|Proxy|[http://localhost:8080/mule-wss/client/signature/proxy?id=1](http://localhost:8080/mule-wss/client/signature/proxy?id=1)|
-|Signature|Consumer|[http://localhost:8080/mule-wss/client/signature/consumer?id=1](http://localhost:8080/mule-wss/client/signature/consumer?id=1)|
-|Encryption|Code-First|[http://localhost:8080/mule-wss/client/encryption/code_first?id=1](http://localhost:8080/mule-wss/client/encryption/code_first?id=1)|
-|Encryption|WSDL-First|[http://localhost:8080/mule-wss/client/encryption/wsdl_first?id=1](http://localhost:8080/mule-wss/client/encryption/wsdl_first?id=1)|
-|Encryption|Simple|[http://localhost:8080/mule-wss/client/encryption/simple?id=1](http://localhost:8080/mule-wss/client/encryption/simple?id=1)|
-|Encryption|Proxy|[http://localhost:8080/mule-wss/client/encryption/proxy?id=1](http://localhost:8080/mule-wss/client/encryption/proxy?id=1)|
-|Encryption|Consumer|[http://localhost:8080/mule-wss/client/encryption/consumer?id=1](http://localhost:8080/mule-wss/client/encryption/consumer?id=1)|
+|Unsecure|Code-First|[http://localhost:8080/mule-wss/client/cxf/unsecure/code_first?id=1](http://localhost:8080/mule-wss/client/cxf/unsecure/code_first?id=1)|
+|Unsecure|WSDL-First|[http://localhost:8080/mule-wss/client/cxf/unsecure/wsdl_first?id=1](http://localhost:8080/mule-wss/client/cxf/unsecure/wsdl_first?id=1)|
+|Unsecure|Simple|[http://localhost:8080/mule-wss/client/cxf/unsecure/simple?id=1](http://localhost:8080/mule-wss/client/cxf/unsecure/simple?id=1)|
+|Unsecure|Proxy|[http://localhost:8080/mule-wss/client/cxf/unsecure/proxy?id=1](http://localhost:8080/mule-wss/client/cxf/unsecure/proxy?id=1)|
+|Unsecure|Consumer|[http://localhost:8080/mule-wss/client/consumer/unsecure?id=1](http://localhost:8080/mule-wss/client/consumer/unsecure?id=1)|
+|Password|Code-First|[http://localhost:8080/mule-wss/client/cxf/password/code_first?id=1](http://localhost:8080/mule-wss/client/cxf/password/code_first?id=1)|
+|Password|WSDL-First|[http://localhost:8080/mule-wss/client/cxf/password/wsdl_first?id=1](http://localhost:8080/mule-wss/client/cxf/password/wsdl_first?id=1)|
+|Password|Simple|[http://localhost:8080/mule-wss/client/cxf/password/simple?id=1](http://localhost:8080/mule-wss/client/cxf/password/simple?id=1)|
+|Password|Proxy|[http://localhost:8080/mule-wss/client/cxf/password/proxy?id=1](http://localhost:8080/mule-wss/client/cxf/password/proxy?id=1)|
+|Password|Consumer|[http://localhost:8080/mule-wss/client/consumer/password?id=1](http://localhost:8080/mule-wss/client/consumer/password?id=1)|
+|Password with SAML|Code-First|[http://localhost:8080/mule-wss/client/cxf/password/saml/code_first?id=1](http://localhost:8080/mule-wss/client/cxf/password/saml/code_first?id=1)|
+|Password with SAML|WSDL-First|[http://localhost:8080/mule-wss/client/cxf/password/saml/wsdl_first?id=1](http://localhost:8080/mule-wss/client/cxf/password/saml/wsdl_first?id=1)|
+|Password with SAML|Simple|[http://localhost:8080/mule-wss/client/cxf/password/saml/simple?id=1](http://localhost:8080/mule-wss/client/cxf/password/saml/simple?id=1)|
+|Password with SAML|Proxy|[http://localhost:8080/mule-wss/client/cxf/password/saml/proxy?id=1](http://localhost:8080/mule-wss/client/cxf/password/saml/proxy?id=1)|
+|Signature|Code-First|[http://localhost:8080/mule-wss/client/signature/cxf/code_first?id=1](http://localhost:8080/mule-wss/client/cxf/signature/code_first?id=1)|
+|Signature|WSDL-First|[http://localhost:8080/mule-wss/client/signature/cxf/wsdl_first?id=1](http://localhost:8080/mule-wss/client/cxf/signature/wsdl_first?id=1)|
+|Signature|Simple|[http://localhost:8080/mule-wss/client/signature/cxf/simple?id=1](http://localhost:8080/mule-wss/client/cxf/signature/simple?id=1)|
+|Signature|Proxy|[http://localhost:8080/mule-wss/client/signature/cxf/proxy?id=1](http://localhost:8080/mule-wss/client/cxf/signature/proxy?id=1)|
+|Signature|Consumer|[http://localhost:8080/mule-wss/client/consumer/signature?id=1](http://localhost:8080/mule-wss/client/consumer/signature?id=1)|
+|Encryption|Code-First|[http://localhost:8080/mule-wss/client/cxf/encryption/code_first?id=1](http://localhost:8080/mule-wss/client/cxf/encryption/code_first?id=1)|
+|Encryption|WSDL-First|[http://localhost:8080/mule-wss/client/cxf/encryption/wsdl_first?id=1](http://localhost:8080/mule-wss/client/cxf/encryption/wsdl_first?id=1)|
+|Encryption|Simple|[http://localhost:8080/mule-wss/client/cxf/encryption/simple?id=1](http://localhost:8080/mule-wss/client/cxf/encryption/simple?id=1)|
+|Encryption|Proxy|[http://localhost:8080/mule-wss/client/cxf/encryption/proxy?id=1](http://localhost:8080/mule-wss/client/cxf/encryption/proxy?id=1)|
+|Encryption|Consumer|[http://localhost:8080/mule-wss/client/consumer/encryption?id=1](http://localhost:8080/mule-wss/client/consumer/encryption?id=1)|
 
 ## Collaborate
 
@@ -148,5 +149,4 @@ The project has been released under the [MIT License][license].
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-ws-security-soap-example
 
-[anypoint-studio]: https://www.mulesoft.com/platform/studio
 [mule]: https://www.mulesoft.com

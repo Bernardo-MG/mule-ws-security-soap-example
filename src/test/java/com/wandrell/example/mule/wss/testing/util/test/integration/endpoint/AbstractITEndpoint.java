@@ -57,70 +57,70 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 public abstract class AbstractITEndpoint extends FunctionalTestCase {
 
-	/**
-	 * Name of the flow being tested.
-	 */
-	@Value("${endpoint.flow}")
-	private String endpointFlow;
+    /**
+     * Name of the flow being tested.
+     */
+    @Value("${endpoint.flow}")
+    private String   endpointFlow;
 
-	/**
-	 * Configuration files to be loaded to build the Mule context.
-	 */
-	@Resource(name = "configFiles")
-	private String[] files;
+    /**
+     * Configuration files to be loaded to build the Mule context.
+     */
+    @Resource(name = "configFiles")
+    private String[] files;
 
-	/**
-	 * Path to the SOAP envelope for the request.
-	 */
-	@Value("${soap.request.envelope.path}")
-	private String requestEnvelopePath;
+    /**
+     * Path to the SOAP envelope for the request.
+     */
+    @Value("${soap.request.envelope.path}")
+    private String   requestEnvelopePath;
 
-	/**
-	 * Path to the SOAP envelope for the response.
-	 */
-	@Value("${soap.response.path}")
-	private String responseEnvelopePath;
+    /**
+     * Path to the SOAP envelope for the response.
+     */
+    @Value("${soap.response.path}")
+    private String   responseEnvelopePath;
 
-	/**
-	 * Default constructor.
-	 */
-	public AbstractITEndpoint() {
-		super();
-	}
+    /**
+     * Default constructor.
+     */
+    public AbstractITEndpoint() {
+        super();
+    }
 
-	@Override
-	protected String getConfigResources() {
-		return StringUtils.join(files, ", ");
-	}
+    /**
+     * Tests that a SOAP envelope is processed and a valid response returned.
+     * 
+     * @throws Exception
+     *             never, this is a required declaration
+     */
+    @Test
+    public final void testEndpoint_Envelope_ReturnsExpected() throws Exception {
+        final String result;   // Response from the endpoint
+        final String encoding; // Files encoding
+        final String request;  // SOAP request
+        final String response; // SOAP response
 
-	/**
-	 * Tests that a SOAP envelope is processed and a valid response returned.
-	 * 
-	 * @throws Exception
-	 *             never, this is a required declaration
-	 */
-	@Test
-	public final void testEndpoint_Envelope_ReturnsExpected() throws Exception {
-		final String result; // Response from the endpoint
-		final String encoding; // Files encoding
-		final String request; // SOAP request
-		final String response; // SOAP response
+        // Loads the messages
+        encoding = "UTF-8";
+        request = IOUtils.toString(
+                new ClassPathResource(requestEnvelopePath).getInputStream(),
+                encoding);
+        response = IOUtils.toString(
+                new ClassPathResource(responseEnvelopePath).getInputStream(),
+                encoding);
 
-		// Loads the messages
-		encoding = "UTF-8";
-		request = IOUtils.toString(
-				new ClassPathResource(requestEnvelopePath).getInputStream(),
-				encoding);
-		response = IOUtils.toString(
-				new ClassPathResource(responseEnvelopePath).getInputStream(),
-				encoding);
+        // Sends the request to the flow
+        result = runFlow(endpointFlow, request).getMessageAsString();
 
-		// Sends the request to the flow
-		result = runFlow(endpointFlow, request).getMessageAsString();
+        // Verifies results
+        XMLUnit.setIgnoreWhitespace(true);
+        XMLAssert.assertXMLEqual(response, result);
+    }
 
-		// Verifies results
-		XMLUnit.setIgnoreWhitespace(true);
-		XMLAssert.assertXMLEqual(response, result);
-	}
+    @Override
+    protected String getConfigResources() {
+        return StringUtils.join(files, ", ");
+    }
 
 }

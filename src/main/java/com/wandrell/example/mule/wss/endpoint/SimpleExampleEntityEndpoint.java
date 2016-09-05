@@ -41,6 +41,8 @@ import com.wandrell.example.mule.wss.service.domain.ExampleEntityService;
 /**
  * Class for a Mule simple endpoint. This kind of endpoint will be built
  * directly from a Java bean, without making use of Java WS annotations.
+ * <p>
+ * This will be used to create a CXF Simple service.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -48,92 +50,91 @@ import com.wandrell.example.mule.wss.service.domain.ExampleEntityService;
 @Singleton
 public final class SimpleExampleEntityEndpoint {
 
-	/**
-	 * The logger used for logging the entity endpoint.
-	 */
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(SimpleExampleEntityEndpoint.class);
+    /**
+     * The logger used for logging the entity endpoint.
+     */
+    private static final Logger        LOGGER = LoggerFactory
+                                                      .getLogger(SimpleExampleEntityEndpoint.class);
 
-	/**
-	 * Service for accessing the {@code ExampleEntity} instances handled by the
-	 * web service.
-	 */
-	private final ExampleEntityService entityService;
+    /**
+     * Service for accessing the {@code ExampleEntity} instances handled by the
+     * web service.
+     */
+    private final ExampleEntityService entityService;
 
-	/**
-	 * Constructs a {@code SimpleExampleEntityEndpoint}.
-	 * <p>
-	 * The constructor is meant to make use of Spring's IOC system.
-	 *
-	 * @param service
-	 *            the service for the {@code ExampleEntity} instances
-	 */
-	@Autowired
-	public SimpleExampleEntityEndpoint(final ExampleEntityService service) {
-		super();
+    /**
+     * Constructs a {@code SimpleExampleEntityEndpoint}.
+     * <p>
+     * The constructor is meant to make use of Spring's IOC system.
+     *
+     * @param service
+     *            the service for the {@code ExampleEntity} instances
+     */
+    @Autowired
+    public SimpleExampleEntityEndpoint(final ExampleEntityService service) {
+        super();
 
-		entityService = checkNotNull(service,
-				"Received a null pointer as service");
-	}
+        entityService = checkNotNull(service,
+                "Received a null pointer as service");
+    }
 
-	/**
-	 * Returns a {@link XmlExampleEntity} containing the data for the id
-	 * received.
-	 * <p>
-	 * The {@code id} parameter is taken from the Mule flow as a web parameter,
-	 * and the returned bean is a JAXB annotated class.
-	 * <p>
-	 * Implementations are expected to take the data contained in the returned
-	 * bean from the persistence layer.
-	 * 
-	 * @param id
-	 *            id of the entity being queried
-	 * @return the queried entity
-	 */
-	public final XmlExampleEntity getEntity(
-			@XmlElement(required = true, nillable = false) final Integer id) {
-		final XmlExampleEntity response; // XML response with the entity data
-		final ExampleEntity entity; // Found entity
+    /**
+     * Returns a {@link XmlExampleEntity} containing the data for the id
+     * received.
+     * <p>
+     * The {@code id} parameter is taken from the Mule flow as a web parameter,
+     * and the returned bean is a JAXB annotated class.
+     * <p>
+     * Implementations are expected to take the data contained in the returned
+     * bean from the persistence layer.
+     * 
+     * @param id
+     *            id of the entity being queried
+     * @return the queried entity
+     */
+    public final XmlExampleEntity getEntity(@XmlElement(required = true,
+            nillable = false) final Integer id) {
+        final XmlExampleEntity response; // XML response with the entity data
+        final ExampleEntity entity;      // Found entity
 
-		if (id != null) {
-			checkNotNull(id, "Received a null pointer as id");
+        if (id != null) {
+            checkNotNull(id, "Received a null pointer as id");
 
-			LOGGER.debug(String.format("Received request for id %d", id));
+            LOGGER.debug(String.format("Received request for id %d", id));
 
-			// Acquires the entity
-			entity = getExampleEntityService().findById(id);
+            // Acquires the entity
+            entity = getExampleEntityService().findById(id);
 
-			response = new XmlExampleEntity();
-			if (entity == null) {
-				LOGGER.debug("Entity not found");
-			} else {
-				// The entity is transformed from the persistence model to the
-				// XML
-				// one
-				response.setId(entity.getId());
-				response.setName(entity.getName());
+            response = new XmlExampleEntity();
+            if (entity == null) {
+                LOGGER.debug("Entity not found");
+            } else {
+                // The entity is transformed from the persistence model to the
+                // XML one
+                response.setId(entity.getId());
+                response.setName(entity.getName());
 
-				LOGGER.debug(String.format(
-						"Found entity with id %1$d and name %2$s",
-						entity.getId(), entity.getName()));
-			}
-		} else {
-			// TODO: This is to fix an error during the integration tests
-			response = new XmlExampleEntity();
-			response.setId(0);
-			response.setName("");
-		}
+                LOGGER.debug(String.format(
+                        "Found entity with id %1$d and name %2$s",
+                        entity.getId(), entity.getName()));
+            }
+        } else {
+            // TODO: This is to fix an error during the integration tests
+            response = new XmlExampleEntity();
+            response.setId(0);
+            response.setName("");
+        }
 
-		return response;
-	}
+        return response;
+    }
 
-	/**
-	 * Returns the service used to handle the {@code ExampleEntity} instances.
-	 *
-	 * @return the service used to handle the {@code ExampleEntity} instances
-	 */
-	private final ExampleEntityService getExampleEntityService() {
-		return entityService;
-	}
+    /**
+     * Returns the service used to handle the {@code ExampleEntity} instances.
+     *
+     * @return the service used to handle the {@code ExampleEntity} instances
+     */
+    private final ExampleEntityService getExampleEntityService() {
+        return entityService;
+    }
 
 }

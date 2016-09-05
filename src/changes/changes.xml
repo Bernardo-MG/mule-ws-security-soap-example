@@ -1,20 +1,68 @@
 <document xmlns="http://maven.apache.org/changes/1.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
-	<properties>
-		<title>Project Changes</title>
-		<author email="programming@wandrell.com">Bernardo Martínez Garrido</author>
-	</properties>
-	<body>
-		<release version="1.0.0" date="2016-05-14" description="First release">
-			<action dev="bmg" type="update">
-				First release of the library.
-			</action>
-		</release>
-      <release version="1.0.1" date="2016-05-14" description="Fixes">
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+   <properties>
+      <title>Project Changes</title>
+      <author email="programming@wandrell.com">Bernardo Martínez Garrido</author>
+   </properties>
+   <body>
+      <release version="1.0.0" date="2016-05-14" description="First release">
+         <action dev="bmg" type="update">
+            First release of the library.
+         </action>
+      </release>
+      <release version="1.0.1" date="2016-05-19" description="Cleaned up dependencies">
+         <action dev="bmg" type="update">
+            Updated dependencies when possible.
+         </action>
+         <action dev="bmg" type="update">
+            Cleaned up dependencies.
+         </action>
          <action dev="bmg" type="fix">
             Corrected the project links.
          </action>
       </release>
-	</body>
+      <release version="2.0.0" date="2016-05-31" description="Diferentiation between consumers and CXF">
+         <action dev="bmg" type="update">
+            Changed URLs to better show the WS or client type used.
+         </action>
+         <action dev="bmg" type="update">
+            Separated consumers from CXF components in the flows and tests.
+         </action>
+         <action dev="bmg" type="update">
+            Renamed files and flows to make easier notice which ones use CXF.
+         </action>
+         <action dev="bmg" type="update">
+            CXF services now use a base configuration, including a config file.
+         </action>
+      </release>
+      <release version="2.1.0" date="2016-05-31" description="Extended configuration">
+         <action dev="bmg" type="update">
+            Added documentation annotations for the code-first WSDL.
+         </action>
+         <action dev="bmg" type="update">
+            The private key password and key store password are now handled through
+            two different properties values.
+         </action>
+      </release>
+      <release version="2.2.0" date="2016-06-07" description="CXF configuration changes">
+         <action dev="bmg" type="update">
+            CXF security configuration now uses global configurations.
+         </action>
+      </release>
+      <release version="2.3.0" date="2016-06-15" description="Callback handler changes">
+         <action dev="bmg" type="update">
+            The password callback handler is now initialized with the expected data.
+         </action>
+         <action dev="bmg" type="update">
+            The username token validator is now initialized with the expected data.
+         </action>
+         <action dev="bmg" type="update">
+            The password callback handler now iterates over all the callbacks.
+         </action>
+         <action dev="bmg" type="add">
+            Added more MUnit tests.
+         </action>
+      </release>
+   </body>
 </document>

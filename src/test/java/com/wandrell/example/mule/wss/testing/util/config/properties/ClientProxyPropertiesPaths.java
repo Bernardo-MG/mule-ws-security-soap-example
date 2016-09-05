@@ -34,36 +34,36 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
  */
 public final class ClientProxyPropertiesPaths {
 
-	/**
-	 * Encrypted.
-	 */
-	public static final String ENCRYPTION = "classpath:config/client/encryption/test-client-encryption-proxy.properties";
+    /**
+     * Encrypted.
+     */
+    public static final String ENCRYPTION    = "classpath:config/client/cxf/encryption/test-client-cxf-encryption-proxy.properties";
 
-	/**
-	 * Password protected.
-	 */
-	public static final String PASSWORD = "classpath:config/client/password/test-client-password-proxy.properties";
+    /**
+     * Password protected.
+     */
+    public static final String PASSWORD      = "classpath:config/client/cxf/password/test-client-cxf-password-proxy.properties";
 
-	/**
-	 * Password protected with SAML.
-	 */
-	public static final String PASSWORD_SAML = "classpath:config/client/password/saml/test-client-password-saml-proxy.properties";
+    /**
+     * Password protected with SAML.
+     */
+    public static final String PASSWORD_SAML = "classpath:config/client/cxf/password/saml/test-client-cxf-password-saml-proxy.properties";
 
-	/**
-	 * Signed.
-	 */
-	public static final String SIGNATURE = "classpath:config/client/signature/test-client-signature-proxy.properties";
+    /**
+     * Signed.
+     */
+    public static final String SIGNATURE     = "classpath:config/client/cxf/signature/test-client-cxf-signature-proxy.properties";
 
-	/**
-	 * Unsecure.
-	 */
-	public static final String UNSECURE = "classpath:config/client/unsecure/test-client-unsecure-proxy.properties";
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE      = "classpath:config/client/cxf/unsecure/test-client-cxf-unsecure-proxy.properties";
 
-	/**
-	 * Private constructor to avoid initialization.
-	 */
-	private ClientProxyPropertiesPaths() {
-		super();
-	}
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private ClientProxyPropertiesPaths() {
+        super();
+    }
 
 }

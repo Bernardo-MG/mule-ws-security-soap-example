@@ -25,7 +25,7 @@
 package com.wandrell.example.mule.wss.testing.util.config.properties;
 
 /**
- * Paths to the test SOAP messages for Wsdl-First endpoints properties files.
+ * Paths to the test SOAP messages properties files for WSDL-First endpoints.
  * <p>
  * Each file contains the information for finding or generating SOAP messages
  * for the tests.
@@ -34,21 +34,21 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
  */
 public final class SoapWsdlFirstPropertiesPaths {
 
-	/**
-	 * Password protected SOAP messages.
-	 */
-	public static final String PASSWORD = "classpath:config/soap/password/test-soap-wsdl-first-password.properties";
+    /**
+     * Password protected SOAP messages.
+     */
+    public static final String PASSWORD = "classpath:config/soap/password/test-soap-wsdl-first-password.properties";
 
-	/**
-	 * Unsecure SOAP messages.
-	 */
-	public static final String UNSECURE = "classpath:config/soap/unsecure/test-soap-wsdl-first.properties";
+    /**
+     * Unsecure SOAP messages.
+     */
+    public static final String UNSECURE = "classpath:config/soap/unsecure/test-soap-wsdl-first.properties";
 
-	/**
-	 * Private constructor to avoid initialization.
-	 */
-	private SoapWsdlFirstPropertiesPaths() {
-		super();
-	}
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private SoapWsdlFirstPropertiesPaths() {
+        super();
+    }
 
 }

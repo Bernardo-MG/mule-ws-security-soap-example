@@ -34,21 +34,21 @@ package com.wandrell.example.mule.wss.testing.util.config.properties;
  */
 public final class WebServiceWsdlFirstPropertiesPaths {
 
-	/**
-	 * Password protected.
-	 */
-	public static final String PASSWORD = "classpath:config/ws/password/test-ws-password-wsdl-first.properties";
+    /**
+     * Password protected.
+     */
+    public static final String PASSWORD = "classpath:config/ws/cxf/password/test-ws-cxf-password-wsdl-first.properties";
 
-	/**
-	 * Unsecure.
-	 */
-	public static final String UNSECURE = "classpath:config/ws/unsecure/test-ws-unsecure-wsdl-first.properties";
+    /**
+     * Unsecure.
+     */
+    public static final String UNSECURE = "classpath:config/ws/cxf/unsecure/test-ws-cxf-unsecure-wsdl-first.properties";
 
-	/**
-	 * Private constructor to avoid initialization.
-	 */
-	private WebServiceWsdlFirstPropertiesPaths() {
-		super();
-	}
+    /**
+     * Private constructor to avoid initialization.
+     */
+    private WebServiceWsdlFirstPropertiesPaths() {
+        super();
+    }
 
 }

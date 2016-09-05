@@ -19,25 +19,25 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
    <ws:consumer-config doc:name="Unsecure Code-First endpoint consumer"
       name="Consumer-Unsecure-CodeFirst" wsdlLocation="${wsdl.path}" service="${wsdl.service}"
       port="${wsdl.port}"
-      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.unsecure.codeFirst.path}" />
+      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.unsecure.codeFirst.path}" />
 
    <ws:consumer-config doc:name="Password protected Code-First endpoint consumer"
       name="Consumer-Password-CodeFirst" wsdlLocation="${wsdl.path}" service="${wsdl.service}"
       port="${wsdl.port}"
-      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.password.codeFirst.path}">
+      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.password.codeFirst.path}">
       <ws:security>
          <ws:wss-username-token username="${security.credentials.user}"
-            password="${security.credentials.password}" passwordType="TEXT" />
+            password="${security.credentials.password}" passwordType="DIGEST" />
       </ws:security>
    </ws:consumer-config>
 
    <ws:consumer-config doc:name="Signed Code-First endpoint consumer"
       name="Consumer-Signature-CodeFirst" wsdlLocation="${wsdl.path}" service="${wsdl.service}"
       port="${wsdl.port}"
-      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.signature.codeFirst.path}">
+      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.signature.codeFirst.path}">
       <ws:security>
          <ws:wss-username-token username="${keystore.alias}"
-            password="${keystore.password}" passwordType="TEXT" />
+            password="${keystore.password}" passwordType="DIGEST" />
          <ws:wss-sign tlsContext-ref="keystoreContext" />
       </ws:security>
    </ws:consumer-config>
@@ -45,10 +45,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
    <ws:consumer-config doc:name="Encrypted Code-First endpoint consumer"
       name="Consumer-Encryption-CodeFirst" wsdlLocation="${wsdl.path}" service="${wsdl.service}"
       port="${wsdl.port}"
-      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.encryption.codeFirst.path}">
+      serviceAddress="http://${app.url.host}:${app.url.port}/${app.url.path}/${endpoint.cxf.encryption.codeFirst.path}">
       <ws:security>
          <ws:wss-username-token username="${keystore.alias}"
-            password="${keystore.password}" passwordType="TEXT" />
+            password="${keystore.password}" passwordType="DIGEST" />
          <ws:wss-encrypt tlsContext-ref="truststoreContext"
             alias="${keystore.alias}" />
       </ws:security>

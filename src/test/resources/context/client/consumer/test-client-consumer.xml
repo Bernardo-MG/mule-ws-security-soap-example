@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+   xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    	http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util-3.2.xsd
+	">
+
+   <description>
+      Context for testing consumer clients.
+   </description>
+
+   <!-- Properties -->
+   <context:property-placeholder />
+
+   <util:list id="configFiles">
+      <value>src/test/resources/flow/client/consumer/test-client-consumer.xml</value>
+      <value>src/main/app/endpoint-cxf-encryption.xml</value>
+      <value>src/main/app/endpoint-cxf-password.xml</value>
+      <value>src/main/app/endpoint-cxf-signature.xml</value>
+      <value>src/main/app/endpoint-cxf-unsecure.xml</value>
+      <value>src/main/app/ws-consumer.xml</value>
+      <value>src/main/app/ws-cxf-encryption.xml</value>
+      <value>src/main/app/ws-cxf-password.xml</value>
+      <value>src/main/app/ws-cxf-signature.xml</value>
+      <value>src/main/app/ws-cxf-unsecure.xml</value>
+      <value>src/main/app/client-consumer.xml</value>
+      <value>src/main/app/security-cxf.xml</value>
+      <value>src/main/app/config.xml</value>
+      <value>src/main/app/utils.xml</value>
+      <value>src/main/app/transformer.xml</value>
+      <value>src/main/app/consumer.xml</value>
+      <value>src/main/app/keystore.xml</value>
+   </util:list>
+
+</beans>

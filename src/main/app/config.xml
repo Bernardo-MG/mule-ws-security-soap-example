@@ -16,17 +16,28 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd">
 
    <context:property-placeholder
-      location="classpath:config/application.properties, classpath:config/util.properties, classpath:config/wsdl.properties, classpath:config/security.properties, classpath:config/endpoints.properties, classpath:config/client.properties, classpath:config/persistence.properties, classpath:config/user.properties, classpath:config/keystore.properties" />
+      location="classpath:config/application.properties, classpath:config/util.properties, classpath:config/wsdl.properties, classpath:config/security.properties, classpath:config/endpoints.properties, classpath:config/client.properties, classpath:config/persistence.properties, classpath:config/user.properties, classpath:config/keystore.properties, classpath:config/logging.properties" />
 
    <spring:beans>
       <spring:import resource="classpath:context/persistence.xml" />
       <spring:import resource="classpath:context/endpoints.xml" />
       <spring:import resource="classpath:context/security.xml" />
       <spring:import resource="classpath:context/service.xml" />
+      <spring:bean name="loggingInInterceptor" class="${logging.interceptor.in.class}">
+         <spring:property name="prettyLogging" value="true" />
+      </spring:bean>
+      <spring:bean name="loggingOutInterceptor" class="${logging.interceptor.out.class}">
+         <spring:property name="prettyLogging" value="true" />
+      </spring:bean>
    </spring:beans>
 
    <http:listener-config doc:name="Main HTTP listener for the application"
       name="Listener-Application" basePath="${app.url.path}" host="${app.url.host}"
       port="${app.url.port}" />
+
+   <cxf:configuration name="CXF_Configuration"
+      enableMuleSoapHeaders="${cxf.enableMuleSoapHeaders}" 
+      initializeStaticBusInstance="${cxf.initializeStaticBusInstance}"
+      doc:name="CXF Configuration" configurationLocation="${cxf.configFile}"/>
 
 </mule>

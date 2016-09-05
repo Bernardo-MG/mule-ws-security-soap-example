@@ -10,11 +10,12 @@
 
    <groupId>com.wandrell.example</groupId>
    <artifactId>mule-ws-security-soap-example</artifactId>
-   <version>1.0.1</version>
+   <version>2.3.0-SNAPSHOT</version>
    <packaging>mule</packaging>
 
    <name>Mule SOAP Web Services WS-Security Example</name>
-   <description>An example showing how to set up secured SOAP web services in Mule</description>
+   <description>An example showing how to set up secured SOAP web services
+      in Mule</description>
    <url>https://github.com/bernardo-mg/mule-ws-security-soap-example</url>
    <inceptionYear>2016</inceptionYear>
 
@@ -31,20 +32,25 @@
    <!-- ********************************************** -->
 
    <scm>
-      <connection>scm:git:https://github.com/bernardo-mg/mule-ws-security-soap-example.git</connection>
-      <developerConnection>scm:git:https://github.com/bernardo-mg/mule-ws-security-soap-example.git</developerConnection>
+      <connection>scm:git:https://github.com/bernardo-mg/mule-ws-security-soap-example.git
+      </connection>
+      <developerConnection>scm:git:https://github.com/bernardo-mg/mule-ws-security-soap-example.git
+      </developerConnection>
       <tag>head</tag>
-      <url>https://www.github.com/bernardo-mg/mule-ws-security-soap-example</url>
+      <url>https://www.github.com/bernardo-mg/mule-ws-security-soap-example
+      </url>
    </scm>
 
    <issueManagement>
       <system>GitHub</system>
-      <url>https://www.github.com/bernardo-mg/mule-ws-security-soap-example/issues</url>
+      <url>https://www.github.com/bernardo-mg/mule-ws-security-soap-example/issues
+      </url>
    </issueManagement>
 
    <ciManagement>
       <system>Travis CI</system>
-      <url>https://travis-ci.org/Bernardo-MG/mule-ws-security-soap-example</url>
+      <url>https://travis-ci.org/Bernardo-MG/mule-ws-security-soap-example
+      </url>
       <notifiers />
    </ciManagement>
 
@@ -57,8 +63,8 @@
          <!-- Profile for the Eclipse Maven plugin -->
          <!-- Sets the POM so this plugin does not give the usual unregistered 
             goals errors -->
-         <!-- It will be activated automatically on Eclipse if this has the 
-            m2e plugin, by detecting the version property -->
+         <!-- It will be activated automatically on Eclipse if this has the m2e 
+            plugin, by detecting the version property -->
          <id>eclipse</id>
          <activation>
             <property>
@@ -70,10 +76,9 @@
                <plugins>
                   <plugin>
                      <!-- m2e lifecycle mapping -->
-                     <!-- This is used to configure the Maven plugin for 
-                        Eclipse. -->
-                     <!-- Among other things, it allows registering goals, 
-                        which Eclipse would otherwise reject. -->
+                     <!-- This is used to configure the Maven plugin for Eclipse. -->
+                     <!-- Among other things, it allows registering goals, which Eclipse 
+                        would otherwise reject. -->
                      <!-- It has no real effect on Maven. -->
                      <groupId>org.eclipse.m2e</groupId>
                      <artifactId>lifecycle-mapping</artifactId>
@@ -83,21 +88,20 @@
                            <pluginExecutions>
                               <pluginExecution>
                                  <!-- jacoco plugin configuration -->
-                                 <!-- Fixes the errors with Eclipse not recognizing 
-                                    the plugin configuration -->
+                                 <!-- Fixes the errors with Eclipse not recognizing the plugin 
+                                    configuration -->
                                  <pluginExecutionFilter>
                                     <groupId>org.jacoco</groupId>
                                     <artifactId>jacoco-maven-plugin</artifactId>
                                     <versionRange>[0.5,)</versionRange>
                                     <goals>
-                                       <!-- The 'prepare-agent' goal is registered 
-                                          to m2e. -->
+                                       <!-- The 'prepare-agent' goal is registered to m2e. -->
                                        <goal>prepare-agent</goal>
                                     </goals>
                                  </pluginExecutionFilter>
                                  <action>
-                                    <!-- As m2e doesn't know what to do with 
-                                       jacoco, it is ignored to avoid error warnings. -->
+                                    <!-- As m2e doesn't know what to do with jacoco, it is ignored 
+                                       to avoid error warnings. -->
                                     <ignore />
                                  </action>
                               </pluginExecution>
@@ -234,10 +238,12 @@
    <properties>
       <!-- Encoding -->
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+      <project.reporting.outputEncoding>${project.build.sourceEncoding}
+      </project.reporting.outputEncoding>
       <!-- Java version -->
       <maven.compiler.source>1.7</maven.compiler.source>
-      <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+      <maven.compiler.target>${maven.compiler.source}
+      </maven.compiler.target>
       <!-- Manifest data -->
       <manifest.name>com/wandrell/example/mule/wss</manifest.name>
       <!-- Dependencies versions -->
@@ -247,6 +253,7 @@
       <commons.dbcp.version>1.4</commons.dbcp.version>
       <commons.logging.version>1.2</commons.logging.version>
       <commons.pool.version>1.6</commons.pool.version>
+      <cxf.api.version>2.7.18</cxf.api.version>
       <ehcache.version>2.7.0</ehcache.version>
       <ehcache.core.version>2.5.1</ehcache.core.version>
       <guava.version>19.0</guava.version>
@@ -263,10 +270,9 @@
       <jffi.version>1.2.12</jffi.version>
       <jnr.ffi.version>1.0.4</jnr.ffi.version>
       <junit.version>4.12</junit.version>
-      <log4j.version>2.5</log4j.version>
+      <log4j.version>2.6.1</log4j.version>
       <mail.version>1.4.7</mail.version>
       <mina.version>2.0.13</mina.version>
-      <mule.tools.version>1.1</mule.tools.version>
       <mule.version>3.7.0</mule.version>
       <munit.version>1.1.0</munit.version>
       <munit.support.version>3.7.1</munit.support.version>
@@ -277,7 +283,7 @@
       <spring.version>4.1.6.RELEASE</spring.version>
       <spring.ws.version>2.2.2.RELEASE</spring.ws.version>
       <stax.version>1.0-2</stax.version>
-      <testng.version>6.9.8</testng.version>
+      <testng.version>6.9.10</testng.version>
       <wss4j.version>1.6.19</wss4j.version>
       <xpp3.version>1.1.4c</xpp3.version>
       <xerces.version>2.11.0</xerces.version>
@@ -299,18 +305,18 @@
       <plugin.failsafe.version>2.19.1</plugin.failsafe.version>
       <plugin.findbugs.version>3.0.3</plugin.findbugs.version>
       <plugin.install.version>2.5.2</plugin.install.version>
-      <plugin.jacoco.version>0.7.6.201602180812</plugin.jacoco.version>
-      <plugin.jar.version>2.6</plugin.jar.version>
+      <plugin.jacoco.version>0.7.7.201606060606</plugin.jacoco.version>
+      <plugin.jar.version>3.0.0</plugin.jar.version>
       <plugin.javadoc.version>2.10.3</plugin.javadoc.version>
       <plugin.jdepend.version>2.0</plugin.jdepend.version>
       <plugin.jxr.version>2.5</plugin.jxr.version>
       <plugin.lifecycle.version>1.0.0</plugin.lifecycle.version>
-      <plugin.mule.version>${mule.tools.version}</plugin.mule.version>
+      <plugin.mule.version>1.1</plugin.mule.version>
       <plugin.munit.version>${munit.version}</plugin.munit.version>
       <plugin.pmd.version>3.6</plugin.pmd.version>
-      <plugin.release.version>2.5.2</plugin.release.version>
+      <plugin.release.version>2.5.3</plugin.release.version>
       <plugin.reports.version>2.9</plugin.reports.version>
-      <plugin.resources.version>2.7</plugin.resources.version>
+      <plugin.resources.version>3.0.1</plugin.resources.version>
       <plugin.site.version>3.4</plugin.site.version>
       <plugin.site.velocity.version>1.7</plugin.site.velocity.version>
       <plugin.source.version>3.0.0</plugin.source.version>
@@ -364,110 +370,67 @@
    <!-- ********************************************** -->
 
    <dependencies>
-      <!-- Xml configuration -->
+      <!-- ============================================== -->
+      <!-- ============== MULE TRANSPORT ================ -->
+      <!-- ============================================== -->
       <dependency>
-         <groupId>org.mule.modules</groupId>
-         <artifactId>mule-module-spring-config</artifactId>
-         <version>${mule.version}</version>
-         <scope>provided</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
-      </dependency>
-      <!-- Mule Transports -->
-      <dependency>
+         <!-- Mule file transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-file</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule http transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-http</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Commons Codec -->
-         <groupId>commons-codec</groupId>
-         <artifactId>commons-codec</artifactId>
-         <version>${commons.codec.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
+         <!-- Mule JDBC transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-jdbc</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule JMS transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-jms</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
+         <!-- Mule VM transport -->
          <groupId>org.mule.transports</groupId>
          <artifactId>mule-transport-vm</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
-      <!-- Mule Modules -->
+      <!-- ============================================== -->
+      <!-- =============== MULE MODULES ================= -->
+      <!-- ============================================== -->
       <dependency>
+         <!-- Mule scripting module -->
          <groupId>org.mule.modules</groupId>
          <artifactId>mule-module-scripting</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Jnr Ffi -->
-         <groupId>com.github.jnr</groupId>
-         <artifactId>jnr-ffi</artifactId>
-         <version>${jnr.ffi.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- JFfi -->
-         <groupId>com.github.jnr</groupId>
-         <artifactId>jffi</artifactId>
-         <version>${jffi.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- JCodings -->
-         <groupId>org.jruby.jcodings</groupId>
-         <artifactId>jcodings</artifactId>
-         <version>${jcodings.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
+         <!-- Mule Spring config module -->
          <groupId>org.mule.modules</groupId>
-         <artifactId>mule-module-xml</artifactId>
+         <artifactId>mule-module-spring-config</artifactId>
          <version>${mule.version}</version>
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- XPP3 min -->
-         <groupId>xpp3</groupId>
-         <artifactId>xpp3_min</artifactId>
-         <version>${xpp3.version}</version>
+         <!-- Mule XML module -->
+         <groupId>org.mule.modules</groupId>
+         <artifactId>mule-module-xml</artifactId>
+         <version>${mule.version}</version>
          <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- Jaxen -->
-         <groupId>jaxen</groupId>
-         <artifactId>jaxen</artifactId>
-         <version>${jaxen.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- XPP3 min -->
-         <groupId>xml-apis</groupId>
-         <artifactId>xml-apis</artifactId>
-         <version>${xmlapis.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ================== SPRING ==================== -->
@@ -476,12 +439,6 @@
          <!-- Spring AOP -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-aop</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-         <!-- Spring Transaction -->
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-tx</artifactId>
          <version>${spring.version}</version>
       </dependency>
       <dependency>
@@ -507,28 +464,12 @@
          <groupId>org.springframework.data</groupId>
          <artifactId>spring-data-jpa</artifactId>
          <version>${spring.data.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-orm</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-tx</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-core</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-beans</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-aop</artifactId>
-            </exclusion>
-         </exclusions>
+      </dependency>
+      <dependency>
+         <!-- Spring Expression -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-expression</artifactId>
+         <version>${spring.version}</version>
       </dependency>
       <dependency>
          <!-- Spring JDBC -->
@@ -555,6 +496,12 @@
          <version>${spring.security.version}</version>
       </dependency>
       <dependency>
+         <!-- Spring Transaction -->
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-tx</artifactId>
+         <version>${spring.version}</version>
+      </dependency>
+      <dependency>
          <!-- Spring Web -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-web</artifactId>
@@ -565,20 +512,6 @@
          <groupId>org.springframework.ws</groupId>
          <artifactId>spring-ws-core</artifactId>
          <version>${spring.ws.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-core</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-beans</artifactId>
-            </exclusion>
-            <exclusion>
-               <groupId>org.springframework</groupId>
-               <artifactId>spring-aop</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Spring WS XML -->
@@ -590,22 +523,16 @@
       <!-- ================= HIBERNATE ================== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- Entity JPA -->
+         <!-- Hibernate JPA 2 -->
          <groupId>org.hibernate.javax.persistence</groupId>
          <artifactId>hibernate-jpa-2.0-api</artifactId>
          <version>${hibernate.jpa.version}</version>
       </dependency>
       <dependency>
-         <!-- Entity Manager -->
+         <!-- Hibernate Entity Manager -->
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-entitymanager</artifactId>
          <version>${hibernate.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.hibernate.javax.persistence</groupId>
-               <artifactId>hibernate-jpa-2.0-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Hibernate Ehcache -->
@@ -623,37 +550,43 @@
       <!-- ================ PERSISTENCE ================= -->
       <!-- ============================================== -->
       <dependency>
-         <!-- H2 -->
-         <groupId>com.h2database</groupId>
-         <artifactId>h2</artifactId>
-         <version>${h2.version}</version>
-      </dependency>
-      <dependency>
          <!-- Apache Commons DBCP2 -->
          <groupId>commons-dbcp</groupId>
          <artifactId>commons-dbcp</artifactId>
          <version>${commons.dbcp.version}</version>
       </dependency>
       <dependency>
+         <!-- ehcache -->
+         <groupId>net.sf.ehcache</groupId>
+         <artifactId>ehcache</artifactId>
+         <version>${ehcache.version}</version>
+      </dependency>
+      <dependency>
+         <!-- ehcache core -->
+         <groupId>net.sf.ehcache</groupId>
+         <artifactId>ehcache-core</artifactId>
+         <version>${ehcache.core.version}</version>
+      </dependency>
+      <dependency>
+         <!-- H2 -->
+         <groupId>com.h2database</groupId>
+         <artifactId>h2</artifactId>
+         <version>${h2.version}</version>
+      </dependency>
+      <dependency>
          <!-- Hikari CP -->
          <groupId>com.zaxxer</groupId>
          <artifactId>HikariCP-java6</artifactId>
          <version>${hikari.version}</version>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <!-- ============================================== -->
       <!-- ================== LOGGING =================== -->
       <!-- ============================================== -->
       <dependency>
-         <!-- Log4j SLF4J Bridge -->
-         <groupId>org.apache.logging.log4j</groupId>
-         <artifactId>log4j-slf4j-impl</artifactId>
-         <version>${log4j.version}</version>
+         <!-- Commons Logging -->
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+         <version>${commons.logging.version}</version>
       </dependency>
       <dependency>
          <!-- SLF4J API -->
@@ -662,9 +595,15 @@
          <version>${slf4j.version}</version>
       </dependency>
       <dependency>
-         <!-- LOG4J -->
+         <!-- Log4j -->
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-core</artifactId>
+         <version>${log4j.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Log4j SLF4J Bridge -->
+         <groupId>org.apache.logging.log4j</groupId>
+         <artifactId>log4j-slf4j-impl</artifactId>
          <version>${log4j.version}</version>
       </dependency>
       <dependency>
@@ -673,14 +612,16 @@
          <artifactId>jboss-logging</artifactId>
          <version>${jboss.logging.version}</version>
       </dependency>
-      <dependency>
-         <groupId>xerces</groupId>
-         <artifactId>xercesImpl</artifactId>
-         <version>${xerces.version}</version>
-      </dependency>
       <!-- ============================================== -->
       <!-- ================= SECURITY =================== -->
       <!-- ============================================== -->
+      <dependency>
+         <!-- OpenSAML -->
+         <groupId>org.opensaml</groupId>
+         <artifactId>opensaml</artifactId>
+         <version>${opensaml.version}</version>
+         <scope>provided</scope>
+      </dependency>
       <dependency>
          <!-- XWS Security -->
          <groupId>com.sun.xml.wss</groupId>
@@ -701,19 +642,70 @@
          <version>${wss4j.version}</version>
       </dependency>
       <!-- ============================================== -->
-      <!-- =================== OTHER ==================== -->
+      <!-- ==================== XML ===================== -->
       <!-- ============================================== -->
-      <dependency>
-         <!-- Guava -->
-         <groupId>com.google.guava</groupId>
-         <artifactId>guava</artifactId>
-         <version>${guava.version}</version>
-      </dependency>
       <dependency>
          <!-- JAXB API -->
          <groupId>javax.xml.bind</groupId>
          <artifactId>jaxb-api</artifactId>
          <version>${jaxb.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Jaxen -->
+         <groupId>jaxen</groupId>
+         <artifactId>jaxen</artifactId>
+         <version>${jaxen.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- StAX API -->
+         <groupId>javax.xml.stream</groupId>
+         <artifactId>stax-api</artifactId>
+         <version>${stax.version}</version>
+      </dependency>
+      <dependency>
+         <!-- Xerces -->
+         <groupId>xerces</groupId>
+         <artifactId>xercesImpl</artifactId>
+         <version>${xerces.version}</version>
+      </dependency>
+      <dependency>
+         <!-- XML APIs -->
+         <groupId>xml-apis</groupId>
+         <artifactId>xml-apis</artifactId>
+         <version>${xmlapis.version}</version>
+      </dependency>
+      <dependency>
+         <!-- XPP3 min -->
+         <groupId>xpp3</groupId>
+         <artifactId>xpp3_min</artifactId>
+         <version>${xpp3.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- ==================== CXF ===================== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- CXF API -->
+         <groupId>org.apache.cxf</groupId>
+         <artifactId>cxf-api</artifactId>
+         <version>${cxf.api.version}</version>
+      </dependency>
+      <!-- ============================================== -->
+      <!-- =================== OTHER ==================== -->
+      <!-- ============================================== -->
+      <dependency>
+         <!-- Commons Codec -->
+         <groupId>commons-codec</groupId>
+         <artifactId>commons-codec</artifactId>
+         <version>${commons.codec.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- Guava -->
+         <groupId>com.google.guava</groupId>
+         <artifactId>guava</artifactId>
+         <version>${guava.version}</version>
       </dependency>
       <dependency>
          <!-- Java Mail -->
@@ -722,16 +714,25 @@
          <version>${mail.version}</version>
       </dependency>
       <dependency>
-         <!-- Java Mail -->
-         <groupId>javax.xml.stream</groupId>
-         <artifactId>stax-api</artifactId>
-         <version>${stax.version}</version>
+         <!-- JCodings -->
+         <groupId>org.jruby.jcodings</groupId>
+         <artifactId>jcodings</artifactId>
+         <version>${jcodings.version}</version>
+         <scope>provided</scope>
       </dependency>
       <dependency>
-         <!-- Commons Logging -->
-         <groupId>commons-logging</groupId>
-         <artifactId>commons-logging</artifactId>
-         <version>${commons.logging.version}</version>
+         <!-- Jnr Ffi -->
+         <groupId>com.github.jnr</groupId>
+         <artifactId>jnr-ffi</artifactId>
+         <version>${jnr.ffi.version}</version>
+         <scope>provided</scope>
+      </dependency>
+      <dependency>
+         <!-- JFfi -->
+         <groupId>com.github.jnr</groupId>
+         <artifactId>jffi</artifactId>
+         <version>${jffi.version}</version>
+         <scope>provided</scope>
       </dependency>
       <dependency>
          <!-- Commons Pool -->
@@ -744,25 +745,6 @@
          <groupId>commons-collections</groupId>
          <artifactId>commons-collections</artifactId>
          <version>${commons.collections.version}</version>
-      </dependency>
-      <dependency>
-         <!-- OpenSAML -->
-         <groupId>org.opensaml</groupId>
-         <artifactId>opensaml</artifactId>
-         <version>${opensaml.version}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <!-- ehcache -->
-         <groupId>net.sf.ehcache</groupId>
-         <artifactId>ehcache</artifactId>
-         <version>${ehcache.version}</version>
-      </dependency>
-      <dependency>
-         <!-- ehcache core -->
-         <groupId>net.sf.ehcache</groupId>
-         <artifactId>ehcache-core</artifactId>
-         <version>${ehcache.core.version}</version>
       </dependency>
       <dependency>
          <!-- asm -->
@@ -780,12 +762,6 @@
          <artifactId>mule-tests-functional</artifactId>
          <version>${mule.version}</version>
          <scope>test</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- Mule Client -->
@@ -800,12 +776,6 @@
          <artifactId>mina-core</artifactId>
          <version>${mina.version}</version>
          <scope>test</scope>
-         <exclusions>
-            <exclusion>
-               <groupId>org.slf4j</groupId>
-               <artifactId>slf4j-api</artifactId>
-            </exclusion>
-         </exclusions>
       </dependency>
       <dependency>
          <!-- TestNG -->
@@ -916,13 +886,12 @@
       </extensions>
       <pluginManagement>
          <plugins>
-            <!-- The following plugins always appear on the plugins list, 
-               even when they have not been added to the project. -->
+            <!-- The following plugins always appear on the plugins list, even when 
+               they have not been added to the project. -->
             <!-- This configuration block allows keeping them always updated. -->
             <plugin>
                <!-- Dependency -->
-               <!-- Takes care of dependencies, both copying and showing 
-                  their info. -->
+               <!-- Takes care of dependencies, both copying and showing their info. -->
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-dependency-plugin</artifactId>
                <version>${plugin.dependency.version}</version>
@@ -981,8 +950,8 @@
          </plugin>
          <plugin>
             <!-- Enforcer -->
-            <!-- Stops the project from being built if it does not comply 
-               with a set of rules. -->
+            <!-- Stops the project from being built if it does not comply with a 
+               set of rules. -->
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
             <version>${plugin.enforcer.version}</version>
@@ -1010,8 +979,8 @@
                   <configuration>
                      <rules>
                         <!-- Dependencies convergence. -->
-                        <!-- This variant of the rule requires less configuration, 
-                           making use of Maven's dependency resolver. -->
+                        <!-- This variant of the rule requires less configuration, making 
+                           use of Maven's dependency resolver. -->
                         <requireUpperBoundDeps />
                      </rules>
                   </configuration>
@@ -1060,8 +1029,7 @@
             <artifactId>maven-failsafe-plugin</artifactId>
             <version>${plugin.failsafe.version}</version>
             <executions>
-               <!-- Failsafe is bound to the integration-test and verify 
-                  phases -->
+               <!-- Failsafe is bound to the integration-test and verify phases -->
                <execution>
                   <id>failsafe-integration-tests</id>
                   <goals>
@@ -1078,23 +1046,25 @@
             <configuration>
                <properties>
                   <property>
-                     <!-- Default listeners disabled to avoid conflicts with 
-                        TestNG -->
+                     <!-- Default listeners disabled to avoid conflicts with TestNG -->
                      <name>usedefaultlisteners</name>
                      <key>false</key>
                   </property>
                   <property>
                      <name>suitename</name>
-                     <value>${project.groupId}.${project.artifactId}_Integration_Suite</value>
+                     <value>${project.groupId}.${project.artifactId}_Integration_Suite
+                     </value>
                   </property>
                </properties>
                <suiteXmlFiles>
                   <!-- Path to the integration tests suite file -->
-                  <suiteXmlFile>${project.build.testOutputDirectory}/tests_maven_integration_suite.xml</suiteXmlFile>
+                  <suiteXmlFile>${project.build.testOutputDirectory}/tests_maven_integration_suite.xml
+                  </suiteXmlFile>
                </suiteXmlFiles>
                <!-- To avoid memory problems when running the tests -->
                <argLine>-Xmx1024m -Xms1024m -XX:MaxPermSize=512m
-                  -XX:PermSize=256m</argLine>
+                  -XX:PermSize=256m
+               </argLine>
             </configuration>
          </plugin>
          <plugin>
@@ -1130,8 +1100,10 @@
                   <index>true</index>
                   <manifest>
                      <addClasspath>true</addClasspath>
-                     <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                     <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                     <addDefaultImplementationEntries>true
+                     </addDefaultImplementationEntries>
+                     <addDefaultSpecificationEntries>true
+                     </addDefaultSpecificationEntries>
                      <packageName>${project.groupId}</packageName>
                   </manifest>
                   <manifestEntries>
@@ -1202,7 +1174,8 @@
                   <configuration>
                      <generatePom>true</generatePom>
                      <url>${project.distributionManagement.repository.url}</url>
-                     <file>${project.build.directory}/${project.build.finalName}.jar</file>
+                     <file>${project.build.directory}/${project.build.finalName}.jar
+                     </file>
                   </configuration>
                </execution>
             </executions>
@@ -1244,19 +1217,20 @@
             <configuration>
                <properties>
                   <property>
-                     <!-- Default listeners disabled to avoid conflicts with 
-                        TestNG -->
+                     <!-- Default listeners disabled to avoid conflicts with TestNG -->
                      <name>usedefaultlisteners</name>
                      <key>false</key>
                   </property>
                   <property>
                      <name>suitename</name>
-                     <value>${project.groupId}.${project.artifactId}_Unit_Suite</value>
+                     <value>${project.groupId}.${project.artifactId}_Unit_Suite
+                     </value>
                   </property>
                </properties>
                <suiteXmlFiles>
                   <!-- Path to the unit tests suite file -->
-                  <suiteXmlFile>${project.build.testOutputDirectory}/tests_maven_unit_suite.xml</suiteXmlFile>
+                  <suiteXmlFile>${project.build.testOutputDirectory}/tests_maven_unit_suite.xml
+                  </suiteXmlFile>
                </suiteXmlFiles>
             </configuration>
          </plugin>
@@ -1340,7 +1314,8 @@
                      <sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
                      <wsdlOptions>
                         <wsdlOption>
-                           <wsdl>${basedir}/src/main/resources/wsdl/ExampleEntity.wsdl</wsdl>
+                           <wsdl>${basedir}/src/main/resources/wsdl/ExampleEntity.wsdl
+                           </wsdl>
                            <wsdlLocation>classpath:wsdl/ExampleEntity.wsdl</wsdlLocation>
                            <extraargs>
                               <extraarg>-client</extraarg>
@@ -1405,8 +1380,7 @@
          </plugin>
          <plugin>
             <!-- JXR -->
-            <!-- Generates references to the source files, used by other 
-               reports -->
+            <!-- Generates references to the source files, used by other reports -->
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jxr-plugin</artifactId>
             <version>${plugin.jxr.version}</version>
@@ -1452,8 +1426,7 @@
          </plugin>
          <plugin>
             <!-- Taglist -->
-            <!-- Generates a report of all the temporal tags still on the 
-               code -->
+            <!-- Generates a report of all the temporal tags still on the code -->
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>taglist-maven-plugin</artifactId>
             <version>${plugin.taglist.version}</version>
@@ -1502,7 +1475,8 @@
             </reportSets>
             <configuration>
                <!-- The customized rules file -->
-               <configLocation>${project.basedir}/src/config/checkstyle/checkstyle-rules.xml</configLocation>
+               <configLocation>${project.basedir}/src/config/checkstyle/checkstyle-rules.xml
+               </configLocation>
                <!-- Excludes generated code -->
                <excludes>**/generated/**/*</excludes>
             </configuration>
@@ -1520,8 +1494,7 @@
          </plugin>
          <plugin>
             <!-- PMD -->
-            <!-- Checks that the code complies with a series of code quality 
-               rules -->
+            <!-- Checks that the code complies with a series of code quality rules -->
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-pmd-plugin</artifactId>
             <version>${plugin.pmd.version}</version>

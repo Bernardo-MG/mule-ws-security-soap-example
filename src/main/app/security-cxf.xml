@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns="http://www.mulesoft.org/schema/mule/core"
+   xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+   xmlns:spring="http://www.springframework.org/schema/beans" version="CE-3.7.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ss="http://www.springframework.org/schema/security"
+   xmlns:mule-ss="http://www.mulesoft.org/schema/mule/spring-security"
+   xsi:schemaLocation="
+      http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+      http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+      http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+      http://www.mulesoft.org/schema/mule/spring-security http://www.mulesoft.org/schema/mule/spring-security/3.1/mule-spring-security.xsd">
+
+   <cxf:ws-security name="passwordConfigEndpoint">
+      <cxf:ws-config>
+         <cxf:property key="action" value="UsernameToken" />
+         <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+      </cxf:ws-config>
+   </cxf:ws-security>
+
+   <cxf:ws-security name="passwordConfigClient">
+      <cxf:ws-config>
+         <cxf:property key="action" value="UsernameToken" />
+         <cxf:property key="user" value="${security.credentials.user}"/>
+         <cxf:property key="passwordCallbackRef" value-ref="passwordCallbackHandler" />
+      </cxf:ws-config>
+   </cxf:ws-security>
+
+   <cxf:ws-security name="passwordSamlConfigEndpoint">
+      <cxf:ws-config>
+         <cxf:property key="action" value="SAMLTokenUnsigned" />
+      </cxf:ws-config>
+      <cxf:ws-custom-validator>
+         <cxf:username-token-validator ref="usernameValidator" />
+         <cxf:saml2-token-validator ref="samlValidator" />
+      </cxf:ws-custom-validator>
+   </cxf:ws-security>
+
+   <cxf:ws-security name="passwordSamlConfigClient">
+      <cxf:ws-config>
+         <cxf:property key="action" value="SAMLTokenUnsigned" />
+         <cxf:property key="samlPropFile" value="${security.saml.properties}" />
+         <cxf:property key="samlCallbackRef" value-ref="samlPasswordCallbackHandler" />
+      </cxf:ws-config>
+   </cxf:ws-security>
+
+   <cxf:ws-security name="signatureConfigEndpoint">
+      <cxf:ws-config>
+         <cxf:property key="action" value="UsernameToken Signature" />
+         <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
+      </cxf:ws-config>
+   </cxf:ws-security>
+
+   <cxf:ws-security name="signatureConfigClient">
+      <cxf:ws-config>
+         <cxf:property key="action" value="UsernameToken Signature" />
+         <cxf:property key="signaturePropFile" value="${security.signature.properties}" />
+         <cxf:property key="user" value="${keystore.alias}" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
+      </cxf:ws-config>
+   </cxf:ws-security>
+
+   <cxf:ws-security name="encryptionConfigEndpoint">
+      <cxf:ws-config>
+         <cxf:property key="action" value="UsernameToken Encrypt" />
+         <cxf:property key="decryptionPropFile" value="${security.decryption.properties}" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
+      </cxf:ws-config>
+   </cxf:ws-security>
+
+   <cxf:ws-security name="encryptionConfigClient">
+      <cxf:ws-config>
+         <cxf:property key="action" value="UsernameToken Encrypt" />
+         <cxf:property key="encryptionPropFile" value="${security.encryption.properties}" />
+         <cxf:property key="user" value="${keystore.alias}" />
+         <cxf:property key="encryptionUser" value="${keystore.alias}" />
+         <cxf:property key="passwordCallbackRef" value-ref="keystorePasswordCallbackHandler" />
+      </cxf:ws-config>
+   </cxf:ws-security>
+
+</mule>

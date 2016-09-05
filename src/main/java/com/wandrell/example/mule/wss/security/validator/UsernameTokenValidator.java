@@ -41,39 +41,74 @@ import org.slf4j.LoggerFactory;
  */
 public final class UsernameTokenValidator implements Validator {
 
-	/**
-	 * The logger used for logging the validator.
-	 */
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(SamlCustomValidator.class);
+    /**
+     * The logger used for logging the validator.
+     */
+    private static final Logger LOGGER = LoggerFactory
+                                               .getLogger(SamlValidator.class);
 
-	/**
-	 * Default constructor.
-	 */
-	public UsernameTokenValidator() {
-		super();
-	}
+    /**
+     * Valid user.
+     */
+    private final String        user;
 
-	@Override
-	public final Credential validate(final Credential credential,
-			final RequestData data) throws WSSecurityException {
-		final UsernameToken usernameToken;
+    /**
+     * Password for the user.
+     */
+    private final String        password;
 
-		checkNotNull(credential, "Received a null pointer as credential");
-		checkNotNull(data, "Received a null pointer as data");
+    /**
+     * Default constructor.
+     * 
+     * @param username
+     *            valid username
+     * @param pass
+     *            password for the username
+     */
+    public UsernameTokenValidator(final String username, final String pass) {
+        super();
 
-		usernameToken = credential.getUsernametoken();
+        user = checkNotNull(username, "Received a null pointer as username");
+        password = checkNotNull(pass, "Received a null pointer as password");
+    }
 
-		// TODO: Users and passwords may be injected as dependencies
-		if (!"myPassword".equalsIgnoreCase(usernameToken.getPassword())) {
-			throw new WSSecurityException(
-					WSSecurityException.FAILED_AUTHENTICATION);
-		} else {
-			LOGGER.debug(String.format("Rejected password %2$s for user %1$s",
-					usernameToken.getName(), usernameToken.getPassword()));
-		}
+    @Override
+    public final Credential validate(final Credential credential,
+            final RequestData data) throws WSSecurityException {
+        final UsernameToken usernameToken; // Token to validate
 
-		return credential;
-	}
+        checkNotNull(credential, "Received a null pointer as credential");
+        checkNotNull(data, "Received a null pointer as data");
+
+        usernameToken = credential.getUsernametoken();
+
+        if ((!getUser().equals(usernameToken.getName()))
+                || (!getPassword().equals(usernameToken.getPassword()))) {
+            LOGGER.debug(String.format("Rejected password %2$s for user %1$s",
+                    usernameToken.getName(), usernameToken.getPassword()));
+            throw new WSSecurityException(
+                    WSSecurityException.FAILED_AUTHENTICATION);
+        }
+
+        return credential;
+    }
+
+    /**
+     * Returns the user password.
+     * 
+     * @return the user password
+     */
+    private final String getPassword() {
+        return password;
+    }
+
+    /**
+     * Returns the valid user.
+     * 
+     * @return the valid user
+     */
+    private final String getUser() {
+        return user;
+    }
 
 }

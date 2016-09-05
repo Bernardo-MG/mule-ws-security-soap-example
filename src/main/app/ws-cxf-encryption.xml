@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:pattern="http://www.mulesoft.org/schema/mule/pattern"
+   xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+   xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+   xmlns:servlet="http://www.mulesoft.org/schema/mule/servlet" xmlns="http://www.mulesoft.org/schema/mule/core"
+   xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+   xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.mulesoft.org/schema/mule/pattern http://www.mulesoft.org/schema/mule/pattern/current/mule-pattern.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/servlet http://www.mulesoft.org/schema/mule/servlet/current/mule-servlet.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd">
+
+   <flow name="WS-CXF-Encryption-CodeFirst-HTTP-Listener">
+      <http:listener config-ref="Listener-Application"
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.encryption.codeFirst.path}" />
+      <flow-ref name="WS-CXF-Encryption-CodeFirst-Endpoint" doc:name="Send to endpoint" />
+   </flow>
+   <sub-flow name="WS-CXF-Encryption-CodeFirst-Endpoint">
+      <logger message="Begins the encrypted Code-First endpoint flow"
+         level="INFO" doc:name="Logger" />
+      <cxf:jaxws-service validationEnabled="${endpoint.validation}"
+         doc:name="Code-First endpoint interface" serviceClass="${endpoint.cxf.codeFirst.interface}"
+         namespace="${wsdl.namespace}" configuration-ref="CXF_Configuration">
+         <cxf:ws-security ref="encryptionConfigEndpoint"/>
+         <cxf:inInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inInterceptors>
+         <cxf:inFaultInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inFaultInterceptors>
+         <cxf:outInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outInterceptors>
+         <cxf:outFaultInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outFaultInterceptors>
+      </cxf:jaxws-service>
+      <component doc:name="Code-First endpoint implementation">
+         <spring-object bean="codeFirstUnsecureEndpoint" />
+      </component>
+      <logger message="Ends the encrypted Code-First endpoint flow"
+         level="INFO" doc:name="Logger" />
+   </sub-flow>
+
+   <flow name="WS-Encryption-WSDLFirst-HTTP-Listener">
+      <http:listener config-ref="Listener-Application"
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.encryption.wsdlFirst.path}" />
+      <flow-ref name="WS-CXF-Encryption-WSDLFirst-Endpoint" doc:name="Send to endpoint" />
+   </flow>
+   <sub-flow name="WS-CXF-Encryption-WSDLFirst-Endpoint">
+      <logger message="Begins the encrypted WSDL-First endpoint flow"
+         level="INFO" doc:name="Logger" />
+      <cxf:jaxws-service validationEnabled="${endpoint.validation}"
+         doc:name="WSDL-First endpoint interface" serviceClass="${endpoint.cxf.wsdlFirst.interface}"
+         namespace="${wsdl.namespace}" wsdlLocation="${wsdl.path}" service="${wsdl.service}" configuration-ref="CXF_Configuration">
+         <cxf:ws-security ref="encryptionConfigEndpoint"/>
+         <cxf:inInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inInterceptors>
+         <cxf:inFaultInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inFaultInterceptors>
+         <cxf:outInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outInterceptors>
+         <cxf:outFaultInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outFaultInterceptors>
+      </cxf:jaxws-service>
+      <component doc:name="WSDL-First endpoint implementation">
+         <spring-object bean="wsdlFirstUnsecureEndpoint" />
+      </component>
+      <logger message="Ends the encrypted WSDL-First endpoint flow"
+         level="INFO" doc:name="Logger" />
+   </sub-flow>
+
+   <flow name="WS-Encryption-Simple-HTTP-Listener">
+      <http:listener config-ref="Listener-Application"
+         path="${endpoint.cxf.encryption.simple.path}" doc:name="HTTP Inbound Endpoint" />
+      <flow-ref name="WS-CXF-Encryption-Simple-Endpoint" doc:name="Send to endpoint" />
+   </flow>
+   <sub-flow name="WS-CXF-Encryption-Simple-Endpoint">
+      <logger message="Begins the encrypted simple endpoint flow"
+         level="INFO" doc:name="Logger" />
+      <cxf:simple-service
+         serviceClass="${endpoint.cxf.simple.class}"
+         service="${wsdl.service}" doc:name="Simple endpoint" configuration-ref="CXF_Configuration">
+         <cxf:ws-security ref="encryptionConfigEndpoint"/>
+         <cxf:inInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inInterceptors>
+         <cxf:inFaultInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inFaultInterceptors>
+         <cxf:outInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outInterceptors>
+         <cxf:outFaultInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outFaultInterceptors>
+      </cxf:simple-service>
+      <component doc:name="Simple endpoint implementation">
+         <spring-object bean="simpleUnsecureEndpoint" />
+      </component>
+      <logger message="Ends the encrypted simple endpoint flow"
+         level="INFO" doc:name="Logger" />
+   </sub-flow>
+
+   <flow name="WS-Encryption-Proxy-HTTP-Listener">
+      <http:listener config-ref="Listener-Application"
+         doc:name="HTTP Inbound Endpoint" path="${endpoint.cxf.encryption.proxy.path}" />
+      <flow-ref name="WS-CXF-Encryption-Proxy-Endpoint" doc:name="Send to endpoint" />
+   </flow>
+   <sub-flow name="WS-CXF-Encryption-Proxy-Endpoint">
+      <logger message="Begins the encrypted proxy endpoint flow"
+         level="INFO" doc:name="Logger" />
+      <cxf:proxy-service namespace="${wsdl.namespace}"
+         payload="envelope" port="${wsdl.port}" service="${wsdl.service}"
+         doc:name="Proxy endpoint" wsdlLocation="${wsdl.path}" configuration-ref="CXF_Configuration">
+         <cxf:ws-security ref="encryptionConfigEndpoint"/>
+         <cxf:inInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inInterceptors>
+         <cxf:inFaultInterceptors>
+            <spring:ref bean="loggingInInterceptor" />
+         </cxf:inFaultInterceptors>
+         <cxf:outInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outInterceptors>
+         <cxf:outFaultInterceptors>
+            <spring:ref bean="loggingOutInterceptor" />
+         </cxf:outFaultInterceptors>
+      </cxf:proxy-service>
+      <flow-ref doc:name="Copy HTTP Headers" name="Copy-Headers" />
+      <cxf:proxy-client doc:name="Proxy client"
+         enableMuleSoapHeaders="false" payload="envelope" />
+      <outbound-endpoint doc:name="Encrypted code-first endpoint"
+         ref="Endpoint-CXF-Encryption-CodeFirst" exchange-pattern="request-response" />
+      <flow-ref doc:name="Copy HTTP Headers" name="Copy-Headers" />
+      <logger message="Ends the encrypted proxy endpoint flow" level="INFO"
+         doc:name="Logger" />
+   </sub-flow>
+
+</mule>
