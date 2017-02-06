@@ -82,7 +82,6 @@ The endpoint consumer does not support querying for the WSDL, and only accepts t
 |Password with SAML|WSDL-First|[http://localhost:8080/mule-wss/cxf/password/saml/wsdl_first?wsdl](http://localhost:8080/mule-wss/cxf/password/saml/wsdl_first?wsdl)|
 |Password with SAML|Simple|[http://localhost:8080/mule-wss/cxf/password/saml/simple?wsdl](http://localhost:8080/mule-wss/cxf/password/saml/simple?wsdl)|
 |Password with SAML|Proxy|[http://localhost:8080/mule-wss/cxf/password/saml/proxy?wsdl](http://localhost:8080/mule-wss/cxf/password/saml/proxy?wsdl)|
-|Password with SAML|Consumer|[http://localhost:8080/mule-wss/consumer/password/saml](http://localhost:8080/mule-wss/consumer/password/saml)|
 |Signature|Code-First|[http://localhost:8080/mule-wss/cxf/signature/code_first?wsdl](http://localhost:8080/mule-wss/cxf/signature/code_first?wsdl)|
 |Signature|WSDL-First|[http://localhost:8080/mule-wss/cxf/signature/wsdl_first?wsdl](http://localhost:8080/mule-wss/cxf/signature/wsdl_first?wsdl)|
 |Signature|Simple|[http://localhost:8080/mule-wss/cxf/signature/simple?wsdl](http://localhost:8080/mule-wss/cxf/signature/simple?wsdl)|
@@ -116,7 +115,6 @@ To change the entity queried just change the id value on the URL.
 |Password with SAML|WSDL-First|[http://localhost:8080/mule-wss/client/cxf/password/saml/wsdl_first?id=1](http://localhost:8080/mule-wss/client/cxf/password/saml/wsdl_first?id=1)|
 |Password with SAML|Simple|[http://localhost:8080/mule-wss/client/cxf/password/saml/simple?id=1](http://localhost:8080/mule-wss/client/cxf/password/saml/simple?id=1)|
 |Password with SAML|Proxy|[http://localhost:8080/mule-wss/client/cxf/password/saml/proxy?id=1](http://localhost:8080/mule-wss/client/cxf/password/saml/proxy?id=1)|
-|Password with SAML|Consumer|[http://localhost:8080/mule-wss/client/consumer/password/saml?id=1](http://localhost:8080/mule-wss/client/consumer/password/saml?id=1)|
 |Signature|Code-First|[http://localhost:8080/mule-wss/client/signature/cxf/code_first?id=1](http://localhost:8080/mule-wss/client/cxf/signature/code_first?id=1)|
 |Signature|WSDL-First|[http://localhost:8080/mule-wss/client/signature/cxf/wsdl_first?id=1](http://localhost:8080/mule-wss/client/cxf/signature/wsdl_first?id=1)|
 |Signature|Simple|[http://localhost:8080/mule-wss/client/signature/cxf/simple?id=1](http://localhost:8080/mule-wss/client/cxf/signature/simple?id=1)|
@@ -149,6 +147,6 @@ The project has been released under the [MIT License][license].
 
 [issues]: https://github.com/bernardo-mg/mule-ws-security-soap-example/issues
 [license]: http://www.opensource.org/licenses/mit-license.php
-[scm]: https://github.com/bernardo-mg/spring-ws-security-soap-example
+[scm]: https://github.com/bernardo-mg/mule-ws-security-soap-example
 
 [mule]: https://www.mulesoft.com
