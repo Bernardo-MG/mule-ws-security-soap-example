@@ -267,7 +267,7 @@
       <jaxen.version>1.1.1</jaxen.version>
       <jboss.logging.version>3.3.0.Final</jboss.logging.version>
       <jcodings.version>1.0.17</jcodings.version>
-      <jffi.version>1.2.12</jffi.version>
+      <jffi.version>1.2.14</jffi.version>
       <jnr.ffi.version>1.0.4</jnr.ffi.version>
       <junit.version>4.12</junit.version>
       <log4j.version>2.6.1</log4j.version>
