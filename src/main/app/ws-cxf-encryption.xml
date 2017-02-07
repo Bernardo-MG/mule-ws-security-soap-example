@@ -138,7 +138,7 @@ http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/cu
       <flow-ref doc:name="Copy HTTP Headers" name="Copy-Headers" />
       <cxf:proxy-client doc:name="Proxy client"
          enableMuleSoapHeaders="false" payload="envelope" />
-      <outbound-endpoint doc:name="Password protected code-first endpoint"
+      <outbound-endpoint doc:name="Encrypted code-first endpoint"
          ref="Endpoint-CXF-Encryption-CodeFirst" exchange-pattern="request-response" />
       <flow-ref doc:name="Copy HTTP Headers" name="Copy-Headers" />
       <logger message="Ends the encrypted proxy endpoint flow" level="INFO"
